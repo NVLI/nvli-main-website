@@ -1,0 +1,9 @@
+# Drush make file which is used to build the docroot. Must be updated anytime a
+# contributed element is added, upgraded or altered.
+core: 8.x
+api: 2
+
+# Core
+projects:
+  drupal:
+    version: "8.1.2"
