@@ -1,0 +1,14 @@
+custom_search.new_search_search:
+  path: 'result'
+  defaults:
+    _controller: '\Drupal\custom_search\Controller\NewSearch::search'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'
+custom_search.new_search_result:
+  path: 'result/{keyword}'
+  defaults:
+    _controller: '\Drupal\custom_search\Controller\NewSearch::search'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'

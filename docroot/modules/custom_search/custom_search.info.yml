@@ -1,0 +1,5 @@
+name: Custom Search 
+type: module
+description: Custom Search Form To Get The Results From Multiple Core 
+core: 8.x
+package: Custom
