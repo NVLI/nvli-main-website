@@ -1,0 +1,22 @@
+uuid: a41ad517-d8b1-44bd-baba-09596ede929c
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - STARTERKIT
+_core:
+  default_config_hash: QLnZmYPjESoyWxCz-ET52ZkLhAEyFblHiqeBnB4MHek
+id: STARTERKIT_search
+theme: STARTERKIT
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }
