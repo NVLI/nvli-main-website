@@ -7,3 +7,9 @@ api: 2
 projects:
   drupal:
     version: "8.1.2"
+  zen:
+    type: "theme"
+    version: "7.0-alpha14"
+  components:
+    type: "module"
+    version: "1.0"
