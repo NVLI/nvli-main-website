@@ -14,8 +14,9 @@ function nvli_custom_mirador_metadata_alter(&$entity) {
   $solr_doc_id = $entity->field_solr_doc_id->value;
   // @to-do: Get the solr server name from variable.
   $solr_server = "nvli";
-  $metadata = \Drupal::service('custom_solr_search.search')->basicSearch($solr_doc_id, 0, 5, $solr_server);
-  // Generate metadata array.
+  $metadata = \Drupal::service('custom_solr_search.search_all')->seachAll('id:' . $solr_doc_id);
+
+ // Generate metadata array.
   $metadata = (array) $metadata['0'];
   // Set label as metadata title.
   $entity->content['image_viewer_data']['label'] = $metadata['title'];
