@@ -218,7 +218,7 @@
         drupalAnnotationStore['text'] = annotation['resource']['0']['chars'];
         drupalAnnotationStore['data'] = {};
         drupalAnnotationStore['data'] = annotation;
-        drupalAnnotationStore['type'] = 'image annotation';
+        drupalAnnotationStore['media'] = 'image annotation';
         var annotation_data = JSON.stringify(drupalAnnotationStore);
       }
       jQuery.ajax({
