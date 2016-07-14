@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Drupal\mirador\ActivationCheckInterface.
+ * ActivationCheckInterface.
  */
 
 namespace Drupal\mirador;
