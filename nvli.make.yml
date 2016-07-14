@@ -21,4 +21,21 @@ projects:
   search_api_solr:
     subdir: "contrib"
     version: "1.0-alpha4"
-
+  config_update:
+    subdir: "contrib"
+    version: "1.1"
+  ctools:
+    subdir: "contrib"
+    version: "3.0-alpha26+4-dev"
+  features:
+    subdir: "contrib"
+    version: "3.0-beta6"
+  pathauto:
+    subdir: "contrib"
+    version: "1.0-alpha3"
+  token:
+    subdir: "contrib"
+    version: "1.0-alpha2"
+  token:
+    subdir: "contrib"
+    version: "1.0-alpha2"

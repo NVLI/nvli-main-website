@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text_plain_single_1
+    - node.type.resource
+id: node.resource.field_text_plain_single_1
+field_name: field_text_plain_single_1
+entity_type: node
+bundle: resource
+label: 'Short URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
