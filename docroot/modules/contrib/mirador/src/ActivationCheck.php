@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains Drupal\mirador\ActivationCheck.
+ * ActivationCheckInterface.
  */
 
 namespace Drupal\mirador;
@@ -33,6 +33,7 @@ class ActivationCheck implements ActivationCheckInterface {
    * Create an instace of ActivationCheck.
    */
   public function __construct(ConfigFactoryInterface $config, RequestStack $request) {
+
     $this->settings = $config->get('mirador.settings');
     $this->request = $request->getCurrentRequest();
   }
@@ -41,6 +42,7 @@ class ActivationCheck implements ActivationCheckInterface {
    * {@inheritdoc}
    */
   public function isActive() {
+
     return $this->request->get('mirador') !== 'no';
   }
 
