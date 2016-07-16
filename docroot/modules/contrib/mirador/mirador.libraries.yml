@@ -6,10 +6,13 @@ mirador:
     gpl-compatible: false
   js:
     /libraries/mirador/jQuery-1.9.1.js: {}
+    /libraries/mirador/jquery.ui.js: {}
+    /libraries/mirador/jquery.scroll.js: {}
     /libraries/mirador/jquery.no-conflict.js: {}
     /libraries/mirador/handlebars-v4.0.5.js: {}
     /libraries/mirador/d3.v3.min.js: {}
     /libraries/mirador/jquery.qtip.min.js: {}
+    /libraries/mirador/uri.js: {}
     /libraries/mirador/openseadragon.min.js: {}
     /libraries/mirador/mirador.js: { minified: false }
   css:
@@ -18,6 +21,7 @@ mirador:
   dependencies:
     - core/jquery
     - core/jquery.once
+    - core/jquery.ui
 init:
   version: VERSION
   js:
