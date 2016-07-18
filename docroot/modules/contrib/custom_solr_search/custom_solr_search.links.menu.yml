@@ -1,0 +1,8 @@
+# Custom solr config menu items definition
+entity.custom_solr_config.collection:
+  title: 'Custom solr config'
+  route_name: entity.custom_solr_config.collection
+  description: 'List Custom solr config (bundles)'
+  parent: system.admin_structure
+  weight: 99
+

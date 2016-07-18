@@ -1,0 +1,6 @@
+entity.custom_solr_config.add_form:
+  route_name: 'entity.custom_solr_config.add_form'
+  title: 'Add Custom solr config'
+  appears_on:
+    - entity.custom_solr_config.collection
+

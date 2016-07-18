@@ -10,6 +10,19 @@ projects:
   zen:
     type: "theme"
     version: "7.0-alpha14"
+# Modules  
   components:
     type: "module"
     version: "1.0"
+  admin_toolbar:
+    subdir: "contrib"
+    version: "1.15"
+  composer_manager:
+    subdir: "contrib"
+    version: "1.0-rc2"
+  search_api:
+    subdir: "contrib"
+    version: "1.0-alpha15"
+  search_api_solr:
+    subdir: "contrib"
+    version: "1.0-alpha4"

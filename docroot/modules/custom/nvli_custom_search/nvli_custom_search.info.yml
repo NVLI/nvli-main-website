@@ -1,0 +1,6 @@
+name: NVLI Custom Search Form
+type: module
+description: Custom Search Form To Get The Results From Core or Specific Field
+core: 8.x
+version: 8.x-1.0
+package: Custom
