@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Contains nvli_custom.module.
+ */
+
+/**
+ * Implements hook_mirador_metadata_alter.
+ */
+function nvli_custom_mirador_metadata_alter(&$entity) {
+  // field_solr_doc_id contains the solr doc id, corresponding
+  // to this entity.
+  $solr_doc_id = $entity->field_solr_doc_id->value;
+  // Proceed only if solr doc id is not empty.
+  if (!empty($solr_doc_id)) {
+    $metadata = \Drupal::service('custom_solr_search.search_all')->seachAll('id:' . $solr_doc_id);
+
+   // Generate metadata array.
+    $metadata = (array) $metadata['0'];
+    if (!empty($metadata['title'])) {
+      // Set label as metadata title.
+      $entity->content['image_viewer_data']['label'] = $metadata['title'];
+    }
+    if (!empty($metadata['description'])) {
+      // Set description as metadata description.
+      $entity->content['image_viewer_data']['description'] = $metadata['description'];
+    }
+    if (!empty($metadata['author']['0'])) {
+      // Set metadata for mirador viewer.
+      $entity->content['image_viewer_data']['metadata'][] = array(
+        'label' => 'author',
+        'value' => $metadata['author']['0'],
+      );
+    }
+  }
+}
