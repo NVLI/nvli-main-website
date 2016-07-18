@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_text_plain_single
-field_name: field_text_plain_single
+id: node.field_pdf_file_path
+field_name: field_pdf_file_path
 entity_type: node
 type: string
 settings:

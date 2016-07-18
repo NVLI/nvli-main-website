@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_text_plain_single
+    - field.storage.node.field_solr_docid
     - node.type.resource
-id: node.resource.field_text_plain_single
-field_name: field_text_plain_single
+id: node.resource.field_solr_docid
+field_name: field_solr_docid
 entity_type: node
 bundle: resource
 label: DocID
-description: 'Unique ID generated when harvesting (and stored in Solr)'
-required: true
+description: ''
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
