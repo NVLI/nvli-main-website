@@ -101,11 +101,12 @@ class NvliSearchResource extends ResourceBase {
    *   Throws exception expected.
    */
   public function get() {
-    // Fetch the query parameters.
+// Fetch the query parameters.
     $offset = \Drupal::request()->get('offset', $default);
     $limit = \Drupal::request()->get('limit', $default);
     $keyword = \Drupal::request()->get('keyword', $default);
-    $options = \Drupal::request()->get('options', $default);
+    $type = \Drupal::request()->get('type', $default);
+    $options = '(format:"' . $type . '")';
 
     // If all the parameter are present return the result.
     if ($keyword != '' && $offset != '' && $limit != '' && urldecode($options != '')) {
