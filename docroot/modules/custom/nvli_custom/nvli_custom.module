@@ -14,8 +14,6 @@ function nvli_custom_mirador_metadata_alter(&$entity) {
   $solr_doc_id = $entity->field_solr_doc_id->value;
   // Proceed only if solr doc id is not empty.
   if (!empty($solr_doc_id)) {
-    // @to-do: Get the solr server name from config variable.
-    $solr_server = "nvli";
     $metadata = \Drupal::service('custom_solr_search.search_all')->seachAll('id:' . $solr_doc_id);
 
    // Generate metadata array.
