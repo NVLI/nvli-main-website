@@ -17,6 +17,7 @@ use Psr\Log\LoggerInterface;
 use Drupal\Core\Entity;
 use Drupal\custom_solr_search\SearchSolrAll;
 use Drupal\custom_solr_search\Search;
+use Symfony\Component\HttpFoundation;
 
 /**
  * Provides a resource to get view modes by entity and bundle.
@@ -100,16 +101,16 @@ class NvliSearchResource extends ResourceBase {
    *   Throws exception expected.
    */
   public function get() {
-    // Fetch the query string and create the array based on key value pair.
-    foreach (explode("&", \Drupal::request()->getQueryString()) as $cLine) {
-      list ($cKey, $cValue) = explode('=', $cLine, 2);
-      $data[$cKey] = $cValue;
-    }
+    // Fetch the query parameters.
+    $offset = \Drupal::request()->get('offset', $default);
+    $limit = \Drupal::request()->get('limit', $default);
+    $keyword = \Drupal::request()->get('keyword', $default);
+    $options = \Drupal::request()->get('options', $default);
 
     // If all the parameter are present return the result.
-    if ($data['keyword'] != '' && $data['offset'] != '' && $data['limit'] != '' && urldecode($data['options']) != '') {
+    if ($keyword != '' && $offset != '' && $limit != '' && urldecode($options != '')) {
       // Call the service to fetch the result from the solr.
-      $result = $this->searchall->seachAll($data['keyword'], $data['offset'], $data['limit'], urldecode($data['options']));
+      $result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
       // Convert it into array to array struture.
       $search_result = json_decode(json_encode($result), True);
 
@@ -124,9 +125,8 @@ class NvliSearchResource extends ResourceBase {
     else {
       $result = array("success" => FALSE, "message" => 'Parameter can not be empty.');
     }
-    $account = \Drupal::currentUser();
     $response = new ResourceResponse($result);
-    $response->addCacheableDependency($account);
+    $response->addCacheableDependency($result);
     return $response;
   }
 
