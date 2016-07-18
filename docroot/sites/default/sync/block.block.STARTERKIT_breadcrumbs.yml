@@ -1,0 +1,22 @@
+uuid: 28369a03-c8c4-4314-9cf9-1ec174f074db
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - STARTERKIT
+_core:
+  default_config_hash: h94DrJJglsTrDO-RKbiaa8y4I7hsZQQbyW2938KO_D0
+id: STARTERKIT_breadcrumbs
+theme: STARTERKIT
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }
