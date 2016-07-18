@@ -17,7 +17,7 @@ dependencies:
     - node.type.resource
   module:
     - fivestar
-    - image
+    - mirador
     - user
 id: node.resource.default
 targetEntityType: node
@@ -25,86 +25,91 @@ bundle: resource
 mode: default
 content:
   field_audio_file_path:
-    weight: 110
+    weight: 7
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_image_file_path:
-    weight: 109
+    weight: 6
     label: above
     settings:
-      link_to_entity: false
+      mirador_settings: ''
     third_party_settings: {  }
-    type: string
+    type: mirador_text
   field_language:
-    weight: 113
+    weight: 10
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_pdf_file_path:
+    type: string
+    weight: 12
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_rating:
-    weight: 106
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: fivestar_rating
   field_solr_docid:
-    weight: 112
+    weight: 9
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_term_ref_harvest_type:
-    weight: 105
+    weight: 4
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_term_ref_resource_type:
-    weight: 103
+    weight: 2
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_term_ref_tags:
-    weight: 104
+    weight: 3
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_text_plain_single_1:
-    weight: 102
+    weight: 1
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_thumb:
-    weight: 114
+    weight: 11
     label: above
     settings:
-      image_style: ''
-      image_link: ''
+      mirador_node_style: ''
+      mirador_settings: ''
     third_party_settings: {  }
-    type: image
+    type: mirador_image
   field_video_file_path:
-    weight: 111
+    weight: 8
     label: above
     settings:
-      link_to_entity: false
+      mirador_settings: ''
     third_party_settings: {  }
-    type: string
+    type: mirador_text
   links:
-    weight: 100
+    weight: 0
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_pdf_file_path: true
-  langcode: true
+hidden: {  }

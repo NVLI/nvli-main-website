@@ -8,8 +8,10 @@ dependencies:
   - fivestar
   - image
   - menu_ui
+  - mirador
   - node
   - path
   - pathauto
   - taxonomy
   - user
+  - votingapi
