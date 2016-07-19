@@ -23,15 +23,15 @@ use Symfony\Component\HttpFoundation;
  * Provides a resource to get view modes by entity and bundle.
  *
  * @RestResource(
- *   id = "custom_rest_resource",
- *   label = @Translation("Custom rest resource"),
+ *   id = "custom_rest_homepage_listing_resource",
+ *   label = @Translation("Custom rest homepage listing resource"),
  *   uri_paths = {
- *     "canonical" = "/rest/v1/search"
+ *     "canonical" = "/rest/v1/homepage/listing"
 
  *   }
  * )
  */
-class NvliSearchResource extends ResourceBase {
+class NvliHomepageListResource extends ResourceBase {
 
   /**
    * \Drupal\custom_solr_search\Search definition.
@@ -87,14 +87,7 @@ class NvliSearchResource extends ResourceBase {
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-        $configuration,
-        $plugin_id,
-        $plugin_definition,
-        $container->getParameter('serializer.formats'),
-        $container->get('logger.factory')->get('rest'),
-        $container->get('current_user'),
-        $container->get('custom_solr_search.search'),
-        $container->get('custom_solr_search.search_all')
+        $configuration, $plugin_id, $plugin_definition, $container->getParameter('serializer.formats'), $container->get('logger.factory')->get('rest'), $container->get('current_user'), $container->get('custom_solr_search.search'), $container->get('custom_solr_search.search_all')
     );
   }
 
@@ -111,14 +104,18 @@ class NvliSearchResource extends ResourceBase {
     // Fetch the query parameters.
     $offset = \Drupal::request()->get('offset');
     $limit = \Drupal::request()->get('limit');
-    $keyword = \Drupal::request()->get('keyword');
-    $type = \Drupal::request()->get('type');
-    $options = '(format:"' . $type . '")';
+    $result = array();
+    $type = array('Article', 'Book');
 
-    // If all the parameter are present return the result.
-    if ($keyword != '' && $offset != '' && $limit != '' && urldecode($options != '')) {
-      // Call the service to fetch the result from the solr.
-      $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
+    // Check if limit and offset parameter are set ot not.
+    if ($offset != '' && $limit != '') {
+      // For each type fetch the results from solr.
+      foreach ($type as $key => $value) {
+        $data = array();
+        // Hardcoding the format for type.
+        $options = '(format:"' . $value . '")';
+        // Use Solr search service to fetch the results.
+        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
         // If result is not empty then find it's entity id.
         if ($solr_result != '') {
           // Fetch the entity_id for each doc.
@@ -129,7 +126,7 @@ class NvliSearchResource extends ResourceBase {
             $result[$value] = $data;
           }
         }
-
+      }
 
       // Check if result not present.
       if (empty($result)) {
