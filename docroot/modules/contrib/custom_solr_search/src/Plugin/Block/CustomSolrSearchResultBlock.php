@@ -202,14 +202,8 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
         }
       }
     }
-
-
-    // $url = Url::fromRoute('nvli_custom_search.nvli_search_page', array('resource' => article), array('query' => array('search' => 'keyword'), 'absolute' => TRUE));
-    // $link_options = array('attributes' => array('target' => '_blank'));
-    //$url->setOptions($link_options);
-    // $link = \Drupal::l(t('View More'), $url);
-
-
+    $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_keyword_page', array('resource_type' => article, 'keyword' => $keyword));
+    $link = \Drupal::l(t('View More'), $url);
     $markup['search_results'] = array(
       '#theme' => 'item_list',
       '#items' => $result_items,
@@ -217,7 +211,7 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
         'max-age' => 0,
       ),
       '#empty' => t('No search results found!'),
-        // '#suffix' => !empty($view_more) ? $link : '',
+      '#suffix' => !empty($view_more) ? $link : '',
     );
     return $markup;
   }
@@ -232,7 +226,12 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-        $configuration, $plugin_id, $plugin_definition, $container->get('custom_solr_search.search'), $container->get('custom_solr_search.solr_servers'), $container->get('custom_solr_search.search_all')
+        $configuration,
+        $plugin_id,
+        $plugin_definition,
+        $container->get('custom_solr_search.search'),
+        $container->get('custom_solr_search.solr_servers'),
+        $container->get('custom_solr_search.search_all')
     );
   }
 
