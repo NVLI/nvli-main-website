@@ -10,7 +10,7 @@ projects:
   zen:
     type: "theme"
     version: "7.0-alpha14"
-# Modules  
+# Modules
   components:
     type: "module"
     version: "1.0"
@@ -50,3 +50,6 @@ projects:
       type: "git"
       url: "https://github.com/pedrorocha-net/fivestar.git"
       revision: "8.x-2.x"
+  restui:
+    subdir: "contrib"
+    version: "8.x-1.11"
