@@ -11,4 +11,3 @@ core: '8.x'
 dependencies:
   - rest
   - mirador
-  - hal
