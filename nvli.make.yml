@@ -7,8 +7,13 @@ api: 2
 projects:
   drupal:
     version: "8.1.2"
-    
-# Modules
+  zen:
+    type: "theme"
+    version: "7.0-alpha14"
+# Modules  
+  components:
+    type: "module"
+    version: "1.0"
   admin_toolbar:
     subdir: "contrib"
     version: "1.15"
@@ -21,4 +26,3 @@ projects:
   search_api_solr:
     subdir: "contrib"
     version: "1.0-alpha4"
-

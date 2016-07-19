@@ -9,6 +9,8 @@ use Drupal\custom_solr_search\SolrServerDetails;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\custom_solr_search\Search;
 use Drupal\custom_solr_search\SearchSolrAll;
+use Drupal\Core\Url;
+use Drupal\nvli_custom_search\Controller;
 
 /**
  * Provides a 'Result' Block
@@ -114,7 +116,25 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       '#default_value' => isset($config['custom_solr_search_keyword_argument']) ? $config['custom_solr_search_keyword_argument'] : 0,
       '#description' => $this->t('Add the argument of search keyword to fetch the results.e.g. example.com/result/keyword if keyword is a argument then enter 2.'),
     ];
-
+    $form['custom_solr_search_offset'] = [
+      '#type' => 'number',
+      '#min' => 0,
+      '#title' => $this->t('Solr Search Result Offset'),
+      '#default_value' => isset($config['custom_solr_search_offset']) ? $config['custom_solr_search_offset'] : 0,
+      '#description' => $this->t('Add the offset to show the search result in block.'),
+    ];
+    $form['custom_solr_search_limit'] = [
+      '#type' => 'number',
+      '#min' => 0,
+      '#title' => $this->t('Solr Search Result Limit'),
+      '#default_value' => isset($config['custom_solr_search_limit']) ? $config['custom_solr_search_limit'] : 5,
+      '#description' => $this->t('Add the Limit to show the search result in block.'),
+    ];
+    $form['custom_solr_search_result_view_more'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Show View More Buton on Solr Search Result '),
+      '#default_value' => $config['custom_solr_search_result_view_more'],
+    ];
     return $form;
   }
 
@@ -126,6 +146,9 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $this->setConfigurationValue('custom_block_type_filter', $form_state->getValue('custom_block_type_filter'));
     $this->setConfigurationValue('custom_solr_result_selection', $form_state->getValue('custom_solr_result_selection'));
     $this->setConfigurationValue('custom_solr_search_keyword_argument', $form_state->getValue('custom_solr_search_keyword_argument'));
+    $this->setConfigurationValue('custom_solr_search_limit', $form_state->getValue('custom_solr_search_limit'));
+    $this->setConfigurationValue('custom_solr_search_offset', $form_state->getValue('custom_solr_search_offset'));
+    $this->setConfigurationValue('custom_solr_search_result_view_more', $form_state->getValue('custom_solr_search_result_view_more'));
   }
 
   /**
@@ -138,18 +161,22 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $config = $this->getConfiguration();
     // Get the keyword argument.
     $argument_keyword = $config['custom_solr_search_keyword_argument'];
+    $limit = $config['custom_solr_search_limit'];
+    $offset = $config['custom_solr_search_offset'];
     $keyword = $args[$argument_keyword];
+    $view_more = $config['custom_solr_search_result_view_more'];
     // Check the block configuration and search the results.
     // If selected the core.
     if ($config['custom_solr_result_selection'] == 'core') {
       $server = $config['custom_block_servers'];
-      $results = $this->search->basicSearch($keyword, 0, 5, $server);
+      $results = $this->search->basicSearch($keyword, $offset, $limit, $server);
     }
     // Select the type.
     else {
       $options = $config['custom_block_type_filter'];
-      $results = $this->searchall->seachAll($keyword, $options);
+      $results = $this->searchall->seachAll($keyword, $offset, $limit, $options);
     }
+
     // Format result to display as unformatted list.
     if (!empty($results)) {
       foreach ($results as $result) {
@@ -175,15 +202,23 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
         }
       }
     }
+
+
+    // $url = Url::fromRoute('nvli_custom_search.nvli_search_page', array('resource' => article), array('query' => array('search' => 'keyword'), 'absolute' => TRUE));
+    // $link_options = array('attributes' => array('target' => '_blank'));
+    //$url->setOptions($link_options);
+    // $link = \Drupal::l(t('View More'), $url);
+
+
     $markup['search_results'] = array(
       '#theme' => 'item_list',
       '#items' => $result_items,
       '#cache' => array(
         'max-age' => 0,
       ),
-      '#empty' => t('No search results found!')
+      '#empty' => t('No search results found!'),
+        // '#suffix' => !empty($view_more) ? $link : '',
     );
-
     return $markup;
   }
 

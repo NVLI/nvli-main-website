@@ -1,0 +1,20 @@
+uuid: ab61f765-3069-4067-ad05-7548e96e8146
+langcode: en
+status: true
+dependencies:
+  theme:
+    - STARTERKIT
+_core:
+  default_config_hash: vnRIE0M1blVH_jsFsfFWA4vpb7YWgkiR5UAzKFCwpzM
+id: STARTERKIT_page_title
+theme: STARTERKIT
+region: title
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }
