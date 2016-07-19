@@ -87,7 +87,14 @@ class NvliSearchResource extends ResourceBase {
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-        $configuration, $plugin_id, $plugin_definition, $container->getParameter('serializer.formats'), $container->get('logger.factory')->get('rest'), $container->get('current_user'), $container->get('custom_solr_search.search'), $container->get('custom_solr_search.search_all')
+        $configuration,
+        $plugin_id,
+        $plugin_definition,
+        $container->getParameter('serializer.formats'),
+        $container->get('logger.factory')->get('rest'),
+        $container->get('current_user'),
+        $container->get('custom_solr_search.search'),
+        $container->get('custom_solr_search.search_all')
     );
   }
 
@@ -101,11 +108,11 @@ class NvliSearchResource extends ResourceBase {
    *   Throws exception expected.
    */
   public function get() {
-// Fetch the query parameters.
-    $offset = \Drupal::request()->get('offset', $default);
-    $limit = \Drupal::request()->get('limit', $default);
-    $keyword = \Drupal::request()->get('keyword', $default);
-    $type = \Drupal::request()->get('type', $default);
+    // Fetch the query parameters.
+    $offset = \Drupal::request()->get('offset');
+    $limit = \Drupal::request()->get('limit');
+    $keyword = \Drupal::request()->get('keyword');
+    $type = \Drupal::request()->get('type');
     $options = '(format:"' . $type . '")';
 
     // If all the parameter are present return the result.
