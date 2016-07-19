@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a formatted video field.
+ *
+ * Available variables:
+ * - url: Video url.
+ * - get_nid: Current node id of video.
+ * - get_file_extension: Extension for current video.
+ * @ingroup themeable
+ */
+#}
+{% set usr_id = '<div id="username"></div>' %}
+{% set gen_id_open = '<div id="airlock">' %}
+{% set gen_id_close = '</div>' %}
+{{ usr_id | raw }}
+{{ gen_id_open | raw }}
+<video data-setup="{}" id="vjs_video_{{ get_nid }}" class="video-js vjs-default-skin" preload="none" controls width="640" height="264" }}>
+    <source src="{{ url }}" type="{{ get_file_extension }}"/>
+</video>
+{{ gen_id_close | raw }}
