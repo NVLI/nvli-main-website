@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rating
+    - node.type.resource
+  module:
+    - fivestar
+id: node.resource.field_rating
+field_name: field_rating
+entity_type: node
+bundle: resource
+label: Rating
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    rating: '20'
+    target: null
+default_value_callback: ''
+settings:
+  stars: '5'
+  allow_clear: 1
+  allow_revote: 1
+  allow_ownvote: 1
+  rated_while: viewing
+  target: ''
+field_type: fivestar

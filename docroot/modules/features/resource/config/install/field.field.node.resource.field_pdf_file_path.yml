@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pdf_file_path
+    - node.type.resource
+id: node.resource.field_pdf_file_path
+field_name: field_pdf_file_path
+entity_type: node
+bundle: resource
+label: 'PDF File Path'
+description: 'Store PDF file path'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
