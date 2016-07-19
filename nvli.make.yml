@@ -26,3 +26,6 @@ projects:
   search_api_solr:
     subdir: "contrib"
     version: "1.0-alpha4"
+  restui:
+    subdir: "contrib"
+    version: "8.x-1.11"
