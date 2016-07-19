@@ -1,0 +1,8 @@
+uuid: 0a16acad-08dd-46b3-a32a-0915697cfe4b
+langcode: en
+status: true
+dependencies: {  }
+name: search_resource_block
+label: 'Search Resource Block'
+effects: {  }
+
