@@ -41,8 +41,10 @@ class Search {
     $solr_client = \Drupal::service('custom_solr_search.server')->getSolrClient($solr_core);
     // Initiate Solarium basic select query.
     $query = new SelectQuery();
+    if (!empty($keyword)) {
     // Set search keyword.
     $query->setQuery($keyword);
+    }
     // Set offset.
     $query->setStart($offset);
     // Set limit.

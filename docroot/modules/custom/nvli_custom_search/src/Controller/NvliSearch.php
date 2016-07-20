@@ -27,5 +27,18 @@ class NvliSearch extends ControllerBase {
     $render['form'] = $this->formBuilder()->getForm('Drupal\nvli_custom_search\Form\CustomSearchForm', $keyword);
     return $render;
   }
+  /**
+   * Search Result Page.
+   *
+   * @return form
+   *   Return Search Form.
+   */
+  public function search_page($resource = NULL) {
+    $keyword = \Drupal::request()->get('keyword');
 
+    // Search form.
+    $render['form'] = $this->formBuilder()->getForm('Drupal\nvli_custom_search\Form\CustomSearchForm', $keyword);
+    return $render;
+  }
+  
 }

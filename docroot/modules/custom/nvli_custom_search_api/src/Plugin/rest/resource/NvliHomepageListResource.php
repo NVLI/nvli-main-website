@@ -24,15 +24,15 @@ use Drupal\nvli_custom_search_api\EntityDetail;
  * Provides a resource to get view modes by entity and bundle.
  *
  * @RestResource(
- *   id = "custom_rest_resource",
- *   label = @Translation("Custom rest resource"),
+ *   id = "custom_rest_resource_type_listing_resource",
+ *   label = @Translation("Custom rest resource type listing resource"),
  *   uri_paths = {
- *     "canonical" = "/rest/v1/search"
+ *     "canonical" = "/rest/v1/resource_type"
 
  *   }
  * )
  */
-class NvliSearchResource extends ResourceBase {
+class NvliHomepageListResource extends ResourceBase {
 
   /**
    * \Drupal\custom_solr_search\Search definition.
@@ -123,15 +123,19 @@ class NvliSearchResource extends ResourceBase {
     // Fetch the query parameters.
     $offset = \Drupal::request()->get('offset');
     $limit = \Drupal::request()->get('limit');
-    $keyword = \Drupal::request()->get('keyword');
-    $type = \Drupal::request()->get('type');
-    // @ TODO once config entity available then get the filter query.
-    $options = '(format:"' . $type . '")';
+    $result = array();
+    $type = array('Article', 'Book');
 
-    // If all the parameter are present return the result.
-    if ($keyword != '' && $offset != '' && $limit != '' && urldecode($options != '')) {
-      // Call the service to fetch the result from the solr.
-      $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
+    // Check if limit and offset parameter are set ot not.
+    if ($offset != '' && $limit != '') {
+      // For each type fetch the results from solr.
+      foreach ($type as $key => $value) {
+        $data = array();
+        // @ TODO Once config entity available fetch the filter query.
+        // Hardcoding the format for type.
+        $options = '(format:"' . $value . '")';
+        // Use Solr search service to fetch the results.
+        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
         // If result is not empty then find it's entity id.
         if ($solr_result != '') {
           // Fetch the entity_id for each doc.
@@ -142,7 +146,7 @@ class NvliSearchResource extends ResourceBase {
             $result[$value] = $data;
           }
         }
-
+      }
 
       // Check if result not present.
       if (empty($result)) {
