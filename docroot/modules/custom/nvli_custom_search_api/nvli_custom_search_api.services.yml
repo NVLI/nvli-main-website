@@ -1,0 +1,3 @@
+services:
+  nvli_custom_search_api.entity_detail:
+    class: Drupal\nvli_custom_search_api\EntityDetail
