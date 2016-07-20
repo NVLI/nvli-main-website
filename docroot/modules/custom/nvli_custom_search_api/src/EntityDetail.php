@@ -26,7 +26,7 @@ class EntityDetail {
   public function get_nid($doc_id) {
     $nid = \Drupal::database()->select('node__field_solr_docid', 'n')
         ->fields('n', array('entity_id'))
-        ->condition('field_doc_id_value' , $doc_id ,'=')
+        ->condition('field_solr_docid_value' , $doc_id ,'=')
         ->execute()->fetchField();;
     $entity_id = !empty($nid) ? $nid : [];
     $results = array('entity_id' => $entity_id);
