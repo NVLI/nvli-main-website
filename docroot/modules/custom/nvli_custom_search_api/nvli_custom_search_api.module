@@ -5,16 +5,4 @@
  * Contains nvli_custom_search_api.module..
  */
 
-/**
- *
- * @param type $doc_id
- *   Document Id.
- * @return array
- *   Entity Id.
- */
-function nvli_custom_search_get_nid($doc_id) {
-  $nid = db_query('SELECT n.entity_id FROM {node__field_solr_docid} n WHERE n.field_doc_id_value=:doc_id', array(':doc_id' => $doc_id))->fetchField();
-  $entity_id = !empty($nid) ? $nid : [];
-  $results = array('entity_id' => $entity_id);
-  return $results;
-}
+
