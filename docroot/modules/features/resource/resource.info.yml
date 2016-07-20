@@ -1,0 +1,17 @@
+name: Resource
+description: 'Provides Resource content type and related configuration. Base bundle for resource entity of NVLI. It will have all base fields. '
+type: module
+core: 8.x
+dependencies:
+  - field
+  - file
+  - fivestar
+  - image
+  - menu_ui
+  - mirador
+  - node
+  - path
+  - pathauto
+  - taxonomy
+  - user
+  - votingapi

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Harvest Type'
+vid: harvest_type
+description: 'Harvesting section (dspace, kohaoai, museumoai, etc). For regenerating Solr index data'
+hierarchy: 0
+weight: 0

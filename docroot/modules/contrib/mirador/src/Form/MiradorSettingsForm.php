@@ -47,7 +47,7 @@ class MiradorSettingsForm extends ConfigFormBase {
       '#title' => t('IIIF Image server location'),
       '#default_value' => $config->get('iiif_server'),
       '#required' => TRUE,
-      '#description' => t('Please enter the image server location'),
+      '#description' => t('Please enter the image server location with trailing slash. eg:  http://www.example.org/iiif/.'),
     );
     $default_endpoint = $config->get('endpoint');
     if (empty($config->get('endpoint'))) {
@@ -107,35 +107,35 @@ class MiradorSettingsForm extends ConfigFormBase {
       '#title' => t('Annotation Text'),
       '#default_value' => $config->get('annotation_text'),
       '#size' => 30,
-      '#description' => t('The field to which the annotation text to be stored'),
+      '#description' => t('The machine name of the field to which the annotation text to be stored.'),
     );
     $form['annotation_settings']['annotation_field_mappings']['annotation_viewport'] = array(
       '#type' => 'textfield',
       '#title' => t('Annotation View Port'),
       '#default_value' => $config->get('annotation_viewport'),
       '#size' => 30,
-      '#description' => t('The field to which the annotation view port to be stored'),
+      '#description' => t('The machine name of the field to which the annotation view port to be stored.'),
     );
     $form['annotation_settings']['annotation_field_mappings']['annotation_image_entity'] = array(
       '#type' => 'textfield',
       '#title' => t('Annotation Image Entity'),
       '#default_value' => $config->get('annotation_image_entity'),
       '#size' => 30,
-      '#description' => t('The entity reference field to the image entity'),
+      '#description' => t('The machine name of the entity reference field to which the resource entity should be stored.'),
     );
     $form['annotation_settings']['annotation_field_mappings']['annotation_resource'] = array(
       '#type' => 'textfield',
       '#title' => t('Annotation Resource'),
       '#default_value' => $config->get('annotation_resource'),
       '#size' => 30,
-      '#description' => t('Text field to store the annotation resource'),
+      '#description' => t('The machine name of the field to store the annotation resource url.'),
     );
-    $form['annotation_settings']['annotation_field_mappings']['annotation_language'] = array(
+    $form['annotation_settings']['annotation_field_mappings']['annotation_data'] = array(
       '#type' => 'textfield',
-      '#title' => t('Annotation Language'),
-      '#default_value' => $config->get('annotation_language'),
+      '#title' => t('Annotation Data'),
+      '#default_value' => $config->get('annotation_data'),
       '#size' => 30,
-      '#description' => t('Text field to store the annotation language'),
+      '#description' => t('The machine name of the field to store the annotation data.'),
     );
 
     // Annotation endpoint settings.
@@ -182,7 +182,7 @@ class MiradorSettingsForm extends ConfigFormBase {
       '#title' => t('Annotation search endpoint'),
       '#default_value' => $config->get('annotation_search'),
       '#size' => 30,
-      '#description' => t('The annotation search endpoint. please use token {image_entity_id} for referring image entity.'),
+      '#description' => t('The annotation search endpoint. please use token {resource_entity_id} for referring resource entity.'),
     );
     $form['annotation_settings']['annotation_endpoints']['search']['annotation_search_method'] = array(
       '#type' => 'select',
@@ -203,7 +203,7 @@ class MiradorSettingsForm extends ConfigFormBase {
       '#title' => t('Annotation update endpoint'),
       '#default_value' => $config->get('annotation_update'),
       '#size' => 30,
-      '#description' => t('The annotation update endpoint. please use token {annotation_id} for annotation entity'),
+      '#description' => t('The annotation update endpoint. please use token {annotation_id} for referring annotation entity.'),
     );
     $form['annotation_settings']['annotation_endpoints']['update']['annotation_update_method'] = array(
       '#type' => 'select',
@@ -224,7 +224,7 @@ class MiradorSettingsForm extends ConfigFormBase {
       '#title' => t('Annotation delete endpoint'),
       '#default_value' => $config->get('annotation_delete'),
       '#size' => 30,
-      '#description' => t('The annotation delete endpoint. please use token {annotation_id} for annotation entity'),
+      '#description' => t('The annotation delete endpoint. please use token {annotation_id} for referring annotation entity.'),
     );
     $form['annotation_settings']['annotation_endpoints']['delete']['annotation_delete_method'] = array(
       '#type' => 'select',
@@ -267,8 +267,8 @@ class MiradorSettingsForm extends ConfigFormBase {
       if (!empty($form_state->getValue('annotation_resource'))) {
         $config->set('annotation_resource', $form_state->getValue('annotation_resource'));
       }
-      if (!empty($form_state->getValue('annotation_language'))) {
-        $config->set('annotation_language', $form_state->getValue('annotation_language'));
+      if (!empty($form_state->getValue('annotation_data'))) {
+        $config->set('annotation_data', $form_state->getValue('annotation_data'));
       }
       // Set default value for annotation endpoints, If none specified.
       $config->set('annotation_create', $base_url . '/entity/' . $form_state->getValue('annotation_entity'));
