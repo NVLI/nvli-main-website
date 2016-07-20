@@ -202,7 +202,7 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
         }
       }
     }
-    $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_keyword_page', array('resource_type' => article, 'keyword' => $keyword));
+    $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_keyword_page', array('resource_type' => 'article', 'keyword' => $keyword));
     $link = \Drupal::l(t('View More'), $url);
     $markup['search_results'] = array(
       '#theme' => 'item_list',
