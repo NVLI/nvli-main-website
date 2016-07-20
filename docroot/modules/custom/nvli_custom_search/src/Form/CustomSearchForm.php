@@ -34,7 +34,7 @@ class CustomSearchForm extends FormBase {
       '#default_value' => empty($keyword) ? '' : $keyword,
       '#maxlength' => 64,
       '#size' => 64,
-      '#attributes' => array('placeholder' => 'Find articles to explore'),
+      '#attributes' => array('placeholder' => $this->t('Find articles to explore')),
     );
     $form['search'] = array(
       '#type' => 'submit',
