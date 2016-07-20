@@ -1,0 +1,14 @@
+/* 
+ * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
+ * @author Shruti 
+ */
+
+
+.layout-center {
+  @media (min-width: 777px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+

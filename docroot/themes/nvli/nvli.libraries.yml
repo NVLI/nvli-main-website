@@ -182,3 +182,16 @@ wireframe:
   css:
     component:
       components/asset-builds/css/wireframe.css: {}
+
+# This is a temporary library that holds all of Zen 7.x-6.x's component styles.
+# @TODO: Finish porting all of these styles to proper Twig components.
+components:
+  css:
+    component:
+      components/asset-builds/css/components.css: {}
+
+script:
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/jquery
