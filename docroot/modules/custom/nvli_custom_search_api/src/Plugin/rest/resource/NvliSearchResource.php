@@ -18,6 +18,7 @@ use Drupal\Core\Entity;
 use Drupal\custom_solr_search\SearchSolrAll;
 use Drupal\custom_solr_search\Search;
 use Symfony\Component\HttpFoundation;
+use Drupal\nvli_custom_search_api\EntityDetail;
 
 /**
  * Provides a resource to get view modes by entity and bundle.
@@ -48,6 +49,13 @@ class NvliSearchResource extends ResourceBase {
   protected $searchall;
 
   /**
+   * \Drupal\nvli_custom_search_api\Entity ID.
+   *
+   * @var \Drupal\nvli_custom_search_api\EntityDetail
+   */
+  protected $entitydetail;
+
+  /**
    * A current user instance.
    *
    * @var \Drupal\Core\Session\AccountProxyInterface
@@ -71,15 +79,18 @@ class NvliSearchResource extends ResourceBase {
    *   A current user instance.
    * @param \Drupal\custom_solr_search\Search $search
    *   Custom Solr search service.
+   * @param \Drupal\nvli_custom_search_api\EntityDetail $entitydetail
+   *   Custom Entity.
    * @param \Drupal\custom_solr_search\SearchSolrAll $searchall
    *   Custom Solr search service for all core.
    */
   public function __construct(
-  array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, AccountProxyInterface $current_user, Search $search, SearchSolrAll $searchall) {
+  array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, AccountProxyInterface $current_user, Search $search, SearchSolrAll $searchall, EntityDetail $entitydetail) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
     $this->currentUser = $current_user;
     $this->search = $search;
     $this->searchall = $searchall;
+    $this->entitydetail = $entitydetail;
   }
 
   /**
@@ -94,7 +105,8 @@ class NvliSearchResource extends ResourceBase {
         $container->get('logger.factory')->get('rest'),
         $container->get('current_user'),
         $container->get('custom_solr_search.search'),
-        $container->get('custom_solr_search.search_all')
+        $container->get('custom_solr_search.search_all'),
+        $container->get('nvli_custom_search_api.entity_detail')
     );
   }
 
@@ -113,6 +125,7 @@ class NvliSearchResource extends ResourceBase {
     $limit = \Drupal::request()->get('limit');
     $keyword = \Drupal::request()->get('keyword');
     $type = \Drupal::request()->get('type');
+    // @ TODO once config entity available then get the filter query.
     $options = '(format:"' . $type . '")';
 
     // If all the parameter are present return the result.
@@ -124,7 +137,7 @@ class NvliSearchResource extends ResourceBase {
           // Fetch the entity_id for each doc.
           foreach ($solr_result as $row) {
             $doc_id = $row->id;
-            $results = nvli_custom_search_get_nid($doc_id);
+            $results = $this->entitydetail->get_nid($doc_id);
             $data[] = array_merge((array) $row, $results);
             $result[$value] = $data;
           }
