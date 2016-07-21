@@ -129,27 +129,30 @@ class NvliSearchResource extends ResourceBase {
     $options = '(format:"' . $type . '")';
 
     // If all the parameter are present return the result.
-    if ($keyword != '' && $offset != '' && $limit != '' && urldecode($options != '')) {
+    if ($keyword != '' && $offset != '' && $limit != '') {
       // Call the service to fetch the result from the solr.
-      $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
-        // If result is not empty then find it's entity id.
-        if ($solr_result != '') {
-          // Fetch the entity_id for each doc.
-          foreach ($solr_result as $row) {
-            $doc_id = $row->id;
-            $results = $this->entitydetail->get_nid($doc_id);
-            $data[] = array_merge((array) $row, $results);
-            $result[$value] = $data;
-          }
+      if ($type == '') {
+        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit);
+      }
+      else {
+        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
+      }
+      // If result is not empty then find it's entity id.
+      if ($solr_result != '') {
+        // Fetch the entity_id for each doc.
+        foreach ($solr_result as $row) {
+          $doc_id = $row->id;
+          $results['resource'] = $this->entitydetail->get_nid($doc_id);
+          $results['metadata'] = json_decode(json_encode($row), True);
+          $result[] = $results;
         }
-
-
+      }
       // Check if result not present.
       if (empty($result)) {
         $result = array("success" => FALSE, "message" => 'Search Result not found.');
       }
       else {
-        $result = array("success" => TRUE, "message" => $result);
+        $result = array("success" => TRUE, "result" => $result);
       }
     }
     else {

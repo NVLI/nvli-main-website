@@ -48,15 +48,15 @@ class EntityDetail {
       $url = file_create_url($path);
     }
     $results = array(
-      'entity_id' => !empty($entity_id) ? $entity_id : [],
-      'node_title' => !empty($title) ? $title : [],
-      'language' => !empty($language) ? $language : [],
-      'rating' => !empty($rating) ? $rating : [],
-      'harvest_name' => !empty($harvest_name) ? $harvest_name : [],
-      'resource_name' => !empty($resource_name) ? $resource_name : [],
-      'tag_name' => !empty($tag_name) ? $tag_name : [],
-      'short_url' => !empty($short_url) ? $short_url : [],
-      'image_url' => !empty($url) ? $url : [],
+      'entity_id' => !empty($entity_id) ? $entity_id : '',
+      'node_title' => !empty($title) ? $title : '',
+      'language' => !empty($language) ? $language : '',
+      'rating' => !empty($rating) ? $rating : '',
+      'source' => !empty($harvest_name) ? $harvest_name : '',
+      'type' => !empty($resource_name) ? $resource_name : '',
+      'tags' => !empty($tag_name) ? $tag_name : '',
+      'short_url' => !empty($short_url) ? $short_url : '',
+      'image_url' => !empty($url) ? $url : '',
     );
     return $results;
   }

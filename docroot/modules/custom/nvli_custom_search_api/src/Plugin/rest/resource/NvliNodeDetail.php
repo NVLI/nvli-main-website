@@ -133,9 +133,9 @@ class NvliNodeDetail extends ResourceBase {
         // Call the service to fetch the result from the solr.
         $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
         foreach ($solr_result as $row) {
-          $results = $this->entitydetail->get_nid($doc_id);
-          $data[] = array_merge((array) $row, $results);
-          $result = $data;
+          $results['resource'] = $this->entitydetail->get_nid($doc_id);
+          $results['metadata'] = json_decode(json_encode($row), True);
+          $result[] = $results;
         }
       }
 
@@ -144,7 +144,7 @@ class NvliNodeDetail extends ResourceBase {
         $result = array("success" => FALSE, "message" => 'Data not found.');
       }
       else {
-        $result = array("success" => TRUE, "message" => $result);
+        $result = array("success" => TRUE, "result" => $result);
       }
     }
     else {
