@@ -21,6 +21,7 @@ class EntityDetail {
             ->fields('n', array('entity_id'))
             ->condition('field_solr_docid_value', $doc_id, '=')
             ->execute()->fetchField();
+
     $entity_id = !empty($nid) ? $nid : [];
 
     // If entity is present.
