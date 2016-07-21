@@ -5,6 +5,7 @@
  *
  * Available variables:
  * - items: A collection of videos.
+ * - player_extension: Type of video file.
  * - player_attributes: Player options including the following:
  *   - width: The width of the video (if known).
  *   - height: The height of the video (if known).
@@ -13,8 +14,11 @@
  * @ingroup themeable
  */
 #}
-<video data-setup="{}" class="video-js vjs-default-skin" preload="{{ player_attributes.preload }}" {{ player_attributes.controls ? 'controls' : '' }} style="width:{{ player_attributes.width }}px;height:{{ player_attributes.height }}px;" {{ player_attributes.autoplay ? 'autoplay' : '' }} {{ player_attributes.loop ? 'loop' : '' }} {{ player_attributes.muted ? 'muted' : '' }}>
+<div id="username"></div>
+<div id="airlock">
+<video data-setup="{}" id="vjs_video_{{ get_nid }}" class="video-js vjs-default-skin" preload="{{ player_attributes.preload }}" {{ player_attributes.controls ? 'controls' : '' }} width="640" height="264" {{ player_attributes.autoplay ? 'autoplay' : '' }} {{ player_attributes.loop ? 'loop' : '' }} {{ player_attributes.muted ? 'muted' : '' }}>
   {% for user in items %}
-    <source src="{{ user }}"/>
+    <source src="{{ user }}" type="video/{{ player_extension }}"/>
   {% endfor %}
 </video>
+</div>

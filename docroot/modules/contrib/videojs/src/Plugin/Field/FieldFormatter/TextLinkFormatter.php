@@ -1,37 +1,31 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\videojs\Plugin\Field\FieldFormatter\VideJsPlayerFormatter.
- */
-
 namespace Drupal\videojs\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Field\FormatterBase;
-use Drupal\Core\Field\FieldDefinitionInterface;
-use Drupal\Core\Link;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Cache\Cache;
-use Drupal\node\Entity\NodeType;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Link;
 
 /**
- * Plugin implementation of the 'videojs_player' formatter.
+ * Plugin implementation of the 'videojs_player_text' formatter.
  *
  * @FieldFormatter(
- *   id = "videojs_player",
- *   label = @Translation("Video.js Player"),
+ *   id = "videojs_player_text",
+ *   label = @Translation("Videojs Player TextField Formatter"),
  *   field_types = {
- *     "file",
- *     "video"
+ *     "string",
+ *     "text"
  *   }
  * )
  */
-class VideoJsPlayerFormatter extends VideoJsPlayerFormatterBase implements ContainerFactoryPluginInterface {
+class TextLinkFormatter extends FormatterBase implements ContainerFactoryPluginInterface {
 
   /**
    * The current user.
@@ -93,7 +87,7 @@ class VideoJsPlayerFormatter extends VideoJsPlayerFormatterBase implements Conta
       'loop' => FALSE,
       'muted' => FALSE,
       'annotations' => FALSE,
-      'extensions' => 'mp4',
+      'extensions' => 'mp4,webm,ogg',
       'preload' => 'none',
     ) + parent::defaultSettings();
   }
@@ -103,7 +97,6 @@ class VideoJsPlayerFormatter extends VideoJsPlayerFormatterBase implements Conta
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
 
-    //$config = \Drupal::service('config.factory')->getEditable('videojs.settings');
     $element['width'] = [
       '#title' => t('Width'),
       '#type' => 'textfield',
@@ -184,40 +177,46 @@ class VideoJsPlayerFormatter extends VideoJsPlayerFormatterBase implements Conta
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-
     $elements = array();
-    $files = $this->getEntitiesToView($items, $langcode);
-    // Early opt-out if the field is empty.
-    if (empty($files)) {
-      return $elements;
+    $video_items = array();
+    $ext = 'mp4';
+    foreach ($items as $delta => $item) {
+      $video_uri = $item->getValue();
+      $video_items[] = Url::fromUri(file_create_url($video_uri['value']));
+      $var = $this->getSettings();
+      $extract_extensions = explode(',', $var['extensions']);
+      foreach ($extract_extensions as $key => $value) {
+        if (strpos($video_uri['value'], $value)) {
+          $ext = $value;
+        }
+        else {
+          $ext = 'mp4';
+        }
+      }
     }
-    // Collect cache tags to be added for each item in the field.
-    foreach ($files as $delta => $file) {
-      $video_uri = $file->getFileUri();
-      $elements[$delta] = array(
+    if ($this->getSetting('annotations') == 0) {
+      $elements[] = array(
         '#theme' => 'videojs',
-        '#items' => array(Url::fromUri(file_create_url($video_uri))),
+        '#items' => $video_items,
+        '#player_extension' => $ext,
         '#player_attributes' => $this->getSettings(),
         '#attached' => array(
           'library' => array('videojs/videojs'),
         ),
       );
     }
-    return $elements;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function isApplicable(FieldDefinitionInterface $field_definition) {
-  
-    $entity_form_display = entity_get_form_display($field_definition->getTargetEntityTypeId(), $field_definition->getTargetBundle(), 'default');
-    $widget = $entity_form_display->getRenderer($field_definition->getName());
-    $widget_id = $widget->getBaseId();
-    if (!$field_definition->isList()) {
-      return TRUE;
+    else if($this->getSetting('annotations') == 1) {
+      $elements[] = array(
+        '#theme' => 'videojs',
+        '#items' => $video_items,
+        '#player_extension' => $ext,
+        '#player_attributes' => $this->getSettings(),
+        '#attached' => array(
+          'library' => array('videojs/videojs_annotation'),
+        ),
+      );
     }
-    return FALSE;
+    return $elements;
   }
 
 }

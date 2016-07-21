@@ -1,5 +1,7 @@
 name: Video.js Player
 type: module
 description: Video.js is an HTML5 Video Player.
-package: Media
-core: 8.x
+# core: 8.x
+# Information added by Drupal.org packaging script on 2016-02-01
+core: '8.x'
+datestamp: 1454345613
