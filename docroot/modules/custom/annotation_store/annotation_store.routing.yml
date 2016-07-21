@@ -1,0 +1,53 @@
+# This file brings everything together. Very nifty!
+
+# Route name can be used in several places; e.g. links, redirects, and local
+# actions.
+
+entity.annotation_store.canonical:
+  path: '/annotation_store/{annotation_store}'
+  defaults:
+    _entity_view: 'annotation_store'
+    _title: 'Video Annotation Content'
+  requirements:
+    _entity_access: 'annotation_store.view'
+
+entity.annotation_store.collection:
+  path: '/admin/annotation_store/list'
+  defaults:
+    _entity_list: 'annotation_store'
+    _title: 'Annotation Store List'
+  requirements:
+    _permission: 'view annotation_store entity'
+
+annotation_store.save:
+  path: '/annotations/apis/annotations'
+  defaults:
+    _controller: '\Drupal\annotation_store\Controller\AnnotationStoreController::annotationStoreSave'
+    _title: 'Annotation Store'
+  requirements:
+    _permission: 'annotation_store_save'
+
+annotation_store.search:
+  path: '/annotations/apis/search'
+  defaults:
+    _controller: '\Drupal\annotation_store\Controller\AnnotationStoreController::annotationStoreSearch'
+    _title: 'Annotation Store Search'
+  requirements:
+    _permission: 'annotation_store_search'
+    
+annotation_store.alter:
+  path: '/annotations/apis/annotations/{id}'
+  defaults:
+    _controller: '\Drupal\annotation_store\Controller\AnnotationStoreController::annotationStoreUpdateDelete'
+    _title: 'Annotation Store Update Delete'
+  methods:  [PUT, DELETE]
+  requirements:
+    _permission: 'annotation_store_alter'
+
+annotation_store.admin_settings:
+  path: '/admin/config/media/annotation_store'
+  defaults:
+    _form: '\Drupal\annotation_store\Form\AnnotationStoreConfigurationForm'
+    _title: 'Annotation Store configuration screen'
+  requirements:
+    _permission: 'administer site configuration'
