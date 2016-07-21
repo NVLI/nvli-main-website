@@ -69,7 +69,12 @@ class EntityDetail {
    *   Term Name.
    */
   public function get_term_name($id) {
-    $term_name = \Drupal\taxonomy\Entity\Term::load($id)->get('name')->value;
+    if (!empty($id)) {
+      $term_name = \Drupal\taxonomy\Entity\Term::load($id)->get('name')->value;
+    }
+    else {
+      $term_name = '';
+    }
     return $term_name;
   }
 
