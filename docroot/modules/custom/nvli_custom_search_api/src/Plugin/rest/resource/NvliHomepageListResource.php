@@ -141,9 +141,9 @@ class NvliHomepageListResource extends ResourceBase {
           // Fetch the entity_id for each doc.
           foreach ($solr_result as $row) {
             $doc_id = $row->id;
-            $results = $this->entitydetail->get_nid($doc_id);
-            $data[] = array_merge((array) $row, $results);
-            $result[$value] = $data;
+            $results['resource'] = $this->entitydetail->get_nid($doc_id);
+            $results['metadata'] = json_decode(json_encode($row), True);
+            $result[$value][] = $results;
           }
         }
       }
@@ -153,7 +153,7 @@ class NvliHomepageListResource extends ResourceBase {
         $result = array("success" => FALSE, "message" => 'Search Result not found.');
       }
       else {
-        $result = array("success" => TRUE, "message" => $result);
+        $result = array("success" => TRUE, "result" => $result);
       }
     }
     else {
