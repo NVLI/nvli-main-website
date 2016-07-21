@@ -121,24 +121,24 @@ class NvliNodeDetail extends ResourceBase {
    *   Throws exception expected.
    */
   public function get($nid) {
-    // Load the node.
-    $node = node_load($nid);
+    // We get the node storage object.
+    $node_storage = \Drupal::EntityTypeManager()->getStorage('node');
+    $node = $node_storage->load($nid);
     // Check if node object is not empty.
     if (!empty($node)) {
-      // @TODO adding all the resource type fields.
-      $title = $node->get('title')->value;
-      $doc_id = $node->get('field_doc_id')->value;
+      $doc_id = $node->get('field_solr_docid')->value;
       // If doc_id is not empty.
       if ($doc_id != '') {
         $options = '(id:"' . $doc_id . '")';
         // Call the service to fetch the result from the solr.
         $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
+        foreach ($solr_result as $row) {
+          $results = $this->entitydetail->get_nid($doc_id);
+          $data[] = array_merge((array) $row, $results);
+          $result = $data;
+        }
       }
-      // Create the array response.
-      $result = array(
-        'title' => isset($title) ? $title : [],
-        'solr_result' => json_decode(json_encode($solr_result), True),
-      );
+
       // Check if result not present.
       if (empty($result)) {
         $result = array("success" => FALSE, "message" => 'Data not found.');
