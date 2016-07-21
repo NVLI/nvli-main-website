@@ -22,4 +22,5 @@ abstract class VideoJsPlayerFormatterBase extends FileFormatterBase {
   protected function getEntitiesToView(EntityReferenceFieldItemListInterface $items, $langcode) {
     return parent::getEntitiesToView($items, $langcode);
   }
+
 }
