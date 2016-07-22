@@ -1,0 +1,20 @@
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HOMEPAGE
+ * @author Shruti 
+ */
+
+.is-path-frontpage {
+  .layout-3col__full {
+    padding: 0 18px;    
+  }
+
+  .layout-3col__full .block {
+    .field--name-field-block-image {
+      img {
+        width: 4.3vw;
+      }
+    }   
+  }
+}
+
+
