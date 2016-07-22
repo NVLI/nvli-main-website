@@ -139,13 +139,10 @@
       shortId = annotation["@id"];
       var xcrfToken = _this.xcrfToken;
       annotation["@id"] = annotation['@fullId'];
-      console.log(annotation);
       annotationID = annotation["id"];
       annotationSettings = jQuery.parseJSON(_this.annotationSettings);
       var annotationUpdateUri = annotationSettings.annotation_update_uri;
-      console.log(annotationUpdateUri);
       annotationUpdateUri = annotationUpdateUri.replace("{annotation_id}", annotationID);
-      console.log(annotationUpdateUri);
       var drupalAnnotationStore = {};
       // Generate annotation data to be stored as Drupal entity.
       if (annotationSettings.endpoint == "rest_endpoint") {
