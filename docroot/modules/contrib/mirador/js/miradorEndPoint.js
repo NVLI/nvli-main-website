@@ -86,6 +86,7 @@
             value.fullId = value.id;
             value["@id"] = $.genUUID();
             _this.idMapper[value["@id"]] = value.fullId;
+            _this.annotationId = value.id;
             value.endpoint = _this;
           });
           if (typeof successCallback === "function") {
@@ -112,7 +113,7 @@
       var xcrfToken = _this.xcrfToken;
       var drupal_annotation_id = annotationID;
       var annotationDeleteUri = annotationSettings.annotation_delete_uri;
-      annotationDeleteUri = annotationDeleteUri.replace("{annotation_id}", drupal_annotation_id);
+      annotationDeleteUri = annotationDeleteUri.replace("{annotation_id}", _this.annotationId);
       jQuery.ajax({
         url: annotationDeleteUri,
         type: annotationSettings.annotation_delete_method,
@@ -138,10 +139,13 @@
       shortId = annotation["@id"];
       var xcrfToken = _this.xcrfToken;
       annotation["@id"] = annotation['@fullId'];
+      console.log(annotation);
       annotationID = annotation["id"];
       annotationSettings = jQuery.parseJSON(_this.annotationSettings);
       var annotationUpdateUri = annotationSettings.annotation_update_uri;
+      console.log(annotationUpdateUri);
       annotationUpdateUri = annotationUpdateUri.replace("{annotation_id}", annotationID);
+      console.log(annotationUpdateUri);
       var drupalAnnotationStore = {};
       // Generate annotation data to be stored as Drupal entity.
       if (annotationSettings.endpoint == "rest_endpoint") {
@@ -257,6 +261,7 @@
           data["@id"] = $.genUUID();
           data.endpoint = _this;
           _this.idMapper[data["@id"]] = annotation_id;
+          _this.annotationId = annotation_id;
           returnSuccess(data);
         },
         error: function() {
