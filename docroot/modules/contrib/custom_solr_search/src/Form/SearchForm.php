@@ -32,7 +32,7 @@ class SearchForm extends FormBase {
     $servers += \Drupal::service('custom_solr_search.solr_servers')->getServers();
     $form['custom_servers'] = [
       '#type' => 'select',
-      '#title' => $this->t('Select element'),
+      '#title' => $this->t('Select Server'),
       '#options' => $servers,
       '#default_value' => $server,
     ];
@@ -57,7 +57,7 @@ class SearchForm extends FormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     if (strlen($form_state->getValue('custom_search')) < 3) {
-      $form_state->setErrorByName('custom_search', $this->t('Please type search keyword.'));
+      $form_state->setErrorByName('custom_search', $this->t('Please type search keyword of atleast 3 characters.'));
     }
   }
 
