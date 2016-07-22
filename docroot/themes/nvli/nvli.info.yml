@@ -79,6 +79,7 @@ libraries:
   - nvli/nav-menu
   - nvli/navbar
   - nvli/pager
+  - nvli/components
 
 
 # This section is used by the contrib module, Component Libraries. It allows you

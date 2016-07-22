@@ -76,6 +76,7 @@ $tahoma:          Tahoma, Verdana, 'DejaVu Sans', sans-serif;
 $helvetica:       Helvetica, Arial, 'Nimbus Sans L', sans-serif;
 $arial:           Arial, Helvetica, 'Nimbus Sans L', sans-serif;
 $impact:          Impact, 'Arial Narrow', Helvetica, sans-serif;
+$helveticaneue:   Helvetica Neue, Arial, sans-serif;
 
 // Monospace font stacks.
 // For an explanation of why "sans-serif" is at the end of this list, see
@@ -86,7 +87,7 @@ $menlo:           Menlo, 'DejaVu Sans Mono', 'Ubuntu Mono', Courier, 'Courier Ne
 // typeface() mixin.
 $typefaces: (
   body: (
-    font-family: $verdana,
+    font-family: $helveticaneue,
   ),
   monospace: (
     font-family: $menlo,
