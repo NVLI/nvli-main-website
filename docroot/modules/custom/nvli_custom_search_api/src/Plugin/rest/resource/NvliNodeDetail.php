@@ -19,20 +19,21 @@ use Drupal\custom_solr_search\SearchSolrAll;
 use Drupal\custom_solr_search\Search;
 use Symfony\Component\HttpFoundation;
 use Drupal\nvli_custom_search_api\EntityDetail;
+use Drupal\node\Entity\Node;
 
 /**
  * Provides a resource to get view modes by entity and bundle.
  *
  * @RestResource(
- *   id = "custom_rest_resource",
- *   label = @Translation("Custom rest resource"),
+ *   id = "custom_rest_node_detail_resource",
+ *   label = @Translation("Custom rest node detail resource"),
  *   uri_paths = {
- *     "canonical" = "/rest/v1/search"
+ *     "canonical" = "/rest/v1/node/{nid}"
 
  *   }
  * )
  */
-class NvliSearchResource extends ResourceBase {
+class NvliNodeDetail extends ResourceBase {
 
   /**
    * \Drupal\custom_solr_search\Search definition.
@@ -119,44 +120,35 @@ class NvliSearchResource extends ResourceBase {
    * @throws \Symfony\Component\HttpKernel\Exception\HttpException
    *   Throws exception expected.
    */
-  public function get() {
-    // Fetch the query parameters.
-    $offset = \Drupal::request()->get('offset');
-    $limit = \Drupal::request()->get('limit');
-    $keyword = \Drupal::request()->get('keyword');
-    $type = \Drupal::request()->get('type');
-    // @ TODO once config entity available then get the filter query.
-    $options = '(format:"' . $type . '")';
-
-    // If all the parameter are present return the result.
-    if ($keyword != '' && $offset != '' && $limit != '') {
-      // Call the service to fetch the result from the solr.
-      if ($type == '') {
-        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit);
-      }
-      else {
-        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
-      }
-      // If result is not empty then find it's entity id.
-      if ($solr_result != '') {
-        // Fetch the entity_id for each doc.
+  public function get($nid) {
+    // We get the node storage object.
+    $node_storage = \Drupal::EntityTypeManager()->getStorage('node');
+    $node = $node_storage->load($nid);
+    // Check if node object is not empty.
+    if (!empty($node)) {
+      $doc_id = $node->get('field_solr_docid')->value;
+      // If doc_id is not empty.
+      if ($doc_id != '') {
+        $options = '(id:"' . $doc_id . '")';
+        // Call the service to fetch the result from the solr.
+        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
         foreach ($solr_result as $row) {
-          $doc_id = $row->id;
           $results['resource'] = $this->entitydetail->get_nid($doc_id);
           $results['metadata'] = json_decode(json_encode($row), True);
           $result[] = $results;
         }
       }
+
       // Check if result not present.
       if (empty($result)) {
-        $result = array("success" => FALSE, "message" => 'Search Result not found.');
+        $result = array("success" => FALSE, "message" => 'Data not found.');
       }
       else {
         $result = array("success" => TRUE, "result" => $result);
       }
     }
     else {
-      $result = array("success" => FALSE, "message" => 'Parameter can not be empty.');
+      $result = array("success" => FALSE, "message" => 'Node data not found.');
     }
     $response = new ResourceResponse($result);
     $response->addCacheableDependency($result);
