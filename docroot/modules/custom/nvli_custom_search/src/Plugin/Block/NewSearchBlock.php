@@ -25,7 +25,7 @@ class NewSearchBlock extends BlockBase {
    * {@inheritdoc}
    */
   protected function blockAccess(AccountInterface $account) {
-    return AccessResult::allowedIfHasPermission($account, 'Configure Custom Search Block');
+    return AccessResult::allowedIfHasPermission($account, 'access content');
   }
 
   /**
