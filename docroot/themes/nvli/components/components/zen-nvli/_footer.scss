@@ -13,6 +13,7 @@ footer.footer {
   width: 100%;
   padding: 63px 16%;
   display: inline-block;
+  z-index: -1;
 
   @media (max-width: 767px) {
     position: relative;

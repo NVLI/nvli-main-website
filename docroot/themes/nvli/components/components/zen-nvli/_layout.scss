@@ -12,7 +12,9 @@
 }
 
 .layout-3col {
-  padding: 0 0 330px;
+  margin: 0 0 330px;
+  z-index: 1;
+  background: color(white);
   @media (max-width: 767px) {
     padding: 0;
   }
