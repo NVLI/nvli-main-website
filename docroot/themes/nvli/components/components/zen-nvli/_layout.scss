@@ -11,4 +11,10 @@
   }
 }
 
+.layout-3col {
+  padding: 0 0 330px;
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+}
 
