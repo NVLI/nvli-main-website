@@ -106,7 +106,7 @@ $typey-debug: false;
 
 // The length unit in which to output font size and margin values.
 // Supported values: px, em, rem.
-$base-unit:         'rem';
+$base-unit:         'px';
 
 // px fallbacks for rem units are needed for IE 8 and earlier.
 $rem-fallback:      false;
