@@ -40,48 +40,9 @@
 //
 // Style guide: components
 
-@import 'components/box/box';
-@import 'components/comment/comment';
-@import 'components/divider/divider';
-@import 'components/header/header';
-@import 'components/hidden/hidden';
-@import 'components/highlight-mark/highlight-mark';
-@import 'components/inline-links/inline-links';
-@import 'components/inline-sibling/inline-sibling';
-@import 'components/print-none/print-none';
-@import 'components/responsive-video/responsive-video';
-@import 'components/watermark/watermark';
-@import 'components/wireframe/wireframe';
 @import 'components/zen-nvli/layout';
+@import 'components/zen-nvli/header';
+@import 'components/zen-nvli/homepage';
 
-// Navigation
-//
-// Navigation components are specialized design components that are used for
-// page navigation.
-//
-// Weight: 2
-//
-// Style guide: navigation
 
-@import 'navigation/nav-menu/nav-menu';
-@import 'navigation/navbar/navbar';
-@import 'navigation/pager/pager';
 
-// Forms
-//
-// Form components are specialized design components that are applied to forms
-// or form elements.
-//
-// Weight: 3
-//
-// Style guide: forms
-
-@import 'forms/autocomplete/autocomplete';
-@import 'forms/button/button';
-@import 'forms/collapsible-fieldset/collapsible-fieldset';
-@import 'forms/form-item/form-item';
-@import 'forms/form-table/form-table';
-@import 'forms/progress-bar/progress-bar';
-@import 'forms/progress-throbber/progress-throbber';
-@import 'forms/resizable-textarea/resizable-textarea';
-@import 'forms/table-drag/table-drag';
