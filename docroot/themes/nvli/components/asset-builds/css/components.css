@@ -4,6 +4,8 @@
  */
 /* MIXIN FOR BOX SHADOW */
 /* MIXIN FOR BOX SHADOW */
+/* BORDER RADIUS MIXIN */
+/* BORDER RADIUS MIXIN */
 /* 
  * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
  * @author Shruti 
@@ -139,12 +141,50 @@ footer.footer #block-followus-2 {
   padding: 0 18px;
 }
 
+.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
+  border-radius: 5px;
+  float: left;
+  width: 32.69%;
+  padding: 33px 40px 30px;
+  margin: 6px 12px 6px 0;
+  background: #f2f2f2;
+}
+
+.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2):nth-child(3n+3) {
+  margin: 6px 0;
+}
+
+.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2):nth-child(3n+4) {
+  clear: left;
+}
+
+.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) .field--name-field-block-image {
+  float: left;
+  margin: 0 32px 0 0;
+}
+
+.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) .field {
+  font-size: 24px;
+  color: #999999;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) .field a {
+  text-decoration: none;
+}
+
+.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) .field--name-field-block-link {
+  color: #4383cc;
+}
+
 .is-path-frontpage .layout-3col__full .block .field--name-field-block-image img {
   width: 4.3vw;
 }
 
 div#block-homepagebanner-2 {
   position: relative;
+  display: inline-block;
 }
 
 div#block-homepagebanner-2 .field--type-text-with-summary {
@@ -158,6 +198,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary {
   text-align: center;
   font-size: 24px;
   margin: 20px 0 0;
+  font-weight: 300;
 }
 
 div#block-homepagebanner-2 .field--type-text-with-summary p {
@@ -166,6 +207,25 @@ div#block-homepagebanner-2 .field--type-text-with-summary p {
 
 div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
   font-size: 40px;
+}
+
+#block-customsearchblock-2 {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+#block-customsearchblock-2 #new-custom-search-form label {
+  display: none;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input {
+  border-radius: 5px;
+  padding: 0 20px;
+  line-height: 60px;
+  border: 0;
 }
 
 /*# sourceMappingURL=components.css.map */

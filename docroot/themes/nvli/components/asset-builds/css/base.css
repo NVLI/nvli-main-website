@@ -55,12 +55,12 @@ template,
 }
 
 a {
-  color: #0072b9;
+  color: #4383cc;
   -webkit-text-decoration-skip: objects;
 }
 
 :visited {
-  color: #003353;
+  color: #245185;
 }
 
 a:active {
