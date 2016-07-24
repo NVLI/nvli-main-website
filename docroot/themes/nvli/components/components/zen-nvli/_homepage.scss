@@ -8,7 +8,7 @@
     padding: 0 18px;
 
     .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
-      @include border-radius(5px);
+      @include border-radius(8px);
       float: left;
       width: 32.69%;
       padding: 33px 40px 30px;
@@ -93,7 +93,7 @@ div#block-homepagebanner-2 {
     }
 
     input {
-      @include border-radius(5px);
+      @include border-radius(4px);
       padding: 0 20px;
       line-height: 60px;
       border: 0;
@@ -102,8 +102,9 @@ div#block-homepagebanner-2 {
 }
 
 #block-indiasancientpast-2 {
-  max-width: 50%;
-  margin: 0 auto;
+  max-width: 68%;
+  margin: 30px 16%;
+  display: inline-block;
 
   .field:not(.field--name-field-featured-cont) {
     float: left;
@@ -147,6 +148,18 @@ div#block-homepagebanner-2 {
       line-height: $base-font-size + 10;
       color: color(p-color);
     }    
+  }
+
+  .field--name-field-block-link {
+    a {
+      @include border-radius(8px);
+      font-size: font-size(xl);
+      border: 2px solid color(blue);
+      text-decoration: none;
+      padding: 18px 98px;
+      margin: 29px 0 0;
+      display: inline-block;
+    }
   }
 }
 

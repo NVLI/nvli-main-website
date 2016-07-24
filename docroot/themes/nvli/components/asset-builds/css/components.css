@@ -144,7 +144,7 @@ footer.footer #block-followus-2 {
 }
 
 .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
-  border-radius: 5px;
+  border-radius: 8px;
   float: left;
   width: 32.69%;
   padding: 33px 40px 30px;
@@ -225,15 +225,16 @@ div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
 }
 
 #block-customsearchblock-2 #new-custom-search-form input {
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 0 20px;
   line-height: 60px;
   border: 0;
 }
 
 #block-indiasancientpast-2 {
-  max-width: 50%;
-  margin: 0 auto;
+  max-width: 68%;
+  margin: 30px 16%;
+  display: inline-block;
 }
 
 #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
@@ -283,6 +284,16 @@ div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
   font-weight: 300;
   line-height: 26px;
   color: #262626;
+}
+
+#block-indiasancientpast-2 .field--name-field-block-link a {
+  border-radius: 8px;
+  font-size: 24px;
+  border: 2px solid #4383cc;
+  text-decoration: none;
+  padding: 18px 98px;
+  margin: 29px 0 0;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=components.css.map */
