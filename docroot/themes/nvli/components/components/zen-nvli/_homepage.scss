@@ -1,0 +1,102 @@
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HOMEPAGE
+ * @author Shruti 
+ */
+
+.is-path-frontpage {
+  .layout-3col__full {
+    padding: 0 18px;
+
+    .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
+      @include border-radius(5px);
+      float: left;
+      width: 32.69%;
+      padding: 33px 40px 30px;
+      margin: 6px 12px 6px 0;
+      background: color(resource-bg);
+
+      &:nth-child(3n+3) {
+        margin: 6px 0;
+      }
+
+      &:nth-child(3n+4) {
+        clear: left;  
+      }
+
+      .field--name-field-block-image {
+        float: left;
+        margin: 0 32px 0 0;
+      }
+
+      .field {
+        font-size: font-size(xl);
+        color: color('grey');
+        font-weight: weight(light);
+        line-height: $base-line-height + 6;
+
+        a {
+          text-decoration: none;
+        }        
+      }
+
+      .field--name-field-block-link {
+        color: color(blue);
+      }
+    }
+  }
+
+  .layout-3col__full .block {
+    .field--name-field-block-image {
+      img {
+        width: 4.3vw;
+      }
+    }   
+  }
+}
+
+div#block-homepagebanner-2 {
+  position: relative;
+  display: inline-block;
+
+  .field--type-text-with-summary {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: color(white);
+    width: 100%;
+    text-align: center;
+    font-size: font-size(xl);
+    margin: 20px 0 0;
+    font-weight: weight(light);
+
+    p {
+      margin: 15px 0;
+
+      &:nth-child(2) {
+        font-size: font-size(xxl) + 8;
+      }
+    }
+  }
+}
+
+#block-customsearchblock-2 {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+
+  #new-custom-search-form {
+    label {
+      display: none;    
+    }
+
+    input {
+      @include border-radius(5px);
+      padding: 0 20px;
+      line-height: 60px;
+      border: 0;
+    }    
+  }
+}
+
