@@ -12,7 +12,7 @@
  * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
  * @author Shruti 
  */
-@media (min-width: 777px) {
+@media (min-width: 768px) {
   .layout-center {
     padding-left: 0;
     padding-right: 0;
@@ -27,7 +27,7 @@
 
 @media (max-width: 767px) {
   .layout-3col {
-    padding: 0;
+    margin: 0;
   }
 }
 
@@ -143,6 +143,12 @@ footer.footer #block-followus-2 {
   padding: 0 18px;
 }
 
+@media only screen and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full {
+    padding: 0;
+  }
+}
+
 .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
   border-radius: 8px;
   float: left;
@@ -152,12 +158,49 @@ footer.footer #block-followus-2 {
   background: #f2f2f2;
 }
 
-.is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2):nth-child(3n+3) {
-  margin: 6px 0;
+@media only screen and (min-width: 768px) {
+  .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2):nth-child(3n+3) {
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (min-width: 980px) and (max-width: 1024px) {
+  .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
+    width: 32.5%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+  .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
+    width: 32%;
+  }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
+    width: 49%;
+    margin: 6px 2% 6px 0;
+  }
+  .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2):nth-child(2n + 1) {
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
+    width: 100%;
+    margin: 6px 0;
+  }
 }
 
 .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2):nth-child(3n+4) {
   clear: left;
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2):nth-child(3n+4) {
+    clear: none;
+  }
 }
 
 .is-path-frontpage .layout-3col__full .block:not(.block-page-title-block):not(#block-indiasancientpast-2) .field--name-field-block-image {
@@ -182,6 +225,12 @@ footer.footer #block-followus-2 {
 
 .is-path-frontpage .layout-3col__full .block .field--name-field-block-image img {
   width: 4.3vw;
+}
+
+@media only screen and (max-width: 450px) {
+  .is-path-frontpage .layout-3col__full .block .field--name-field-block-image img {
+    width: 10vw;
+  }
 }
 
 div#block-homepagebanner-2 {
@@ -237,14 +286,38 @@ div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
   display: inline-block;
 }
 
+@media (max-width: 979px) {
+  #block-indiasancientpast-2 {
+    max-width: 100%;
+    margin: 30px 0;
+  }
+}
+
 #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
   float: left;
   width: 56%;
 }
 
+@media only screen and (max-width: 450px) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+    width: 47%;
+  }
+}
+
 #block-indiasancientpast-2 .field--name-field-featured-cont {
   float: left;
-  margin: 0 35px 0 0;
+}
+
+@media only screen and (min-width: 450px) {
+  #block-indiasancientpast-2 .field--name-field-featured-cont {
+    margin: 0 35px 0 0;
+  }
 }
 
 #block-indiasancientpast-2 .field--name-field-featured-cont img {
@@ -261,6 +334,12 @@ div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
   font-size: 32px;
   font-weight: 300;
   margin: 0 0 10px;
+}
+
+@media only screen and (max-width: 450px) {
+  #block-indiasancientpast-2 .field--name-field-content-title {
+    margin: 10px 0;
+  }
 }
 
 #block-indiasancientpast-2 .field--name-field-content-author {
@@ -291,9 +370,12 @@ div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
   font-size: 24px;
   border: 2px solid #4383cc;
   text-decoration: none;
-  padding: 18px 98px;
+  padding: 18px;
   margin: 29px 0 0;
   display: inline-block;
+  width: 280px;
+  max-width: 100%;
+  text-align: center;
 }
 
 /*# sourceMappingURL=components.css.map */

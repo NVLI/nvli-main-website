@@ -6,6 +6,9 @@
 .is-path-frontpage {
   .layout-3col__full {
     padding: 0 18px;
+    @media only screen and (max-width: 767px) {
+      padding: 0;
+    }
 
     .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
       @include border-radius(8px);
@@ -14,13 +17,37 @@
       padding: 33px 40px 30px;
       margin: 6px 12px 6px 0;
       background: color(resource-bg);
-
+      
       &:nth-child(3n+3) {
+        @media only screen and (min-width: 768px) {
+          margin: 6px 0;
+        }
+      }
+
+      @media only screen and (min-width: 980px) and (max-width: 1024px) {
+        width: 32.5%;
+      }
+      @media only screen and (min-width: 768px) and (max-width: 979px) {
+        width: 32%;
+      }
+      @media only screen and (min-width: 451px) and (max-width: 767px) {
+        width: 49%;
+        margin: 6px 2% 6px 0;
+        
+        &:nth-child(2n + 1) {
+          margin: 6px 0;
+        }
+      }
+      @media only screen and (max-width: 450px) {
+        width: 100%;
         margin: 6px 0;
       }
 
       &:nth-child(3n+4) {
-        clear: left;  
+        clear: left;
+        @media only screen and (min-width: 451px) and (max-width: 767px) {
+          clear: none;
+        }
       }
 
       .field--name-field-block-image {
@@ -46,9 +73,10 @@
   }
 
   .layout-3col__full .block {
-    .field--name-field-block-image {
-      img {
-        width: 4.3vw;
+    .field--name-field-block-image img {
+      width: 4.3vw;
+      @media only screen and (max-width: 450px) {
+        width: 10vw;   
       }
     }   
   }
@@ -105,15 +133,27 @@ div#block-homepagebanner-2 {
   max-width: 68%;
   margin: 30px 16%;
   display: inline-block;
-
+  @media (max-width: 979px) {
+    max-width: 100%;
+    margin: 30px 0;
+  }
+  
   .field:not(.field--name-field-featured-cont) {
     float: left;
     width: 56%;
+    @media only screen and (max-width: 450px) {
+      width: 100%;
+    }
+    @media only screen and (min-width: 451px) and (max-width: 767px) {
+      width: 47%;
+    }
   }
 
   .field--name-field-featured-cont {
     float: left;
-    margin: 0 35px 0 0;
+    @media only screen and (min-width: 450px) {
+      margin: 0 35px 0 0;
+    }
 
     img {
       @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, 0.28));
@@ -130,6 +170,9 @@ div#block-homepagebanner-2 {
     font-size: font-size(xxl);
     font-weight: weight(light);
     margin: 0 0 10px;
+    @media only screen and (max-width: 450px) {
+      margin: 10px 0;
+    }
   }
 
   .field--name-field-content-author {
@@ -156,10 +199,12 @@ div#block-homepagebanner-2 {
       font-size: font-size(xl);
       border: 2px solid color(blue);
       text-decoration: none;
-      padding: 18px 98px;
+      padding: 18px;
       margin: 29px 0 0;
       display: inline-block;
+      width: 280px;
+      max-width: 100%;
+      text-align: center;
     }
   }
 }
-
