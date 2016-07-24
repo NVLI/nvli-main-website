@@ -6,6 +6,8 @@
 /* MIXIN FOR BOX SHADOW */
 /* BORDER RADIUS MIXIN */
 /* BORDER RADIUS MIXIN */
+/* MIXIN FOR MULTILINE ELLIPSIS */
+/* MIXIN FOR MULTILINE ELLIPSIS */
 /* 
  * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
  * @author Shruti 
@@ -212,6 +214,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
 #block-customsearchblock-2 {
   position: absolute;
   top: 70px;
+  left: 0;
   width: 100%;
   text-align: center;
   z-index: 1;
@@ -226,6 +229,60 @@ div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
   padding: 0 20px;
   line-height: 60px;
   border: 0;
+}
+
+#block-indiasancientpast-2 {
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+  float: left;
+  width: 56%;
+}
+
+#block-indiasancientpast-2 .field--name-field-featured-cont {
+  float: left;
+  margin: 0 35px 0 0;
+}
+
+#block-indiasancientpast-2 .field--name-field-featured-cont img {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+#block-indiasancientpast-2 .field--name-field-content-title,
+#block-indiasancientpast-2 .field--name-field-content-author {
+  color: #4a90e2;
+  text-transform: capitalize;
+}
+
+#block-indiasancientpast-2 .field--name-field-content-title {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+#block-indiasancientpast-2 .field--name-field-content-author {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#block-indiasancientpast-2 .field--name-body {
+  overflow: hidden;
+  max-height: 157px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  text-overflow: -o-ellipsis-lastline;
+  margin: 34px 0;
+}
+
+#block-indiasancientpast-2 .field--name-body p {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 300;
+  line-height: 26px;
+  color: #262626;
 }
 
 /*# sourceMappingURL=components.css.map */

@@ -82,6 +82,7 @@ div#block-homepagebanner-2 {
 #block-customsearchblock-2 {
   position: absolute;
   top: 70px;
+  left: 0;
   width: 100%;
   text-align: center;
   z-index: 1;
@@ -96,6 +97,55 @@ div#block-homepagebanner-2 {
       padding: 0 20px;
       line-height: 60px;
       border: 0;
+    }    
+  }
+}
+
+#block-indiasancientpast-2 {
+  max-width: 50%;
+  margin: 0 auto;
+
+  .field:not(.field--name-field-featured-cont) {
+    float: left;
+    width: 56%;
+  }
+
+  .field--name-field-featured-cont {
+    float: left;
+    margin: 0 35px 0 0;
+
+    img {
+      @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, 0.28));
+    }    
+  }
+
+  .field--name-field-content-title,
+  .field--name-field-content-author {
+    color: color(title-color);
+    text-transform: capitalize;
+  }
+
+  .field--name-field-content-title {
+    font-size: font-size(xxl);
+    font-weight: weight(light);
+    margin: 0 0 10px;
+  }
+
+  .field--name-field-content-author {
+    font-size: font-size(xl);
+    font-weight: weight(medium);
+  }
+
+  .field--name-body {
+    @include ellipsis ($max-height: 157px, $lines: 5);
+    margin: 34px 0;
+
+    p {
+      font-size: font-size(l) + 2;
+      margin: 0;
+      font-weight: weight(light);
+      line-height: $base-font-size + 10;
+      color: color(p-color);
     }    
   }
 }
