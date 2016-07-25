@@ -1,0 +1,10 @@
+uuid: 2b455133-d6f5-4656-b978-2b6097a7f59e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.mirador
+label: Mirador
+targetEntityType: node
+cache: true
