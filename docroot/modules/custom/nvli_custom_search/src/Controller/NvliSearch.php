@@ -11,6 +11,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\custom_solr_search\FilterQuerySettings;
 use Drupal\custom_solr_search\SearchSolrAll;
 use Drupal\Custom_solr_search;
+use Drupal\Core\Path;
 
 /**
  * Class NvliSearch.
@@ -64,6 +65,7 @@ class NvliSearch extends ControllerBase {
           $result_item = array(
             '#theme' => 'custom_solr_search_result',
             '#url' => $result->url[0],
+            '#docid' => $result->id,
             '#title' => $title,
             '#author' => $result->author_sort,
             '#publishDate' => implode(', ', $result->publishDate),

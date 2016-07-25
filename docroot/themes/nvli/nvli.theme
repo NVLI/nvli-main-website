@@ -136,3 +136,18 @@ function nvli_preprocess_comment(&$variables, $hook) {
   $variables['sample_variable'] = t('Lorem ipsum.');
 }
 // */
+
+/**
+ * theme_preprocess_hook
+ */
+function nvli_preprocess_custom_solr_search_result(&$variables){
+  // Find the node_id based on doc_id.
+  $doc_id = $variables['docid'];
+  $nid = \Drupal::database()->select('node__field_solr_docid', 'n')
+        ->fields('n', array('entity_id'))
+        ->condition('field_solr_docid_value', $doc_id, '=')
+        ->execute()->fetchField();
+  if (!empty($nid)) {
+    $variables['url'] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$nid);
+  }
+}
