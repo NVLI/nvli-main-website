@@ -67,7 +67,7 @@ div#block-nvli-branding {
  * @author Shruti 
  */
 footer.footer {
-  box-shadow: inset 0px 16px 40px rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 16px 40px rgba(0, 0, 0, 0.28);
   background: #4a90e2;
   position: fixed;
   left: 0;
@@ -236,9 +236,14 @@ footer.footer #block-followus-2 {
 div#block-homepagebanner-2 {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
-div#block-homepagebanner-2 .field--type-text-with-summary {
+div#block-homepagebanner-2 video {
+  width: 100%;
+}
+
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -252,11 +257,11 @@ div#block-homepagebanner-2 .field--type-text-with-summary {
   font-weight: 300;
 }
 
-div#block-homepagebanner-2 .field--type-text-with-summary p {
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p {
   margin: 15px 0;
 }
 
-div#block-homepagebanner-2 .field--type-text-with-summary p:nth-child(2) {
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-child(2) {
   font-size: 40px;
 }
 
