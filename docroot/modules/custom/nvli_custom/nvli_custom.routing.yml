@@ -1,1 +1,6 @@
-
+nvli_custom.mirador.viewmode:
+  path: '/node/{entity_id}/mirador'
+  defaults:
+    _controller: '\Drupal\nvli_custom\Controller\MiradorViewModeController::showMiradorView'
+  requirements:
+    _permission: 'access content'
