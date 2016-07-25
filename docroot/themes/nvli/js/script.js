@@ -10,7 +10,7 @@
 // wrapping it with an "anonymous closure". See:
 // - https://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
-(function (Drupal) {
+(function (Drupal, $) {
 
   'use strict';
 
@@ -19,7 +19,22 @@
     attach: function (context, settings) {
 
       // Place your code here.
+      $(window).scroll(function () {
+        var offset = 60;
+        var scrollTop = $(window).scrollTop();
+        var check = $('#block-nvli-branding').hasClass('sticky-branding');
 
+        if ((scrollTop > offset) && check === false) {
+          $('#block-nvli-branding').addClass('sticky-branding');
+          $('.block-nvli-custom-search').addClass('sticky-search-header');
+          return false;
+        }
+        if ((scrollTop < offset) && check === true) {
+          $('#block-nvli-branding').removeClass('sticky-branding');
+          $('.block-nvli-custom-search').removeClass('sticky-search-header');
+          return false;
+        }
+      });
     }
   };
 
@@ -28,4 +43,4 @@
   // jQuery, you should change (Drupal) to (Drupal, jQuery) in the line below
   // and, in this file's first line of JS, change function (Drupal) to
   // (Drupal, $)
-})(Drupal);
+})(Drupal, jQuery);
