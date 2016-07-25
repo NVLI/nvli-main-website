@@ -22,3 +22,32 @@
 
 /* MIXIN FOR BOX SHADOW */
 
+/* BORDER RADIUS MIXIN */
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/* BORDER RADIUS MIXIN */
+
+/* MIXIN FOR MULTILINE ELLIPSIS */
+
+@mixin ellipsis ($max-height, $lines: 2) {
+  // Fallback for non-webkit browsers.
+  // Fallback does not render ellipsis.
+  overflow: hidden;
+  max-height: $max-height;
+
+  // Webkit solution for multiline ellipsis
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+
+  // Solution for Opera
+  text-overflow: -o-ellipsis-lastline;
+}
+
+/* MIXIN FOR MULTILINE ELLIPSIS */
