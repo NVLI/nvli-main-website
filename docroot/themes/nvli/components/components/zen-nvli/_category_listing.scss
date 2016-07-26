@@ -9,7 +9,7 @@
 
     .form-item {
       max-width: 100%;
-    }    
+    }
   }
 
   .item-list {
@@ -23,13 +23,13 @@
       border-bottom: 1px dotted color('grey');
 
       &:last-child {
-        border-bottom: none;
+        border-bottom: 0;
       }
     }
 
     .row {
       div {
-        font-size: font-size(s) + 1;    
+        font-size: font-size(s) + 1;
       }
 
       .title {
@@ -40,7 +40,7 @@
         font-weight: weight(medium);
       }
     }
-  }  
+  }
 }
 
 #block-resourcetypelistingblock {
@@ -59,8 +59,8 @@
         padding: 25px;
         text-align: center;
         margin: 10px 0;
-      }      
-    }    
+      }
+    }
   }
 }
 

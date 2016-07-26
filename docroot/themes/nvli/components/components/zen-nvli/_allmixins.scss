@@ -3,7 +3,6 @@
  * @author Shruti 
  */
 
-
 /* MIXIN FOR BOX SHADOW */
 
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
@@ -66,11 +65,18 @@
     line-height: 40px;
     float: left;
   }
+
+  input[type='submit'] {
+    color: color(blue);
+    border-color: color(blue);
+    background: color(white);
+  }
+
   .form-item {
     float: left;
     max-width: 250px;
     margin: 0 10px 0 0;
-  }  
+  }
 }
 
 /* MIXIN SEARCH BLOCK */

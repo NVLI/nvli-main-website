@@ -6,7 +6,7 @@
 header {
   background: color(white);
   border-bottom: 1px solid color(grey-light);
-  display: inline-block;
+  float: left;
   width: 100%;
 
   &.sticky-header {
@@ -16,12 +16,11 @@ header {
     width: 100%;
     z-index: 3;
     visibility: visible;
-  }  
+  }
 }
 
 div#block-nvli-branding {
   float: left;
-  width: 100%;
   padding: 14px 24px;
 
   &.sticky-branding {
@@ -48,5 +47,25 @@ div#block-nvli-branding {
   }
 }
 
+div#block-userlanguageblock {
+  float: right;
+  margin: 23px 10px;
 
+  p {
+    margin: 0 5px;
+  }
 
+  span {
+    margin: 0 5px;
+    color: color(grey-dark);
+
+    img {
+      width: 1vw;
+      margin: 0 3px;
+    }
+
+    &.user-dropdown img:first-child {
+      width: 2vw;
+    }
+  }
+}

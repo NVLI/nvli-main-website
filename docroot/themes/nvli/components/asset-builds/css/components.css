@@ -33,6 +33,12 @@
   }
 }
 
+@media (min-width: 999px) {
+  .layout-3col__right-sidebar {
+    margin-top: 24px;
+  }
+}
+
 /* 
  * THIS FILE CONTAINS ALL STYLE FOR CATEGORY LISTING PAGES
  * @author Shruti 
@@ -47,6 +53,12 @@
   border: 1px solid #999999;
   line-height: 40px;
   float: left;
+}
+
+.is-path-list .new-custom-search-form input[type='submit'] {
+  color: #4383cc;
+  border-color: #4383cc;
+  background: #fff;
 }
 
 .is-path-list .new-custom-search-form .form-item {
@@ -72,7 +84,7 @@
 }
 
 .is-path-list .item-list li:last-child {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
 .is-path-list .item-list .row div {
@@ -113,7 +125,7 @@
 header {
   background: #fff;
   border-bottom: 1px solid #cccccc;
-  display: inline-block;
+  float: left;
   width: 100%;
 }
 
@@ -128,7 +140,6 @@ header.sticky-header {
 
 div#block-nvli-branding {
   float: left;
-  width: 100%;
   padding: 14px 24px;
 }
 
@@ -151,6 +162,29 @@ div#block-nvli-branding.sticky-branding {
   color: #999999;
   font-size: 24px;
   font-weight: 300;
+}
+
+div#block-userlanguageblock {
+  float: right;
+  margin: 23px 10px;
+}
+
+div#block-userlanguageblock p {
+  margin: 0 5px;
+}
+
+div#block-userlanguageblock span {
+  margin: 0 5px;
+  color: #666666;
+}
+
+div#block-userlanguageblock span img {
+  width: 1vw;
+  margin: 0 3px;
+}
+
+div#block-userlanguageblock span.user-dropdown img:first-child {
+  width: 2vw;
 }
 
 /* 
@@ -231,6 +265,8 @@ footer.footer #block-followus-2 {
  */
 .is-path-frontpage .homepage-banner-wrapper {
   background: #fff;
+  float: left;
+  width: 100%;
 }
 
 .is-path-frontpage .layout-3col__full {
@@ -383,6 +419,12 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   float: left;
 }
 
+#block-customsearchblock-2 #new-custom-search-form input[type='submit'] {
+  color: #4383cc;
+  border-color: #4383cc;
+  background: #fff;
+}
+
 #block-customsearchblock-2 #new-custom-search-form .form-item {
   float: left;
   max-width: 250px;
@@ -396,7 +438,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 
 #block-customsearchblock-2.sticky-search-header #new-custom-search-form {
   float: right;
-  margin: 10px 20px 0 0;
+  margin: 20px 20px 0 0;
 }
 
 #block-indiasancientpast-2 {
