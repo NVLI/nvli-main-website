@@ -58,6 +58,7 @@ libraries-override:
 # The "libraries:" section will add a library to _all_ pages.
 libraries:
   - nvli/base
+  - nvli/script
   # @TODO Remove these libraries and use attach_library() for all component styles.
   - nvli/box
   - nvli/comment
@@ -113,7 +114,9 @@ regions:
   breadcrumb: Breadcrumb
   title: Title
   help: Help
+  homepage_banner: Homepage Banner
   content: Content
+  homepage_resources: Homepage Resources Block
   sidebar_first: First sidebar
   sidebar_second : Second sidebar
   footer: Footer

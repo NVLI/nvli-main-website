@@ -50,9 +50,10 @@
 
   <header class="header" role="banner">
     {{ page.header }}
-    {{ page.secondary_menu }}
   </header>
-
+  <div class="homepage-banner-wrapper">
+    {{ page.homepage_banner }}
+  </div>
   <div class="layout-3col">
     <div class="layout-3col__full">
       <main class="{{ content_class }}" role="main">
@@ -62,6 +63,9 @@
         {{ page.title }}
         {{ page.help }}
         {{ page.content }}
+        <div class="homepage-resources-wrapper">
+          {{ page.homepage_resources }}    
+        </div>
       </main>
     </div>
   </div>
