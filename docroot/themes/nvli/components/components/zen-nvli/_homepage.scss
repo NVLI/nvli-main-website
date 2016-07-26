@@ -64,10 +64,6 @@
         color: color('grey');
         font-weight: weight(light);
         line-height: $base-line-height + 6;
-
-        a {
-          text-decoration: none;
-        }
       }
 
       .field--name-field-block-link {
@@ -127,26 +123,9 @@ div#block-homepagebanner-2 {
   z-index: 1;
 
   #new-custom-search-form {
+    @include search-block;
     display: inline-block;
     margin: 0 36.1%;
-
-    label {
-      display: none;
-    }
-
-    input {
-      @include border-radius(4px);
-      padding: 0 20px;
-      border: 1px solid color('grey');
-      line-height: 40px;
-      float: left;
-    }
-
-    .form-item {
-      float: left;
-      max-width: 250px;
-      margin: 0 10px 0 0;
-    }
   }
 
   &.sticky-search-header {
@@ -229,7 +208,6 @@ div#block-homepagebanner-2 {
       @include border-radius(8px);
       font-size: font-size(xl);
       border: 2px solid color(blue);
-      text-decoration: none;
       padding: 18px;
       margin: 29px 0 0;
       display: inline-block;

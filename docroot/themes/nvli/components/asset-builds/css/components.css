@@ -8,6 +8,8 @@
 /* BORDER RADIUS MIXIN */
 /* MIXIN FOR MULTILINE ELLIPSIS */
 /* MIXIN FOR MULTILINE ELLIPSIS */
+/* MIXIN FOR SEARCH BLOCK */
+/* MIXIN SEARCH BLOCK */
 /* 
  * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
  * @author Shruti 
@@ -32,12 +34,87 @@
 }
 
 /* 
+ * THIS FILE CONTAINS ALL STYLE FOR CATEGORY LISTING PAGES
+ * @author Shruti 
+ */
+.is-path-list .new-custom-search-form label {
+  display: none;
+}
+
+.is-path-list .new-custom-search-form input {
+  border-radius: 4px;
+  padding: 0 20px;
+  border: 1px solid #999999;
+  line-height: 40px;
+  float: left;
+}
+
+.is-path-list .new-custom-search-form .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0 10px 0 0;
+}
+
+.is-path-list .new-custom-search-form .form-item {
+  max-width: 100%;
+}
+
+.is-path-list .item-list {
+  clear: both;
+  padding: 30px 0 0;
+}
+
+.is-path-list .item-list li {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0 0 10px;
+  border-bottom: 1px dotted #999999;
+}
+
+.is-path-list .item-list li:last-child {
+  border-bottom: none;
+}
+
+.is-path-list .item-list .row div {
+  font-size: 15px;
+}
+
+.is-path-list .item-list .row .title {
+  font-size: 19px;
+}
+
+.is-path-list .item-list .row .title a {
+  font-weight: 500;
+}
+
+#block-resourcetypelistingblock .item-list {
+  padding: 0;
+}
+
+#block-resourcetypelistingblock .item-list li {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#block-resourcetypelistingblock .item-list li a {
+  border-radius: 8px;
+  display: block;
+  background: #f2f2f2;
+  padding: 25px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* 
  * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
  * @author Shruti 
  */
 header {
   background: #fff;
-  border: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  display: inline-block;
+  width: 100%;
 }
 
 header.sticky-header {
@@ -73,7 +150,6 @@ div#block-nvli-branding.sticky-branding {
 .site-name a {
   color: #999999;
   font-size: 24px;
-  text-decoration: none;
   font-weight: 300;
 }
 
@@ -128,7 +204,6 @@ footer.footer nav h2,
 footer.footer nav ul li a {
   font-size: 18px;
   color: #000;
-  text-decoration: none;
   line-height: 28px;
 }
 
@@ -232,10 +307,6 @@ footer.footer #block-followus-2 {
   color: #999999;
   font-weight: 300;
   line-height: 30px;
-}
-
-.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field a {
-  text-decoration: none;
 }
 
 .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field--name-field-block-link {
@@ -417,7 +488,6 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   border-radius: 8px;
   font-size: 24px;
   border: 2px solid #4383cc;
-  text-decoration: none;
   padding: 18px;
   margin: 29px 0 0;
   display: inline-block;

@@ -5,7 +5,9 @@
 
 header {
   background: color(white);
-  border: 1px solid color(grey-light);
+  border-bottom: 1px solid color(grey-light);
+  display: inline-block;
+  width: 100%;
 
   &.sticky-header {
     @include box-shadow(0, 5px, 5px, rgba(0, 0, 0, .28));
@@ -42,7 +44,6 @@ div#block-nvli-branding {
   a {
     color: color('grey');
     font-size: font-size(xl);
-    text-decoration: none;
     font-weight: weight(light);
   }
 }
