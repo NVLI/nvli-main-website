@@ -184,6 +184,7 @@ class TextAudioFormatter extends FormatterBase implements ContainerFactoryPlugin
   public function viewElements(FieldItemListInterface $items, $langcode) {
     global $base_url;
     $elements = array();
+    $default_elements = array();
     $video_items = array();
     $ext = 'mp3';
     foreach ($items as $delta => $item) {
@@ -201,13 +202,15 @@ class TextAudioFormatter extends FormatterBase implements ContainerFactoryPlugin
       }
     }
     $default_image_path = $base_url . '/modules/contrib/ova/audio.jpg';
+    $default_elements = array(
+      '#theme' => 'ovaAudio',
+      '#items' => $video_items,
+      '#player_extension' => $ext,
+      '#player_attributes' => $this->getSettings(),
+      '#player_image_path' => $default_image_path,
+    );
     if (isset($video_uri['value']) && ($this->getSetting('annotations') == 0)) {
-      $elements[] = array(
-        '#theme' => 'ovaAudio',
-        '#items' => $video_items,
-        '#player_extension' => $ext,
-        '#player_attributes' => $this->getSettings(),
-        '#player_image_path' => $this->getSettings(),
+      $elements[] = $default_elements + array(
         '#attached' => array(
           'library' => array('ova/ova'),
         ),
@@ -215,17 +218,12 @@ class TextAudioFormatter extends FormatterBase implements ContainerFactoryPlugin
     }
     elseif ($this->getSetting('annotations') == 1) {
       if (count($video_items)) {
-      $elements[] = array(
-        '#theme' => 'ovaAudio',
-        '#items' => $video_items,
-        '#player_extension' => $ext,
-        '#player_attributes' => $this->getSettings(),
-        '#entity' => $items->getEntity(),
-        '#player_image_path' => $default_image_path,
-        '#attached' => array(
-          'library' => array('ova/ova_audio_annotation'),
-        ),
-      );
+        $elements[] = $default_elements + array(
+          '#entity' => $items->getEntity(),
+          '#attached' => array(
+            'library' => array('ova/ova_audio_annotation'),
+          ),
+        );
       }
     }
   return $elements;

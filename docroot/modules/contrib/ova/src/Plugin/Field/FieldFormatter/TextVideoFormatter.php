@@ -175,6 +175,7 @@ class TextVideoFormatter extends FormatterBase implements ContainerFactoryPlugin
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = array();
+    $default_elements == array();
     $video_items = array();
     $ext = 'mp4';
     foreach ($items as $delta => $item) {
@@ -191,12 +192,14 @@ class TextVideoFormatter extends FormatterBase implements ContainerFactoryPlugin
         }
       }
     }
+    $default_elements = array(
+      '#theme' => 'ovaVideo',
+      '#items' => $video_items,
+      '#player_extension' => $ext,
+      '#player_attributes' => $this->getSettings(),
+    );
     if (isset($video_uri['value']) && ($this->getSetting('annotations') == 0)) {
-      $elements[] = array(
-        '#theme' => 'ovaVideo',
-        '#items' => $video_items,
-        '#player_extension' => $ext,
-        '#player_attributes' => $this->getSettings(),
+      $elements[] = $default_elements + array(
         '#attached' => array(
           'library' => array('ova/ova'),
         ),
@@ -204,16 +207,12 @@ class TextVideoFormatter extends FormatterBase implements ContainerFactoryPlugin
     }
     elseif ($this->getSetting('annotations') == 1) {
       if(count($video_items)) {
-      $elements[] = array(
-        '#theme' => 'ovaVideo',
-        '#items' => $video_items,
-        '#player_extension' => $ext,
-        '#player_attributes' => $this->getSettings(),
-        '#entity' => $items->getEntity(),
-        '#attached' => array(
-          'library' => array('ova/ova_video_annotation'),
-        ),
-      );
+        $elements[] = $default_elements + array(
+          '#entity' => $items->getEntity(),
+          '#attached' => array(
+            'library' => array('ova/ova_video_annotation'),
+          ),
+        );
       }
     }
     return $elements;
