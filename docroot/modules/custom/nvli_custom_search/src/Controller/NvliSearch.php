@@ -54,34 +54,33 @@ class NvliSearch extends ControllerBase {
     // Format result to display as unformatted list.
     if (!empty($results)) {
       foreach ($results as $result) {
-        if (!empty($result)) {
           if (isset($result->title)) {
             $title = $result->title;
           }
           else {
             $title = $result->label;
           }
-
-          $result_item = array(
-            '#theme' => 'custom_solr_search_result',
-            '#url' => $result->url[0],
-            '#docid' => $result->id,
-            '#title' => $title,
-            '#author' => $result->author_sort,
-            '#publishDate' => implode(', ', $result->publishDate),
-            '#publisher' => implode(', ', $result->publisher),
-            '#topic' => implode(', ', $result->topic)
+        $render['result'][] = array(
+          '#theme' => 'custom_solr_search_result',
+          '#url' => isset($result->url[0])?$result->url[0]: '',
+          '#title' => isset($title)?$title: '',
+          '#author' => isset($result->author)?implode(', ', $result->author): '',
+          '#publishDate' => isset($result->publishDate)?implode(', ', $result->publishDate): '',
+          '#publisher' => isset($result->publisher)?implode(', ', $result->publisher): '',
+          '#topic' => isset($result->topic)?implode(', ', $result->topic): '',
+          '#docid' => isset($result->id)?$result->id: '',
+          '#server' => $server,
+          '#keyword' => $keyword,
+          '#base_url' => $base_url,
+          '#annotation'=> isset($result->annotation)?implode(', ', $result->annotation): '',
           );
-
-          $result_items[] = render($result_item);
         }
       }
-    }
     // Search form.
     $markup['form'] = $this->formBuilder()->getForm('Drupal\nvli_custom_search\Form\CustomSearchForm', $keyword);
     $markup['search_results'] = array(
       '#theme' => 'item_list',
-      '#items' => $result_items,
+      '#items' => $render['result'],
       '#cache' => array(
         'max-age' => 0,
       ),
