@@ -14,4 +14,5 @@ dependencies:
   - pathauto
   - taxonomy
   - user
+  - views
   - votingapi

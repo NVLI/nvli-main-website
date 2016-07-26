@@ -35,9 +35,9 @@ content:
     weight: 6
     label: above
     settings:
-      mirador_settings: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: mirador_text
+    type: string
   field_language:
     weight: 10
     label: above
