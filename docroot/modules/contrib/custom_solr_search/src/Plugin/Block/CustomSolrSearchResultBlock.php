@@ -12,6 +12,7 @@ use Drupal\custom_solr_search\SearchSolrAll;
 use Drupal\custom_solr_search\FilterQuerySettings;
 use Drupal\Core\Url;
 use Drupal\Core\Path;
+use Drupal\Core\Link;
 
 /**
  * Provides a 'Result' Block
@@ -180,8 +181,9 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       }
     if (!empty($view_more)) {
       $url = Url::fromRoute($view_more, array('resource_type' => $filterId, 'keyword' => $keyword));
-      $link = \Drupal::l(t('View More'), $url);
+      $link = Link::fromTextAndUrl(t('View More'), $url)->toString();
     }
+
     $markup['search_results'] = array(
       '#theme' => 'item_list',
       '#items' => $render['result'],
