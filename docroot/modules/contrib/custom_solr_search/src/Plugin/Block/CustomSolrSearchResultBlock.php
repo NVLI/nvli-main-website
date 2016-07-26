@@ -175,10 +175,6 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
           '#publisher' => isset($result->publisher)?implode(', ', $result->publisher): '',
           '#topic' => isset($result->topic)?implode(', ', $result->topic): '',
           '#docid' => isset($result->id)?$result->id: '',
-          '#server' => $server,
-          '#keyword' => $keyword,
-          '#base_url' => $base_url,
-          '#annotation'=> isset($result->annotation)?implode(', ', $result->annotation): '',
           );
         }
       }
