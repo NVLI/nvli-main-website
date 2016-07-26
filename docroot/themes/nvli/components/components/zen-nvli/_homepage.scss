@@ -120,13 +120,16 @@ div#block-homepagebanner-2 {
 
 #block-customsearchblock-2 {
   position: absolute;
-  top: 70px;
+  top: 90px;
   left: 0;
   width: 100%;
   text-align: center;
   z-index: 1;
 
   #new-custom-search-form {
+    display: inline-block;
+    margin: 0 36.1%;
+
     label {
       display: none;
     }
@@ -134,8 +137,15 @@ div#block-homepagebanner-2 {
     input {
       @include border-radius(4px);
       padding: 0 20px;
-      line-height: 60px;
-      border: 0;
+      border: 1px solid color('grey');
+      line-height: 40px;
+      float: left;
+    }
+
+    .form-item {
+      float: left;
+      max-width: 250px;
+      margin: 0 10px 0 0;
     }
   }
 
@@ -145,17 +155,7 @@ div#block-homepagebanner-2 {
     
     #new-custom-search-form {
       float: right;
-      margin: 10px 20px 0 0;
-
-      input {
-        border: 1px solid color('grey');
-        line-height: 40px;
-      }          
-    }
-    .form-item {
-      float: left;
-      max-width: 250px;
-      margin: 0 10px 0 0;
+      margin: 10px 20px 0 0;         
     }
   }
 }
@@ -239,3 +239,4 @@ div#block-homepagebanner-2 {
     }
   }
 }
+

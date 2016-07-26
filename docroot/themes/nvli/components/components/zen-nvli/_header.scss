@@ -7,6 +7,7 @@ header {
   background: color(white);
 
   &.sticky-header {
+    @include box-shadow(0, 5px, 5px, rgba(0, 0, 0, .28));
     position: fixed;
     top: 0;
     width: 100%;

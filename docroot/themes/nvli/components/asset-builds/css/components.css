@@ -40,6 +40,7 @@ header {
 }
 
 header.sticky-header {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.28);
   position: fixed;
   top: 0;
   width: 100%;
@@ -286,11 +287,16 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 
 #block-customsearchblock-2 {
   position: absolute;
-  top: 70px;
+  top: 90px;
   left: 0;
   width: 100%;
   text-align: center;
   z-index: 1;
+}
+
+#block-customsearchblock-2 #new-custom-search-form {
+  display: inline-block;
+  margin: 0 36.1%;
 }
 
 #block-customsearchblock-2 #new-custom-search-form label {
@@ -300,8 +306,15 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 #block-customsearchblock-2 #new-custom-search-form input {
   border-radius: 4px;
   padding: 0 20px;
-  line-height: 60px;
-  border: 0;
+  border: 1px solid #999999;
+  line-height: 40px;
+  float: left;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0 10px 0 0;
 }
 
 #block-customsearchblock-2.sticky-search-header {
@@ -312,17 +325,6 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 #block-customsearchblock-2.sticky-search-header #new-custom-search-form {
   float: right;
   margin: 10px 20px 0 0;
-}
-
-#block-customsearchblock-2.sticky-search-header #new-custom-search-form input {
-  border: 1px solid #999999;
-  line-height: 40px;
-}
-
-#block-customsearchblock-2.sticky-search-header .form-item {
-  float: left;
-  max-width: 250px;
-  margin: 0 10px 0 0;
 }
 
 #block-indiasancientpast-2 {
