@@ -4,20 +4,24 @@
  */
 
 .is-path-frontpage {
+  .homepage-banner-wrapper {
+    background: color(white);    
+  }
+
   .layout-3col__full {
     padding: 0 18px;
     @media only screen and (max-width: 767px) {
       padding: 0;
     }
 
-    .block:not(.block-page-title-block):not(#block-indiasancientpast-2) {
+    .homepage-resources-wrapper .block {
       @include border-radius(8px);
       float: left;
       width: 32.69%;
       padding: 33px 40px 30px;
       margin: 6px 12px 6px 0;
       background: color(resource-bg);
-      
+
       &:nth-child(3n+3) {
         @media only screen and (min-width: 768px) {
           margin: 6px 0;
@@ -33,7 +37,7 @@
       @media only screen and (min-width: 451px) and (max-width: 767px) {
         width: 49%;
         margin: 6px 2% 6px 0;
-        
+
         &:nth-child(2n + 1) {
           margin: 6px 0;
         }
@@ -63,7 +67,7 @@
 
         a {
           text-decoration: none;
-        }        
+        }
       }
 
       .field--name-field-block-link {
@@ -76,17 +80,24 @@
     .field--name-field-block-image img {
       width: 4.3vw;
       @media only screen and (max-width: 450px) {
-        width: 10vw;   
+        width: 10vw;
       }
-    }   
+    }
   }
 }
 
 div#block-homepagebanner-2 {
   position: relative;
   display: inline-block;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
 
-  .field--type-text-with-summary {
+  video {
+    width: 100%;
+  }
+
+  .field--type-text-with-summary .banner-text {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -117,7 +128,7 @@ div#block-homepagebanner-2 {
 
   #new-custom-search-form {
     label {
-      display: none;    
+      display: none;
     }
 
     input {
@@ -125,7 +136,27 @@ div#block-homepagebanner-2 {
       padding: 0 20px;
       line-height: 60px;
       border: 0;
-    }    
+    }
+  }
+
+  &.sticky-search-header {
+    position: relative;
+    top: 0;
+    
+    #new-custom-search-form {
+      float: right;
+      margin: 10px 20px 0 0;
+
+      input {
+        border: 1px solid color('grey');
+        line-height: 40px;
+      }          
+    }
+    .form-item {
+      float: left;
+      max-width: 250px;
+      margin: 0 10px 0 0;
+    }
   }
 }
 
@@ -137,7 +168,7 @@ div#block-homepagebanner-2 {
     max-width: 100%;
     margin: 30px 0;
   }
-  
+
   .field:not(.field--name-field-featured-cont) {
     float: left;
     width: 56%;
@@ -156,8 +187,8 @@ div#block-homepagebanner-2 {
     }
 
     img {
-      @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, 0.28));
-    }    
+      @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, .28));
+    }
   }
 
   .field--name-field-content-title,
@@ -190,7 +221,7 @@ div#block-homepagebanner-2 {
       font-weight: weight(light);
       line-height: $base-font-size + 10;
       color: color(p-color);
-    }    
+    }
   }
 
   .field--name-field-block-link {
