@@ -1,0 +1,426 @@
+/* 
+ * THIS FILE CONTAINS ALL THE MIXINS USED FOR THIS THEME
+ * @author Shruti 
+ */
+/* MIXIN FOR BOX SHADOW */
+/* MIXIN FOR BOX SHADOW */
+/* BORDER RADIUS MIXIN */
+/* BORDER RADIUS MIXIN */
+/* MIXIN FOR MULTILINE ELLIPSIS */
+/* MIXIN FOR MULTILINE ELLIPSIS */
+/* 
+ * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
+ * @author Shruti 
+ */
+@media (min-width: 768px) {
+  .layout-center {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.layout-3col {
+  margin: 0 0 330px;
+  z-index: 1;
+  background: #fff;
+}
+
+@media (max-width: 767px) {
+  .layout-3col {
+    margin: 0;
+  }
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
+ * @author Shruti 
+ */
+header {
+  background: #fff;
+}
+
+header.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  visibility: visible;
+}
+
+div#block-nvli-branding {
+  float: left;
+  width: 100%;
+  padding: 14px 24px;
+}
+
+div#block-nvli-branding.sticky-branding {
+  width: 50%;
+  max-width: 460px;
+}
+
+.site-logo img {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+.site-name {
+  float: left;
+  margin: 12px 0 0;
+}
+
+.site-name a {
+  color: #999999;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE FOOTER STYLES
+ * @author Shruti 
+ */
+footer.footer {
+  box-shadow: inset 0 16px 40px rgba(0, 0, 0, 0.28);
+  background: #4a90e2;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 63px 16%;
+  display: inline-block;
+  z-index: -1;
+}
+
+@media (max-width: 767px) {
+  footer.footer {
+    position: relative;
+    padding: 63px 8%;
+  }
+}
+
+footer.footer #block-logoimage-2,
+footer.footer nav {
+  display: inline-block;
+  vertical-align: top;
+  width: 23%;
+}
+
+@media (max-width: 450px) {
+  footer.footer #block-logoimage-2,
+  footer.footer nav {
+    width: 100%;
+    text-align: center;
+  }
+  footer.footer #block-logoimage-2 li,
+  footer.footer nav li {
+    text-align: center;
+  }
+}
+
+footer.footer nav h2,
+footer.footer nav ul {
+  margin: 0;
+}
+
+footer.footer nav h2,
+footer.footer nav ul li a {
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  line-height: 28px;
+}
+
+footer.footer nav ul li a {
+  font-weight: 300;
+}
+
+footer.footer #block-nvli-2 {
+  margin: 0 15%;
+}
+
+@media (max-width: 450px) {
+  footer.footer #block-nvli-2 {
+    margin: 20px 0;
+  }
+}
+
+footer.footer #block-followus-2 {
+  float: right;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HOMEPAGE
+ * @author Shruti 
+ */
+.is-path-frontpage .homepage-banner-wrapper {
+  background: #fff;
+}
+
+.is-path-frontpage .layout-3col__full {
+  padding: 0 18px;
+}
+
+@media only screen and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full {
+    padding: 0;
+  }
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+  border-radius: 8px;
+  float: left;
+  width: 32.69%;
+  padding: 33px 40px 30px;
+  margin: 6px 12px 6px 0;
+  background: #f2f2f2;
+}
+
+@media only screen and (min-width: 768px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(3n+3) {
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (min-width: 980px) and (max-width: 1024px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+    width: 32.5%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+    width: 32%;
+  }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+    width: 49%;
+    margin: 6px 2% 6px 0;
+  }
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(2n + 1) {
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+    width: 100%;
+    margin: 6px 0;
+  }
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(3n+4) {
+  clear: left;
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(3n+4) {
+    clear: none;
+  }
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field--name-field-block-image {
+  float: left;
+  margin: 0 32px 0 0;
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field {
+  font-size: 24px;
+  color: #999999;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field a {
+  text-decoration: none;
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field--name-field-block-link {
+  color: #4383cc;
+}
+
+.is-path-frontpage .layout-3col__full .block .field--name-field-block-image img {
+  width: 4.3vw;
+}
+
+@media only screen and (max-width: 450px) {
+  .is-path-frontpage .layout-3col__full .block .field--name-field-block-image img {
+    width: 10vw;
+  }
+}
+
+div#block-homepagebanner-2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+div#block-homepagebanner-2 video {
+  width: 100%;
+}
+
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0 0;
+  font-weight: 300;
+}
+
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p {
+  margin: 15px 0;
+}
+
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-child(2) {
+  font-size: 40px;
+}
+
+#block-customsearchblock-2 {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+#block-customsearchblock-2 #new-custom-search-form label {
+  display: none;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input {
+  border-radius: 4px;
+  padding: 0 20px;
+  line-height: 60px;
+  border: 0;
+}
+
+#block-customsearchblock-2.sticky-search-header {
+  position: relative;
+  top: 0;
+}
+
+#block-customsearchblock-2.sticky-search-header #new-custom-search-form {
+  float: right;
+  margin: 10px 20px 0 0;
+}
+
+#block-customsearchblock-2.sticky-search-header #new-custom-search-form input {
+  border: 1px solid #999999;
+  line-height: 40px;
+}
+
+#block-customsearchblock-2.sticky-search-header .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0 10px 0 0;
+}
+
+#block-indiasancientpast-2 {
+  max-width: 68%;
+  margin: 30px 16%;
+  display: inline-block;
+}
+
+@media (max-width: 979px) {
+  #block-indiasancientpast-2 {
+    max-width: 100%;
+    margin: 30px 0;
+  }
+}
+
+#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+  float: left;
+  width: 56%;
+}
+
+@media only screen and (max-width: 450px) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+    width: 47%;
+  }
+}
+
+#block-indiasancientpast-2 .field--name-field-featured-cont {
+  float: left;
+}
+
+@media only screen and (min-width: 450px) {
+  #block-indiasancientpast-2 .field--name-field-featured-cont {
+    margin: 0 35px 0 0;
+  }
+}
+
+#block-indiasancientpast-2 .field--name-field-featured-cont img {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+#block-indiasancientpast-2 .field--name-field-content-title,
+#block-indiasancientpast-2 .field--name-field-content-author {
+  color: #4a90e2;
+  text-transform: capitalize;
+}
+
+#block-indiasancientpast-2 .field--name-field-content-title {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+@media only screen and (max-width: 450px) {
+  #block-indiasancientpast-2 .field--name-field-content-title {
+    margin: 10px 0;
+  }
+}
+
+#block-indiasancientpast-2 .field--name-field-content-author {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#block-indiasancientpast-2 .field--name-body {
+  overflow: hidden;
+  max-height: 157px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  text-overflow: -o-ellipsis-lastline;
+  margin: 34px 0;
+}
+
+#block-indiasancientpast-2 .field--name-body p {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 300;
+  line-height: 26px;
+  color: #262626;
+}
+
+#block-indiasancientpast-2 .field--name-field-block-link a {
+  border-radius: 8px;
+  font-size: 24px;
+  border: 2px solid #4383cc;
+  text-decoration: none;
+  padding: 18px;
+  margin: 29px 0 0;
+  display: inline-block;
+  width: 280px;
+  max-width: 100%;
+  text-align: center;
+}
+
+/*# sourceMappingURL=components.css.map */

@@ -28,7 +28,7 @@ function custom_solr_search_help($route_name, RouteMatchInterface $route_match) 
  */
 function custom_solr_search_theme($existing, $type, $theme, $path) {
   return array (
-    'custom_solr_search_result_item' => array(
+    'custom_solr_search_result' => array(
       'variables' => array(
         'url' => NULL,
         'title' => NULL,
@@ -36,7 +36,60 @@ function custom_solr_search_theme($existing, $type, $theme, $path) {
         'publishDate' => NULL,
         'publisher' => NULL,
         'topic' => NULL,
+        'docid' => NULL,
+        'server' => NULL,
+        'keyword' => NULL,
+        'base_url' => NULL,
+        'annotation' => NULL,
       ),
+      'path' => $path . '/templates',
+      'template' => 'custom-solr-search-result',
+    ),
+    'custom_solr_search_facet' => array(
+      'variables' => array(
+        'facets' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'custom-solr-search-facet',
     ),
   );
 }
+
+/**
+ * Get url components
+ *
+ * @param string $component
+ *   If defined only that component will be returned.
+ *
+ * @return array
+ */
+function custom_solr_search_get_url_components($component = NULL) {
+  $url = $_SERVER['REQUEST_URI'];
+  $url_array = explode('?', $url);
+  $url_components['path'] = $url_array[0];
+  $url_components['facet_query'] = [];
+  if (isset($url_array[1])) {
+    $url_array = explode('&', $url_array[1]);
+    foreach ($url_array as $params) {
+      if (preg_match('/^_facet_.*/', $params)) {
+        $params = str_replace('=', ':', str_replace('_facet_', '', $params));
+        $url_components['facet_query'][] = $params;
+      }
+    }
+  }
+  if ($component) {
+    return $url_components[$component];
+  }
+  return $url_components;
+}
+
+function custom_solr_search_get_facet_field_settings() {
+  return array(
+    'Author' => 'author',
+    'Publisher' => 'publisher',
+    'Language' => 'language',
+    'Institution' => 'institution',
+    'Collection' => 'collection',
+    'Publish date' => 'publishDate',
+  );
+ }
