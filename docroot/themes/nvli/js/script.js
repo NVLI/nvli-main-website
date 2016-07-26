@@ -25,11 +25,13 @@
         var check = $('#block-nvli-branding').hasClass('sticky-branding');
 
         if ((scrollTop > offset) && check === false) {
+          $('.header').addClass('sticky-header');
           $('#block-nvli-branding').addClass('sticky-branding');
           $('.block-nvli-custom-search').addClass('sticky-search-header');
           return false;
         }
         if ((scrollTop < offset) && check === true) {
+          $('.header').removeClass('sticky-header');
           $('#block-nvli-branding').removeClass('sticky-branding');
           $('.block-nvli-custom-search').removeClass('sticky-search-header');
           return false;
