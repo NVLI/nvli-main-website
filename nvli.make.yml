@@ -7,8 +7,13 @@ api: 2
 projects:
   drupal:
     version: "8.1.2"
-    
+  zen:
+    type: "theme"
+    version: "7.0-alpha14"
 # Modules
+  components:
+    type: "module"
+    version: "1.0"
   admin_toolbar:
     subdir: "contrib"
     version: "1.15"
@@ -21,4 +26,33 @@ projects:
   search_api_solr:
     subdir: "contrib"
     version: "1.0-alpha4"
+  config_update:
+    subdir: "contrib"
+    version: "1.1"
+  ctools:
+    subdir: "contrib"
+    version: "3.0-alpha26"
+  features:
+    subdir: "contrib"
+    version: "3.0-beta6"
+  pathauto:
+    subdir: "contrib"
+    version: "1.0-alpha3"
+  token:
+    subdir: "contrib"
+    version: "1.0-alpha2"
+  votingapi:
+    subdir: "contrib"
+    version: "3.0-alpha2"
+  fivestar:
+    subdir: "contrib"
+    download:
+      type: "git"
+      url: "https://github.com/pedrorocha-net/fivestar.git"
+      revision: "8.x-2.x"
+  restui:
+    subdir: "contrib"
+    version: "1.11"
+  superfish:
+    version: "1.0-rc2"
 

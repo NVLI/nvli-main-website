@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Component for an HTML document.
+ *
+ * Variables:
+ * - html_attributes: [string] Attributes for the HTML element.
+ * - title: [string] The page title.
+ * - attributes: [string] Attributes for the BODY element.
+ * - content: [string] The component contents.
+ */
+#}
+<!DOCTYPE html>
+<html {{ html_attributes }}>
+  <head>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Helvetica+Neue:700,700italic,italic,regular&amp;subset=latin" media="all" />
+    {% block head %}
+      <title>{{ title }}</title>
+    {% endblock %}
+  </head>
+  <body {{ attributes }}>
+    {% block body %}
+      {{ content }}
+    {% endblock %}
+  </body>
+</html>

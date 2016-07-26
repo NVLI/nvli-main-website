@@ -1,14 +1,28 @@
 nvli_custom_search.nvli_search_search:
-  path: 'result'
+  path: 'search'
   defaults:
     _controller: '\Drupal\nvli_custom_search\Controller\NvliSearch::search'
     _title: 'Search'
   requirements:
     _permission: 'access content'
 nvli_custom_search.nvli_search_result:
-  path: 'result/{keyword}'
+  path: 'search/{keyword}'
   defaults:
     _controller: '\Drupal\nvli_custom_search\Controller\NvliSearch::search'
     _title: 'Search'
+  requirements:
+    _permission: 'access content'
+nvli_custom_search.nvli_search_resource_page:
+  path: '/list/{resource_type}/search'
+  defaults:
+    _controller: '\Drupal\nvli_custom_search\Controller\NvliSearch::search_page'
+    _title: 'Search Result Page'
+  requirements:
+    _permission: 'access content'
+nvli_custom_search.nvli_search_resource_keyword_page:
+  path: '/list/{resource_type}/search/{keyword}'
+  defaults:
+    _controller: '\Drupal\nvli_custom_search\Controller\NvliSearch::search_page'
+    _title: 'Search Result Page'
   requirements:
     _permission: 'access content'

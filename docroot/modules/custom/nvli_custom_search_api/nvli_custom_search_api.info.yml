@@ -1,0 +1,6 @@
+name: 'REST API for Search'
+type: module
+description: 'REST API to get the search result'
+core: 8.x
+version: 8.x-1.0
+package: Custom

@@ -6,7 +6,7 @@
  */
 
 use Drupal\Core\Template\Attribute;
-use Symfony\Component\Yaml\Parser;
+
 
 /**
  * Prepares variables for mirador formatter templates.
@@ -46,13 +46,8 @@ function template_preprocess_mirador_formatter(&$variables) {
   $field_name = $item->getParent()->getName();
   $mirador_viewer_id = 'mirador-viewer-' . $id;
 
-  // Parse the mirador settings YAML.
-  $yaml = new Parser();
-  $mirador_settings_array = $yaml->parse($settings['mirador_settings']);
-  $mirador_settings = serialize($mirador_settings_array);
-
   // Generate manifest uri and pass to jquery.
-  $manifest_uri = $base_url . '/mirador/manifest/' . $entity_type_id . '/' . $field_name . '/' . $id . '/' . $mirador_settings;
+  $manifest_uri = $base_url . '/mirador/manifest/' . $entity_type_id . '/' . $field_name . '/' . $id;
   $variables['#attached']['drupalSettings']['init']['entity']['manifest_uri'] = $manifest_uri;
   $variables['#attached']['drupalSettings']['init']['entity']['viewer_id'] = $mirador_viewer_id;
   $variables['#attached']['drupalSettings']['init']['entity']['entity_id'] = $id;
@@ -65,13 +60,13 @@ function template_preprocess_mirador_formatter(&$variables) {
   $annotation_settings['annotation_image_entity'] = $config->get('annotation_image_entity');
   $annotation_settings['annotation_owner'] = $config->get('annotation_owner');
   $annotation_settings['annotation_resource'] = $config->get('annotation_resource');
-  $annotation_settings['annotation_language'] = $config->get('annotation_language');
+  $annotation_settings['annotation_data'] = $config->get('annotation_data');
 
   // Annotation endpoint settings.
   $annotation_settings['annotation_create_uri'] = $config->get('annotation_create');
   $annotation_settings['annotation_create_method'] = $config->get('annotation_create_method');
   $annotation_settings['annotation_search_uri'] = $config->get('annotation_search');
-  $annotation_settings['annotation_search_uri'] = str_replace("{image_entity_id}", $id, $annotation_settings['annotation_search_uri']);
+  $annotation_settings['annotation_search_uri'] = str_replace("{resource_entity_id}", $id, $annotation_settings['annotation_search_uri']);
   $annotation_settings['annotation_search_method'] = $config->get('annotation_search_method');
   $annotation_settings['annotation_update_uri'] = $config->get('annotation_update');
   $annotation_settings['annotation_update_method'] = $config->get('annotation_update_method');
