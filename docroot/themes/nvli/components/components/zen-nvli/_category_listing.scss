@@ -1,0 +1,67 @@
+/* 
+ * THIS FILE CONTAINS ALL STYLE FOR CATEGORY LISTING PAGES
+ * @author Shruti 
+ */
+
+.is-path-list {
+  .new-custom-search-form {
+    @include search-block;
+
+    .form-item {
+      max-width: 100%;
+    }
+  }
+
+  .item-list {
+    clear: both;
+    padding: 30px 0 0;
+
+    li {
+      list-style: none;
+      padding: 10px 0;
+      margin: 0 0 10px;
+      border-bottom: 1px dotted color('grey');
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    .row {
+      div {
+        font-size: font-size(s) + 1;
+      }
+
+      .title {
+        font-size: font-size(l) - 1;
+      }
+
+      .title a {
+        font-weight: weight(medium);
+      }
+    }
+  }
+}
+
+#block-resourcetypelistingblock {
+  .item-list {
+    padding: 0;
+
+    li {
+      border: 0;
+      padding: 0;
+      margin: 0;
+
+      a {
+        @include border-radius(8px);
+        display: block;
+        background: color(resource-bg);
+        padding: 25px;
+        text-align: center;
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+
