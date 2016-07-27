@@ -3,11 +3,11 @@
 namespace Drupal\nvli_custom;
 
 /**
- * Class ResourceCount.
+ * Class ResourceManager.
  *
  * @package Drupal\nvli_custom
  */
-class ResourceCount {
+class ResourceManager {
   /**
    * Constructor.
    */

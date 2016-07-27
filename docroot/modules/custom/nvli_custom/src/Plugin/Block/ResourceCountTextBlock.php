@@ -29,7 +29,7 @@ class ResourceCountTextBlock extends BlockBase {
   public function build() {
     
     // Fetch resource entity count.
-    $count = \Drupal::service('nvli_custom.resource_count')->resourceEntityCount();
+    $count = \Drupal::service('nvli_custom.resource_entity_count')->resourceEntityCount();
     
     // If count is less then 1000 then display static count of 240000.
     if ($count < 1000) {
