@@ -113,7 +113,7 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       '#type' => 'textfield',
       '#title' => $this->t('Show View More Link on Solr Search Result Block '),
       '#default_value' => $config['custom_solr_search_result_view_more'],
-      '#description' => $this->t('Add the custom routing path for view more'),
+      '#description' => $this->t('Add the internal relative urls, prefix the path with internal://for external links, use absolute path.'),
     ];
 
     return $form;
@@ -158,9 +158,10 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       $server = $filterQuerySettings['server'];
       $results = $this->search->basicSearch($keyword, $offset, $limit, $server);
     }
+
     // Format result to display as unformatted list.
     if (!empty($results)) {
-      foreach ($results as $result) {
+      foreach ($results['docs'] as $result) {
           if (isset($result->title)) {
             $title = $result->title;
           }
@@ -179,8 +180,13 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
           );
         }
       }
-    if (!empty($view_more)) {
-      $url = Url::fromRoute($view_more, array('resource_type' => $filterId, 'keyword' => $keyword));
+    if (!empty($view_more) && !empty($results['docs'])) {
+      if (!empty($keyword)) {
+        $url = Url::fromUri($view_more.'/search/'.$keyword);
+      }
+      else {
+        $url = Url::fromUri($view_more);
+      }
       $link = Link::fromTextAndUrl(t('View More'), $url)->toString();
     }
 
