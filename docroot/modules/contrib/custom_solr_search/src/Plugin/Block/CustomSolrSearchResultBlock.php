@@ -182,7 +182,7 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       }
     if (!empty($view_more) && !empty($results['docs'])) {
       if (!empty($keyword)) {
-        $url = Url::fromUri($view_more.'/search/'.$keyword);
+        $url = Url::fromUri($view_more.$keyword);
       }
       else {
         $url = Url::fromUri($view_more);
