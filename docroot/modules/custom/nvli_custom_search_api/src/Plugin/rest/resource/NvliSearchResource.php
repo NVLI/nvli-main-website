@@ -154,7 +154,7 @@ class NvliSearchResource extends ResourceBase {
       // If result is not empty then find it's entity id.
       if ($solr_result != '') {
         // Fetch the entity_id for each doc.
-        foreach ($solr_result as $row) {
+        foreach ($solr_result['docs'] as $row) {
           $doc_id = $row->id;
           $results['resource'] = $this->entitydetail->get_nid($doc_id);
           $results['metadata'] = json_decode(json_encode($row), True);
