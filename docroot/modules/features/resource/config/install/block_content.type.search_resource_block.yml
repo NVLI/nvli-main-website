@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: search_resource_block
+label: 'Search Resource Block'
+revision: 0
+description: 'Provides Search resource block content type '
