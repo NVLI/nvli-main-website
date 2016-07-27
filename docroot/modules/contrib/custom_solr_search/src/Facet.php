@@ -71,7 +71,7 @@ class Facet {
             $facets[$field][] = array(
               'value' => $facet[$i],
               'count' => $facet[$i + 1],
-              'url' => $url . $append_query_string . '_facet_' . $facet_field_settings[$field] . '=' . $facet[$i],
+              'url' => $url . $append_query_string . '_facet_' . str_replace('_facet', '', $facet_field_settings[$field]) . '=' . $facet[$i],
             );
           }
         }

@@ -102,7 +102,7 @@ function custom_solr_search_get_facet_field_settings() {
     'Library' => 'building',
     'Format' => 'format',
     'Call-Number' => 'callnumber-first',
-    'Author' => 'author',
+    'Author' => 'author_facet',
     'Language' => 'language',
     'Genre' => 'genre',
     'Era' => 'era',

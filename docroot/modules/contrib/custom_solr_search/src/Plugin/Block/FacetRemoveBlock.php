@@ -29,7 +29,10 @@ class FacetRemoveBlock extends BlockBase {
     foreach ($facet_filters  as $filter) {
       list($category, $value) = explode(':', $filter, 2);
       $key = array_search($category, $facet_field_settings);
-      $url_param = '_facet_' . $facet_field_settings[$key] . '=' . $value;
+      if (!$key) {
+        $key = array_search($category . '_facet', $facet_field_settings);
+      }
+      $url_param = '_facet_' . str_replace('_facet', '', $facet_field_settings[$key]) . '=' . $value;
       $url = $this->removeFacetFilter($url_param);
       $facets_applied[$filter] = array(
         'key' => $key,
