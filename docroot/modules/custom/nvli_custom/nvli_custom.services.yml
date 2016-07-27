@@ -1,0 +1,4 @@
+services:
+  nvli_custom.resource_count:
+    class: Drupal\nvli_custom\ResourceCount
+ 
