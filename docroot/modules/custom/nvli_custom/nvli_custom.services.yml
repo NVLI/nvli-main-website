@@ -1,5 +1,3 @@
 services:
   nvli_custom.resource_manager:
     class: Drupal\nvli_custom\ResourceManager
-
- 

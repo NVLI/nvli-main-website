@@ -6,6 +6,23 @@
  */
 
 /**
+ * Implements hook_theme().
+ */
+function nvli_custom_theme($existing, $type, $theme, $path) {
+  return array (
+    'resource_listing_block' => array(
+      'variables' => array(
+        'title' => NULL,
+        'count' => NULL,
+        'resource_id' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'resource-listing-block',
+    ),
+  );
+}
+
+/**
  * Implements hook_mirador_metadata_alter.
  */
 function nvli_custom_mirador_metadata_alter(&$entity) {
