@@ -99,7 +99,7 @@ class AnnotationStoreController extends ControllerBase {
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     // Save only if annotation data is present.
     if ($annotation_data->text) {
-      $entity = entity_create('annotation_store', array(
+      $entity = \Drupal::entityManager()->getStorage('annotation_store')->create(array(
         'type' => $annotation_data->media,
         'language' => $language,
         'data' => json_encode($annotation_data->data),
@@ -147,7 +147,7 @@ class AnnotationStoreController extends ControllerBase {
    * Annotation update callback.
    */
   public function updateAnnotation($id, $data, $flag) {
-    $entity = entity_load('annotation_store', $id);
+    $entity = \Drupal::entityTypeManager()->getStorage('annotation_store')->load($id);
     if ($flag == 'onUpdate') {
       $entity->text->value = $data->text;
       $entity->changed->value = time();
