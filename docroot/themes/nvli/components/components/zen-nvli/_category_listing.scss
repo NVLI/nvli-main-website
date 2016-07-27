@@ -5,7 +5,8 @@
 
 .is-path-list {
   h1 {
-    font-size: font-size(xl);      
+    font-size: font-size(xl);
+    line-height: 30px;
   }
 
   .new-custom-search-form {
@@ -13,6 +14,9 @@
 
     .form-item {
       max-width: 100%;
+      @include placeholder {
+        color: color('grey');
+      }
     }
   }
 
@@ -64,6 +68,6 @@
   }
 
   .resource-image {
-    background: url("../../../images/iconsprite.png") no-repeat;
-  }  
+    background: url('../../../images/iconsprite.png') no-repeat;
+  }
 }
