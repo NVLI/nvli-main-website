@@ -1,5 +1,5 @@
 services:
-  nvli_custom.resource_entity_count:
+  nvli_custom.resource_manager:
     class: Drupal\nvli_custom\ResourceManager
 
  
