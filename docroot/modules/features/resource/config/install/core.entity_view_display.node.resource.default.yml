@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.field.node.resource.field_audio_file_path
+    - field.field.node.resource.field_harvest_type
     - field.field.node.resource.field_image_file_path
     - field.field.node.resource.field_language
     - field.field.node.resource.field_pdf_file_path
     - field.field.node.resource.field_rating
+    - field.field.node.resource.field_resource_type
     - field.field.node.resource.field_solr_docid
-    - field.field.node.resource.field_term_ref_harvest_type
-    - field.field.node.resource.field_term_ref_resource_type
     - field.field.node.resource.field_term_ref_tags
     - field.field.node.resource.field_text_plain_single_1
     - field.field.node.resource.field_thumb
@@ -65,20 +65,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_term_ref_harvest_type:
-    weight: 4
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_term_ref_resource_type:
-    weight: 2
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
   field_term_ref_tags:
     weight: 3
     label: above
@@ -112,4 +98,6 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_harvest_type: true
+  field_resource_type: true

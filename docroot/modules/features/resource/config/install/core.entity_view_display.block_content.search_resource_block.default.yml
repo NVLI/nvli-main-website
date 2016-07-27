@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.search_resource_block
+    - field.field.block_content.search_resource_block.field_block_image
+    - field.field.block_content.search_resource_block.field_block_link
+    - field.field.block_content.search_resource_block.field_resource_count
+  module:
+    - image
+    - link
+id: block_content.search_resource_block.default
+targetEntityType: block_content
+bundle: search_resource_block
+mode: default
+content:
+  field_block_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_block_link:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_resource_count:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden: {  }
