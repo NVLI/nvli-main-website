@@ -12,6 +12,7 @@ dependencies:
   - menu_ui
   - mirador
   - node
+  - ova
   - path
   - pathauto
   - rest
