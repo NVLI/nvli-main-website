@@ -1,0 +1,27 @@
+uuid: 4f7d052d-6dcd-4033-b315-9fe02cd785db
+langcode: en
+status: true
+dependencies:
+  module:
+    - nvli_custom
+    - system
+  theme:
+    - bartik
+id: resourcecounttext
+theme: bartik
+region: featured_top
+weight: -12
+provider: null
+plugin: resource_count_text
+settings:
+  id: resource_count_text
+  label: 'Resource Count text'
+  provider: nvli_custom
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
+

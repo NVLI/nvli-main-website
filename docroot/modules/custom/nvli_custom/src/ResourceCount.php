@@ -20,7 +20,7 @@ class ResourceCount {
    *
    * @param string $resource_type
    *   Resource Type.
-   
+   *
    * @return int
    *   Resource entity count based on the filters.
    */
