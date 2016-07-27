@@ -4,6 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.mirador
     - node.type.resource
+    - user.role.administrator
+    - user.role.authenticated
   module:
     - node
     - user
@@ -23,9 +25,11 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            authenticated: authenticated
+            administrator: administrator
       cache:
         type: tag
         options: {  }
@@ -50,7 +54,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 10
+          items_per_page: 1
           offset: 0
       style:
         type: html_list
@@ -242,7 +246,7 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
   page_1:
     display_plugin: page
@@ -258,5 +262,5 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
