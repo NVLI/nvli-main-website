@@ -1,9 +1,0 @@
-uuid: 4afb6445-1dc6-439d-b8e3-77d4de15deff
-langcode: en
-status: true
-dependencies: {  }
-id: search_resource_block
-label: 'Search Resource Block'
-revision: 0
-description: 'Provides Search resource block content type '
-
