@@ -34,8 +34,7 @@ class EntityDetail {
       $rating = $node->get('field_rating')->rating;
       $harvest_type = $node->get('field_term_ref_harvest_type')->target_id;
       $harvest_name = $this->get_term_name($harvest_type);
-      $resource_type = $node->get('field_term_ref_resource_type')->target_id;
-      $resource_name = $this->get_term_name($resource_type);
+      $resource_type = $node->get('field_resource_type')->value;
       $tag = $node->get('field_term_ref_tags')->getValue();
       foreach ($tag as $key) {
         $tags = $key['target_id'];
@@ -58,10 +57,10 @@ class EntityDetail {
       'language' => !empty($language) ? $language : '',
       'rating' => !empty($rating) ? $rating : '',
       'source' => !empty($harvest_name) ? $harvest_name : '',
-      'type' => !empty($resource_name) ? $resource_name : '',
+      'type' => !empty($resource_type) ? $resource_type : '',
       'tags' => !empty($tag_name) ? $tag_name : '',
       'short_url' => !empty($short_url) ? $short_url : '',
-      'image_url' => $url,
+      'image_url' => !empty($url) ? $url : '',
     );
     return $results;
   }

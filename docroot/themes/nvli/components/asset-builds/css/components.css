@@ -39,10 +39,23 @@ header {
   background: #fff;
 }
 
+header.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  visibility: visible;
+}
+
 div#block-nvli-branding {
   float: left;
   width: 100%;
   padding: 14px 24px;
+}
+
+div#block-nvli-branding.sticky-branding {
+  width: 50%;
+  max-width: 460px;
 }
 
 .site-logo img {
@@ -289,6 +302,27 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   padding: 0 20px;
   line-height: 60px;
   border: 0;
+}
+
+#block-customsearchblock-2.sticky-search-header {
+  position: relative;
+  top: 0;
+}
+
+#block-customsearchblock-2.sticky-search-header #new-custom-search-form {
+  float: right;
+  margin: 10px 20px 0 0;
+}
+
+#block-customsearchblock-2.sticky-search-header #new-custom-search-form input {
+  border: 1px solid #999999;
+  line-height: 40px;
+}
+
+#block-customsearchblock-2.sticky-search-header .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0 10px 0 0;
 }
 
 #block-indiasancientpast-2 {

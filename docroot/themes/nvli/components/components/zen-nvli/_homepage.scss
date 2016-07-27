@@ -138,6 +138,26 @@ div#block-homepagebanner-2 {
       border: 0;
     }
   }
+
+  &.sticky-search-header {
+    position: relative;
+    top: 0;
+    
+    #new-custom-search-form {
+      float: right;
+      margin: 10px 20px 0 0;
+
+      input {
+        border: 1px solid color('grey');
+        line-height: 40px;
+      }          
+    }
+    .form-item {
+      float: left;
+      max-width: 250px;
+      margin: 0 10px 0 0;
+    }
+  }
 }
 
 #block-indiasancientpast-2 {
