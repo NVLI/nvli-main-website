@@ -58,4 +58,6 @@ projects:
   votingapi:
     subdir: "contrib"
     version: "8.x-1.x-dev"
+  ova:
+    version: "8.x-1.x-dev"
 
