@@ -51,31 +51,51 @@
 
 /* MIXIN FOR MULTILINE ELLIPSIS */
 
+/* MIXIN FOR PLACEHOLDER */
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+/* MIXIN FOR PLACEHOLDER */
+
 /* MIXIN FOR SEARCH BLOCK */
 
 @mixin search-block {
   label {
     display: none;
   }
-
+  
   input {
     @include border-radius(4px);
     padding: 0 20px;
-    border: 1px solid color('grey');
+    border: 1px solid color(grey-light);
     line-height: 40px;
     float: left;
+
+    &.form-text {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      @include placeholder {
+        color: color('red');
+      }
+    }
   }
 
   input[type='submit'] {
     color: color(blue);
-    border-color: color(blue);
     background: color(white);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   .form-item {
     float: left;
     max-width: 250px;
-    margin: 0 10px 0 0;
+    margin: 0;
   }
 }
 

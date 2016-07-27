@@ -4,6 +4,10 @@
  */
 
 .is-path-list {
+  h1 {
+    font-size: font-size(xl);      
+  }
+
   .new-custom-search-form {
     @include search-block;
 
@@ -18,9 +22,8 @@
 
     li {
       list-style: none;
-      padding: 10px 0;
-      margin: 0 0 10px;
-      border-bottom: 1px dotted color('grey');
+      padding: 16px 0;
+      margin: 0;
 
       &:last-child {
         border-bottom: 0;
@@ -29,15 +32,13 @@
 
     .row {
       div {
-        font-size: font-size(s) + 1;
-      }
-
-      .title {
-        font-size: font-size(l) - 1;
+        font-size: font-size(m) + 2;
+        font-weight: weight(light);
+        margin: 0;
       }
 
       .title a {
-        font-weight: weight(medium);
+        font-weight: weight(bold);
       }
     }
   }
@@ -54,14 +55,15 @@
 
       a {
         @include border-radius(8px);
+        border: 1px solid color(grey-light);
         display: block;
-        background: color(resource-bg);
         padding: 25px;
-        text-align: center;
         margin: 10px 0;
       }
     }
   }
+
+  .resource-image {
+    background: url("../../../images/iconsprite.png") no-repeat;
+  }  
 }
-
-

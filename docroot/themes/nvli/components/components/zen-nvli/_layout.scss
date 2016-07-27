@@ -22,7 +22,10 @@
 
 .layout-3col__right-sidebar {
   @media (min-width: 999px) {
-    @include margin-top(1, xxl);   
-  }    
+    @include margin-top(1, xxl);
+  }
 }
 
+body:not(.front) .layout-3col {
+  padding: 0 112px;
+}

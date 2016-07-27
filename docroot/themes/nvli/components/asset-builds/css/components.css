@@ -8,6 +8,8 @@
 /* BORDER RADIUS MIXIN */
 /* MIXIN FOR MULTILINE ELLIPSIS */
 /* MIXIN FOR MULTILINE ELLIPSIS */
+/* MIXIN FOR PLACEHOLDER */
+/* MIXIN FOR PLACEHOLDER */
 /* MIXIN FOR SEARCH BLOCK */
 /* MIXIN SEARCH BLOCK */
 /* 
@@ -39,10 +41,18 @@
   }
 }
 
+body:not(.front) .layout-3col {
+  padding: 0 112px;
+}
+
 /* 
  * THIS FILE CONTAINS ALL STYLE FOR CATEGORY LISTING PAGES
  * @author Shruti 
  */
+.is-path-list h1 {
+  font-size: 24px;
+}
+
 .is-path-list .new-custom-search-form label {
   display: none;
 }
@@ -50,21 +60,43 @@
 .is-path-list .new-custom-search-form input {
   border-radius: 4px;
   padding: 0 20px;
-  border: 1px solid #999999;
+  border: 1px solid #cccccc;
   line-height: 40px;
   float: left;
 }
 
+.is-path-list .new-custom-search-form input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.is-path-list .new-custom-search-form input.form-text ::-webkit-input-placeholder {
+  color: #c00;
+}
+
+.is-path-list .new-custom-search-form input.form-text :-moz-placeholder {
+  color: #c00;
+}
+
+.is-path-list .new-custom-search-form input.form-text ::-moz-placeholder {
+  color: #c00;
+}
+
+.is-path-list .new-custom-search-form input.form-text :-ms-input-placeholder {
+  color: #c00;
+}
+
 .is-path-list .new-custom-search-form input[type='submit'] {
   color: #4383cc;
-  border-color: #4383cc;
   background: #fff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .is-path-list .new-custom-search-form .form-item {
   float: left;
   max-width: 250px;
-  margin: 0 10px 0 0;
+  margin: 0;
 }
 
 .is-path-list .new-custom-search-form .form-item {
@@ -78,9 +110,8 @@
 
 .is-path-list .item-list li {
   list-style: none;
-  padding: 10px 0;
-  margin: 0 0 10px;
-  border-bottom: 1px dotted #999999;
+  padding: 16px 0;
+  margin: 0;
 }
 
 .is-path-list .item-list li:last-child {
@@ -88,15 +119,13 @@
 }
 
 .is-path-list .item-list .row div {
-  font-size: 15px;
-}
-
-.is-path-list .item-list .row .title {
-  font-size: 19px;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
 }
 
 .is-path-list .item-list .row .title a {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 #block-resourcetypelistingblock .item-list {
@@ -111,11 +140,14 @@
 
 #block-resourcetypelistingblock .item-list li a {
   border-radius: 8px;
+  border: 1px solid #cccccc;
   display: block;
-  background: #f2f2f2;
   padding: 25px;
-  text-align: center;
   margin: 10px 0;
+}
+
+#block-resourcetypelistingblock .resource-image {
+  background: url("../../../images/iconsprite.png") no-repeat;
 }
 
 /* 
@@ -414,21 +446,43 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 #block-customsearchblock-2 #new-custom-search-form input {
   border-radius: 4px;
   padding: 0 20px;
-  border: 1px solid #999999;
+  border: 1px solid #cccccc;
   line-height: 40px;
   float: left;
 }
 
+#block-customsearchblock-2 #new-custom-search-form input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input.form-text ::-webkit-input-placeholder {
+  color: #c00;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input.form-text :-moz-placeholder {
+  color: #c00;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input.form-text ::-moz-placeholder {
+  color: #c00;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input.form-text :-ms-input-placeholder {
+  color: #c00;
+}
+
 #block-customsearchblock-2 #new-custom-search-form input[type='submit'] {
   color: #4383cc;
-  border-color: #4383cc;
   background: #fff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 #block-customsearchblock-2 #new-custom-search-form .form-item {
   float: left;
   max-width: 250px;
-  margin: 0 10px 0 0;
+  margin: 0;
 }
 
 #block-customsearchblock-2.sticky-search-header {
