@@ -24,12 +24,21 @@ class ResourceManager {
    * @return int
    *   Resource entity count based on the filters.
    */
-  public function resourceEntityCount($resource_type = NULL){
-    // Query to fetch resource entity count.
+   public function resourceEntityCount($resource_type = NULL){
+    
+    // Entity Query to fetch resource entity count based on resource type 
+    // filter.
     $query = \Drupal::entityQuery('node')
-      ->condition('status', 1)
+      ->condition('status', NODE_PUBLISHED)
       ->condition('type', 'resource');
     
+    // If resource type exist then filter data with resource type condition.
+    if (!empty($resource_type)) {
+      
+      $query->condition('field_resource_type.value', $resource_type, '=');
+    }
+    
+    // Return resource entity count.
     return $query->count()->execute();
   }
 }
