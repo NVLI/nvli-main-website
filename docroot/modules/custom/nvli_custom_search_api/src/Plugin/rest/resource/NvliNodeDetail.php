@@ -132,7 +132,7 @@ class NvliNodeDetail extends ResourceBase {
         $options = '(id:"' . $doc_id . '")';
         // Call the service to fetch the result from the solr.
         $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
-        foreach ($solr_result as $row) {
+        foreach ($solr_result['docs'] as $row) {
           $results['resource'] = $this->entitydetail->get_nid($doc_id);
           $results['metadata'] = json_decode(json_encode($row), True);
           $result[] = $results;
