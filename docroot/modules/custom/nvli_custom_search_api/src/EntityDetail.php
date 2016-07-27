@@ -43,9 +43,14 @@ class EntityDetail {
       }
       $short_url = $node->get('field_text_plain_single_1')->value;
       $fid = $node->get('field_thumb')->target_id;
-      $file = \Drupal\file\Entity\File::load($fid);
-      $path = $file->getFileUri();
-      $url = file_create_url($path);
+      if (!empty($fid)) {
+        $file = \Drupal\file\Entity\File::load($fid);
+        $path = $file->getFileUri();
+        $url = file_create_url($path);
+      }
+      else {
+        $url = '';
+      }
     }
     $results = array(
       'entity_id' => !empty($entity_id) ? $entity_id : '',
@@ -56,7 +61,7 @@ class EntityDetail {
       'type' => !empty($resource_name) ? $resource_name : '',
       'tags' => !empty($tag_name) ? $tag_name : '',
       'short_url' => !empty($short_url) ? $short_url : '',
-      'image_url' => !empty($url) ? $url : '',
+      'image_url' => $url,
     );
     return $results;
   }
