@@ -11,7 +11,8 @@ use Drupal\custom_solr_search\Search;
 use Drupal\custom_solr_search\SearchSolrAll;
 use Drupal\custom_solr_search\FilterQuerySettings;
 use Drupal\Core\Url;
-use Drupal\nvli_custom_search\Controller;
+use Drupal\Core\Path;
+use Drupal\Core\Link;
 
 /**
  * Provides a 'Result' Block
@@ -94,7 +95,7 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       '#default_value' => isset($config['custom_solr_search_keyword_argument']) ? $config['custom_solr_search_keyword_argument'] : 0,
       '#description' => $this->t('Add the argument of search keyword to fetch the results.e.g. example.com/result/keyword if keyword is a argument then enter 2.'),
     ];
-        $form['custom_solr_search_offset'] = [
+    $form['custom_solr_search_offset'] = [
       '#type' => 'number',
       '#min' => 0,
       '#title' => $this->t('Solr Search Result Offset'),
@@ -109,9 +110,10 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       '#description' => $this->t('Add the Limit to show the search result in block.'),
     ];
     $form['custom_solr_search_result_view_more'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Show View More Buton on Solr Search Result '),
+      '#type' => 'textfield',
+      '#title' => $this->t('Show View More Link on Solr Search Result Block '),
       '#default_value' => $config['custom_solr_search_result_view_more'],
+      '#description' => $this->t('Add the internal relative urls, prefix the path with internal://for external links, use absolute path.'),
     ];
 
     return $form;
@@ -126,6 +128,7 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $this->setConfigurationValue('custom_solr_search_limit', $form_state->getValue('custom_solr_search_limit'));
     $this->setConfigurationValue('custom_solr_search_offset', $form_state->getValue('custom_solr_search_offset'));
     $this->setConfigurationValue('custom_solr_search_result_view_more', $form_state->getValue('custom_solr_search_result_view_more'));
+
   }
 
   /**
@@ -140,9 +143,9 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $filterQuerySettings = $this->filtertQueryIds->getFilterQueryString($filterId);
     // Get the keyword argument.
     $argument_keyword = $config['custom_solr_search_keyword_argument'];
+    $keyword = $args[$argument_keyword];
     $limit = $config['custom_solr_search_limit'];
     $offset = $config['custom_solr_search_offset'];
-    $keyword = $args[$argument_keyword];
     $view_more = $config['custom_solr_search_result_view_more'];
     // Check the block configuration and search the results.
     // If selected the core.
@@ -155,36 +158,41 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
       $server = $filterQuerySettings['server'];
       $results = $this->search->basicSearch($keyword, $offset, $limit, $server);
     }
+
     // Format result to display as unformatted list.
     if (!empty($results)) {
-      foreach ($results as $result) {
-        if (!empty($result)) {
+      foreach ($results['docs'] as $result) {
           if (isset($result->title)) {
             $title = $result->title;
           }
           else {
             $title = $result->label;
           }
-
-          $result_item = array(
-            '#theme' => 'custom_solr_search_result',
-            '#url' => $result->url[0],
-            '#title' => $title,
-            '#author' => $result->author_sort,
-            '#publishDate' => implode(', ', $result->publishDate),
-            '#publisher' => implode(', ', $result->publisher),
-            '#topic' => implode(', ', $result->topic)
+        $render['result'][] = array(
+          '#theme' => 'custom_solr_search_result',
+          '#url' => isset($result->url[0])?$result->url[0]: '',
+          '#title' => isset($title)?$title: '',
+          '#author' => isset($result->author)?implode(', ', $result->author): '',
+          '#publishDate' => isset($result->publishDate)?implode(', ', $result->publishDate): '',
+          '#publisher' => isset($result->publisher)?implode(', ', $result->publisher): '',
+          '#topic' => isset($result->topic)?implode(', ', $result->topic): '',
+          '#docid' => isset($result->id)?$result->id: '',
           );
-
-          $result_items[] = render($result_item);
         }
       }
+    if (!empty($view_more) && !empty($results['docs'])) {
+      if (!empty($keyword)) {
+        $url = Url::fromUri($view_more.$keyword);
+      }
+      else {
+        $url = Url::fromUri($view_more);
+      }
+      $link = Link::fromTextAndUrl(t('View More'), $url)->toString();
     }
-    $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_keyword_page', array('resource_type' => $filterId, 'keyword' => $keyword));
-    $link = \Drupal::l(t('View More'), $url);
+
     $markup['search_results'] = array(
       '#theme' => 'item_list',
-      '#items' => $result_items,
+      '#items' => $render['result'],
       '#cache' => array(
         'max-age' => 0,
       ),
@@ -205,7 +213,13 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-        $configuration, $plugin_id, $plugin_definition, $container->get('custom_solr_search.filter_query_settings') ,$container->get('custom_solr_search.search'), $container->get('custom_solr_search.solr_servers'), $container->get('custom_solr_search.search_all')
+        $configuration,
+        $plugin_id,
+        $plugin_definition,
+        $container->get('custom_solr_search.filter_query_settings'),
+        $container->get('custom_solr_search.search'),
+        $container->get('custom_solr_search.solr_servers'),
+        $container->get('custom_solr_search.search_all')
     );
   }
 
