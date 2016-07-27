@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.resource.field_language
     - field.field.node.resource.field_pdf_file_path
     - field.field.node.resource.field_rating
+    - field.field.node.resource.field_resource_type
     - field.field.node.resource.field_solr_docid
     - field.field.node.resource.field_term_ref_harvest_type
     - field.field.node.resource.field_term_ref_resource_type
@@ -112,4 +113,6 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_resource_type: true
+  langcode: true
