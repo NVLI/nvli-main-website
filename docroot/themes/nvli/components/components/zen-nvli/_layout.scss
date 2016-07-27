@@ -20,4 +20,9 @@
   }
 }
 
+.layout-3col__right-sidebar {
+  @media (min-width: 999px) {
+    @include margin-top(1, xxl);   
+  }    
+}
 

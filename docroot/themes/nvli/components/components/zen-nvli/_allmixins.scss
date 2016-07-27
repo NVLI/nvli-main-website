@@ -3,7 +3,6 @@
  * @author Shruti 
  */
 
-
 /* MIXIN FOR BOX SHADOW */
 
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
@@ -51,3 +50,33 @@
 }
 
 /* MIXIN FOR MULTILINE ELLIPSIS */
+
+/* MIXIN FOR SEARCH BLOCK */
+
+@mixin search-block {
+  label {
+    display: none;
+  }
+
+  input {
+    @include border-radius(4px);
+    padding: 0 20px;
+    border: 1px solid color('grey');
+    line-height: 40px;
+    float: left;
+  }
+
+  input[type='submit'] {
+    color: color(blue);
+    border-color: color(blue);
+    background: color(white);
+  }
+
+  .form-item {
+    float: left;
+    max-width: 250px;
+    margin: 0 10px 0 0;
+  }
+}
+
+/* MIXIN SEARCH BLOCK */
