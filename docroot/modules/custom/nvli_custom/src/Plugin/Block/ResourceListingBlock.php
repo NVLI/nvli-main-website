@@ -49,6 +49,7 @@ class ResourceListingBlock extends BlockBase {
           '#title' => \Drupal::l(t($config_entity['label']), $url),
           '#count' => \Drupal::service('nvli_custom.resource_manager')->resourceEntityCount($resource_type),
           '#resource_id' => $config_entity['id'],
+          '#resource_link' => $url,
         );
       }
     }
