@@ -13,7 +13,7 @@ nvli_custom_search.nvli_search_result:
   requirements:
     _permission: 'access content'
 nvli_custom_search.nvli_search_resource_page:
-  path: '/list/{resource_type}/search'
+  path: '/list/{resource_type}'
   defaults:
     _controller: '\Drupal\nvli_custom_search\Controller\NvliSearch::search_page'
     _title: 'Search Result Page'
