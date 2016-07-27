@@ -141,7 +141,8 @@ div#block-homepagebanner-2 {
   }
 }
 
-#block-indiasancientpast-2 {
+#block-indiasancientpast-2,
+#block-indiasancientpast-3 {
   max-width: 68%;
   margin: 30px 16%;
   display: inline-block;
@@ -218,5 +219,10 @@ div#block-homepagebanner-2 {
       text-align: center;
     }
   }
+}
+
+#block-indiasancientpast-3 {
+  max-width: 100%;
+  margin: 30px 0;  
 }
 

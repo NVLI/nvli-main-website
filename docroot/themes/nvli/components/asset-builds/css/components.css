@@ -41,7 +41,12 @@
   }
 }
 
-body:not(.front) .layout-3col {
+.layout-3col__right-sidebar h2 {
+  font-size: 20px;
+  color: gray;
+}
+
+body:not(.is-path-frontpage) .layout-3col {
   padding: 0 112px;
 }
 
@@ -140,32 +145,74 @@ body:not(.front) .layout-3col {
   font-size: 18px;
   font-weight: 300;
   margin: 0;
+  color: #808080;
 }
 
 .is-path-list .item-list .row .title a {
   font-weight: bold;
 }
 
-#block-resourcetypelistingblock .item-list {
-  padding: 0;
+.resources-block {
+  position: relative;
 }
 
-#block-resourcetypelistingblock .item-list li {
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-
-#block-resourcetypelistingblock .item-list li a {
+.resources-block .row {
   border-radius: 8px;
   border: 1px solid #cccccc;
-  display: block;
-  padding: 25px;
-  margin: 10px 0;
+  padding: 20px 32px;
+  margin: 16px 0;
 }
 
-#block-resourcetypelistingblock .resource-image {
+.resources-block .resource_title {
+  color: #4383cc;
+}
+
+.resources-block .resource_image {
   background: url("../../../images/iconsprite.png") no-repeat;
+  float: left;
+  width: 27px;
+  height: 27px;
+  margin: 0 8px 0 0;
+}
+
+.resources-block .resource_image.books {
+  background-position: -13px -11px;
+}
+
+.resources-block .resource_image.audioviusals {
+  background-position: -107px -11px;
+}
+
+.resources-block .resource_image.government_archives {
+  background-position: -203px -11px;
+}
+
+.resources-block .resource_image.journals {
+  background-position: -236px -11px;
+}
+
+.resources-block .resource_image.manuscripts {
+  background-position: -43px -11px;
+}
+
+.resources-block .resource_image.maps {
+  background-position: -171px -11px;
+}
+
+.resources-block .resource_image.musuem_artefacts {
+  background-position: -72px -11px;
+}
+
+.resources-block .resource_image.newspaper_articles {
+  background-position: -139px -11px;
+}
+
+.resources-block a {
+  position: absolute;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 /* 
@@ -514,74 +561,88 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   margin: 20px 20px 0 0;
 }
 
-#block-indiasancientpast-2 {
+#block-indiasancientpast-2,
+#block-indiasancientpast-3 {
   max-width: 68%;
   margin: 30px 16%;
   display: inline-block;
 }
 
 @media (max-width: 979px) {
-  #block-indiasancientpast-2 {
+  #block-indiasancientpast-2,
+  #block-indiasancientpast-3 {
     max-width: 100%;
     margin: 30px 0;
   }
 }
 
-#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+#block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
   float: left;
   width: 56%;
 }
 
 @media only screen and (max-width: 450px) {
-  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+  #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
     width: 100%;
   }
 }
 
 @media only screen and (min-width: 451px) and (max-width: 767px) {
-  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+  #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
     width: 47%;
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-featured-cont {
+#block-indiasancientpast-2 .field--name-field-featured-cont,
+#block-indiasancientpast-3 .field--name-field-featured-cont {
   float: left;
 }
 
 @media only screen and (min-width: 450px) {
-  #block-indiasancientpast-2 .field--name-field-featured-cont {
+  #block-indiasancientpast-2 .field--name-field-featured-cont,
+  #block-indiasancientpast-3 .field--name-field-featured-cont {
     margin: 0 35px 0 0;
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-featured-cont img {
+#block-indiasancientpast-2 .field--name-field-featured-cont img,
+#block-indiasancientpast-3 .field--name-field-featured-cont img {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 }
 
 #block-indiasancientpast-2 .field--name-field-content-title,
-#block-indiasancientpast-2 .field--name-field-content-author {
+#block-indiasancientpast-2 .field--name-field-content-author,
+#block-indiasancientpast-3 .field--name-field-content-title,
+#block-indiasancientpast-3 .field--name-field-content-author {
   color: #4a90e2;
   text-transform: capitalize;
 }
 
-#block-indiasancientpast-2 .field--name-field-content-title {
+#block-indiasancientpast-2 .field--name-field-content-title,
+#block-indiasancientpast-3 .field--name-field-content-title {
   font-size: 32px;
   font-weight: 300;
   margin: 0 0 10px;
 }
 
 @media only screen and (max-width: 450px) {
-  #block-indiasancientpast-2 .field--name-field-content-title {
+  #block-indiasancientpast-2 .field--name-field-content-title,
+  #block-indiasancientpast-3 .field--name-field-content-title {
     margin: 10px 0;
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-content-author {
+#block-indiasancientpast-2 .field--name-field-content-author,
+#block-indiasancientpast-3 .field--name-field-content-author {
   font-size: 24px;
   font-weight: 500;
 }
 
-#block-indiasancientpast-2 .field--name-body {
+#block-indiasancientpast-2 .field--name-body,
+#block-indiasancientpast-3 .field--name-body {
   overflow: hidden;
   max-height: 157px;
   display: -webkit-box;
@@ -591,7 +652,8 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   margin: 34px 0;
 }
 
-#block-indiasancientpast-2 .field--name-body p {
+#block-indiasancientpast-2 .field--name-body p,
+#block-indiasancientpast-3 .field--name-body p {
   font-size: 22px;
   margin: 0;
   font-weight: 300;
@@ -599,7 +661,8 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   color: #262626;
 }
 
-#block-indiasancientpast-2 .field--name-field-block-link a {
+#block-indiasancientpast-2 .field--name-field-block-link a,
+#block-indiasancientpast-3 .field--name-field-block-link a {
   border-radius: 8px;
   font-size: 24px;
   border: 2px solid #4383cc;
@@ -609,6 +672,11 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   width: 280px;
   max-width: 100%;
   text-align: center;
+}
+
+#block-indiasancientpast-3 {
+  max-width: 100%;
+  margin: 30px 0;
 }
 
 /*# sourceMappingURL=components.css.map */

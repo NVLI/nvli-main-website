@@ -39,6 +39,7 @@
         font-size: font-size(m) + 2;
         font-weight: weight(light);
         margin: 0;
+        color: #808080;
       }
 
       .title a {
@@ -48,26 +49,65 @@
   }
 }
 
-#block-resourcetypelistingblock {
-  .item-list {
-    padding: 0;
+.resources-block {
+  position: relative;
 
-    li {
-      border: 0;
-      padding: 0;
-      margin: 0;
+  .row {
+    @include border-radius(8px);
+    border: 1px solid color(grey-light);
+    padding: 20px 32px;
+    margin: 16px 0;
+  }
 
-      a {
-        @include border-radius(8px);
-        border: 1px solid color(grey-light);
-        display: block;
-        padding: 25px;
-        margin: 10px 0;
-      }
+  .resource_title {
+    color: color(blue);
+  }
+
+  .resource_image {
+    background: url('../../../images/iconsprite.png') no-repeat;
+    float: left;
+    width: 27px;
+    height: 27px;
+    margin: 0 8px 0 0;
+
+    &.books {
+      background-position: -13px -11px;
+    }
+
+    &.audioviusals {
+      background-position: -107px -11px;
+    }
+
+    &.government_archives {
+      background-position: -203px -11px;
+    }
+
+    &.journals {
+      background-position: -236px -11px;
+    }
+
+    &.manuscripts {
+      background-position: -43px -11px;
+    }
+
+    &.maps {
+      background-position: -171px -11px;
+    }
+
+    &.musuem_artefacts {
+      background-position: -72px -11px;
+    }
+
+    &.newspaper_articles {
+      background-position: -139px -11px;
     }
   }
 
-  .resource-image {
-    background: url('../../../images/iconsprite.png') no-repeat;
+  a {
+    position: absolute;
+    top: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
   }
 }
