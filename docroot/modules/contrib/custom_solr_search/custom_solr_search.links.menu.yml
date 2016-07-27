@@ -14,3 +14,11 @@ entity.custom_solr_search_filter_query.collection:
   parent: system.admin_config_search
   weight: 99
 
+# Facet fields menu items definition
+entity.facet_fields.collection:
+  title: 'Facet field Settings'
+  route_name: entity.facet_fields.collection
+  description: 'List Facet fields (bundles)'
+  parent: system.admin_config_search
+  weight: 99
+

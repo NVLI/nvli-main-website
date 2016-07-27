@@ -41,10 +41,8 @@ class Search {
     $solr_client = \Drupal::service('custom_solr_search.server')->getSolrClient($solr_core);
     // Initiate Solarium basic select query.
     $query = new SelectQuery();
-    if (!empty($keyword)) {
     // Set search keyword.
     $query->setQuery($keyword);
-    }
     // Set offset.
     $query->setStart($offset);
     // Set limit.
@@ -76,10 +74,12 @@ class Search {
       $raw_body = $response->getBody();
       // Decode json string to array or object.
       $result = json_decode($raw_body);
-      // Get response docs result.
-      $result_docs = $result->response->docs;
       // Return.
-      return $result_docs;
+      return array(
+        'docs' => $result->response->docs,
+        'total_docs' => $result->response->numFound,
+        'offset' => $result->response->start,
+      );
     }
     else {
       // Throw exception.

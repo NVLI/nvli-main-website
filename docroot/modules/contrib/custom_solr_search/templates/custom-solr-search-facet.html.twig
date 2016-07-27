@@ -1,6 +1,6 @@
 {% for field,facet in facets %}
     <ul style="list-style: none;">
-        <li><h4><strong>{{ field }}</strong></h4></li>
+        <li><h4><strong>{{ field|replace({'-': ' '}) }}</strong></h4></li>
         {% for item in facet %}
             <li>
                 <ul style="list-style: none;">

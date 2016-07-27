@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Solarium\QueryType\Select\Query\Query as SelectQuery;
 
 /**
  * Implements hook_help().
@@ -52,6 +53,13 @@ function custom_solr_search_theme($existing, $type, $theme, $path) {
       'path' => $path . '/templates',
       'template' => 'custom-solr-search-facet',
     ),
+    'custom_solr_search_facet_applied' => array(
+      'variables' => array(
+        'facets' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'custom-solr-search-facet-applied',
+    ),
   );
 }
 
@@ -68,12 +76,17 @@ function custom_solr_search_get_url_components($component = NULL) {
   $url_array = explode('?', $url);
   $url_components['path'] = $url_array[0];
   $url_components['facet_query'] = [];
+  $url_components['rm_facet_query'] = [];
   if (isset($url_array[1])) {
     $url_array = explode('&', $url_array[1]);
     foreach ($url_array as $params) {
       if (preg_match('/^_facet_.*/', $params)) {
         $params = str_replace('=', ':', str_replace('_facet_', '', $params));
         $url_components['facet_query'][] = $params;
+      }
+      elseif (preg_match('/^_rm_facet_.*/', $params)) {
+        $params = str_replace('=', ':', str_replace('_rm_facet_', '', $params));
+        $url_components['rm_facet_query'][] = $params;
       }
     }
   }
@@ -85,11 +98,39 @@ function custom_solr_search_get_url_components($component = NULL) {
 
 function custom_solr_search_get_facet_field_settings() {
   return array(
-    'Author' => 'author',
-    'Publisher' => 'publisher',
-    'Language' => 'language',
     'Institution' => 'institution',
-    'Collection' => 'collection',
-    'Publish date' => 'publishDate',
+    'Library' => 'building',
+    'Format' => 'format',
+    'Call-Number' => 'callnumber-first',
+    'Author' => 'author_facet',
+    'Language' => 'language',
+    'Genre' => 'genre',
+    'Era' => 'era',
+    'Region' => 'geographic',
+    'Year-of-Publication' => 'publishDate',
   );
- }
+}
+
+function custom_solr_search_set_facet_filter(&$query, $facet_filter) {
+  $fq = custom_solr_search_get_facet_filter_query_string($facet_filter);
+  if ($fq) {
+    $query->createFilterQuery('fq')->setQuery($fq);
+  }
+}
+
+function custom_solr_search_get_facet_filter_query_string($facet_filter) {
+  foreach ($facet_filter as $filter) {
+    if (isset($fq)) {
+      $fq .= ' AND ' . urldecode($filter);
+    }
+    else {
+      $fq = urldecode($filter);
+    }
+  }
+  return $fq;
+}
+
+function custom_solr_search_remove_url_pager($url) {
+  $url = trim(preg_replace('/&?page=[0-9]+&?/', '', $url), '?&');
+  return $url;
+}
