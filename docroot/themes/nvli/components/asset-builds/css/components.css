@@ -50,8 +50,26 @@ body:not(.is-path-frontpage) .layout-3col {
  * @author Shruti 
  */
 .is-path-list h1 {
+  display: none;
+}
+
+.is-path-list h3 {
+  margin: 0;
+}
+
+.is-path-list .block-resource-type-title-block .row {
+  padding: 24px 0;
+  border: 0;
+  margin: 0;
+}
+
+.is-path-list .block-resource-type-title-block .resource_title {
   font-size: 24px;
   line-height: 30px;
+}
+
+.is-path-list .block-resource-type-title-block .resource_image {
+  margin: 2px 16px 0 0;
 }
 
 .is-path-list .layout-3col__left-content .new-custom-search-form label {
@@ -119,6 +137,11 @@ body:not(.is-path-frontpage) .layout-3col {
 
 .is-path-list .layout-3col__left-content .new-custom-search-form .form-item :-ms-input-placeholder {
   color: #999999;
+}
+
+.is-path-list #block-customsearchblock-4 {
+  margin: 0 0 26px;
+  display: inline-block;
 }
 
 .is-path-list .item-list {
@@ -747,7 +770,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
 #block-indiasancientpast-3 {
   max-width: 100%;
-  margin: 30px 0;
+  margin: 30px 0 0;
 }
 
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */

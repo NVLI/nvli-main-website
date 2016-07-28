@@ -5,8 +5,28 @@
 
 .is-path-list {
   h1 {
-    font-size: font-size(xl);
-    line-height: 30px;
+    display: none;
+  }
+
+  h3 {
+    margin: 0;    
+  }
+
+  .block-resource-type-title-block {
+    .row {
+      padding: 24px 0;
+      border: 0;
+      margin: 0;
+    }
+
+    .resource_title {
+      font-size: font-size(xl);
+      line-height: 30px;
+    }
+
+    .resource_image {
+      margin: 2px 16px 0 0;
+    }
   }
 
   .layout-3col__left-content .new-custom-search-form {
@@ -18,6 +38,11 @@
         color: color('grey');
       }
     }
+  }
+
+  #block-customsearchblock-4 {
+    margin: 0 0 26px;
+    display: inline-block;
   }
 
   .item-list {
