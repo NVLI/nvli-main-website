@@ -43,6 +43,7 @@ class NvliShortenManager {
       foreach ($resources as $resource) {
         if (!empty($resource->get('field_text_plain_single_1')->value)) {
           $resource_id = $resource->id();
+          // @todo figure out to make it dynamic.
           $source_url = 'http://dev-nvli.iitb.ac.in//node/' . $resource_id;
           $short_url = $this->generateShortUrl($source_url);
           $resource->set('field_text_plain_single_1', $short_url->shortUrl);

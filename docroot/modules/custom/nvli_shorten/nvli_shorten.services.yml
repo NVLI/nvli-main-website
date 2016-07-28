@@ -1,7 +1,3 @@
 services:
   nvli_shorten.manager:
     class: Drupal\nvli_shorten\NvliShortenManager
-  nvli_shorten.shorten_url:
-      class: Drupal\nvli_shorten\EventSubscriber\NvliShortenSubscriber
-      tags:
-        - { name: 'event_subscriber' }
