@@ -1,6 +1,6 @@
-name: 'REST API for Search'
+name: 'NVLI URL Shortener'
 type: module
-description: 'REST API to get the search result'
+description: 'Url shortener integration for NVLI.'
 core: 8.x
 version: 8.x-1.0
 package: Custom

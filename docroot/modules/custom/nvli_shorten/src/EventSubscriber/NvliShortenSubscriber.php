@@ -18,7 +18,6 @@ class NvliShortenSubscriber implements EventSubscriberInterface {
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    print_r('hellow');
     $events[EntityTypeEvents::CREATE][] = array('shortenUrl', 800);
     return $events;
   }
@@ -27,7 +26,6 @@ class NvliShortenSubscriber implements EventSubscriberInterface {
    * @param EntityTypeEvent $event
    */
   public function shortenUrl(EntityTypeEvent $event) {
-    print_r('ffsssd');exit;
     print_r($event->getArguments());
     drupal_set_message("The Example Event has been subscribed, which has bee dispatched on submit of the form with " . $event->getEntityType() . " as Reference");
   }
