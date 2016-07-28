@@ -7,16 +7,5 @@
  */
 
 function nvli_shorten_install() {
-  $resources = \Drupal::entityManager()
-    ->getStorage('node')
-    ->loadByProperties(array('type' => 'resource'));
-
-  foreach ($resources as $resource) {
-    $resource_id = $resource->id();
-    $source_url = 'http://dev-nvli.iitb.ac.in//node/' . $resource_id;
-    $short_url = \Drupal::service('nvli_shorten.manager')
-      ->generateShortUrl($source_url);
-    $resource->set('field_text_plain_single_1', $short_url->shortUrl);
-    $resource->save();
-  }
+  \Drupal::service('nvli_shorten.manager')->setShortUrls();
 }
