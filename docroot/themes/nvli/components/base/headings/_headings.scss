@@ -33,6 +33,7 @@ h3,
   @include type-layout(l, 1.5);
   @include margin-top(1, l);
   @include margin-bottom(1, l);
+  color: color(grey-medium);
 }
 
 h4,

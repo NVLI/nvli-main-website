@@ -16,13 +16,17 @@
       padding: 0;
     }
 
-    .homepage-resources-wrapper .block {
+    .homepage-resources-wrapper .resources-block {
       @include border-radius(8px);
       float: left;
       width: 32.69%;
-      padding: 33px 40px 30px;
       margin: 6px 12px 6px 0;
       background: color(resource-bg);
+
+      .row {
+        padding: 33px 40px 30px;
+        border: 0;
+      }
 
       &:nth-child(3n+3) {
         @media only screen and (min-width: 768px) {
@@ -56,19 +60,18 @@
         }
       }
 
-      .field--name-field-block-image {
-        float: left;
+      .resource_image {
         margin: 0 32px 0 0;
       }
 
-      .field {
+      div[class *= 'resource_'] {
         font-size: font-size(xl);
         color: color('grey');
         font-weight: weight(light);
         line-height: $base-line-height + 6;
       }
 
-      .field--name-field-block-link {
+      .resource_title {
         color: color(blue);
       }
     }
