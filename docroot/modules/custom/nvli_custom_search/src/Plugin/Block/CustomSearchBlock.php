@@ -32,7 +32,11 @@ class CustomSearchBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build($keyword = NULL) {
+    $build = [];
     $keyword = \Drupal::request()->get('keyword');
-    return \Drupal::formBuilder()->getForm('Drupal\nvli_custom_search\Form\CustomSearchForm', $keyword);
+    $build['#cache']['max-age'] = 0;
+    $build['form'] = \Drupal::formBuilder()->getForm('Drupal\nvli_custom_search\Form\CustomSearchForm', $keyword);
+  return $build;
+
   }
 }
