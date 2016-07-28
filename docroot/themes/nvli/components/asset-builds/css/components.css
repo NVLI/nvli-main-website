@@ -61,11 +61,14 @@ body:not(.is-path-frontpage) .layout-3col {
   padding: 24px 0;
   border: 0;
   margin: 0;
+  display: inline-block;
+  width: 100%;
 }
 
 .is-path-list .block-resource-type-title-block .resource_title {
   font-size: 24px;
   line-height: 30px;
+  margin: 20px 0 0;
 }
 
 .is-path-list .block-resource-type-title-block .resource_image {
@@ -331,73 +334,76 @@ footer.footer #block-followus-2 {
   }
 }
 
-.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
   border-radius: 8px;
   float: left;
   width: 32.69%;
-  padding: 33px 40px 30px;
   margin: 6px 12px 6px 0;
   background: #f2f2f2;
 }
 
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block .row {
+  padding: 33px 40px 30px;
+  border: 0;
+}
+
 @media only screen and (min-width: 768px) {
-  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(3n+3) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(3n+3) {
     margin: 6px 0;
   }
 }
 
 @media only screen and (min-width: 980px) and (max-width: 1024px) {
-  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
     width: 32.5%;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 979px) {
-  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
     width: 32%;
   }
 }
 
 @media only screen and (min-width: 451px) and (max-width: 767px) {
-  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
     width: 49%;
     margin: 6px 2% 6px 0;
   }
-  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(2n + 1) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(2n + 1) {
     margin: 6px 0;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
     width: 100%;
     margin: 6px 0;
   }
 }
 
-.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(3n+4) {
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(3n+4) {
   clear: left;
 }
 
 @media only screen and (min-width: 451px) and (max-width: 767px) {
-  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block:nth-child(3n+4) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(3n+4) {
     clear: none;
   }
 }
 
-.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field--name-field-block-image {
-  float: left;
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block .resource_image {
   margin: 0 32px 0 0;
 }
 
-.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field {
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block div[class*='resource_'] {
   font-size: 24px;
   color: #999999;
   font-weight: 300;
   line-height: 30px;
 }
 
-.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field--name-field-block-link {
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block .resource_title {
   color: #4383cc;
 }
 
@@ -515,7 +521,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   background-position: -139px -11px;
 }
 
-.resources-block a {
+.resources-block .row + a {
   position: absolute;
   top: 0;
   display: block;
@@ -790,5 +796,51 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 }
 
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
+.homepage-resources-wrapper .resources-block .resource_image,
+.block-resource-type-title-block .resources-block .resource_image {
+  background: url("../../../images/resources_home_sprite.png") no-repeat;
+  width: 69px;
+  height: 68px;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.books,
+.block-resource-type-title-block .resources-block .resource_image.books {
+  background-position: 0 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.audio_video,
+.block-resource-type-title-block .resources-block .resource_image.audio_video {
+  background-position: -223px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.govt_archives,
+.block-resource-type-title-block .resources-block .resource_image.govt_archives {
+  background-position: -481px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.journal_and_thesis,
+.block-resource-type-title-block .resources-block .resource_image.journal_and_thesis {
+  background-position: -61px 0px;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.manuscripts,
+.block-resource-type-title-block .resources-block .resource_image.manuscripts {
+  background-position: -566px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.maps,
+.block-resource-type-title-block .resources-block .resource_image.maps {
+  background-position: -395px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.museum,
+.block-resource-type-title-block .resources-block .resource_image.museum {
+  background-position: -142px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.newspaper_archives,
+.block-resource-type-title-block .resources-block .resource_image.newspaper_archives {
+  background-position: -308px 0;
+}
 
 /*# sourceMappingURL=components.css.map */

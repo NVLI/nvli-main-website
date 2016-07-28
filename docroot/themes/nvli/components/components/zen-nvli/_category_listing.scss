@@ -17,11 +17,14 @@
       padding: 24px 0;
       border: 0;
       margin: 0;
+      display: inline-block;
+      width: 100%;
     }
 
     .resource_title {
       font-size: font-size(xl);
       line-height: 30px;
+      margin: 20px 0 0;
     }
 
     .resource_image {
