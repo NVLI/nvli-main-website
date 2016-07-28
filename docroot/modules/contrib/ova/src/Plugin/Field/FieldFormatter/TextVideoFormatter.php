@@ -175,7 +175,7 @@ class TextVideoFormatter extends FormatterBase implements ContainerFactoryPlugin
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = array();
-    $default_elements == array();
+    $default_elements = array();
     $video_items = array();
     $ext = 'mp4';
     foreach ($items as $delta => $item) {
