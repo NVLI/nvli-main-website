@@ -208,6 +208,7 @@ class TextAudioFormatter extends FormatterBase implements ContainerFactoryPlugin
       '#player_extension' => $ext,
       '#player_attributes' => $this->getSettings(),
       '#player_image_path' => $default_image_path,
+      '#entity' => $items->getEntity(),
     );
     if (isset($video_uri['value']) && ($this->getSetting('annotations') == 0)) {
       $elements[] = $default_elements + array(
@@ -219,7 +220,6 @@ class TextAudioFormatter extends FormatterBase implements ContainerFactoryPlugin
     elseif ($this->getSetting('annotations') == 1) {
       if (count($video_items)) {
         $elements[] = $default_elements + array(
-          '#entity' => $items->getEntity(),
           '#attached' => array(
             'library' => array('ova/ova_audio_annotation'),
           ),

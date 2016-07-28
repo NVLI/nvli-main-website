@@ -197,6 +197,7 @@ class TextVideoFormatter extends FormatterBase implements ContainerFactoryPlugin
       '#items' => $video_items,
       '#player_extension' => $ext,
       '#player_attributes' => $this->getSettings(),
+      '#entity' => $items->getEntity(),
     );
     if (isset($video_uri['value']) && ($this->getSetting('annotations') == 0)) {
       $elements[] = $default_elements + array(
@@ -208,7 +209,6 @@ class TextVideoFormatter extends FormatterBase implements ContainerFactoryPlugin
     elseif ($this->getSetting('annotations') == 1) {
       if(count($video_items)) {
         $elements[] = $default_elements + array(
-          '#entity' => $items->getEntity(),
           '#attached' => array(
             'library' => array('ova/ova_video_annotation'),
           ),
