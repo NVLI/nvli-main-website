@@ -32,10 +32,8 @@ class EntityDetail {
       $title = $node->get('title')->value;
       $language = $node->get('field_language')->value;
       $rating = $node->get('field_rating')->rating;
-      $harvest_type = $node->get('field_term_ref_harvest_type')->target_id;
-      $harvest_name = $this->get_term_name($harvest_type);
-      $resource_type = $node->get('field_term_ref_resource_type')->target_id;
-      $resource_name = $this->get_term_name($resource_type);
+      $harvest_type = $node->get('field_harvest_type')->value;
+      $resource_type = $node->get('field_resource_type')->value;
       $tag = $node->get('field_term_ref_tags')->getValue();
       foreach ($tag as $key) {
         $tags = $key['target_id'];
@@ -43,17 +41,22 @@ class EntityDetail {
       }
       $short_url = $node->get('field_text_plain_single_1')->value;
       $fid = $node->get('field_thumb')->target_id;
-      $file = \Drupal\file\Entity\File::load($fid);
-      $path = $file->getFileUri();
-      $url = file_create_url($path);
+      if (!empty($fid)) {
+        $file = \Drupal\file\Entity\File::load($fid);
+        $path = $file->getFileUri();
+        $url = file_create_url($path);
+      }
+      else {
+        $url = '';
+      }
     }
     $results = array(
       'entity_id' => !empty($entity_id) ? $entity_id : '',
       'node_title' => !empty($title) ? $title : '',
       'language' => !empty($language) ? $language : '',
       'rating' => !empty($rating) ? $rating : '',
-      'source' => !empty($harvest_name) ? $harvest_name : '',
-      'type' => !empty($resource_name) ? $resource_name : '',
+      'source' => !empty($harvest_type) ? $harvest_type : '',
+      'type' => !empty($resource_type) ? $resource_type : '',
       'tags' => !empty($tag_name) ? $tag_name : '',
       'short_url' => !empty($short_url) ? $short_url : '',
       'image_url' => !empty($url) ? $url : '',

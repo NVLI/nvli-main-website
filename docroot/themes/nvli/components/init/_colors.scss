@@ -18,11 +18,15 @@ $chroma: add-colors((
   black:                  #000,
   grey-dark:              ('black' lighten 40%), // #666
   'grey':                 ('black' lighten 60%), // #999
+  grey-medium:          ('black' lighten 50%),
   grey-light:             ('black' lighten 80%), // #ccc
   grey-extra-light:       ('black' lighten 93.33%), // #eee
   white:                  #fff,
-
-  blue:                   #0072b9,
+  resource-bg:            #f2f2f2,
+  footer-bg:              #4a90e2,
+  title-color:            #4a90e2,
+  p-color:                #262626,
+  blue:                   #4383cc,
   red:                    #c00,
   yellow:                 #fd0,
 ));

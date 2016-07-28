@@ -1,0 +1,12 @@
+# Define the menu links for this module
+
+entity.annotation_store_entity.collection:
+  title: 'Annotation Store Listing'
+  route_name: entity.annotation_store_entity.collection
+  description: 'List Annotation Store'
+  weight: 10
+annotation_store_entity.admin.structure.settings:
+  title: NVLI Resource Annotation Settings
+  description: 'Configure Annotation Store entity'
+  route_name:  annotation_store.annotation_store_entity_settings
+  parent: system.admin_structure

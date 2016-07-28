@@ -1,0 +1,22 @@
+# Define the 'local' links for the module
+
+annotation_store.settings_tab:
+  route_name: annotation_store.annotation_store_entity_settings
+  title: Settings
+  base_route: annotation_store.annotation_store_entity_settings
+
+annotation_store.view:
+  route_name: entity.annotation_store_entity.canonical
+  base_route: entity.annotation_store_entity.canonical
+  title: View
+
+annotation_store.page_edit:
+  route_name: entity.annotation_store_entity.edit_form
+  base_route: entity.annotation_store_entity.canonical
+  title: Edit
+
+annotation_store.delete_confirm:
+  route_name:  entity.annotation_store_entity.delete_form
+  base_route:  entity.annotation_store_entity.canonical
+  title: Delete
+  weight: 10

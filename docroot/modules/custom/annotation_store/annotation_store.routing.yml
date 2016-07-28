@@ -1,0 +1,57 @@
+# This file brings everything together. Very nifty!
+
+# Route name can be used in several place (links, redirects, local actions etc.)
+entity.annotation_store_entity.canonical:
+  path: '/annotation_store_entity/{annotation_store_entity}'
+  defaults:
+  # Calls the view controller, defined in the annotation of the solr annotation entity
+    _entity_view: 'annotation_store_entity'
+    _title: 'annotation Store Content'
+  requirements:
+  # Calls the access controller of the entity, $operation 'view'
+    _entity_access: 'annotation_store_entity.view'
+
+entity.annotation_store_entity.collection:
+  path: '/annotation_store_entity/list'
+  defaults:
+  # Calls the list controller, defined in the annotation of the solr annotation entity.
+    _entity_list: 'annotation_store_entity'
+    _title: 'annotation Store List'
+  requirements:
+  # Checks for permission directly.
+    _permission: 'view annotation Store entity'
+
+entity.annotation_store_entity.add_form:
+  path: '/annotation_store_entity/add'
+  defaults:
+  # Calls the form.add controller, defined in the solr annotation entity.
+    _entity_form: annotation_store_entity.add
+    _title: 'Add annotation Store'
+  requirements:
+    _entity_create_access: 'annotation_store_entity'
+
+entity.annotation_store_entity.edit_form:
+  path: '/annotation_store_entity/{annotation_store_entity}/edit'
+  defaults:
+  # Calls the form.edit controller, defined in the solr annotation entity.
+    _entity_form: annotation_store_entity.edit
+    _title: 'Edit annotation Store'
+  requirements:
+    _entity_access: 'annotation_store_entity.edit'
+
+entity.annotation_store_entity.delete_form:
+  path: '/annotation_store_entity/{annotation_store_entity}/delete'
+  defaults:
+    # Calls the form.delete controller, defined in the solr annotation entity.
+    _entity_form: annotation_store_entity.delete
+    _title: 'Delete annotation Store'
+  requirements:
+    _entity_access: 'annotation_store_entity.delete'
+
+annotation_store.annotation_store_entity_settings:
+  path: 'admin/structure/annotation_store_entity_settings'
+  defaults:
+    _form: '\Drupal\annotation_store\Form\AnnotationStoreSettingsForm'
+    _title: 'annotation Store Settings'
+  requirements:
+    _permission: 'administer solr annotation entity'

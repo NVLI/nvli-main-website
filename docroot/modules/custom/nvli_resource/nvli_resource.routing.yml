@@ -1,0 +1,68 @@
+# This file brings everything together. Very nifty!
+
+# Route name can be used in several place (links, redirects, local actions etc.)
+entity.nvli_resource_entity.canonical:
+  path: '/nvli_resource_entity/{nvli_resource_entity}'
+  defaults:
+  # Calls the view controller, defined in the resource of the Nvli resource entity
+    _entity_view: 'nvli_resource_entity'
+    _title: 'NVLI Resource Content'
+  requirements:
+  # Calls the access controller of the entity, $operation 'view'
+    _entity_access: 'nvli_resource_entity.view'
+
+entity.nvli_resource_entity.collection:
+  path: '/nvli_resource_entity/list'
+  defaults:
+  # Calls the list controller, defined in the Resource of the Nvli Resource entity.
+    _entity_list: 'nvli_resource_entity'
+    _title: 'NVLI Resource List'
+  requirements:
+  # Checks for permission directly.
+    _permission: 'view NVLI Resource entity'
+
+entity.nvli_resource_entity.add_form:
+  path: '/nvli_resource_entity/add'
+  defaults:
+  # Calls the form.add controller, defined in the nvli resource entity.
+    _entity_form: nvli_resource_entity.add
+    _title: 'Add NVLI Resource'
+  requirements:
+    _entity_create_access: 'nvli_resource_entity'
+
+entity.nvli_resource_entity.edit_form:
+  path: '/nvli_resource_entity/{nvli_resource_entity}/edit'
+  defaults:
+  # Calls the form.edit controller, defined in the Nvli Resource entity.
+    _entity_form: nvli_resource_entity.edit
+    _title: 'Edit NVLI Resource'
+  requirements:
+    _entity_access: 'nvli_resource_entity.edit'
+
+entity.nvli_resource_entity.delete_form:
+  path: '/nvli_resource_entity/{nvli_resource_entity}/delete'
+  defaults:
+    # Calls the form.delete controller, defined in the Nvli Resource entity.
+    _entity_form: nvli_resource_entity.delete
+    _title: 'Delete NVLI Resource'
+  requirements:
+    _entity_access: 'nvli_resource_entity.delete'
+
+nvli_resource.nvli_resource_entity_settings:
+  path: 'admin/structure/nvli_resource_entity_settings'
+  defaults:
+    _form: '\Drupal\nvli_resource\Form\NvliResourceSettingsForm'
+    _title: 'NVLI Resource Settings'
+  requirements:
+    _permission: 'administer nvli resource entity'
+
+nvli_resource.aws_credential_form:
+  path: '/admin/config/nvli_resource/awscredential'
+  defaults:
+    _form: '\Drupal\nvli_resource\Form\AwsCredentialForm'
+    _title: 'AwsCredentialForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
