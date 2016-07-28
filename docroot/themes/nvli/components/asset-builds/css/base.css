@@ -57,6 +57,7 @@ template,
 a {
   color: #4383cc;
   -webkit-text-decoration-skip: objects;
+  text-decoration: none;
 }
 
 :visited {
@@ -96,6 +97,8 @@ a:hover {
 h1 {
   font-size: 32px;
   line-height: 48px;
+  color: #4383cc;
+  font-weight: 300;
   margin-top: 24px;
   margin-bottom: 24px;
 }
@@ -328,6 +331,8 @@ html [type='button'],
 [type='submit'] {
   -moz-appearance: button;
   -webkit-appearance: button;
+  color: #4383cc;
+  border-color: #4383cc;
 }
 
 .button,

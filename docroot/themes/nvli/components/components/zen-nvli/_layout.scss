@@ -20,4 +20,17 @@
   }
 }
 
+.layout-3col__right-sidebar {
+  @media (min-width: 999px) {
+    @include margin-top(1, xxl);
+  }
 
+  h2 {
+    font-size: font-size(l);
+    color: color(grey-medium);
+  }
+}
+
+body:not(.is-path-frontpage) .layout-3col {
+  padding: 0 112px;
+}
