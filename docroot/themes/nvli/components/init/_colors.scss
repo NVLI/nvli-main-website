@@ -18,6 +18,7 @@ $chroma: add-colors((
   black:                  #000,
   grey-dark:              ('black' lighten 40%), // #666
   'grey':                 ('black' lighten 60%), // #999
+  grey-medium:          ('black' lighten 50%),
   grey-light:             ('black' lighten 80%), // #ccc
   grey-extra-light:       ('black' lighten 93.33%), // #eee
   white:                  #fff,

@@ -8,6 +8,10 @@
 /* BORDER RADIUS MIXIN */
 /* MIXIN FOR MULTILINE ELLIPSIS */
 /* MIXIN FOR MULTILINE ELLIPSIS */
+/* MIXIN FOR PLACEHOLDER */
+/* MIXIN FOR PLACEHOLDER */
+/* MIXIN FOR SEARCH BLOCK */
+/* MIXIN SEARCH BLOCK */
 /* 
  * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
  * @author Shruti 
@@ -31,15 +35,199 @@
   }
 }
 
+@media (min-width: 999px) {
+  .layout-3col__right-sidebar {
+    margin-top: 24px;
+  }
+}
+
+.layout-3col__right-sidebar h2 {
+  font-size: 20px;
+  color: gray;
+}
+
+body:not(.is-path-frontpage) .layout-3col {
+  padding: 0 112px;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL STYLE FOR CATEGORY LISTING PAGES
+ * @author Shruti 
+ */
+.is-path-list h1 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.is-path-list .new-custom-search-form label {
+  display: none;
+}
+
+.is-path-list .new-custom-search-form .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list .new-custom-search-form .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .new-custom-search-form .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .new-custom-search-form .form-item :-ms-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list .new-custom-search-form input {
+  border-radius: 4px;
+  padding: 0 20px;
+  border: 1px solid #cccccc;
+  line-height: 40px;
+  float: left;
+}
+
+.is-path-list .new-custom-search-form input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.is-path-list .new-custom-search-form input[type='submit'] {
+  color: #fff;
+  background: #4383cc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+.is-path-list .new-custom-search-form .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0;
+}
+
+.is-path-list .new-custom-search-form .form-item {
+  max-width: 100%;
+}
+
+.is-path-list .new-custom-search-form .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list .new-custom-search-form .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .new-custom-search-form .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .new-custom-search-form .form-item :-ms-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list .item-list {
+  clear: both;
+  padding: 30px 0 0;
+}
+
+.is-path-list .item-list li {
+  list-style: none;
+  padding: 16px 0;
+  margin: 0;
+}
+
+.is-path-list .item-list li:last-child {
+  border-bottom: 0;
+}
+
+.is-path-list .item-list .row div {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
+  color: #808080;
+}
+
+.is-path-list .item-list .row .title a {
+  font-weight: bold;
+}
+
+.resources-block {
+  position: relative;
+}
+
+.resources-block .row {
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  padding: 20px 32px;
+  margin: 16px 0;
+}
+
+.resources-block .resource_title {
+  color: #4383cc;
+}
+
+.resources-block .resource_image {
+  background: url("../../../images/iconsprite.png") no-repeat;
+  float: left;
+  width: 27px;
+  height: 27px;
+  margin: 0 8px 0 0;
+}
+
+.resources-block .resource_image.books {
+  background-position: -13px -11px;
+}
+
+.resources-block .resource_image.audioviusals {
+  background-position: -107px -11px;
+}
+
+.resources-block .resource_image.government_archives {
+  background-position: -203px -11px;
+}
+
+.resources-block .resource_image.journals {
+  background-position: -236px -11px;
+}
+
+.resources-block .resource_image.manuscripts {
+  background-position: -43px -11px;
+}
+
+.resources-block .resource_image.maps {
+  background-position: -171px -11px;
+}
+
+.resources-block .resource_image.musuem_artefacts {
+  background-position: -72px -11px;
+}
+
+.resources-block .resource_image.newspaper_articles {
+  background-position: -139px -11px;
+}
+
+.resources-block a {
+  position: absolute;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
 /* 
  * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
  * @author Shruti 
  */
 header {
   background: #fff;
+  border-bottom: 1px solid #cccccc;
+  float: left;
+  width: 100%;
 }
 
 header.sticky-header {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.28);
   position: fixed;
   top: 0;
   width: 100%;
@@ -49,7 +237,6 @@ header.sticky-header {
 
 div#block-nvli-branding {
   float: left;
-  width: 100%;
   padding: 14px 24px;
 }
 
@@ -71,8 +258,30 @@ div#block-nvli-branding.sticky-branding {
 .site-name a {
   color: #999999;
   font-size: 24px;
-  text-decoration: none;
   font-weight: 300;
+}
+
+div#block-userlanguageblock {
+  float: right;
+  margin: 23px 10px;
+}
+
+div#block-userlanguageblock p {
+  margin: 0 5px;
+}
+
+div#block-userlanguageblock span {
+  margin: 0 5px;
+  color: #666666;
+}
+
+div#block-userlanguageblock span img {
+  width: 1vw;
+  margin: 0 3px;
+}
+
+div#block-userlanguageblock span.user-dropdown img:first-child {
+  width: 2vw;
 }
 
 /* 
@@ -126,7 +335,6 @@ footer.footer nav h2,
 footer.footer nav ul li a {
   font-size: 18px;
   color: #000;
-  text-decoration: none;
   line-height: 28px;
 }
 
@@ -154,6 +362,8 @@ footer.footer #block-followus-2 {
  */
 .is-path-frontpage .homepage-banner-wrapper {
   background: #fff;
+  float: left;
+  width: 100%;
 }
 
 .is-path-frontpage .layout-3col__full {
@@ -232,10 +442,6 @@ footer.footer #block-followus-2 {
   line-height: 30px;
 }
 
-.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field a {
-  text-decoration: none;
-}
-
 .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .block .field--name-field-block-link {
   color: #4383cc;
 }
@@ -286,22 +492,63 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 
 #block-customsearchblock-2 {
   position: absolute;
-  top: 70px;
+  top: 90px;
   left: 0;
   width: 100%;
   text-align: center;
   z-index: 1;
 }
 
+#block-customsearchblock-2 #new-custom-search-form {
+  display: inline-block;
+  margin: 0 36.1%;
+}
+
 #block-customsearchblock-2 #new-custom-search-form label {
   display: none;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item :-ms-input-placeholder {
+  color: #999999;
 }
 
 #block-customsearchblock-2 #new-custom-search-form input {
   border-radius: 4px;
   padding: 0 20px;
-  line-height: 60px;
-  border: 0;
+  border: 1px solid #cccccc;
+  line-height: 40px;
+  float: left;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input[type='submit'] {
+  color: #fff;
+  background: #4383cc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0;
 }
 
 #block-customsearchblock-2.sticky-search-header {
@@ -311,88 +558,91 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 
 #block-customsearchblock-2.sticky-search-header #new-custom-search-form {
   float: right;
-  margin: 10px 20px 0 0;
+  margin: 20px 20px 0 0;
 }
 
-#block-customsearchblock-2.sticky-search-header #new-custom-search-form input {
-  border: 1px solid #999999;
-  line-height: 40px;
-}
-
-#block-customsearchblock-2.sticky-search-header .form-item {
-  float: left;
-  max-width: 250px;
-  margin: 0 10px 0 0;
-}
-
-#block-indiasancientpast-2 {
+#block-indiasancientpast-2,
+#block-indiasancientpast-3 {
   max-width: 68%;
   margin: 30px 16%;
   display: inline-block;
 }
 
 @media (max-width: 979px) {
-  #block-indiasancientpast-2 {
+  #block-indiasancientpast-2,
+  #block-indiasancientpast-3 {
     max-width: 100%;
     margin: 30px 0;
   }
 }
 
-#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+#block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
   float: left;
   width: 56%;
 }
 
 @media only screen and (max-width: 450px) {
-  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+  #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
     width: 100%;
   }
 }
 
 @media only screen and (min-width: 451px) and (max-width: 767px) {
-  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+  #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
     width: 47%;
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-featured-cont {
+#block-indiasancientpast-2 .field--name-field-featured-cont,
+#block-indiasancientpast-3 .field--name-field-featured-cont {
   float: left;
 }
 
 @media only screen and (min-width: 450px) {
-  #block-indiasancientpast-2 .field--name-field-featured-cont {
+  #block-indiasancientpast-2 .field--name-field-featured-cont,
+  #block-indiasancientpast-3 .field--name-field-featured-cont {
     margin: 0 35px 0 0;
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-featured-cont img {
+#block-indiasancientpast-2 .field--name-field-featured-cont img,
+#block-indiasancientpast-3 .field--name-field-featured-cont img {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 }
 
 #block-indiasancientpast-2 .field--name-field-content-title,
-#block-indiasancientpast-2 .field--name-field-content-author {
+#block-indiasancientpast-2 .field--name-field-content-author,
+#block-indiasancientpast-3 .field--name-field-content-title,
+#block-indiasancientpast-3 .field--name-field-content-author {
   color: #4a90e2;
   text-transform: capitalize;
 }
 
-#block-indiasancientpast-2 .field--name-field-content-title {
+#block-indiasancientpast-2 .field--name-field-content-title,
+#block-indiasancientpast-3 .field--name-field-content-title {
   font-size: 32px;
   font-weight: 300;
   margin: 0 0 10px;
 }
 
 @media only screen and (max-width: 450px) {
-  #block-indiasancientpast-2 .field--name-field-content-title {
+  #block-indiasancientpast-2 .field--name-field-content-title,
+  #block-indiasancientpast-3 .field--name-field-content-title {
     margin: 10px 0;
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-content-author {
+#block-indiasancientpast-2 .field--name-field-content-author,
+#block-indiasancientpast-3 .field--name-field-content-author {
   font-size: 24px;
   font-weight: 500;
 }
 
-#block-indiasancientpast-2 .field--name-body {
+#block-indiasancientpast-2 .field--name-body,
+#block-indiasancientpast-3 .field--name-body {
   overflow: hidden;
   max-height: 157px;
   display: -webkit-box;
@@ -402,7 +652,8 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   margin: 34px 0;
 }
 
-#block-indiasancientpast-2 .field--name-body p {
+#block-indiasancientpast-2 .field--name-body p,
+#block-indiasancientpast-3 .field--name-body p {
   font-size: 22px;
   margin: 0;
   font-weight: 300;
@@ -410,17 +661,22 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   color: #262626;
 }
 
-#block-indiasancientpast-2 .field--name-field-block-link a {
+#block-indiasancientpast-2 .field--name-field-block-link a,
+#block-indiasancientpast-3 .field--name-field-block-link a {
   border-radius: 8px;
   font-size: 24px;
   border: 2px solid #4383cc;
-  text-decoration: none;
   padding: 18px;
   margin: 29px 0 0;
   display: inline-block;
   width: 280px;
   max-width: 100%;
   text-align: center;
+}
+
+#block-indiasancientpast-3 {
+  max-width: 100%;
+  margin: 30px 0;
 }
 
 /*# sourceMappingURL=components.css.map */
