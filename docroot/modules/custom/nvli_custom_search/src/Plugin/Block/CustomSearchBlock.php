@@ -36,7 +36,7 @@ class CustomSearchBlock extends BlockBase {
     $keyword = \Drupal::request()->get('keyword');
     $build['#cache']['max-age'] = 0;
     $build['form'] = \Drupal::formBuilder()->getForm('Drupal\nvli_custom_search\Form\CustomSearchForm', $keyword);
-  return $build;
+    return $build;
 
   }
 }

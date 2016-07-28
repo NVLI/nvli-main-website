@@ -33,8 +33,8 @@ class HeaderSearchBlock extends BlockBase {
    */
   public function build() {
     $build = [];
-    $build = [];
     $build['form'] = \Drupal::formBuilder()->getForm('Drupal\nvli_custom_search\Form\HeaderSearchForm');
     return $build;
   }
+  
 }
