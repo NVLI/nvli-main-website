@@ -11,8 +11,8 @@ base:
       # separate print stylesheets is bad for front-end performance.
       components/asset-builds/css/base.css: {}
   # If this library had JavaScript you could specify it like this:
-  # js:
-  #   js/script.js: {}
+  js:
+    js/script.js: {}
   dependencies:
     - nvli/clearfix
     - nvli/visually-hidden
@@ -182,3 +182,17 @@ wireframe:
   css:
     component:
       components/asset-builds/css/wireframe.css: {}
+
+# This is a temporary library that holds all of Zen 7.x-6.x's component styles.
+# @TODO: Finish porting all of these styles to proper Twig components.
+components:
+  css:
+    component:
+      components/asset-builds/css/components.css: {}
+
+script:
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

@@ -1,0 +1,241 @@
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HOMEPAGE
+ * @author Shruti 
+ */
+
+.is-path-frontpage {
+  .homepage-banner-wrapper {
+    background: color(white);    
+  }
+
+  .layout-3col__full {
+    padding: 0 18px;
+    @media only screen and (max-width: 767px) {
+      padding: 0;
+    }
+
+    .homepage-resources-wrapper .block {
+      @include border-radius(8px);
+      float: left;
+      width: 32.69%;
+      padding: 33px 40px 30px;
+      margin: 6px 12px 6px 0;
+      background: color(resource-bg);
+
+      &:nth-child(3n+3) {
+        @media only screen and (min-width: 768px) {
+          margin: 6px 0;
+        }
+      }
+
+      @media only screen and (min-width: 980px) and (max-width: 1024px) {
+        width: 32.5%;
+      }
+      @media only screen and (min-width: 768px) and (max-width: 979px) {
+        width: 32%;
+      }
+      @media only screen and (min-width: 451px) and (max-width: 767px) {
+        width: 49%;
+        margin: 6px 2% 6px 0;
+
+        &:nth-child(2n + 1) {
+          margin: 6px 0;
+        }
+      }
+      @media only screen and (max-width: 450px) {
+        width: 100%;
+        margin: 6px 0;
+      }
+
+      &:nth-child(3n+4) {
+        clear: left;
+        @media only screen and (min-width: 451px) and (max-width: 767px) {
+          clear: none;
+        }
+      }
+
+      .field--name-field-block-image {
+        float: left;
+        margin: 0 32px 0 0;
+      }
+
+      .field {
+        font-size: font-size(xl);
+        color: color('grey');
+        font-weight: weight(light);
+        line-height: $base-line-height + 6;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      .field--name-field-block-link {
+        color: color(blue);
+      }
+    }
+  }
+
+  .layout-3col__full .block {
+    .field--name-field-block-image img {
+      width: 4.3vw;
+      @media only screen and (max-width: 450px) {
+        width: 10vw;
+      }
+    }
+  }
+}
+
+div#block-homepagebanner-2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+
+  video {
+    width: 100%;
+  }
+
+  .field--type-text-with-summary .banner-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: color(white);
+    width: 100%;
+    text-align: center;
+    font-size: font-size(xl);
+    margin: 20px 0 0;
+    font-weight: weight(light);
+
+    p {
+      margin: 15px 0;
+
+      &:nth-child(2) {
+        font-size: font-size(xxl) + 8;
+      }
+    }
+  }
+}
+
+#block-customsearchblock-2 {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+
+  #new-custom-search-form {
+    label {
+      display: none;
+    }
+
+    input {
+      @include border-radius(4px);
+      padding: 0 20px;
+      line-height: 60px;
+      border: 0;
+    }
+  }
+
+  &.sticky-search-header {
+    position: relative;
+    top: 0;
+    
+    #new-custom-search-form {
+      float: right;
+      margin: 10px 20px 0 0;
+
+      input {
+        border: 1px solid color('grey');
+        line-height: 40px;
+      }          
+    }
+    .form-item {
+      float: left;
+      max-width: 250px;
+      margin: 0 10px 0 0;
+    }
+  }
+}
+
+#block-indiasancientpast-2 {
+  max-width: 68%;
+  margin: 30px 16%;
+  display: inline-block;
+  @media (max-width: 979px) {
+    max-width: 100%;
+    margin: 30px 0;
+  }
+
+  .field:not(.field--name-field-featured-cont) {
+    float: left;
+    width: 56%;
+    @media only screen and (max-width: 450px) {
+      width: 100%;
+    }
+    @media only screen and (min-width: 451px) and (max-width: 767px) {
+      width: 47%;
+    }
+  }
+
+  .field--name-field-featured-cont {
+    float: left;
+    @media only screen and (min-width: 450px) {
+      margin: 0 35px 0 0;
+    }
+
+    img {
+      @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, .28));
+    }
+  }
+
+  .field--name-field-content-title,
+  .field--name-field-content-author {
+    color: color(title-color);
+    text-transform: capitalize;
+  }
+
+  .field--name-field-content-title {
+    font-size: font-size(xxl);
+    font-weight: weight(light);
+    margin: 0 0 10px;
+    @media only screen and (max-width: 450px) {
+      margin: 10px 0;
+    }
+  }
+
+  .field--name-field-content-author {
+    font-size: font-size(xl);
+    font-weight: weight(medium);
+  }
+
+  .field--name-body {
+    @include ellipsis ($max-height: 157px, $lines: 5);
+    margin: 34px 0;
+
+    p {
+      font-size: font-size(l) + 2;
+      margin: 0;
+      font-weight: weight(light);
+      line-height: $base-font-size + 10;
+      color: color(p-color);
+    }
+  }
+
+  .field--name-field-block-link {
+    a {
+      @include border-radius(8px);
+      font-size: font-size(xl);
+      border: 2px solid color(blue);
+      text-decoration: none;
+      padding: 18px;
+      margin: 29px 0 0;
+      display: inline-block;
+      width: 280px;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+}

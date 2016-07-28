@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains Drupal\nvli_custom_search\Plugin\Block\NewSearchBlock.
+ * Contains Drupal\nvli_custom_search\Plugin\Block\CustomSearchBlock.
  */
 
 namespace Drupal\nvli_custom_search\Plugin\Block;
@@ -19,13 +19,13 @@ use Drupal\Core\Block\BlockBase;
  *   admin_label = @Translation("Custom Search Block"),
  * )
  */
-class NewSearchBlock extends BlockBase {
+class CustomSearchBlock extends BlockBase {
 
   /**
    * {@inheritdoc}
    */
   protected function blockAccess(AccountInterface $account) {
-    return AccessResult::allowedIfHasPermission($account, 'Configure Custom Search Block');
+    return AccessResult::allowedIfHasPermission($account, 'access content');
   }
 
   /**
