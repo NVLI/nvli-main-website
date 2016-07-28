@@ -127,6 +127,12 @@
 
 /* STYLES FOR HOMEPAGE & CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
 
+#block-indiasancientpast-2 {
+  .field--name-field-featured-tag {
+    display: none;    
+  }
+}
+
 #block-indiasancientpast-2,
 #block-indiasancientpast-3 {
   max-width: 68%;
