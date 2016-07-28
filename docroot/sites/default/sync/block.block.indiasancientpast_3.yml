@@ -1,0 +1,31 @@
+uuid: 5c3638ac-81a4-4cdc-8d48-e6e6343bc3f7
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:featured_content:9cf6841c-89c5-450b-af98-112d14e0ac7e'
+  module:
+    - block_content
+    - system
+  theme:
+    - nvli
+id: indiasancientpast_3
+theme: nvli
+region: content
+weight: -18
+provider: null
+plugin: 'block_content:9cf6841c-89c5-450b-af98-112d14e0ac7e'
+settings:
+  id: 'block_content:9cf6841c-89c5-450b-af98-112d14e0ac7e'
+  label: 'India''s Ancient Past'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/list/audio_video\r\n/list/books\r\n/list/govt_archives\r\n/list/journal_and_thesis\r\n/list/manuscripts\r\n/list/maps\r\n/list/museum\r\n/list/newspaper_archives"
+    negate: false
+    context_mapping: {  }
