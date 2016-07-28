@@ -4,14 +4,13 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.resource.field_audio_file_path
+    - field.field.node.resource.field_harvest_type
     - field.field.node.resource.field_image_file_path
     - field.field.node.resource.field_language
     - field.field.node.resource.field_pdf_file_path
     - field.field.node.resource.field_rating
     - field.field.node.resource.field_resource_type
     - field.field.node.resource.field_solr_docid
-    - field.field.node.resource.field_term_ref_harvest_type
-    - field.field.node.resource.field_term_ref_resource_type
     - field.field.node.resource.field_term_ref_tags
     - field.field.node.resource.field_text_plain_single_1
     - field.field.node.resource.field_thumb
@@ -28,14 +27,13 @@ content:
     weight: 100
 hidden:
   field_audio_file_path: true
+  field_harvest_type: true
   field_image_file_path: true
   field_language: true
   field_pdf_file_path: true
   field_rating: true
   field_resource_type: true
   field_solr_docid: true
-  field_term_ref_harvest_type: true
-  field_term_ref_resource_type: true
   field_term_ref_tags: true
   field_text_plain_single_1: true
   field_thumb: true

@@ -24,13 +24,12 @@ class Facet {
     $solr_client = \Drupal::service('custom_solr_search.server')->getSolrClient($solr_core);
     $url_components = custom_solr_search_get_url_components();
     $keyword = urldecode(end(explode('/', $url_components['path'])));
-    foreach ($url_components['facet_query'] as $filter) {
-      $keyword .= ' AND ' . urldecode($filter);
-    }
     // Initiate Solarium basic select query.
     $query = new SelectQuery();
     // Set search keyword.
     $query->setQuery($keyword);
+    // Set facet filter queries.
+    custom_solr_search_set_facet_filter($query, $url_components['facet_query']);
     // Set limit.
     $query->setRows(0);
 
@@ -64,7 +63,7 @@ class Facet {
       // Get facet fields result.
       $facet_fields = $result->facet_counts->facet_fields;
       $facets = [];
-      $url = $_SERVER['REQUEST_URI'];
+      $url = custom_solr_search_remove_url_pager($_SERVER['REQUEST_URI']);
       $append_query_string = (parse_url($url, PHP_URL_QUERY) != NULL) ? '&' : '?';
       foreach ($facet_fields as $field => $facet) {
         for ($i=0; $i< count($facet); $i+=2) {
@@ -72,7 +71,7 @@ class Facet {
             $facets[$field][] = array(
               'value' => $facet[$i],
               'count' => $facet[$i + 1],
-              'url' => $url . $append_query_string . '_facet_' . $facet_field_settings[$field] . '=' . $facet[$i],
+              'url' => $url . $append_query_string . '_facet_' . str_replace('_facet', '', $facet_field_settings[$field]) . '=' . $facet[$i],
             );
           }
         }

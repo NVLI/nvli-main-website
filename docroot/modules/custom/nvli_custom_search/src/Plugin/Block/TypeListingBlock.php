@@ -11,8 +11,10 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\custom_solr_search\FilterQuerySettings;
-use Drupal\Core\Url;
+use Drupal\Core\Link;
 use Drupal\nvli_custom_search\Controller;
+use Drupal\Core\Url;
+use Drupal\nvli_custom;
 
 /**
  * Provides a 'Resource Type Listing' block.
@@ -47,24 +49,32 @@ class TypeListingBlock extends BlockBase {
         // If keyword is empty rounting path will be different.
         if (empty($keyword)) {
           $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_page', array('resource_type' => $filterID));
-          $link[] = \Drupal::l(t($title), $url);
+          $render[] = array(
+            '#theme' => 'custom_resource_type_listing',
+            '#title' => $title,
+            '#resource_id' => $filterID,
+            '#resource_link' => $url,
+            '#cache' => array(
+              'max-age' => 0,
+            ),
+          );
         }
         else {
           $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_keyword_page', array('resource_type' => $filterID, 'keyword' => $keyword));
-          $link[] = \Drupal::l(t($title), $url);
+          $render[] = array(
+            '#theme' => 'custom_resource_type_listing',
+            '#title' => $title,
+            '#resource_id' => $filterID,
+            '#resource_link' => $url,
+            '#cache' => array(
+              'max-age' => 0,
+            ),
+          );
         }
       }
     }
 
-    $markup['search_results'] = array(
-      '#theme' => 'item_list',
-      '#items' => $link,
-      '#cache' => array(
-        'max-age' => 0,
-      ),
-      '#empty' => t('No search results found!'),
-    );
-    return $markup;
+    return $render;
   }
 
 }
