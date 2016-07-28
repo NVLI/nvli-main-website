@@ -1,0 +1,218 @@
+/* 
+ * THIS FILE CONTAINS ALL THE BLOCKS STYLES
+ * @author Shruti 
+ */
+
+/* STYLES FOR RIGHT HAND SIDEBAR BLOCKS STARTS HERE */
+
+/*c GENERIC RIGHT SIDEBAR STYLES STARTS HERE */
+
+.layout-3col__right-sidebar {
+  h2 {
+    font-size: font-size(l);
+    color: color(grey-medium);
+    margin: 0;
+    line-height: 20px;
+  }
+}
+
+/*c GENERIC RIGHT SIDEBAR STYLES ENDS HERE */
+
+/*** STYLES FOR CATEGORY LANDING PAGE - RHS RESOURCES BLOCK STARTS HERE ***/
+
+.resources-block {
+  position: relative;
+
+  .row {
+    @include border-radius(8px);
+    border: 1px solid color(grey-light);
+    padding: 20px 32px;
+    margin: 16px 0;
+  }
+
+  .resource_title {
+    color: color(blue);
+  }
+
+  .resource_image {
+    background: url('../../../images/iconsprite.png') no-repeat;
+    float: left;
+    width: 27px;
+    height: 27px;
+    margin: 0 8px 0 0;
+
+    &.books {
+      background-position: -13px -11px;
+    }
+
+    &.audio_video {
+      background-position: -107px -11px;
+    }
+
+    &.govt_archives {
+      background-position: -203px -11px;
+    }
+
+    &.journal_and_thesis {
+      background-position: -236px -11px;
+    }
+
+    &.manuscripts {
+      background-position: -43px -11px;
+    }
+
+    &.maps {
+      background-position: -171px -11px;
+    }
+
+    &.museum {
+      background-position: -72px -11px;
+    }
+
+    &.newspaper_archives {
+      background-position: -139px -11px;
+    }
+  }
+
+  a {
+    position: absolute;
+    top: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* STYLES FOR CATEGORY LANDING PAGE - RHS RESOURCES BLOCK ENDS HERE */
+
+/*** STYLES FOR RIGHT HAND SIDEBAR BLOCKS STARTS HERE ***/
+
+/* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK STARTS HERE */
+
+#block-customsearchblock-2 {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+
+  #new-custom-search-form {
+    @include search-block;
+    display: inline-block;
+    margin: 0 36.1%;
+  }
+
+  &.sticky-search-header {
+    position: relative;
+    top: 0;
+
+    #new-custom-search-form {
+      float: right;
+      margin: 20px 20px 0 0;
+    }
+  }
+}
+
+/* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK ENDS HERE */
+
+/* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK STARTS HERE */
+
+#block-customsearchblock-3 {
+  @include search-block;
+  float: right;
+  margin: 20px 20px 0 0;
+}
+/* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK ENDS HERE */
+
+/* STYLES FOR HOMEPAGE & CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
+
+#block-indiasancientpast-2,
+#block-indiasancientpast-3 {
+  max-width: 68%;
+  margin: 30px 16%;
+  display: inline-block;
+  @media (max-width: 979px) {
+    max-width: 100%;
+    margin: 30px 0;
+  }
+
+  .field:not(.field--name-field-featured-cont) {
+    float: left;
+    width: 56%;
+    @media only screen and (max-width: 450px) {
+      width: 100%;
+    }
+    @media only screen and (min-width: 451px) and (max-width: 767px) {
+      width: 47%;
+    }
+  }
+
+  .field--name-field-featured-cont {
+    float: left;
+    @media only screen and (min-width: 450px) {
+      margin: 0 35px 0 0;
+    }
+
+    img {
+      @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, .28));
+    }
+  }
+
+  .field--name-field-content-title,
+  .field--name-field-content-author {
+    color: color(title-color);
+    text-transform: capitalize;
+  }
+
+  .field--name-field-content-title {
+    font-size: font-size(xxl);
+    font-weight: weight(light);
+    margin: 0 0 10px;
+    @media only screen and (max-width: 450px) {
+      margin: 10px 0;
+    }
+  }
+
+  .field--name-field-content-author {
+    font-size: font-size(xl);
+    font-weight: weight(medium);
+  }
+
+  .field--name-body {
+    @include ellipsis ($max-height: 157px, $lines: 5);
+    margin: 34px 0;
+
+    p {
+      font-size: font-size(l) + 2;
+      margin: 0;
+      font-weight: weight(light);
+      line-height: $base-font-size + 10;
+      color: color(p-color);
+    }
+  }
+
+  .field--name-field-block-link {
+    a {
+      @include border-radius(8px);
+      font-size: font-size(xl);
+      border: 2px solid color(blue);
+      padding: 18px;
+      margin: 29px 0 0;
+      display: inline-block;
+      width: 280px;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+}
+/* STYLES FOR HOMEPAGE & CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
+
+/* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
+
+#block-indiasancientpast-3 {
+  max-width: 100%;
+  margin: 30px 0;
+}
+
+/* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */

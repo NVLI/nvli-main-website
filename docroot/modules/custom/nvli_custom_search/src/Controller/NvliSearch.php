@@ -94,11 +94,11 @@ class NvliSearch extends ControllerBase {
 
         }
       }
-    // Search form.
-    $markup['form'] = $this->formBuilder()->getForm('Drupal\nvli_custom_search\Form\CustomSearchForm', $keyword);
+
     $markup['search_results'] = array(
       '#theme' => 'item_list',
       '#items' => $render['result'],
+      '#title' => 'Popular '. $filterQuerySettings['label'],
       '#cache' => array(
         'max-age' => 0,
       ),
