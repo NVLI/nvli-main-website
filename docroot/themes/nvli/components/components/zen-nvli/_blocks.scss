@@ -213,6 +213,18 @@
 #block-indiasancientpast-3 {
   max-width: 100%;
   margin: 30px 0 0;
+
+  .field--name-field-featured-tag {
+    @include border-radius(4px);
+    position: absolute;
+    background: color(featured-bg);
+    color: color(white);
+    text-transform: uppercase;
+    padding: 0 5px;
+    max-width: 100px;
+    text-align: center;
+    font-size: 13px;
+  }
 }
 
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */

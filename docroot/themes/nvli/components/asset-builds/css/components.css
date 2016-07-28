@@ -773,6 +773,18 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   margin: 30px 0 0;
 }
 
+#block-indiasancientpast-3 .field--name-field-featured-tag {
+  border-radius: 4px;
+  position: absolute;
+  background: #f5a623;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0 5px;
+  max-width: 100px;
+  text-align: center;
+  font-size: 13px;
+}
+
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
 
 /*# sourceMappingURL=components.css.map */
