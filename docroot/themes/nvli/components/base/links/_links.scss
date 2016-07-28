@@ -20,6 +20,7 @@ a,
   color: color(link);
   // Remove gaps in links underline in iOS 8+ and Safari 8+.
   -webkit-text-decoration-skip: objects;
+  text-decoration: none;
 }
 
 // Any element can receive focus, but only links can be visited, so we can

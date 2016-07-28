@@ -6,3 +6,19 @@
  */
 
 
+/**
+ * Implements hook_theme().
+ */
+function nvli_custom_search_theme($existing, $type, $theme, $path) {
+  return array(
+    'custom_resource_type_listing' => array(
+      'variables' => array(
+        'title' => NULL,
+        'resource_id' => NULL,
+        'resource_link' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'custom_resource_type_listing',
+    ),
+  );
+}
