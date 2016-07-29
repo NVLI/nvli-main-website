@@ -18,6 +18,7 @@ function nvli_custom_theme($existing, $type, $theme, $path) {
         'title' => NULL,
         'count' => NULL,
         'resource_id' => NULL,
+        'resource_link' => NULL,
       ),
       'path' => $path . '/templates',
       'template' => 'resource-listing-block',

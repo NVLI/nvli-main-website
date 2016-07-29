@@ -156,7 +156,7 @@ class NvliHomepageListResource extends ResourceBase {
             $doc_id = $row->id;
             $results['resource'] = $this->entitydetail->get_nid($doc_id);
             $results['metadata'] = json_decode(json_encode($row), True);
-            $result[$label][] = $results;
+            $result[$key][] = $results;
           }
         }
       }

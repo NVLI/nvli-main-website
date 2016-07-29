@@ -3,6 +3,7 @@ description: 'Provides Resource content type and related configuration. Base bun
 type: module
 core: 8.x
 dependencies:
+  - block
   - block_content
   - field
   - file
@@ -15,6 +16,7 @@ dependencies:
   - ova
   - path
   - pathauto
+  - system
   - rest
   - taxonomy
   - user
