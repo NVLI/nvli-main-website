@@ -5,6 +5,7 @@ core: 8.x
 dependencies:
   - block
   - block_content
+  - comment
   - field
   - file
   - fivestar
@@ -16,8 +17,8 @@ dependencies:
   - ova
   - path
   - pathauto
-  - system
   - rest
+  - system
   - taxonomy
   - user
   - views

@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.mirador
+    - field.field.node.resource.field_annotation_resource_entity
     - field.field.node.resource.field_audio_file_path
     - field.field.node.resource.field_harvest_type
     - field.field.node.resource.field_image_file_path
@@ -32,6 +33,7 @@ content:
     third_party_settings: {  }
     type: mirador_text
 hidden:
+  field_annotation_resource_entity: true
   field_audio_file_path: true
   field_harvest_type: true
   field_language: true
