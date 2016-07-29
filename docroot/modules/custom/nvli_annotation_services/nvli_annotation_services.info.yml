@@ -1,0 +1,5 @@
+name: NVLI Annotation Services
+type: module
+description: Module for services for adding content and storing annotation in solr doc.
+core: 8.x
+package: nvli
