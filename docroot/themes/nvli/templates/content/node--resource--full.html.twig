@@ -96,9 +96,9 @@
       {{ content.field_term_ref_tags }}
     {% endif %}
 
-    {# Thubnail Image #}
     
-    <img src="{{ thumbnail_image }}" class="hello"/>
+    {# Thubnail Image #}
+    <a href="{{ thumbnail_image_link }}"><img src="{{ thumbnail_image_path }}" /></a>
 
     {# Solr Author. #}
     {% if solr_author %}
