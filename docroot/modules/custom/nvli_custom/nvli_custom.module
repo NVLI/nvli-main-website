@@ -80,7 +80,7 @@ function nvli_custom_preprocess_node(&$variables) {
 
     // Solr document object.
     $solr_document = $response['docs'][0];
-    $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImageManager($node);
+    $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
 
     if ($view_mode == 'full') {
       //echo "<pre>"; print_r();exit;
