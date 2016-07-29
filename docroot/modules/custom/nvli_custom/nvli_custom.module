@@ -53,3 +53,43 @@ function nvli_custom_mirador_metadata_alter(&$entity) {
     }
   }
 }
+
+/**
+ * Impkements hook_preprocess_node().
+ */
+function nvli_custom_preprocess_node(&$variables) {
+  
+  /** @var Drupal\node\Entity\Node $node */
+  $node = $variables['node'];
+  $view_mode = $variables['view_mode'];
+  $nid = $node->id();
+  $bundle = $node->bundle();
+
+  // Check for resource entity.
+  if ($bundle == 'resource') {
+    
+    // Fetch solr docid from node.
+    $field_solr_docid = $node->get('field_solr_docid')->getValue();
+    $solr_docid = $field_solr_docid[0]['value'];
+    $query_options =  '(id:"' . $solr_docid . '")';
+
+    // Fetch content form solr.
+    $response = \Drupal::service('custom_solr_search.search_all')->seachAll('', NULL, NULL, $query_options);
+    
+    // Solr document object.
+    $solr_document = $response['docs'][0];
+    $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
+  
+   // kint($thubnail_image);
+    if ($view_mode == 'full') {
+
+      $variables['thumbnail_image'] = $thumbnail_image;
+      
+      $variables['solr_author'] = is_array($solr_document->author) ? implode(', ', $solr_document->author) : $solr_document->author;
+      $variables['solr_description'] = $solr_document->description;
+      $variables['solr_public_url'] = is_array($solr_document->url) ? implode(', ', $solr_document->url) : $solr_document->url;
+      $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate;
+      $variables['solr_publisher'] = is_array($solr_document->publisher) ? implode(', ', $solr_document->publisher) : $solr_document->publisher;
+    } 
+  }
+}
