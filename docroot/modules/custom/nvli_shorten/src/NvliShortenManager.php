@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 
 class NvliShortenManager {
 
-  const API_BASE_URL = 'http://stage-nvli.iitb.ac.in';
+  const NVLI_SHORTEN_API_BASE_URL = 'http://stage-nvli.iitb.ac.in';
 
   /**
    * @param $url
@@ -17,7 +17,7 @@ class NvliShortenManager {
     $client = \Drupal::httpClient();
 
     try {
-      $request = $client->post(self::API_BASE_URL . '/api/shorten', [
+      $request = $client->post(self::NVLI_SHORTEN_API_BASE_URL . '/api/shorten', [
         'json' => ['url'=> $url]
       ]);
 
