@@ -1,0 +1,6 @@
+name: 'NVLI URL Shortener'
+type: module
+description: 'Url shortener integration for NVLI.'
+core: 8.x
+version: 8.x-1.0
+package: Custom
