@@ -1,0 +1,11 @@
+# All action links for this module
+
+annotation_store.annotation_store_entity_add:
+  # Which route will be called by the link
+  route_name: entity.annotation_store_entity.add_form
+  title: 'Add Annotation Store'
+
+  # Where will the link appear, defined by route name.
+  appears_on:
+    - entity.annotation_store_entity.collection
+    - entity.annotation_store_entity.canonical

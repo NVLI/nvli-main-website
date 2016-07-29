@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains nvli_resource.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function nvli_resource_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the nvli_resource module.
+    case 'help.page.nvli_resource':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module for storing Annotation Resource') . '</p>';
+      return $output;
+
+    default:
+  }
+}

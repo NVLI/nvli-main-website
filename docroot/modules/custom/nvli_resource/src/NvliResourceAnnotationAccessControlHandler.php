@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\annotation_store;
+namespace Drupal\nvli_resource;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityAccessControlHandler;
@@ -13,7 +13,7 @@ use Drupal\Core\Session\AccountInterface;
  *
  * @see \Drupal\comment\Entity\Comment.
  */
-class AnnotationStoreAccessControlHandler extends EntityAccessControlHandler {
+class NvliResourceAnnotationAccessControlHandler extends EntityAccessControlHandler {
 
   /**
    * {@inheritdoc}
@@ -24,13 +24,13 @@ class AnnotationStoreAccessControlHandler extends EntityAccessControlHandler {
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     switch ($operation) {
       case 'view':
-        return AccessResult::allowedIfHasPermission($account, 'view annotation store entity');
+        return AccessResult::allowedIfHasPermission($account, 'view nvli resource annotation entity');
 
       case 'edit':
-        return AccessResult::allowedIfHasPermission($account, 'edit annotation store entity');
+        return AccessResult::allowedIfHasPermission($account, 'edit nvli resource annotation entity');
 
       case 'delete':
-        return AccessResult::allowedIfHasPermission($account, 'delete annotation store entity');
+        return AccessResult::allowedIfHasPermission($account, 'delete nvli resource annotation entity');
     }
     return AccessResult::allowed();
   }
@@ -42,7 +42,7 @@ class AnnotationStoreAccessControlHandler extends EntityAccessControlHandler {
    * will be created during the 'add' process.
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermission($account, 'add annotation store entity');
+    return AccessResult::allowedIfHasPermission($account, 'add nvli resource annotation entity');
   }
 
 }

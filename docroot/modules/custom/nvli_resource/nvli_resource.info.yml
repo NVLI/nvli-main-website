@@ -1,0 +1,5 @@
+name: NVLI Resource
+type: module
+description: Module for storing Annotation Resource
+core: 8.x
+package: Custom
