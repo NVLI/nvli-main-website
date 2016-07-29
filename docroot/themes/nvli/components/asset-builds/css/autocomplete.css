@@ -37,7 +37,7 @@
 .autocomplete__list-item.is-selected, .autocomplete__list-item--is-selected,
 #autocomplete li.is-selected,
 #autocomplete .selected {
-  background: #0072b9;
+  background: #4383cc;
   color: #fff;
 }
 

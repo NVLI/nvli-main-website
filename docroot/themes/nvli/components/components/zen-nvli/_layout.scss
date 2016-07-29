@@ -1,0 +1,31 @@
+/* 
+ * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
+ * @author Shruti 
+ */
+
+
+.layout-center {
+  @media (min-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.layout-3col {
+  margin: 0 0 330px;
+  z-index: 1;
+  background: color(white);
+  @media (max-width: 767px) {
+    margin: 0;
+  }
+}
+
+.layout-3col__right-sidebar {
+  @media (min-width: 999px) {
+    @include margin-top(1, xxl);
+  }
+}
+
+body:not(.is-path-frontpage) .layout-3col {
+  padding: 0 112px;
+}

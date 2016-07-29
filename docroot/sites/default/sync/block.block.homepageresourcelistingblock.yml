@@ -1,0 +1,27 @@
+uuid: a480eaa1-b599-418e-9f56-7a300383c4fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - nvli_custom
+    - system
+  theme:
+    - bartik
+id: homepageresourcelistingblock
+theme: bartik
+region: content
+weight: -14
+provider: null
+plugin: homepage_resource_listing_block
+settings:
+  id: homepage_resource_listing_block
+  label: 'Homepage Resource Listing Block'
+  provider: nvli_custom
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
+
