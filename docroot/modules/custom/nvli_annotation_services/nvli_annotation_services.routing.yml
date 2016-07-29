@@ -1,0 +1,6 @@
+nvli_annotation_services.index_annotation_form:
+  path: '/nvli/anotation-index'
+  defaults:
+    _form: '\Drupal\nvli_annotation_services\Form\IndexAnnotationForm'
+  requirements:
+    _permission: 'access content'
