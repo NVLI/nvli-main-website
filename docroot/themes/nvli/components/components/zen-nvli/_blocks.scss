@@ -74,7 +74,7 @@
     }
   }
 
-  a {
+  .row + a {
     position: absolute;
     top: 0;
     display: block;
@@ -118,7 +118,7 @@
 
 /* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK STARTS HERE */
 
-#block-customsearchblock-3 {
+.block-custom-header-search-block {
   @include search-block;
   float: right;
   margin: 20px 20px 0 0;
@@ -126,6 +126,12 @@
 /* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK ENDS HERE */
 
 /* STYLES FOR HOMEPAGE & CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
+
+#block-indiasancientpast-2 {
+  .field--name-field-featured-tag {
+    display: none;
+  }
+}
 
 #block-indiasancientpast-2,
 #block-indiasancientpast-3 {
@@ -212,7 +218,63 @@
 
 #block-indiasancientpast-3 {
   max-width: 100%;
-  margin: 30px 0;
+  margin: 30px 0 0;
+
+  .field--name-field-featured-tag {
+    @include border-radius(4px);
+    position: absolute;
+    background: color(featured-bg);
+    color: color(white);
+    text-transform: uppercase;
+    padding: 0 5px;
+    max-width: 100px;
+    text-align: center;
+    font-size: 13px;
+  }
 }
 
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
+
+.homepage-resources-wrapper,
+.block-resource-type-title-block {
+  .resources-block {
+    .resource_image {
+      background: url("../../../images/resources_home_sprite.png") no-repeat;
+      width: 69px;
+      height: 68px;
+
+      &.books {
+        background-position: 0 0;
+      }
+
+      &.audio_video {
+        background-position: -223px 0;
+      }
+
+      &.govt_archives {
+        background-position: -481px 0;
+      }
+
+      &.journal_and_thesis {
+        background-position: -61px 0px;
+      }
+
+      &.manuscripts {
+        background-position: -566px 0;
+      }
+
+      &.maps {
+        background-position: -395px 0;
+      }
+
+      &.museum {
+        background-position: -142px 0;
+      }
+
+      &.newspaper_archives {
+        background-position: -308px 0;
+      }
+    }
+  }
+}
+
