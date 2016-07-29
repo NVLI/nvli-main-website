@@ -1,0 +1,5 @@
+services:
+  nvli_resource.get_external_image:
+    class: Drupal\nvli_resource\GetExternalImage
+    arguments: []
+

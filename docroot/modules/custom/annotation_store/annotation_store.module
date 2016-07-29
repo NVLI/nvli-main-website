@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains annotation_store.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function annotation_store_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the annotation_store module.
+    case 'help.page.annotation_store':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Nvli Annotation store') . '</p>';
+      return $output;
+
+    default:
+  }
+}

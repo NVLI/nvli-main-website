@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Drupal\annotation_store\Entity\Controller;
+namespace Drupal\nvli_resource\Entity\Controller;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
 use Drupal\Core\Url;
 
 /**
- * Provides a list controller for annotation_store entity.
+ * Provides a list controller for nvli_resource entity.
  *
- * @ingroup annotation_store
+ * @ingroup nvli_resource
  */
-class AnnotationStoreListBuilder extends EntityListBuilder {
+class NvliResourceAnnotationListBuilder extends EntityListBuilder {
 
   /**
    * {@inheritdoc}
@@ -23,8 +23,8 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    */
   public function render() {
     $build['description'] = array(
-      '#markup' => $this->t('Annotation store Entity Example implements a Annotation store model. These annotation are fieldable entities. You can manage the fields on the <a href="@adminlink">Annotation store admin page</a>.', array(
-        '@adminlink' => \Drupal::urlGenerator()->generateFromRoute('annotation_store.annotation_store_entity_settings'),
+      '#markup' => $this->t('Solr Annotation Entity Example implements a solr annotation model. These annotation are fieldable entities. You can manage the fields on the <a href="@adminlink">Solr Annotation admin page</a>.', array(
+        '@adminlink' => \Drupal::urlGenerator()->generateFromRoute('nvli_resource.nvli_resource_annotation_settings'),
       )),
     );
     $build['table'] = parent::render();
@@ -40,10 +40,9 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    * and inserts the 'edit' and 'delete' links as defined for the entity type.
    */
   public function buildHeader() {
-    $header['id'] = $this->t('Id');
-    $header['title'] = $this->t('Title');
-    $header['type'] = $this->t('Type');
-    $header['resource_ref'] = $this->t('Resource ID');
+    $header['id'] = $this->t('Resource Id');
+    $header['annotation'] = $this->t('Annotation Ids');
+    $header['solr_doc_id'] = $this->t('Solr index doc ID');
     return $header + parent::buildHeader();
   }
 
@@ -51,12 +50,14 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\annotation_store\Entity\AnnotationStore */
-//ep($entity);exit;
+    /* @var $entity \Drupal\nvli_resource\Entity\NvliResourceAnnotation */
+    $annotation = '';
+    foreach ($entity->toArray()['field_annotation_id'] as $val){
+      $annotation[] = $val['target_id'];
+    }
     $row['id'] = $entity->id();
-    $row['title'] = $entity->title->value;
-    $row['type'] = $entity->type->value;
-    $row['resource_ref'] = $entity->resource_ref->value;
+    $row['annotation'] = implode(', ', $annotation);
+    $row['solr_doc_id'] = $entity->solr_doc_id->value;
     return $row + parent::buildRow($entity);
   }
 

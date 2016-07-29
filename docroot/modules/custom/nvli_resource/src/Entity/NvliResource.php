@@ -1,19 +1,19 @@
 <?php
 
 
-namespace Drupal\annotation_store\Entity;
+namespace Drupal\nvli_resource\Entity;
 
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\annotation_store\AnnotationStoreInterface;
+use Drupal\nvli_resource\NvliResourceInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Defines the annotation store entity.
+ * Defines the Nvli Resource entity.
  *
- * @ingroup annotation_store
+ * @ingroup nvli_resource
  *
  * This is the main definition of the entity type. From it, an entityType is
  * derived. The most important properties in this example are listed below.
@@ -70,50 +70,50 @@ use Drupal\user\UserInterface;
  * is read and cached. Don't forget to clear cache after changes.
  *
  * @ContentEntityType(
- *   id = "annotation_store_entity",
- *   label = @Translation("annotation store entity"),
+ *   id = "nvli_resource_entity",
+ *   label = @Translation("Nvli Resource entity"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\annotation_store\Entity\Controller\AnnotationStoreListBuilder",
+ *     "list_builder" = "Drupal\nvli_resource\Entity\Controller\NvliResourceListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
  *     "form" = {
- *       "add" = "Drupal\annotation_store\Form\AnnotationStoreForm",
- *       "edit" = "Drupal\annotation_store\Form\AnnotationStoreForm",
- *       "delete" = "Drupal\annotation_store\Form\AnnotationStoreDeleteForm",
+ *       "add" = "Drupal\nvli_resource\Form\NvliResourceForm",
+ *       "edit" = "Drupal\nvli_resource\Form\NvliResourceForm",
+ *       "delete" = "Drupal\nvli_resource\Form\NvliResourceDeleteForm",
  *     },
- *     "access" = "Drupal\annotation_store\AnnotationStoreAccessControlHandler",
+ *     "access" = "Drupal\nvli_resource\NvliResourceAccessControlHandler",
  *   },
- *   base_table = "annotation_store_entity",
- *   admin_permission = "administer annotation store entity",
+ *   base_table = "nvli_resource_entity",
+ *   admin_permission = "administer nvli resource entity",
  *   fieldable = TRUE,
  *   entity_keys = {
  *     "id" = "id",
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/annotation_store_entity/{annotation_store_entity}",
- *     "edit-form" = "/annotation_store_entity/{annotation_store_entity}/edit",
- *     "delete-form" = "/annotation_store_entity/{annotation_store_entity}/delete",
- *     "collection" = "/annotation_store_entity/list"
+ *     "canonical" = "/nvli_resource_entity/{nvli_resource_entity}",
+ *     "edit-form" = "/nvli_resource_entity/{nvli_resource_entity}/edit",
+ *     "delete-form" = "/nvli_resource_entity/{nvli_resource_entity}/delete",
+ *     "collection" = "/nvli_resource_entity/list"
  *   },
- *   field_ui_base_route = "annotation_store.annotation_store_entity_settings",
+ *   field_ui_base_route = "nvli_resource.nvli_resource_entity_settings",
  * )
  *
  * The 'links' above are defined by their path. For core to find the corresponding
  * route, the route name must follow the correct pattern:
  *
  * entity.<entity-name>.<link-name> (replace dashes with underscores)
- * Example: 'entity.annotation_store_entity.canonical'
+ * Example: 'entity.nvli_resource_entity.canonical'
  *
  * See routing file above for the corresponding implementation
  *
- * The 'AnnotationStore' class defines methods and fields for the annotation store entity.
+ * The 'NvliResource' class defines methods and fields for the nvli resource entity.
  *
  * Being derived from the ContentEntityBase class, we can override the methods
  * we want. In our case we want to provide access to the standard fields about
  * creation and changed time stamps.
  *
- * Our interface (see AnnotationStoreInterface) also exposes the EntityOwnerInterface.
+ * Our interface (see NvliResourceInterface) also exposes the EntityOwnerInterface.
  * This allows us to provide methods for setting and providing ownership
  * information.
  *
@@ -123,7 +123,7 @@ use Drupal\user\UserInterface;
  * the rights privileges can influence the presentation (view, edit) of each
  * field.
  */
-class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterface {
+class NvliResource extends ContentEntityBase implements NvliResourceInterface {
 
   /**
    * {@inheritdoc}
@@ -217,18 +217,18 @@ class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterf
     // Standard field, used as unique if primary index.
     $fields['id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('ID'))
-      ->setDescription(t('The ID of the AnnotationStore entity.'))
+      ->setDescription(t('The ID of the NvliResource entity.'))
       ->setReadOnly(TRUE);
 
     // Standard field, unique outside of the scope of the current project.
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
-      ->setDescription(t('The UUID of the AnnotationStore entity.'))
+      ->setDescription(t('The UUID of the NvliResource entity.'))
       ->setReadOnly(TRUE);
 
     $fields['title'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Annotation'))
-      ->setDescription(t('The annotation of the AnnotationStore entity.'))
+      ->setLabel(t('Title'))
+      ->setDescription(t('The title of the NvliResource entity.'))
       ->setSettings(array(
         'default_value' => '',
         'max_length' => 255,
@@ -246,12 +246,32 @@ class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterf
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['resource_ref'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Nvli Resource Id'))
-      ->setDescription(t('Entity Id of Nvli Resource Entity.'))
+    $fields['solr_doc_id'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Solr doc Id'))
+      ->setDescription(t('The solr index doc of the Nvli Resource entity.'))
       ->setSettings(array(
         'default_value' => '',
-        'max_length' => 10,
+        'max_length' => 255,
+        'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -5,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string',
+        'weight' => -5,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['type'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Type'))
+      ->setDescription(t('The solr index doc of the Nvli Resource entity.'))
+      ->setSettings(array(
+        'default_value' => '',
+        'max_length' => 255,
         'text_processing' => 0,
       ))
       ->setDisplayOptions('view', array(
@@ -266,12 +286,12 @@ class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterf
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['type'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Type'))
-      ->setDescription(t('The type of the annotation.'))
+    $fields['format'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Format'))
+      ->setDescription(t('The solr index doc of the Nvli Resource entity.'))
       ->setSettings(array(
         'default_value' => '',
-        'max_length' => 20,
+        'max_length' => 255,
         'text_processing' => 0,
       ))
       ->setDisplayOptions('view', array(
