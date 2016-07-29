@@ -1,0 +1,16 @@
+services:
+  nvli_annotation_services.create_entity:
+    class: Drupal\nvli_annotation_services\CreateEntityService
+    arguments: []
+
+  nvli_annotation_services.add_annotation:
+    class: Drupal\nvli_annotation_services\AddAnnotationService
+    arguments: []
+
+  nvli_annotation_services.entity_type_field:
+    class: Drupal\nvli_annotation_services\EntityTypeFieldService
+    arguments: []
+  nvli_annotation_services.annotation_store_event:
+      class: Drupal\nvli_annotation_services\EventSubscriber\AnnotationEventSubscriber
+      tags:
+        - { name: 'event_subscriber' }
