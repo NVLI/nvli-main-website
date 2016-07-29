@@ -5,12 +5,25 @@
 
 header {
   background: color(white);
+
+  &.sticky-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    visibility: visible;
+  }  
 }
 
 div#block-nvli-branding {
   float: left;
   width: 100%;
   padding: 14px 24px;
+
+  &.sticky-branding {
+    width: 50%;
+    max-width: 460px;
+  }
 }
 
 .site-logo {
