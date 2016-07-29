@@ -2,6 +2,8 @@
 
 namespace Drupal\nvli_custom_search_api;
 
+use Drupal\nvli_custom\ResourceManager;
+
 /**
  * Class EntityDetail.
  *
@@ -29,6 +31,7 @@ class EntityDetail {
       // We get the node storage object.
       $node_storage = \Drupal::EntityTypeManager()->getStorage('node');
       $node = $node_storage->load($entity_id);
+      $image = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
       $title = $node->get('title')->value;
       $language = $node->get('field_language')->value;
       $rating = $node->get('field_rating')->rating;
@@ -40,11 +43,9 @@ class EntityDetail {
         $tag_name[] = $this->get_term_name($tags);
       }
       $short_url = $node->get('field_text_plain_single_1')->value;
-      $fid = $node->get('field_thumb')->target_id;
-      if (!empty($fid)) {
-        $file = \Drupal\file\Entity\File::load($fid);
-        $path = $file->getFileUri();
-        $url = file_create_url($path);
+      // Check if image exist or not.
+      if (!empty($image)) {
+        $url = $image;
       }
       else {
         $url = '';
