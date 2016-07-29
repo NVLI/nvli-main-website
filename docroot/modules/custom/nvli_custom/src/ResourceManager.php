@@ -54,7 +54,7 @@ class ResourceManager {
    * @return string
    *  Return the absolute image path.
    */
-  public function resourceEntityThumbnailImageManager($node) {
+  public function resourceEntityThumbnailImage($node) {
     
     // Fetch resource type of current node.
     $resource_type = $node->get('field_resource_type')->getValue();
