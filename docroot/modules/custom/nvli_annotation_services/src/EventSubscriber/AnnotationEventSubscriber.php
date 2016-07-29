@@ -44,9 +44,9 @@ class AnnotationEventSubscriber implements EventSubscriberInterface {
   }
   protected function getAnnotationFields($id){
     $connection = Database::getConnection();
-    $query = $connection->select('annotation_store_entity', 'ae')
+    $query = $connection->select('annotation_store', 'ae')
       ->fields('ae', array('id'));
-    $query->condition('resource_ref', $id);
+    $query->condition('resource_entity_id', $id);
     $data = $query->execute()->fetchAll();
     $value = array();
     foreach ($data as $val){
@@ -54,7 +54,7 @@ class AnnotationEventSubscriber implements EventSubscriberInterface {
     }
 
     $entities = \Drupal::entityTypeManager()
-      ->getStorage('annotation_store_entity')
+      ->getStorage('annotation_store')
       ->loadMultiple($value);
     $fields = array();
     foreach ($entities as $entity){

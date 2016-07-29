@@ -97,31 +97,32 @@ class AddAnnotationRestResource extends ResourceBase {
     $connection = Database::getConnection();
 
     $query = $connection->select('node', 'n');
-      $query->join('node__field_solr_docid', 'sid', 'n.nid=sid.entity_id');
-      $query->fields('n', array('nid'));
-      $query->fields('sid', array('field_solr_docid_value'));
-      $query->range($offset, $limit);
+    $query->join('node__field_solr_docid', 'sid', 'n.nid=sid.entity_id');
+    $query->fields('n', array('nid'));
+    $query->fields('sid', array('field_solr_docid_value'));
+    $query->range($offset, $limit);
     $reccords = $query->execute()->fetchAll();
 
     $success = $fail = $exist = 0;
     $message = '';
-    foreach ($reccords as $reccord){
-      $server = 'nvli';//isset($entity->get('server')->value)?$entity->get('server')->value: 'solr';
+    foreach ($reccords as $reccord) {
+      $server = 'nvli';
+      // isset($entity->get('server')->value)?$entity->get('server')->value: 'solr';
       $id = $reccord->field_solr_docid_value;
       $fields = array();
-      $query = $connection->select('annotation_store_entity', 'ae')
+      $query = $connection->select('annotation_store', 'ae')
         ->fields('ae', array('id'));
-       $query->condition('resource_ref', $reccord->nid);
+      $query->condition('resource_entity_id', $reccord->nid);
       $data = $query->execute()->fetchAll();
       $value = array();
-      foreach ($data as $val){
+      foreach ($data as $val) {
         $value[] = $val->id;
       }
 
       $entities = \Drupal::entityTypeManager()
-        ->getStorage('annotation_store_entity')
+        ->getStorage('annotation_store')
         ->loadMultiple($value);
-      foreach ($entities as $entity){
+      foreach ($entities as $entity) {
         $fields['annotation_key_txt_mv'][] = $entity->id();
         $fields['annotation_txt_mv'][] = $entity->title->value;
         $fields['annotation_type_txt_mv'][] = $entity->type->value;
@@ -142,4 +143,5 @@ class AddAnnotationRestResource extends ResourceBase {
 
     return array('success' => $success, 'fail' => $fail);
   }
+
 }
