@@ -7,6 +7,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\annotation_store\AnnotationStoreInterface;
+use Drupal\nvli_annotation_services\AnnotationStoreEvent;
 use Drupal\user\UserInterface;
 use Drupal\Core\Entity\EntityChangedTrait;
 
@@ -57,6 +58,21 @@ class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterf
   /**
    * {@inheritdoc}
    */
+  public function postCreate(EntityStorageInterface $storage) {
+    parent::postCreate($storage);
+    $solrServers = \Drupal::service('custom_solr_search.solr_servers')->getServers();
+
+    foreach ($solrServers as $solrServer) {
+      // Dispatching annotation store save event.
+      $dispatcher = \Drupal::service('event_dispatcher');
+      $event = new AnnotationStoreEvent($this->getReourceId(), $solrServer);
+      $dispatcher->dispatch(AnnotationStoreEvent::SAVE, $event);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getCreatedTime() {
     return $this->get('created')->value;
   }
@@ -96,6 +112,13 @@ class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterf
   public function setOwner(UserInterface $account) {
     $this->set('user_id', $account->id());
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getReourceId() {
+    return $this->get('resource_entity_id')->value;
   }
 
   /**
