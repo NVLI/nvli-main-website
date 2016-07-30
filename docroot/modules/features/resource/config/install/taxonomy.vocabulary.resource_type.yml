@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Resource Type'
+vid: resource_type
+description: 'Types of Resources'
+hierarchy: 0
+weight: 0
