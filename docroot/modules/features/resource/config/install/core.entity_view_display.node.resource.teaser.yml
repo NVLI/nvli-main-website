@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.resource.field_annotation_resource_entity
     - field.field.node.resource.field_audio_file_path
     - field.field.node.resource.field_harvest_type
     - field.field.node.resource.field_image_file_path
@@ -26,6 +27,7 @@ content:
   links:
     weight: 100
 hidden:
+  field_annotation_resource_entity: true
   field_audio_file_path: true
   field_harvest_type: true
   field_image_file_path: true

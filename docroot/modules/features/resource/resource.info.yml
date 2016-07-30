@@ -16,8 +16,8 @@ dependencies:
   - ova
   - path
   - pathauto
-  - system
   - rest
+  - system
   - taxonomy
   - user
   - views
