@@ -73,6 +73,9 @@
       "layout": "1x1",
       'openManifestsPage' : false,
       'showAddFromURLBox' : false,
+      'mainMenuSettings': {
+        'show': false,
+      },
       "saveSession": false,
       "data": [
         { "manifestUri": manifestUri, "location": "National Virtual Library Of India"},
