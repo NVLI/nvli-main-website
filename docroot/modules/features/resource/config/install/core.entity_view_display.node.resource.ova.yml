@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.ova
+    - field.field.node.resource.field_annotation_resource_entity
     - field.field.node.resource.field_audio_file_path
     - field.field.node.resource.field_harvest_type
     - field.field.node.resource.field_image_file_path
@@ -30,14 +31,14 @@ content:
     settings:
       width: '854'
       height: '480'
-      controls: true
-      autoplay: false
-      loop: false
-      muted: false
-      annotations: false
+      controls: '1'
+      annotations: '1'
       extensions: mp3
-      preload: auto
       default_image: /modules/contrib/ova/audio.jpg
+      preload: auto
+      autoplay: 0
+      loop: 0
+      muted: 0
     third_party_settings: {  }
     type: videojs_audio_player_text
   field_video_file_path:
@@ -46,16 +47,17 @@ content:
     settings:
       width: '854'
       height: '480'
-      controls: true
-      autoplay: false
-      loop: false
-      muted: false
-      annotations: false
+      controls: '1'
+      annotations: '1'
       extensions: mp4
       preload: auto
+      autoplay: 0
+      loop: 0
+      muted: 0
     third_party_settings: {  }
     type: videojs_video_player_text
 hidden:
+  field_annotation_resource_entity: true
   field_harvest_type: true
   field_image_file_path: true
   field_language: true
@@ -66,4 +68,5 @@ hidden:
   field_term_ref_tags: true
   field_text_plain_single_1: true
   field_thumb: true
+  langcode: true
   links: true
