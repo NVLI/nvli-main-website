@@ -106,3 +106,5 @@ hidden:
   field_harvest_type: true
   field_resource_type: true
   field_video_file_path: true
+  field_annotation_resource_entity: true
+  langcode: true

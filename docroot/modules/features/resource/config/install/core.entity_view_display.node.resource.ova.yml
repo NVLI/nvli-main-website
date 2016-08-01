@@ -68,4 +68,5 @@ hidden:
   field_term_ref_tags: true
   field_text_plain_single_1: true
   field_thumb: true
+  langcode: true
   links: true

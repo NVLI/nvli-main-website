@@ -44,8 +44,8 @@ class EntityDetail {
       }
       $short_url = $node->get('field_text_plain_single_1')->value;
       // Check if image exist or not.
-      if (!empty($image)) {
-        $url = $image;
+      if (!empty($image['image_path'])) {
+        $url = $image['image_path'];
       }
       else {
         $url = '';

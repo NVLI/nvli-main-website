@@ -45,4 +45,5 @@ hidden:
   field_text_plain_single_1: true
   field_thumb: true
   field_video_file_path: true
+  langcode: true
   links: true

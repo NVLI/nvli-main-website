@@ -161,4 +161,5 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  field_annotation_resource_entity: true
   field_harvest_type: true
