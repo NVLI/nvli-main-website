@@ -232,8 +232,10 @@
         drupalAnnotationStore['media'] = 'image';
         var annotation_data = JSON.stringify(drupalAnnotationStore);
       }
+      var annotationCreateUri = annotationSettings.annotation_create_uri;
+      annotationCreateUri = annotationCreateUri.replace("{resource_entity_id}", annotation['imgRefEntity']);
       jQuery.ajax({
-        url: annotationSettings.annotation_create_uri,
+        url: annotationCreateUri,
         type: annotationSettings.annotation_create_method,
         dataType: 'json',
         headers: {
