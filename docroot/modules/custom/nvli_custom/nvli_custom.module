@@ -84,7 +84,7 @@ function nvli_custom_preprocess_node(&$variables) {
     $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
 
     if ($view_mode == 'full') {
-      //echo "<pre>"; print_r();exit;
+      
       if (!empty($image_details)) {
         
         $variables['thumbnail_image_path'] = $image_details['image_path'];
