@@ -1,7 +1,7 @@
 .mirador {
   background: #333 url(mirador/images/debut_dark.png) left top repeat;
-  width: 931px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   position: relative !important;
 }
 .mirador-viewer #workspace .layout-slot,
