@@ -58,9 +58,10 @@ content:
   field_rating:
     weight: 3
     label: above
-    settings: {  }
+    settings:
+      fivestar_widget: modules/fivestar/widgets/basic/basic.css
     third_party_settings: {  }
-    type: fivestar_rating
+    type: fivestar_stars
   field_resource_comment:
     weight: 10
     label: above
@@ -106,5 +107,4 @@ hidden:
   field_harvest_type: true
   field_resource_type: true
   field_video_file_path: true
-  field_annotation_resource_entity: true
   langcode: true

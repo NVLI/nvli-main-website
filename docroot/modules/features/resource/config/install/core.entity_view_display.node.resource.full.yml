@@ -76,3 +76,4 @@ hidden:
   field_resource_type: true
   field_thumb: true
   field_video_file_path: true
+  langcode: true

@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.node.mirador
     - node.type.resource
     - user.role.administrator
+    - user.role.anonymous
     - user.role.authenticated
   module:
     - node
@@ -28,6 +29,7 @@ display:
         type: role
         options:
           role:
+            anonymous: anonymous
             authenticated: authenticated
             administrator: administrator
       cache:
@@ -132,7 +134,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Mirador View'
+      title: ''
       header: {  }
       footer: {  }
       empty: {  }
