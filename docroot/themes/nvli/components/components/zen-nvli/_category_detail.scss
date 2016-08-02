@@ -3,6 +3,29 @@
  * @author Shruti 
  */
 
+/* GENERIC STYLES FOR FORM ELEMENTS STARTS HERE */
+
+.form-item,
+.form-type-textarea {
+  label {
+    color: color(grey-light);      
+  }
+
+  input,
+  textarea {
+    @include border-radius(4px);
+    border: 1px solid color(grey-light);    
+  }
+}
+
+#edit-submit {
+  @include button-style;
+}
+
+/* GENERIC STYLES FOR FORM ELEMENTS ENDS HERE */
+
+/* GENERIC STYLES CATEGORY DETAIL PAGE STARTS HERE */
+
 .is-page-node-type-resource {
   .field--name-field-resource-comment {
     h2 {
@@ -27,25 +50,78 @@
       }
     }
   }
-}
-
-.form-type-textarea {
-  label {
-    color: color(grey-light);      
+  .lhs-wrapper {
+    float: left;
+    width: 25%;
+    max-width: 200px;
+    margin: 0 80px 0 0;
+    
+    .field--name-field-rating {
+      margin: 50px 0 40px;
+    }
   }
 
-  textarea {
-    @include border-radius(4px);
-    border: 1px solid color(grey-light);    
+  .rhs-wrapper {
+    float: left;
+    width: 68%;
+  }
+  
+  .resource-details {
+    margin: 0 0 20px;
+
+    .label {
+      color: color(label-color);
+      display: block;
+    }
+  }
+  .field--name-field-term-ref-tags {
+    .field__item {
+       background: color(blue);
+       color: color(white);
+       font-weight: weight(bold);
+
+      &:before {
+        @include triangle(bottom, 20px, 10px, color(blue));
+        display: block;
+        content: "";
+        float: left;
+      }      
+   }
+  }
+
+  .share-links-wrapper {
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .share-link {
+    @include button-style;
+    float: left;
+    margin: 0 15px 0 0;
+    
+    &:before {
+      content: "";
+      background: url('../../../images/share-links-sprite.png') no-repeat;
+      display: block;
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin: 0 10px 0 0;
+    }
+    
+    .field {
+      display: inline-block;
+    }
+    
+    .field__label {
+      display: none;
+    }
+    
+    .anotate-link:before {
+      background-position: -30px 0;
+    }
   }
 }
 
-#edit-submit {
-  @include border-radius(4px);
-  padding: 18px;
-  background: color(white);
-  border: 2px solid color(blue);
-  color: color(blue);
-  line-height: 14px;
-  min-width: 150px;
-}
+/* GENERIC STYLES CATEGORY DETAIL PAGE ENDS HERE */

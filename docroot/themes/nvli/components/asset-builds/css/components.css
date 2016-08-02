@@ -2,6 +2,11 @@
  * THIS FILE CONTAINS ALL THE MIXINS USED FOR THIS THEME
  * @author Shruti 
  */
+/* ROTATE MIXIN FOR TRANSFORM */
+/* ROTATE MIXIN FOR TRANSFORM */
+/* MIXIN FOR TRIANGLE */
+/* MIXIN FOR TRIANGLE */
+/* MIXIN FOR TRIANGLE */
 /* MIXIN FOR BOX SHADOW */
 /* MIXIN FOR BOX SHADOW */
 /* BORDER RADIUS MIXIN */
@@ -12,6 +17,8 @@
 /* MIXIN FOR PLACEHOLDER */
 /* MIXIN FOR SEARCH BLOCK */
 /* MIXIN SEARCH BLOCK */
+/* MIXIN FOR BUTTON STYLES */
+/* MIXIN FOR BUTTON STYLES */
 /* 
  * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
  * @author Shruti 
@@ -177,6 +184,32 @@ body:not(.is-path-frontpage) .layout-3col {
  * THIS FILE CONTAINS ALL THE STYLES FOR CATEGORY DETAIL PAGE
  * @author Shruti 
  */
+/* GENERIC STYLES FOR FORM ELEMENTS STARTS HERE */
+.form-item label,
+.form-type-textarea label {
+  color: #cccccc;
+}
+
+.form-item input,
+.form-item textarea,
+.form-type-textarea input,
+.form-type-textarea textarea {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+#edit-submit {
+  border-radius: 4px;
+  padding: 9px 7px;
+  background: #fff;
+  border: 2px solid #4383cc;
+  color: #4383cc;
+  line-height: 22px;
+  min-width: 150px;
+}
+
+/* GENERIC STYLES FOR FORM ELEMENTS ENDS HERE */
+/* GENERIC STYLES CATEGORY DETAIL PAGE STARTS HERE */
 .is-page-node-type-resource .field--name-field-resource-comment h2 {
   margin: 20px 0 0;
   color: #808080;
@@ -199,25 +232,89 @@ body:not(.is-path-frontpage) .layout-3col {
   display: block;
 }
 
-.form-type-textarea label {
-  color: #cccccc;
+.is-page-node-type-resource .lhs-wrapper {
+  float: left;
+  width: 25%;
+  max-width: 200px;
+  margin: 0 80px 0 0;
 }
 
-.form-type-textarea textarea {
-  border-radius: 4px;
-  border: 1px solid #cccccc;
+.is-page-node-type-resource .lhs-wrapper .field--name-field-rating {
+  margin: 50px 0 40px;
 }
 
-#edit-submit {
+.is-page-node-type-resource .rhs-wrapper {
+  float: left;
+  width: 68%;
+}
+
+.is-page-node-type-resource .resource-details {
+  margin: 0 0 20px;
+}
+
+.is-page-node-type-resource .resource-details .label {
+  color: #4a4a4a;
+  display: block;
+}
+
+.is-page-node-type-resource .field--name-field-term-ref-tags .field__item {
+  background: #4383cc;
+  color: #fff;
+  font-weight: bold;
+}
+
+.is-page-node-type-resource .field--name-field-term-ref-tags .field__item:before {
+  border: 10px solid transparent;
+  border-top: 10px solid #4383cc;
+  border-bottom: 0;
+  height: 0;
+  width: 0;
+  display: block;
+  content: "";
+  float: left;
+}
+
+.is-page-node-type-resource .share-links-wrapper {
+  display: inline-block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.is-page-node-type-resource .share-link {
   border-radius: 4px;
-  padding: 18px;
+  padding: 9px 7px;
   background: #fff;
   border: 2px solid #4383cc;
   color: #4383cc;
-  line-height: 14px;
+  line-height: 22px;
   min-width: 150px;
+  float: left;
+  margin: 0 15px 0 0;
 }
 
+.is-page-node-type-resource .share-link:before {
+  content: "";
+  background: url("../../../images/share-links-sprite.png") no-repeat;
+  display: block;
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.is-page-node-type-resource .share-link .field {
+  display: inline-block;
+}
+
+.is-page-node-type-resource .share-link .field__label {
+  display: none;
+}
+
+.is-page-node-type-resource .share-link .anotate-link:before {
+  background-position: -30px 0;
+}
+
+/* GENERIC STYLES CATEGORY DETAIL PAGE ENDS HERE */
 /* 
  * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
  * @author Shruti 
