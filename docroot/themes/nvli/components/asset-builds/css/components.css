@@ -194,6 +194,11 @@ body:not(.is-path-frontpage) .layout-3col {
   font-size: 16px;
 }
 
+.is-page-node-type-resource .field--name-field-resource-comment article article {
+  margin: 0;
+  display: block;
+}
+
 .form-type-textarea label {
   color: #cccccc;
 }

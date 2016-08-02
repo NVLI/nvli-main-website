@@ -20,6 +20,11 @@
       margin: 0 0 20px;
       color: color(content-color);
       font-size: font-size(m);
+
+      article {
+        margin: 0;
+        display: block;
+      }
     }
   }
 }

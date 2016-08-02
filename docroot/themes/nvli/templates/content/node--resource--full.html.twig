@@ -91,49 +91,49 @@
     </footer>
   {% endif %}
   <div{{ content_attributes }}>
-    {# Tags #}
+      <div class="lhs-wrapper">
+          {# Thubnail Image #}
+          <img src="{{ thumbnail_image_path }}" />
+          
+           {# Star points #}
+    {{ content.field_rating }}
+          
+            {# Solr Author. #}
+            {% if solr_author %}
+            <div class="author">
+              <span class="label">Author :</span>
+              {{ solr_author }}
+            </div>
+            {% endif %}
+
+            {# Solr Published Date. #}
+            {% if solr_published_date %}
+            <div class="published_date">
+              <span class="label">Published Date : </span>
+              {{ solr_published_date }}
+            </div>
+            {% endif %}
+
+            {# Solr Publisher. #}
+            {% if solr_publisher %}
+            <div class="publisher">
+              <span class="label">Publisher : </span>
+              {{ solr_publisher }}
+            </div>
+            {% endif %}
+      </div>
+      <div class="rhs-wrapper">
+          {# Tags #}
     {% if content.field_term_ref_tags %}
       {{ content.field_term_ref_tags }}
     {% endif %}
-
-    
-    {# Thubnail Image #}
-    <img src="{{ thumbnail_image_path }}" />
-    
-    {# Star points #}
-    {{ content.field_rating }}
-
-    {# Solr Author. #}
-    {% if solr_author %}
-    <div class="author">
-      <span class="label">Author :</span>
-      {{ solr_author }}
-    </div>
-    {% endif %}
-
-    {# Solr Published Date. #}
-    {% if solr_published_date %}
-    <div class="published_date">
-      <span class="label">Published Date : </span>
-      {{ solr_published_date }}
-    </div>
-    {% endif %}
-
-    {# Solr Publisher. #}
-    {% if solr_publisher %}
-    <div class="publisher">
-      <span class="label">Publisher : </span>
-      {{ solr_publisher }}
-    </div>
-    {% endif %}
-
-    {# Solr descrtion. #}
+     {# Solr descrtion. #}
     {% if solr_description %}
       {{ solr_description }}
     {% endif %}
-
-
-    {# Short link #}
+    
+    <div class="share-links">
+         {# Short link #}
     {% if content.field_text_plain_single_1 %}
     {{ content.field_text_plain_single_1 }}
     {% endif %}
@@ -142,9 +142,9 @@
     {% if thumbnail_image_link %}
       <a href="{{ thumbnail_image_link }}">Add Annotation</a>
     {% endif %}
-
-    {# Comment form and list #}
+    </div>
+      {# Comment form and list #}
     {{ content.field_resource_comment }}
+      </div>
   </div>
-
 </article>
