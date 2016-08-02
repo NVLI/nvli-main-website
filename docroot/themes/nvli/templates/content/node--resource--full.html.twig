@@ -98,7 +98,10 @@
 
     
     {# Thubnail Image #}
-    <a href="{{ thumbnail_image_link }}"><img src="{{ thumbnail_image_path }}" /></a>
+    <img src="{{ thumbnail_image_path }}" />
+    
+    {# Star points #}
+    {{ content.field_rating }}
 
     {# Solr Author. #}
     {% if solr_author %}
@@ -129,12 +132,15 @@
       {{ solr_description }}
     {% endif %}
 
-    {# Star points #}
-    {{ content.field_rating }}
 
     {# Short link #}
     {% if content.field_text_plain_single_1 %}
     {{ content.field_text_plain_single_1 }}
+    {% endif %}
+    
+    {# Star points #}
+    {% if thumbnail_image_link %}
+      <a href="{{ thumbnail_image_link }}">Add Annotation</a>
     {% endif %}
 
     {# Comment form and list #}
