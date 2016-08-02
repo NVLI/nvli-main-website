@@ -5,6 +5,9 @@
  * Contains nvli_custom.module.
  */
 
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
 /**
  * Implements hook_theme().
  */
@@ -75,15 +78,18 @@ function nvli_custom_preprocess_node(&$variables) {
 
     // Fetch content form solr.
     $response = \Drupal::service('custom_solr_search.search_all')->seachAll('', NULL, NULL, $query_options);
-    
+
     // Solr document object.
     $solr_document = $response['docs'][0];
-    $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
-  
-   // kint($thubnail_image);
-    if ($view_mode == 'full') {
+    $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
 
-      $variables['thumbnail_image'] = $thumbnail_image;
+    if ($view_mode == 'full') {
+      
+      if (!empty($image_details)) {
+        
+        $variables['thumbnail_image_path'] = $image_details['image_path'];
+        $variables['thumbnail_image_link'] = $image_details['image_link'];
+      }
       
       $variables['solr_author'] = is_array($solr_document->author) ? implode(', ', $solr_document->author) : $solr_document->author;
       $variables['solr_description'] = $solr_document->description;

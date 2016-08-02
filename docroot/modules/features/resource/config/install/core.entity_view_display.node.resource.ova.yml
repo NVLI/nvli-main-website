@@ -49,7 +49,7 @@ content:
       height: '480'
       controls: '1'
       annotations: '1'
-      extensions: mp4
+      extensions: 'mp4,youtube'
       preload: auto
       autoplay: 0
       loop: 0
