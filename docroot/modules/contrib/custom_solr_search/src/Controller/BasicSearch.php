@@ -23,7 +23,6 @@ class BasicSearch extends ControllerBase {
    *   Return Hello string.
    */
   public function search($server = NULL, $keyword = NULL) {
-    global $base_url;
     $limit = isset($_GET['limit']) ? $_GET['limit'] : 10;
     $offset = isset($_GET['page']) ? ($_GET['page'] * $limit) : 0;
 
@@ -55,17 +54,11 @@ class BasicSearch extends ControllerBase {
         }
         $render['result'][] = array(
           '#theme' => 'custom_solr_search_result',
-          '#url' => isset($result->url[0]) ? $result->url[0] : '',
           '#title' => isset($title) ? $title : '',
           '#author' => isset($result->author) ? implode(', ', $result->author) : '',
           '#publishDate' => isset($result->publishDate) ? implode(', ', $result->publishDate) : '',
           '#publisher' => isset($result->publisher) ? implode(', ', $result->publisher) : '',
           '#topic' => isset($result->topic) ? implode(', ', $result->topic) : '',
-          '#docid' => isset($result->id) ? $result->id : '',
-          '#server' => $server,
-          '#keyword' => $keyword,
-          '#base_url' => $base_url,
-          '#annotation' => isset($result->annotation) ? implode(', ', $result->annotation) : '',
         );
       }
     }
