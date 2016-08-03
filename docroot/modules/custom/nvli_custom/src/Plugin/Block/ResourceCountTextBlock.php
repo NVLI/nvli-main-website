@@ -38,7 +38,7 @@ class ResourceCountTextBlock extends BlockBase {
     
     // Render resource entity count with text wrapper.
     return array(
-      '#prefix' => '<p>' . $this->t('Discover a wealth of content') . '<p>',
+      '#prefix' => '<p>' . $this->t('Discover a wealth of content from') . '<p>',
       '#markup' => $count,
       '#suffix' =>  '<p>' . $this->t('records') . '<p>',
     );

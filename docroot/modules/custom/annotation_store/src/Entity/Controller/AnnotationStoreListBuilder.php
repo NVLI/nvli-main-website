@@ -8,6 +8,8 @@ use Drupal\Core\Entity\EntityListBuilder;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
 
 /**
  * Provides a list controller for annotation_store entity.
@@ -22,7 +24,10 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    * @var \Drupal\Core\Routing\UrlGeneratorInterface
    */
   protected $urlGenerator;
-
+  /**
+   * DateFormat for Created and Changed fields.
+   */
+  protected $dateformat = 'm/d/Y H:i:s';
   /**
    * {@inheritdoc}
    */
@@ -44,9 +49,17 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    * @param \Drupal\Core\Routing\UrlGeneratorInterface $url_generator
    *   The url generator.
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, UrlGeneratorInterface $url_generator) {
+  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, UrlGeneratorInterface $url_generator, $dateformat = '') {
     parent::__construct($entity_type, $storage);
     $this->urlGenerator = $url_generator;
+    $this->DateFormat = $dateformat;
+  }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function getDateFormat() {
+    return $this->dateformat;
   }
 
   /**
@@ -91,14 +104,13 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    * @var date_format contains m/d/y with time in created and Changed row.
    */
   public function buildRow(EntityInterface $entity) {
-    $config = \Drupal::config('annotation_store.settings');
-    $date_format = $config->get('annotation_store_date_format');
-    /* @var $entity \Drupal\annotation_store\Entity\AnnotationStore */
+    $link = Url::fromRoute('entity.annotation_store.canonical', array('annotation_store' => $entity->id()));
     $obj = $entity->getOwner();
-    $row['text'] = $entity->link($entity->text->value);
+    $date_format = $this->getDateFormat();
+    $row['text'] = Link::fromTextAndUrl($entity->text->value, $link);
     $row['type'] = $entity->type->value;
     $row['uri'] = $entity->uri->value;
-    $row['user_id'] = $obj->link($obj->get('name')->value);
+    $row['user_id'] = Link::fromTextAndUrl($obj->get('name')->value, $link);
     $row['created'] = date($date_format, $entity->created->value);
     $row['changed'] = date($date_format, $entity->changed->value);
     return $row;
