@@ -50,11 +50,14 @@ class FacetQueryConfig {
   }
 
   protected function parseFacetFields($fields) {
-    $fields = explode(',', $fields);
     $facet_fields = [];
-    foreach ($fields as $field_string) {
-      $field = explode(':', $field_string, 2);
-      $facet_fields[$field[0]] = $field[1];
+    if ($fields) {
+      $fields = explode(',', $fields);
+
+      foreach ($fields as $field_string) {
+        $field = explode(':', $field_string, 2);
+        $facet_fields[$field[0]] = $field[1];
+      }
     }
 
     return $facet_fields;

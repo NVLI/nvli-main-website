@@ -91,7 +91,26 @@ function custom_solr_search_get_url_components($component = NULL) {
 }
 
 function custom_solr_search_get_facet_field_settings() {
-  return \Drupal::service('custom_solr_search.facet_config')->getFacetQuery('nvli')['fields'];
+  $facetFields = array(
+    'Institution' => 'institution',
+    'Library' => 'building',
+    'Format' => 'format',
+    'Call-Number' => 'callnumber-first',
+    'Author' => 'author_facet',
+    'Language' => 'language',
+    'Genre' => 'genre',
+    'Era' => 'era',
+    'Region' => 'geographic',
+    'Year-of-Publication' => 'publishDate',
+  );
+
+  $facetFieldsConfig = \Drupal::service('custom_solr_search.facet_config')->getFacetQuery('nvli')['fields'];
+  
+  if (!empty($facetFieldsConfig)) {
+    $facetFields = $facetFieldsConfig;
+  }
+
+  return $facetFields;
 }
 
 function custom_solr_search_set_facet_filter(&$query, $facet_filter) {
