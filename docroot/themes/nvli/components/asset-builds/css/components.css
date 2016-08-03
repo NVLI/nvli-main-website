@@ -596,6 +596,33 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 }
 
 /* 
+ * THIS FILE CONTAINS ALL THE STYLE CHANGES FOR VIDEO AND IMAGE PAGES
+ * @author Shruti 
+ */
+.field--name-field-video-file-path .field__label {
+  display: none;
+}
+
+.video-js {
+  width: 100% !important;
+  background: transparent;
+  height: auto !important;
+}
+
+.video-js .vjs-tech {
+  position: relative;
+  height: auto;
+}
+
+.vjs-default-skin.vjs-big-play-button {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* 
  * THIS FILE CONTAINS ALL THE BLOCKS STYLES
  * @author Shruti 
  */
