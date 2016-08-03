@@ -15,6 +15,7 @@ use Drupal\Core\Link;
 use Drupal\nvli_custom_search\Controller;
 use Drupal\Core\Url;
 use Drupal\nvli_custom;
+Usr Drupal\Core\Entity;
 
 /**
  * Provides a 'Resource Type Listing' block.
