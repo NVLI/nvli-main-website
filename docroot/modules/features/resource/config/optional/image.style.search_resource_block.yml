@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: search_resource_block
+label: 'Search Resource Block'
+effects:
+  460f1ecf-baa8-434f-831e-33f0268ea650:
+    uuid: 460f1ecf-baa8-434f-831e-33f0268ea650
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200

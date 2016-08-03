@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.search_resource_block
+    - field.storage.block_content.field_resource_count
+id: block_content.search_resource_block.field_resource_count
+field_name: field_resource_count
+entity_type: block_content
+bundle: search_resource_block
+label: 'Resource Count'
+description: 'Resource Count'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

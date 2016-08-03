@@ -1,0 +1,1121 @@
+/* 
+ * THIS FILE CONTAINS ALL THE MIXINS USED FOR THIS THEME
+ * @author Shruti 
+ */
+/* ROTATE MIXIN FOR TRANSFORM */
+/* ROTATE MIXIN FOR TRANSFORM */
+/* MIXIN FOR TRIANGLE */
+/* MIXIN FOR TRIANGLE */
+/* MIXIN FOR TRIANGLE */
+/* MIXIN FOR BOX SHADOW */
+/* MIXIN FOR BOX SHADOW */
+/* BORDER RADIUS MIXIN */
+/* BORDER RADIUS MIXIN */
+/* MIXIN FOR MULTILINE ELLIPSIS */
+/* MIXIN FOR MULTILINE ELLIPSIS */
+/* MIXIN FOR PLACEHOLDER */
+/* MIXIN FOR PLACEHOLDER */
+/* MIXIN FOR SEARCH BLOCK */
+/* MIXIN SEARCH BLOCK */
+/* MIXIN FOR BUTTON STYLES */
+/* MIXIN FOR BUTTON STYLES */
+/* 
+ * THIS FILE CONTAINS ALL THE LAYOUT RELATED STYLE CHANGES
+ * @author Shruti 
+ */
+@media (min-width: 768px) {
+  .layout-center {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.layout-3col {
+  margin: 0 0 330px;
+  z-index: 1;
+  background: #fff;
+}
+
+@media (max-width: 767px) {
+  .layout-3col {
+    margin: 0;
+  }
+}
+
+@media (min-width: 999px) {
+  .layout-3col__right-sidebar {
+    margin-top: 24px;
+  }
+}
+
+body:not(.is-path-frontpage) .layout-3col {
+  padding: 0 112px;
+}
+
+@media (max-width: 1024px) {
+  body:not(.is-path-frontpage) .layout-3col {
+    padding: 0;
+  }
+}
+
+/* 
+ * THIS FILE CONTAINS ALL STYLE FOR CATEGORY LISTING PAGES
+ * @author Shruti 
+ */
+.is-path-list h1 {
+  display: none;
+}
+
+.is-path-list h3 {
+  margin: 0;
+}
+
+.is-path-list .block-resource-type-title-block .row {
+  padding: 24px 0;
+  border: 0;
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.is-path-list .block-resource-type-title-block .resource_title {
+  font-size: 24px;
+  line-height: 30px;
+  margin: 20px 0 0;
+}
+
+.is-path-list .block-resource-type-title-block .resource_image {
+  margin: 2px 16px 0 0;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form label {
+  display: none;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item :-ms-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form input {
+  border-radius: 4px;
+  padding: 0 20px;
+  border: 1px solid #cccccc;
+  line-height: 40px;
+  float: left;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form input[type='submit'] {
+  color: #fff;
+  background: #4383cc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item {
+  max-width: 100%;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+.is-path-list .layout-3col__left-content .new-custom-search-form .form-item :-ms-input-placeholder {
+  color: #999999;
+}
+
+.is-path-list #block-customsearchblock-4 {
+  margin: 0 0 26px;
+  display: inline-block;
+}
+
+.is-path-list .item-list {
+  clear: both;
+  padding: 30px 0 0;
+}
+
+.is-path-list .item-list li {
+  list-style: none;
+  padding: 16px 0;
+  margin: 0;
+}
+
+.is-path-list .item-list li:last-child {
+  border-bottom: 0;
+}
+
+.is-path-list .item-list .row div {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
+  color: #808080;
+}
+
+.is-path-list .item-list .row .title a {
+  font-weight: bold;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR CATEGORY DETAIL PAGE
+ * @author Shruti 
+ */
+/* GENERIC STYLES FOR FORM ELEMENTS STARTS HERE */
+.form-item label,
+.form-type-textarea label {
+  color: #cccccc;
+}
+
+.form-item input,
+.form-item textarea,
+.form-type-textarea input,
+.form-type-textarea textarea {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+#edit-submit {
+  border-radius: 4px;
+  padding: 9px 7px;
+  background: #fff;
+  border: 2px solid #4383cc;
+  color: #4383cc;
+  line-height: 22px;
+  min-width: 150px;
+}
+
+/* GENERIC STYLES FOR FORM ELEMENTS ENDS HERE */
+/* GENERIC STYLES CATEGORY DETAIL PAGE STARTS HERE */
+.is-page-node-type-resource .field--name-field-resource-comment h2 {
+  margin: 20px 0 0;
+  color: #808080;
+  font-size: 18px;
+}
+
+.is-page-node-type-resource .field--name-field-resource-comment h3,
+.is-page-node-type-resource .field--name-field-resource-comment p {
+  margin: 0;
+}
+
+.is-page-node-type-resource .field--name-field-resource-comment article {
+  margin: 0 0 20px;
+  color: #808080;
+  font-size: 16px;
+}
+
+.is-page-node-type-resource .field--name-field-resource-comment article article {
+  margin: 0;
+  display: block;
+}
+
+.is-page-node-type-resource .lhs-wrapper {
+  float: left;
+  width: 25%;
+  max-width: 200px;
+  margin: 0 80px 0 0;
+}
+
+.is-page-node-type-resource .lhs-wrapper .field--name-field-rating {
+  margin: 50px 0 40px;
+}
+
+.is-page-node-type-resource .rhs-wrapper {
+  float: left;
+  width: 68%;
+}
+
+.is-page-node-type-resource .resource-details {
+  margin: 0 0 20px;
+}
+
+.is-page-node-type-resource .resource-details .label {
+  color: #4a4a4a;
+  display: block;
+}
+
+.is-page-node-type-resource .field--name-field-term-ref-tags .field__label {
+  display: none;
+}
+
+.is-page-node-type-resource .field--name-field-term-ref-tags .field__item {
+  border-radius: 4px;
+  background: #4383cc;
+  color: #fff;
+  float: left;
+  margin: 0 20px 0 0;
+  padding: 0 10px;
+}
+
+.is-page-node-type-resource .share-links-wrapper {
+  display: inline-block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.is-page-node-type-resource .share-link {
+  border-radius: 4px;
+  padding: 9px 7px;
+  background: #fff;
+  border: 2px solid #4383cc;
+  color: #4383cc;
+  line-height: 22px;
+  min-width: 150px;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+.is-page-node-type-resource .share-link:before {
+  content: "";
+  background: url("../../../images/share-links-sprite.png") no-repeat;
+  display: block;
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.is-page-node-type-resource .share-link .field {
+  display: inline-block;
+}
+
+.is-page-node-type-resource .share-link .field__label {
+  display: none;
+}
+
+.is-page-node-type-resource .share-link.anotate-link:before {
+  background-position: -30px 0;
+}
+
+/* GENERIC STYLES CATEGORY DETAIL PAGE ENDS HERE */
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
+ * @author Shruti 
+ */
+div#block-userlanguageblock,
+div#block-languagedropdownswitcher {
+  float: right;
+  margin: 20px 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  div#block-userlanguageblock,
+  div#block-languagedropdownswitcher {
+    margin: 10px;
+  }
+}
+
+div#block-userlanguageblock p,
+div#block-languagedropdownswitcher p {
+  margin: 0 5px;
+}
+
+div#block-userlanguageblock span,
+div#block-languagedropdownswitcher span {
+  margin: 0 5px;
+  color: #666666;
+}
+
+div#block-userlanguageblock span img,
+div#block-languagedropdownswitcher span img {
+  width: 1vw;
+  margin: 0 3px;
+}
+
+@media only screen and (max-width: 1024px) {
+  div#block-userlanguageblock span img,
+  div#block-languagedropdownswitcher span img {
+    width: 20px;
+  }
+}
+
+div#block-userlanguageblock span.user-dropdown img:first-child,
+div#block-languagedropdownswitcher span.user-dropdown img:first-child {
+  width: 2vw;
+}
+
+@media only screen and (max-width: 1024px) {
+  div#block-userlanguageblock span.user-dropdown img:first-child,
+  div#block-languagedropdownswitcher span.user-dropdown img:first-child {
+    width: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  div#block-languagedropdownswitcher {
+    width: 27%;
+    margin: 13px 10px;
+  }
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #cccccc;
+  float: left;
+  width: 100%;
+}
+
+header.sticky-header {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.28);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  visibility: visible;
+  height: 64px;
+  left: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  header.sticky-header {
+    height: 50px;
+  }
+}
+
+header.sticky-header #block-userlanguageblock {
+  margin: 14px 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  header.sticky-header #block-userlanguageblock {
+    margin: 7px 10px;
+  }
+}
+
+div#block-nvli-branding {
+  float: left;
+  padding: 14px 24px;
+}
+
+@media only screen and (max-width: 767px) {
+  div#block-nvli-branding {
+    padding: 10px;
+  }
+}
+
+div#block-nvli-branding.sticky-branding {
+  width: 50%;
+  max-width: 500px;
+  padding: 7px 24px;
+}
+
+@media only screen and (max-width: 1024px) {
+  div#block-nvli-branding.sticky-branding {
+    max-width: 128px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  div#block-nvli-branding.sticky-branding {
+    width: 32%;
+  }
+}
+
+.site-logo img {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .site-logo img {
+    width: 51px;
+  }
+}
+
+.site-name {
+  float: left;
+  margin: 12px 0 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .site-name {
+    display: none;
+  }
+}
+
+.site-name a {
+  color: #999999;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE FOOTER STYLES
+ * @author Shruti 
+ */
+footer.footer {
+  box-shadow: inset 0 16px 40px rgba(0, 0, 0, 0.28);
+  background: #4a90e2;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 63px 16%;
+  display: inline-block;
+  z-index: -1;
+}
+
+@media (max-width: 767px) {
+  footer.footer {
+    position: relative;
+    padding: 63px 8%;
+  }
+}
+
+footer.footer #block-logoimage-2,
+footer.footer nav {
+  display: inline-block;
+  vertical-align: top;
+  width: 23%;
+}
+
+@media (max-width: 450px) {
+  footer.footer #block-logoimage-2,
+  footer.footer nav {
+    width: 100%;
+    text-align: center;
+  }
+  footer.footer #block-logoimage-2 li,
+  footer.footer nav li {
+    text-align: center;
+  }
+}
+
+footer.footer nav h2,
+footer.footer nav ul {
+  margin: 0;
+}
+
+footer.footer nav h2,
+footer.footer nav ul li a {
+  font-size: 18px;
+  color: #000;
+  line-height: 28px;
+}
+
+footer.footer nav ul li a {
+  font-weight: 300;
+}
+
+footer.footer #block-nvli-2 {
+  margin: 0 15%;
+}
+
+@media (max-width: 450px) {
+  footer.footer #block-nvli-2 {
+    margin: 20px 0;
+  }
+}
+
+footer.footer #block-followus-2 {
+  float: right;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HOMEPAGE
+ * @author Shruti 
+ */
+.is-path-frontpage .homepage-banner-wrapper {
+  background: #fff;
+  float: left;
+  width: 100%;
+}
+
+.is-path-frontpage .layout-3col__full {
+  padding: 0 18px;
+}
+
+@media only screen and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full {
+    padding: 0;
+  }
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
+  border-radius: 8px;
+  float: left;
+  width: 32.69%;
+  margin: 6px 12px 6px 0;
+  background: #f2f2f2;
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block .row {
+  padding: 33px 40px 30px;
+  border: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(3n+3) {
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (min-width: 980px) and (max-width: 1024px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
+    width: 32.5%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
+    width: 32%;
+  }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
+    width: 49%;
+    margin: 6px 2% 6px 0;
+  }
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(2n + 1) {
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block {
+    width: 100%;
+    margin: 6px 0;
+  }
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(3n+4) {
+  clear: left;
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  .is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block:nth-child(3n+4) {
+    clear: none;
+  }
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block .resource_image {
+  margin: 0 32px 0 0;
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block div[class*='resource_'] {
+  font-size: 24px;
+  color: #999999;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.is-path-frontpage .layout-3col__full .homepage-resources-wrapper .resources-block .resource_title {
+  color: #4383cc;
+}
+
+.is-path-frontpage .layout-3col__full .block .field--name-field-block-image img {
+  width: 4.3vw;
+}
+
+@media only screen and (max-width: 450px) {
+  .is-path-frontpage .layout-3col__full .block .field--name-field-block-image img {
+    width: 10vw;
+  }
+}
+
+div#block-homepagebanner-2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+div#block-homepagebanner-2 video {
+  width: 100%;
+}
+
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0 0;
+  font-weight: 300;
+}
+
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p {
+  margin: 15px 0;
+}
+
+div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-child(2) {
+  font-size: 40px;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE STYLE CHANGES FOR VIDEO AND IMAGE PAGES
+ * @author Shruti 
+ */
+.field--name-field-video-file-path .field__label {
+  display: none;
+}
+
+.video-js {
+  width: 100% !important;
+  background: transparent;
+  height: auto !important;
+}
+
+.video-js .vjs-tech {
+  position: relative;
+  height: auto;
+}
+
+.vjs-default-skin .vjs-big-play-button {
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.mirador-viewer #workspace .layout-slot {
+  width: 100% !important;
+}
+
+/* 
+ * THIS FILE CONTAINS ALL THE BLOCKS STYLES
+ * @author Shruti 
+ */
+/* STYLES FOR RIGHT HAND SIDEBAR BLOCKS STARTS HERE */
+/*c GENERIC RIGHT SIDEBAR STYLES STARTS HERE */
+.layout-3col__right-sidebar h2 {
+  font-size: 20px;
+  color: gray;
+  margin: 0;
+  line-height: 20px;
+}
+
+/*c GENERIC RIGHT SIDEBAR STYLES ENDS HERE */
+/*** STYLES FOR CATEGORY LANDING PAGE - RHS RESOURCES BLOCK STARTS HERE ***/
+.resources-block {
+  position: relative;
+}
+
+.resources-block .row {
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  padding: 20px 32px;
+  margin: 16px 0;
+}
+
+.resources-block .resource_title {
+  color: #4383cc;
+}
+
+.resources-block .resource_image {
+  background: url("../../../images/iconsprite.png") no-repeat;
+  float: left;
+  width: 27px;
+  height: 27px;
+  margin: 0 8px 0 0;
+}
+
+.resources-block .resource_image.books {
+  background-position: -13px -11px;
+}
+
+.resources-block .resource_image.audio_video {
+  background-position: -107px -11px;
+}
+
+.resources-block .resource_image.govt_archives {
+  background-position: -203px -11px;
+}
+
+.resources-block .resource_image.journal_and_thesis {
+  background-position: -236px -11px;
+}
+
+.resources-block .resource_image.manuscripts {
+  background-position: -43px -11px;
+}
+
+.resources-block .resource_image.maps {
+  background-position: -171px -11px;
+}
+
+.resources-block .resource_image.museum {
+  background-position: -72px -11px;
+}
+
+.resources-block .resource_image.newspaper_archives {
+  background-position: -139px -11px;
+}
+
+.resources-block .row + a {
+  position: absolute;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* STYLES FOR CATEGORY LANDING PAGE - RHS RESOURCES BLOCK ENDS HERE */
+/*** STYLES FOR RIGHT HAND SIDEBAR BLOCKS STARTS HERE ***/
+/* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK STARTS HERE */
+#block-customsearchblock-2 {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 767px) {
+  #block-customsearchblock-2 {
+    position: relative;
+    top: 0;
+    display: none;
+  }
+}
+
+#block-customsearchblock-2 #new-custom-search-form {
+  display: inline-block;
+  margin: 0 36.1%;
+}
+
+#block-customsearchblock-2 #new-custom-search-form label {
+  display: none;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item :-ms-input-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input {
+  border-radius: 4px;
+  padding: 0 20px;
+  border: 1px solid #cccccc;
+  line-height: 40px;
+  float: left;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#block-customsearchblock-2 #new-custom-search-form input[type='submit'] {
+  color: #fff;
+  background: #4383cc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+#block-customsearchblock-2 #new-custom-search-form .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  #block-customsearchblock-2 #new-custom-search-form {
+    margin: 0;
+  }
+}
+
+#block-customsearchblock-2.sticky-search-header {
+  position: relative;
+  top: 0;
+}
+
+#block-customsearchblock-2.sticky-search-header #new-custom-search-form {
+  float: right;
+  margin: 15px 20px 0 0;
+}
+
+#block-customsearchblock-2.sticky-search-header #new-custom-search-form input {
+  line-height: 30px;
+}
+
+/* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK ENDS HERE */
+/* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK STARTS HERE */
+.block-custom-header-search-block {
+  float: right;
+  margin: 20px 20px 0 0;
+}
+
+.block-custom-header-search-block label {
+  display: none;
+}
+
+.block-custom-header-search-block .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.block-custom-header-search-block .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+.block-custom-header-search-block .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+.block-custom-header-search-block .form-item :-ms-input-placeholder {
+  color: #999999;
+}
+
+.block-custom-header-search-block input {
+  border-radius: 4px;
+  padding: 0 20px;
+  border: 1px solid #cccccc;
+  line-height: 40px;
+  float: left;
+}
+
+.block-custom-header-search-block input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.block-custom-header-search-block input[type='submit'] {
+  color: #fff;
+  background: #4383cc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+.block-custom-header-search-block .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0;
+}
+
+/* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK ENDS HERE */
+/* STYLES FOR HOMEPAGE & CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
+#block-indiasancientpast-2 .field--name-field-featured-tag {
+  display: none;
+}
+
+#block-indiasancientpast-2,
+#block-indiasancientpast-3 {
+  max-width: 68%;
+  margin: 30px 16%;
+  display: inline-block;
+}
+
+@media (max-width: 979px) {
+  #block-indiasancientpast-2,
+  #block-indiasancientpast-3 {
+    max-width: 100%;
+    margin: 30px 0;
+  }
+}
+
+#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+#block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
+  float: left;
+  width: 56%;
+}
+
+@media only screen and (max-width: 450px) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+  #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
+  #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
+    width: 47%;
+  }
+}
+
+#block-indiasancientpast-2 .field--name-field-featured-cont,
+#block-indiasancientpast-3 .field--name-field-featured-cont {
+  float: left;
+}
+
+@media only screen and (min-width: 450px) {
+  #block-indiasancientpast-2 .field--name-field-featured-cont,
+  #block-indiasancientpast-3 .field--name-field-featured-cont {
+    margin: 0 35px 0 0;
+  }
+}
+
+#block-indiasancientpast-2 .field--name-field-featured-cont img,
+#block-indiasancientpast-3 .field--name-field-featured-cont img {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+#block-indiasancientpast-2 .field--name-field-content-title,
+#block-indiasancientpast-2 .field--name-field-content-author,
+#block-indiasancientpast-3 .field--name-field-content-title,
+#block-indiasancientpast-3 .field--name-field-content-author {
+  color: #4a90e2;
+  text-transform: capitalize;
+}
+
+#block-indiasancientpast-2 .field--name-field-content-title,
+#block-indiasancientpast-3 .field--name-field-content-title {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+@media only screen and (max-width: 450px) {
+  #block-indiasancientpast-2 .field--name-field-content-title,
+  #block-indiasancientpast-3 .field--name-field-content-title {
+    margin: 10px 0;
+  }
+}
+
+#block-indiasancientpast-2 .field--name-field-content-author,
+#block-indiasancientpast-3 .field--name-field-content-author {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#block-indiasancientpast-2 .field--name-body,
+#block-indiasancientpast-3 .field--name-body {
+  overflow: hidden;
+  max-height: 157px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  text-overflow: -o-ellipsis-lastline;
+  margin: 34px 0;
+}
+
+#block-indiasancientpast-2 .field--name-body p,
+#block-indiasancientpast-3 .field--name-body p {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 300;
+  line-height: 26px;
+  color: #262626;
+}
+
+#block-indiasancientpast-2 .field--name-field-block-link a,
+#block-indiasancientpast-3 .field--name-field-block-link a {
+  border-radius: 8px;
+  font-size: 24px;
+  border: 2px solid #4383cc;
+  padding: 18px;
+  margin: 29px 0 0;
+  display: inline-block;
+  width: 280px;
+  max-width: 100%;
+  text-align: center;
+}
+
+/* STYLES FOR HOMEPAGE & CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
+/* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
+#block-indiasancientpast-3 {
+  max-width: 100%;
+  margin: 30px 0 0;
+}
+
+#block-indiasancientpast-3 .field--name-field-featured-tag {
+  border-radius: 4px;
+  position: absolute;
+  background: #f5a623;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0 5px;
+  max-width: 100px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
+.homepage-resources-wrapper .resources-block .resource_image,
+.block-resource-type-title-block .resources-block .resource_image {
+  background: url("../../../images/resources_home_sprite.png") no-repeat;
+  width: 69px;
+  height: 68px;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.books,
+.block-resource-type-title-block .resources-block .resource_image.books {
+  background-position: 0 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.audio_video,
+.block-resource-type-title-block .resources-block .resource_image.audio_video {
+  background-position: -223px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.govt_archives,
+.block-resource-type-title-block .resources-block .resource_image.govt_archives {
+  background-position: -481px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.journal_and_thesis,
+.block-resource-type-title-block .resources-block .resource_image.journal_and_thesis {
+  background-position: -61px 0px;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.manuscripts,
+.block-resource-type-title-block .resources-block .resource_image.manuscripts {
+  background-position: -566px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.maps,
+.block-resource-type-title-block .resources-block .resource_image.maps {
+  background-position: -395px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.museum,
+.block-resource-type-title-block .resources-block .resource_image.museum {
+  background-position: -142px 0;
+}
+
+.homepage-resources-wrapper .resources-block .resource_image.newspaper_archives,
+.block-resource-type-title-block .resources-block .resource_image.newspaper_archives {
+  background-position: -308px 0;
+}
+
+/*# sourceMappingURL=components.css.map */
