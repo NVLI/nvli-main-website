@@ -50,7 +50,7 @@ function ova_preprocess_ova(&$variables) {
  */
 function ova_annotation_store_search_endpoint_output_alter(&$entity) {
 
-  if ($entity->content['data']['resource_entity_type'] == 'video') {
+  if ($entity->content['data']['resource_media_type'] == 'video') {
     $annotations = array();
     $entity_annotations = $entity->content['data']['annotations'];
     if ($entity_annotations) {
