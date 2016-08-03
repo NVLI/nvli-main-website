@@ -195,9 +195,14 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
           );
         }
       }
+    $query_parameter = \Drupal::request()->getQueryString();
+    $facet_params = !empty($query_parameter) ? $query_parameter : '';
+    
     if (!empty($view_more) && !empty($results['docs'])) {
       if (!empty($keyword)) {
-        $url = Url::fromUri($view_more.$keyword);
+        $facet = isset($facet_params) ? "?$facet_params" : '';
+        $url = Url::fromUri($view_more.$keyword);//'?'.$facet_params);
+       // print '<pre>';print_r($url);print '</pre>';exit;
       }
       else {
         $url = Url::fromUri($view_more);

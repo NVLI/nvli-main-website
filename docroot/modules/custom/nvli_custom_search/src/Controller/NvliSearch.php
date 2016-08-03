@@ -42,14 +42,23 @@ class NvliSearch extends ControllerBase {
     // Fetch the filter query from config entity.
     $filterId = $resource_type;
     $filterQuerySettings = \Drupal::service('custom_solr_search.filter_query_settings')->getFilterQueryString($filterId);
+    $url_components = custom_solr_search_get_url_components();
+    $facet_options = custom_solr_search_get_facet_filter_query_string($url_components['facet_query']);    
+    $solr_options = $filterQuerySettings['filter'];
+      if (!empty($facet_options)) {
+        $options = $solr_options .'AND ( '. $facet_options.')';  
+      }
+      else {
+        $options =  $solr_options; 
+      }
+
     // Get the number of document.
     if ($filterQuerySettings['server'] == 'all'){
-      $options = $filterQuerySettings['filter'];
       $doccount = \Drupal::service('custom_solr_search.search_all')->seachAll($keyword, $offset, $limit, $options);
     }
     else {
       $server = $filterQuerySettings['server'];
-      $doccount = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server);
+      $doccount = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server,$options);
     }
 
 
@@ -59,12 +68,12 @@ class NvliSearch extends ControllerBase {
     $page = pager_default_initialize($total_docs, $limit);
     $offset = $limit * $page;
     if ($filterQuerySettings['server'] == 'all'){
-      $options = $filterQuerySettings['filter'];
+     
       $results = \Drupal::service('custom_solr_search.search_all')->seachAll($keyword, $offset, $limit, $options);
     }
     else {
       $server = $filterQuerySettings['server'];
-      $results = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server);
+      $results = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server,$options);
     }
 
     // Format result to display as unformatted list.
