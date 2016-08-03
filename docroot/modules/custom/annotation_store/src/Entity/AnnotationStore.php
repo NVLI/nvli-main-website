@@ -61,11 +61,10 @@ class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterf
   public function postCreate(EntityStorageInterface $storage) {
     parent::postCreate($storage);
     $solrServers = \Drupal::service('custom_solr_search.solr_servers')->getServers();
-
-    foreach ($solrServers as $solrServer) {
+    foreach ($solrServers as $key => $solrServer) {
       // Dispatching annotation store save event.
       $dispatcher = \Drupal::service('event_dispatcher');
-      $event = new AnnotationStoreEvent($this->getReourceId(), $solrServer);
+      $event = new AnnotationStoreEvent($this->getReourceId(), $key);
       $dispatcher->dispatch(AnnotationStoreEvent::SAVE, $event);
     }
   }

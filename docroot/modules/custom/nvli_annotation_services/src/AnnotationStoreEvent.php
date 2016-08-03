@@ -10,14 +10,18 @@ class AnnotationStoreEvent extends Event {
   const DELETE = 'annotation_store.delete';
   protected $referenceSolrDocId;
 
+  protected $solrServer;
+
   /**
    * AnnotationStoreEvent constructor.
    *
    * @param $referenceSolrDocId
+   * @param $solrServer
    */
-  public function __construct($referenceSolrDocId)
+  public function __construct($referenceSolrDocId, $solrServer)
   {
     $this->referenceSolrDocId = $referenceSolrDocId;
+    $this->solrServer = $solrServer;
   }
 
   /**
@@ -29,4 +33,15 @@ class AnnotationStoreEvent extends Event {
   {
     return $this->referenceSolrDocId;
   }
+
+  /**
+   * Getter method for referenceSolrDocId.
+   *
+   * @return mixed
+   */
+  public function getSolrServer()
+  {
+    return $this->solrServer;
+  }
+
 }
