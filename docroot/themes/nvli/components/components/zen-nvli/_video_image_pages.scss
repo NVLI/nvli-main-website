@@ -1,0 +1,28 @@
+/* 
+ * THIS FILE CONTAINS ALL THE STYLE CHANGES FOR VIDEO AND IMAGE PAGES
+ * @author Shruti 
+ */
+
+.field--name-field-video-file-path  {
+  .field__label {
+    display: none;    
+  }
+}
+.video-js {
+  width: 100% !important;   // use of !important to override inline css by js
+  background: transparent;
+  height: auto !important;  // use of !important to override inline css by js
+      
+  .vjs-tech {
+    position: relative;
+    height: auto;
+  }
+}
+
+.vjs-default-skin {
+  &.vjs-big-play-button  {
+    @mixin translate (-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
