@@ -94,11 +94,18 @@ class NvliSearch extends ControllerBase {
 
         }
       }
+      
+    if (empty($keyword)) {
+       $title =  'Popular '. $filterQuerySettings['label'];
+    }  
+    else {
+      $title = 'Results from '. $filterQuerySettings['label'];
+    }
 
     $markup['search_results'] = array(
       '#theme' => 'item_list',
       '#items' => $render['result'],
-      '#title' => 'Popular '. $filterQuerySettings['label'],
+      '#title' => $title,
       '#cache' => array(
         'max-age' => 0,
       ),
