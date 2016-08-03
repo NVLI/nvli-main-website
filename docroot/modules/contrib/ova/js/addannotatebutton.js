@@ -19,8 +19,8 @@ var options = {
                 urls: {
                   // These are the default URLs.
                   create:  '/'+resource_entity_id,
-                  update:  '/annotation-store/api/:id',
-                  destroy: '/annotation-store/api/:id',
+                  update:  '/:id',
+                  destroy: '/:id',
                   search:  '/'+resource_entity_id
                 }
             },
