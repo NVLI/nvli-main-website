@@ -60,4 +60,7 @@ projects:
     version: "8.x-1.x-dev"
   ova:
     version: "8.x-1.x-dev"
+  lang_dropdown:
+    subdir: "contrib"
+    version: "1.7"
 
