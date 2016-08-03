@@ -24,7 +24,8 @@ class AnnotationStoreController extends ControllerBase {
     $entity->content['data']['annotations'] = $annotation_data;
     \Drupal::moduleHandler()->invokeAll('annotation_store_create_endpoint_output_alter', array(&$entity, $id));
     $annotation_data = $entity->content['data']['annotations'];
-    $response = $this->annotationApiCreate($annotation_data, $id);
+    $response = $this->annotationApiCreate($annotation_data);
+
     // Add watchdog.
     //\Drupal::logger('Annotation Store')->info('Created entity %type with ID %id.', array('%type' => $entity->getEntityTypeId(), '%id' => $entity->id()));
     //$response['id'] = $entity->id();
@@ -45,12 +46,12 @@ class AnnotationStoreController extends ControllerBase {
         $response = $this->annotationApiSearch($id, $request);
         break;
 
-      case 'PUT' || 'PATCH':
+      case 'PUT':
         $response = $this->annotationApiUpdate($id, $request);
         break;
 
       case 'DELETE':
-        $response = $this->annotationApiDelete($id, $request);
+        $response = $this->annotationApiDelete($id);
         break;
     }
     return new JsonResponse($response);
@@ -61,6 +62,8 @@ class AnnotationStoreController extends ControllerBase {
    */
   public function annotationApiSearch($id, $request) {
 
+    $received = $request->getContent();
+    $annotation_data = json_decode($received);
     $output = array();
     $resource_entity_id = $id;
     // Load the Entity.
@@ -68,6 +71,8 @@ class AnnotationStoreController extends ControllerBase {
     // get annotations from annotation store
     $annotations = $this->getSearchAnnotation($resource_entity_id);
     $entity->content['data']['annotations'] = $annotations;
+    $entity->content['data']['resource_entity_type'] = isset($annotation_data->media);
+    // Providing hook_annotation_store_search_endpoint_output_alter(&$entity).
     \Drupal::moduleHandler()->invokeAll('annotation_store_search_endpoint_output_alter', array(&$entity));
     $output = $entity->content['data']['annotations'];
     return $output;
@@ -94,7 +99,7 @@ class AnnotationStoreController extends ControllerBase {
   /**
    * Annotation create as entity.
    */
-  public function annotationApiCreate($annotation_data, $id) {
+  public function annotationApiCreate($annotation_data) {
     // Get the site default language.
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     // Save only if annotation data is present.
@@ -108,8 +113,6 @@ class AnnotationStoreController extends ControllerBase {
         'resource_entity_id' => $annotation_data->id,
       ));
       $entity->save();
-      $annotation_data->id = $entity->id();
-      $this->updateAnnotation($entity->id(), $annotation_data, 'onCreate');
     }
     return $entity;
   }
@@ -152,7 +155,7 @@ class AnnotationStoreController extends ControllerBase {
       $entity->text->value = $data->text;
       $entity->changed->value = time();
     }
-    $entity->data->value = json_encode($data->data);
+    $entity->data->value = json_encode($data);
     $entity->save();
     return $entity;
   }
