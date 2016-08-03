@@ -257,21 +257,17 @@ body:not(.is-path-frontpage) .layout-3col {
   display: block;
 }
 
-.is-page-node-type-resource .field--name-field-term-ref-tags .field__item {
-  background: #4383cc;
-  color: #fff;
-  font-weight: bold;
+.is-page-node-type-resource .field--name-field-term-ref-tags .field__label {
+  display: none;
 }
 
-.is-page-node-type-resource .field--name-field-term-ref-tags .field__item:before {
-  border: 10px solid transparent;
-  border-top: 10px solid #4383cc;
-  border-bottom: 0;
-  height: 0;
-  width: 0;
-  display: block;
-  content: "";
+.is-page-node-type-resource .field--name-field-term-ref-tags .field__item {
+  border-radius: 4px;
+  background: #4383cc;
+  color: #fff;
   float: left;
+  margin: 0 20px 0 0;
+  padding: 0 10px;
 }
 
 .is-page-node-type-resource .share-links-wrapper {
@@ -310,7 +306,7 @@ body:not(.is-path-frontpage) .layout-3col {
   display: none;
 }
 
-.is-page-node-type-resource .share-link .anotate-link:before {
+.is-page-node-type-resource .share-link.anotate-link:before {
   background-position: -30px 0;
 }
 

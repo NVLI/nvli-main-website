@@ -75,17 +75,17 @@
     }
   }
   .field--name-field-term-ref-tags {
+      .field__label {
+        display: none;
+      }
+
     .field__item {
+       @include border-radius(4px);
        background: color(blue);
        color: color(white);
-       font-weight: weight(bold);
-
-      &:before {
-        @include triangle(bottom, 20px, 10px, color(blue));
-        display: block;
-        content: "";
-        float: left;
-      }      
+       float: left;
+       margin: 0 20px 0 0;
+       padding: 0 10px;
    }
   }
 
@@ -118,7 +118,7 @@
       display: none;
     }
     
-    .anotate-link:before {
+    &.anotate-link:before {
       background-position: -30px 0;
     }
   }
