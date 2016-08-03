@@ -56,7 +56,9 @@ class ResourceManager {
   public function resourceEntityThumbnailImage($node) {
     
     // Fetch resource type of current node.
-    $resource_type = $node->get('field_resource_type')->getValue();
+    $resource_type_data = $node->get('field_resource_type')->getValue();
+    
+    $resource_type = $resource_type_data[0]['value'];
    
     // Fetch image data from default thubnail image field.
     // Thumbnail Image.
@@ -81,48 +83,50 @@ class ResourceManager {
       $thumbnail_image = file_create_url($path);
     }
     
-    switch ($resource_type[0]['value']) {
+    switch ($resource_type) {
       case 'audio_video' :
        
         // If thumbnail image dosn't exist in default thubnail image field then
         // fetch static default image for Audio Video.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
       case 'books' :
         
         // Fetch details image for books.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          kint('i m here');
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
+          kint($thumbnail_image);
         }
       break;
       case 'govt_archives' :
         
         // Fetch details image for Govt Archives.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
       case 'journal_and_thesis' :
         
         // Fetch details image for Journal and thesis.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
       case 'manuscripts' :
         
         // Fetch details image for Manuscript.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
       case 'maps' :
         
         // Fetch details image for Maps.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
        }
       break;
       case 'museum' :
@@ -135,7 +139,7 @@ class ResourceManager {
         
         // Fetch details image for Museum.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
       case 'newspaper_archives' :
@@ -148,11 +152,11 @@ class ResourceManager {
         
         // Fetch details image for Newspaper Acchives.
         if (empty($thumbnail_image)) {
-          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($node);
+          $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
     }
-
+   
     $data['image_path'] = $thumbnail_image;
     $data['image_link'] = $image_link;
     return $data;    
@@ -175,42 +179,42 @@ class ResourceManager {
       case 'audio_video' :
        
         // Fetch default image for Audio Video.
-        $default_image = $base_url . '/themes/nvli/images/default-book.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-av.png';
       break;
       case 'books' :
         
         // Fetch default image for books.
-        $default_image = $base_url . '/themes/nvli/images/default-book.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-book.png';
       break;
       case 'govt_archives' :
         
         // Fetch default image for Govt Archives.
-        $default_image = $base_url . '/themes/nvli/images/default-govt_archives.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-govt_archives.png';
       break;
       case 'journal_and_thesis' :
         
         // Fetch default image for Journal and thesis.
-        $default_image = $base_url . '/themes/nvli/images/default-journal_and_thesis.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-journal_and_thesis.png';
       break;
       case 'manuscripts' :
         
         // Fetch default image for Manuscript.
-        $default_image = $base_url . '/themes/nvli/images/default-manuscripts.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-manuscripts.png';
       break;
       case 'maps' :
         
         // Fetch default image for Maps.
-        $default_image = $base_url . '/themes/nvli/images/default-maps.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-maps.png';
       break;
       case 'museum' :
         
         // Fetch default image for Museum.
-        $default_image = $base_url . '/themes/nvli/images/default-museum.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-museum.png';
       break;
       case 'newspaper_archives' :
         
         // Fetch default image for Newspaper Acchives.
-        $default_image = $base_url . '/themes/nvli/images/default-newspaper_archives.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-newspaper_archives.png';
       break;
     }
     
