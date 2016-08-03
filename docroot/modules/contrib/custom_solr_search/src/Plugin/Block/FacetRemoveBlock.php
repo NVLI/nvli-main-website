@@ -36,7 +36,7 @@ class FacetRemoveBlock extends BlockBase {
       $url = $this->removeFacetFilter($url_param);
       $facets_applied[$filter] = array(
         'key' => $key,
-        'value' => urldecode($value),
+        'value' => trim(urldecode($value), '"'),
         'url' => $url,
         );
     }
@@ -59,6 +59,7 @@ class FacetRemoveBlock extends BlockBase {
    */
   protected function removeFacetFilter($param) {
     $replaced = 0;
+    $param = str_replace('"', '', $param);
     $url = str_replace($param . '&', '', $_SERVER['REQUEST_URI'], $replaced);
     if ($replaced == 0) {
       $url = str_replace('&' . $param, '', $_SERVER['REQUEST_URI'], $replaced);
