@@ -62,16 +62,15 @@ class AnnotationStoreController extends ControllerBase {
    */
   public function annotationApiSearch($id, $request) {
 
-    $received = $request->getContent();
-    $annotation_data = json_decode($received);
     $output = array();
     $resource_entity_id = $id;
+    $media = \Drupal::request()->query->get('media');
     // Load the Entity.
     $entity = \Drupal::entityTypeManager()->getStorage('annotation_store')->load($resource_entity_id);
     // get annotations from annotation store
     $annotations = $this->getSearchAnnotation($resource_entity_id);
     $entity->content['data']['annotations'] = $annotations;
-    $entity->content['data']['resource_entity_type'] = isset($annotation_data->media);
+    $entity->content['data']['resource_media_type'] = $media;
     // Providing hook_annotation_store_search_endpoint_output_alter(&$entity).
     \Drupal::moduleHandler()->invokeAll('annotation_store_search_endpoint_output_alter', array(&$entity));
     $output = $entity->content['data']['annotations'];

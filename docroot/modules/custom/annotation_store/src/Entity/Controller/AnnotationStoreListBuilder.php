@@ -49,9 +49,17 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    * @param \Drupal\Core\Routing\UrlGeneratorInterface $url_generator
    *   The url generator.
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, UrlGeneratorInterface $url_generator) {
+  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, UrlGeneratorInterface $url_generator, $dateformat = '') {
     parent::__construct($entity_type, $storage);
     $this->urlGenerator = $url_generator;
+    $this->DateFormat = $dateformat;
+  }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function getDateFormat() {
+    return $this->dateformat;
   }
 
   /**
