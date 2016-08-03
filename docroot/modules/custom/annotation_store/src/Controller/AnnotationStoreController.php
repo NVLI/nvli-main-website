@@ -24,8 +24,7 @@ class AnnotationStoreController extends ControllerBase {
     $entity->content['data']['annotations'] = $annotation_data;
     \Drupal::moduleHandler()->invokeAll('annotation_store_create_endpoint_output_alter', array(&$entity, $id));
     $annotation_data = $entity->content['data']['annotations'];
-    $response = $this->annotationApiCreate($annotation_data);
-
+    $response = $this->annotationApiCreate($id, $annotation_data);
     // Add watchdog.
     //\Drupal::logger('Annotation Store')->info('Created entity %type with ID %id.', array('%type' => $entity->getEntityTypeId(), '%id' => $entity->id()));
     //$response['id'] = $entity->id();
@@ -98,22 +97,26 @@ class AnnotationStoreController extends ControllerBase {
   /**
    * Annotation create as entity.
    */
-  public function annotationApiCreate($annotation_data) {
-    // Get the site default language.
-    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    // Save only if annotation data is present.
-    if ($annotation_data->text) {
-      $entity = \Drupal::entityManager()->getStorage('annotation_store')->create(array(
-        'type' => $annotation_data->media,
-        'language' => $language,
-        'data' => json_encode($annotation_data->data),
-        'uri' => $annotation_data->uri,
-        'text' => $annotation_data->text,
-        'resource_entity_id' => $annotation_data->id,
-      ));
-      $entity->save();
+  public function annotationApiCreate($id, $annotation_data) {
+    $response = array();
+    if($id) {
+      // Get the site default language.
+      $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      // Save only if annotation data is present.
+      if ($annotation_data->text) {
+        $entity = \Drupal::entityManager()->getStorage('annotation_store')->create(array(
+          'type' => $annotation_data->media,
+          'language' => $language,
+          'data' => json_encode($annotation_data->data),
+          'uri' => $annotation_data->uri,
+          'text' => $annotation_data->text,
+          'resource_entity_id' => $annotation_data->id,
+        ));
+        $entity->save();
+      }
+      $response['id'] = $entity->id();
+      return $response;
     }
-    return $entity;
   }
 
   /**
