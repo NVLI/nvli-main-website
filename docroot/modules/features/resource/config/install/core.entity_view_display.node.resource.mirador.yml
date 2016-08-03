@@ -30,7 +30,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      mirador_settings: ''
+      mirador_settings: "label: title\ndescription: body"
     third_party_settings: {  }
     type: mirador_text
 hidden:
