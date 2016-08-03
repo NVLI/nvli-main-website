@@ -89,7 +89,8 @@ function nvli_custom_preprocess_node(&$variables) {
       if (!empty($image_details)) {
 
         $variables['thumbnail_image_path'] = $image_details['image_path'];
-        $variables['thumbnail_image_link'] = $image_details['image_link'];
+        
+        $variables['thumbnail_image_link'] = !empty($image_details['image_link']) ? $image_details['image_link'] : ''; 
       }
 
       $variables['solr_author'] = is_array($solr_document->author) ? implode(', ', $solr_document->author) : $solr_document->author;

@@ -31,6 +31,7 @@ class ResourceManager {
     
     // Entity Query to fetch resource entity count based on resource type 
     // filter.
+    // TODO : Change to solr query based on config entity.
     $query = \Drupal::entityQuery('node')
       ->condition('status', NODE_PUBLISHED)
       ->condition('type', 'resource');
@@ -95,6 +96,9 @@ class ResourceManager {
     switch ($resource_type) {
       case 'audio_video' :
        
+        // Annotation link on audio video pages.
+        $image_link =  Url::fromUri('internal:/node/' . $nid . '/ova')->toString();
+        
         // If thumbnail image dosn't exist in default thubnail image field then
         // fetch static default image for Audio Video.
         if (empty($thumbnail_image)) {
