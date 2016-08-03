@@ -79,6 +79,19 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
 
   /**
    * {@inheritdoc}
+   */
+  public function load() {
+
+    $entity_query = \Drupal::service('entity.query')->get('annotation_store');
+    $header = $this->buildHeader();
+    $entity_query->pager(20);
+    $entity_query->tableSort($header);
+    $uids = $entity_query->execute();
+    return $this->storage->loadMultiple($uids);
+  }
+
+  /**
+   * {@inheritdoc}
    *
    * Building the header and content lines for the contact list.
    *
@@ -86,12 +99,43 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
    * and inserts the 'edit' and 'delete' links as defined for the entity type.
    */
   public function buildHeader() {
-    $header['text'] = $this->t('Text');
-    $header['type'] = $this->t('Type');
-    $header['uri'] = $this->t('URI');
-    $header['author'] = $this->t('Author');
-    $header['created'] = $this->t('Created');
-    $header['changed'] = $this->t('Changed');
+    $header = array(
+      'id' => array(
+          'data' => $this->t('ID'),
+          'field' => 'id',
+          'specifier' => 'id',
+      ),
+      'text' => array(
+          'data' => $this->t('Text'),
+          'field' => 'text',
+          'specifier' => 'text',
+      ),
+      'type' => array(
+          'data' => $this->t('Type'),
+          'field' => 'type',
+          'specifier' => 'type',
+      ),
+      'uri' => array(
+          'data' => $this->t('URI'),
+          'field' => 'uri',
+          'specifier' => 'uri',
+      ),
+      'author' => array(
+          'data' => $this->t('Author'),
+          'field' => 'author',
+          'specifier' => 'author',
+      ),
+      'created' => array(
+          'data' => $this->t('Created'),
+          'field' => 'created',
+          'specifier' => 'created',
+      ),
+      'changed' => array(
+          'data' => $this->t('Changed'),
+          'field' => 'changed',
+          'specifier' => 'changed',
+      ),
+    );
     return $header;
   }
 
@@ -107,6 +151,7 @@ class AnnotationStoreListBuilder extends EntityListBuilder {
     $link = Url::fromRoute('entity.annotation_store.canonical', array('annotation_store' => $entity->id()));
     $obj = $entity->getOwner();
     $date_format = $this->getDateFormat();
+    $row['id'] = $entity->id->value;
     $row['text'] = Link::fromTextAndUrl($entity->text->value, $link);
     $row['type'] = $entity->type->value;
     $row['uri'] = $entity->uri->value;
