@@ -319,48 +319,6 @@ body:not(.is-path-frontpage) .layout-3col {
  * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
  * @author Shruti 
  */
-header {
-  background: #fff;
-  border-bottom: 1px solid #cccccc;
-  float: left;
-  width: 100%;
-}
-
-header.sticky-header {
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.28);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 3;
-  visibility: visible;
-}
-
-div#block-nvli-branding {
-  float: left;
-  padding: 14px 24px;
-}
-
-div#block-nvli-branding.sticky-branding {
-  width: 50%;
-  max-width: 460px;
-}
-
-.site-logo img {
-  float: left;
-  margin: 0 20px 0 0;
-}
-
-.site-name {
-  float: left;
-  margin: 12px 0 0;
-}
-
-.site-name a {
-  color: #999999;
-  font-size: 24px;
-  font-weight: 300;
-}
-
 div#block-userlanguageblock {
   float: right;
   margin: 23px 10px;
@@ -382,6 +340,54 @@ div#block-userlanguageblock span img {
 
 div#block-userlanguageblock span.user-dropdown img:first-child {
   width: 2vw;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #cccccc;
+  float: left;
+  width: 100%;
+}
+
+header.sticky-header {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.28);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  visibility: visible;
+  height: 64px;
+}
+
+header.sticky-header #block-userlanguageblock {
+  margin: 14px 10px;
+}
+
+div#block-nvli-branding {
+  float: left;
+  padding: 14px 24px;
+}
+
+div#block-nvli-branding.sticky-branding {
+  width: 50%;
+  max-width: 500px;
+  padding: 7px 24px;
+}
+
+.site-logo img {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+.site-name {
+  float: left;
+  margin: 12px 0 0;
+}
+
+.site-name a {
+  color: #999999;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 /* 
@@ -742,7 +748,11 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 
 #block-customsearchblock-2.sticky-search-header #new-custom-search-form {
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 7px 20px 0 0;
+}
+
+#block-customsearchblock-2.sticky-search-header #new-custom-search-form input {
+  line-height: 30px;
 }
 
 /* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK ENDS HERE */

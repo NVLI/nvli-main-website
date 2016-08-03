@@ -109,8 +109,12 @@
 
     #new-custom-search-form {
       float: right;
-      margin: 20px 20px 0 0;
-    }
+      margin: 7px 20px 0 0;
+      
+      input {
+        line-height: 30px;
+      }
+    }    
   }
 }
 
