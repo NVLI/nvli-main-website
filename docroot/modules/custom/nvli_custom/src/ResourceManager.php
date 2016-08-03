@@ -3,6 +3,7 @@
 namespace Drupal\nvli_custom;
 
 use Drupal\file\Entity\File;
+use Drupal\Core\Url;
 
 /**
  * Class ResourceManager.
@@ -59,6 +60,13 @@ class ResourceManager {
     $resource_type_data = $node->get('field_resource_type')->getValue();
     
     $resource_type = $resource_type_data[0]['value'];
+    
+    // Return if resource type field is not exist in node.
+    if (empty($resource_type)) {
+      return '';
+    }
+    
+    $nid = $node->id();
    
     // Fetch image data from default thubnail image field.
     // Thumbnail Image.
@@ -66,6 +74,7 @@ class ResourceManager {
 
     // Initalize variables.
     $thumbnail_image = '';    
+    $image_link = '';
     $data = array();
     
     global $base_url;
@@ -96,9 +105,8 @@ class ResourceManager {
         
         // Fetch details image for books.
         if (empty($thumbnail_image)) {
-          kint('i m here');
+          
           $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
-          kint($thumbnail_image);
         }
       break;
       case 'govt_archives' :
@@ -131,6 +139,8 @@ class ResourceManager {
       break;
       case 'museum' :
         
+        $image_link =  Url::fromUri('internal:/node/' . $nid . '/mirador')->toString();
+        
         // Fetch image data from default thubnail image field.
         // Thumbnail Image.
         $image_file_path = $node->get('field_image_file_path')->getValue();
@@ -144,6 +154,8 @@ class ResourceManager {
       break;
       case 'newspaper_archives' :
         
+        $image_link = Url::fromUri('internal:/node/' . $nid . '/mirador')->toString();
+        
         // Fetch image data from default thubnail image field.
         // Thumbnail Image.
         $image_file_path = $node->get('field_image_file_path')->getValue();
@@ -156,9 +168,10 @@ class ResourceManager {
         }
       break;
     }
-   
+
     $data['image_path'] = $thumbnail_image;
     $data['image_link'] = $image_link;
+
     return $data;    
   }
   

@@ -6,6 +6,8 @@
  */
 
 Use Drupal\Core\Entity;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
 
 /**
  * Implements hook_theme().
@@ -29,9 +31,9 @@ function nvli_custom_theme($existing, $type, $theme, $path) {
  * Implements hook_mirador_metadata_alter.
  */
 function nvli_custom_mirador_metadata_alter(&$entity) {
-  // field_solr_doc_id contains the solr doc id, corresponding
+  // field_solr_docid contains the solr doc id, corresponding
   // to this entity.
-  $solr_doc_id = $entity->field_solr_doc_id->value;
+  $solr_doc_id = $entity->field_solr_docid->value;
   // Proceed only if solr doc id is not empty.
   if (!empty($solr_doc_id)) {
     $metadata = \Drupal::service('custom_solr_search.search_all')->seachAll('id:' . $solr_doc_id);
@@ -60,7 +62,7 @@ function nvli_custom_mirador_metadata_alter(&$entity) {
  * Impkements hook_preprocess_node().
  */
 function nvli_custom_preprocess_node(&$variables) {
-  
+
   /** @var Drupal\node\Entity\Node $node */
   $node = $variables['node'];
   $view_mode = $variables['view_mode'];
@@ -69,7 +71,7 @@ function nvli_custom_preprocess_node(&$variables) {
 
   // Check for resource entity.
   if ($bundle == 'resource') {
-    
+
     // Fetch solr docid from node.
     $field_solr_docid = $node->get('field_solr_docid')->getValue();
     $solr_docid = $field_solr_docid[0]['value'];
@@ -77,22 +79,25 @@ function nvli_custom_preprocess_node(&$variables) {
 
     // Fetch content form solr.
     $response = \Drupal::service('custom_solr_search.search_all')->seachAll('', NULL, NULL, $query_options);
-    
+
     // Solr document object.
     $solr_document = $response['docs'][0];
-    $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
-  
-   // kint($thubnail_image);
+    $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
+
     if ($view_mode == 'full') {
 
-      $variables['thumbnail_image'] = $thumbnail_image;
-      
+      if (!empty($image_details)) {
+
+        $variables['thumbnail_image_path'] = $image_details['image_path'];
+        $variables['thumbnail_image_link'] = $image_details['image_link'];
+      }
+
       $variables['solr_author'] = is_array($solr_document->author) ? implode(', ', $solr_document->author) : $solr_document->author;
       $variables['solr_description'] = $solr_document->description;
       $variables['solr_public_url'] = is_array($solr_document->url) ? implode(', ', $solr_document->url) : $solr_document->url;
       $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate;
       $variables['solr_publisher'] = is_array($solr_document->publisher) ? implode(', ', $solr_document->publisher) : $solr_document->publisher;
-    } 
+    }
   }
 }
 

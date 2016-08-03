@@ -147,16 +147,31 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $limit = $config['custom_solr_search_limit'];
     $offset = $config['custom_solr_search_offset'];
     $view_more = $config['custom_solr_search_result_view_more'];
+    // Facet search integration.
+    $url_components = custom_solr_search_get_url_components();
+    $facet_options = custom_solr_search_get_facet_filter_query_string($url_components['facet_query']);
     // Check the block configuration and search the results.
     // If selected the core.
-
     if ($filterQuerySettings['server'] == 'all'){
-      $options = $filterQuerySettings['filter'];
+      $solr_options = $filterQuerySettings['filter'];
+      if (!empty($facet_options)) {
+        $options = $solr_options .'AND ( '. $facet_options.')';  
+      }
+      else {
+        $options =  $solr_options; 
+      }
       $results = $this->searchall->seachAll($keyword, $offset, $limit, $options);
     }
     else {
       $server = $filterQuerySettings['server'];
-      $results = $this->search->basicSearch($keyword, $offset, $limit, $server);
+      $solr_options = $filterQuerySettings['filter'];
+      if (!empty($facet_options)) {
+        $options = $solr_options .'AND ( '. $facet_options.')';  
+      }
+      else {
+        $options =  $solr_options; 
+      }
+      $results = $this->search->basicSearch($keyword, $offset, $limit, $server, $options);
     }
 
     // Format result to display as unformatted list.

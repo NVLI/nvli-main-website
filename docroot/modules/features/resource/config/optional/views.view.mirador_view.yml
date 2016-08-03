@@ -128,7 +128,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Mirador View'
+      title: ''
       header: {  }
       footer: {  }
       empty: {  }
