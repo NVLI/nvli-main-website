@@ -14,6 +14,7 @@ var options = {
                 loadFromSearch: {
                     limit: 10000,
                     resource_entity_id: resource_entity_id,
+                    media: 'video',
                     uri: window.location.href
                 },
                 urls: {
