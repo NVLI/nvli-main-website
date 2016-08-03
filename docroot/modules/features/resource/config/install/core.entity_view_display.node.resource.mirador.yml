@@ -27,10 +27,10 @@ bundle: resource
 mode: mirador
 content:
   field_image_file_path:
-    weight: 6
+    weight: 0
     label: hidden
     settings:
-      mirador_settings: "label: title\ndescription: body\nattribution: title"
+      mirador_settings: "label: title\ndescription: body"
     third_party_settings: {  }
     type: mirador_text
 hidden:

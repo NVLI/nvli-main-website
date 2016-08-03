@@ -27,7 +27,7 @@ bundle: resource
 mode: ova
 content:
   field_audio_file_path:
-    weight: 5
+    weight: 0
     label: above
     settings:
       width: '854'
@@ -43,7 +43,7 @@ content:
     third_party_settings: {  }
     type: videojs_audio_player_text
   field_video_file_path:
-    weight: 6
+    weight: 1
     label: above
     settings:
       width: '854'

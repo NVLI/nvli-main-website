@@ -30,10 +30,9 @@ content:
   field_rating:
     weight: 3
     label: hidden
-    settings:
-      fivestar_widget: modules/fivestar/widgets/basic/basic.css
+    settings: {  }
     third_party_settings: {  }
-    type: fivestar_stars
+    type: fivestar_rating
   field_resource_comment:
     type: comment_default
     weight: 5

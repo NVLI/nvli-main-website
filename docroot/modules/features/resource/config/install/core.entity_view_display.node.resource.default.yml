@@ -20,7 +20,7 @@ dependencies:
   module:
     - comment
     - fivestar
-    - mirador
+    - image
     - user
 id: node.resource.default
 targetEntityType: node
@@ -58,10 +58,9 @@ content:
   field_rating:
     weight: 3
     label: above
-    settings:
-      fivestar_widget: modules/fivestar/widgets/basic/basic.css
+    settings: {  }
     third_party_settings: {  }
-    type: fivestar_stars
+    type: fivestar_rating
   field_resource_comment:
     weight: 10
     label: above
@@ -94,10 +93,10 @@ content:
     weight: 7
     label: above
     settings:
-      mirador_node_style: ''
-      mirador_settings: ''
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: mirador_image
+    type: image
   links:
     weight: 0
     settings: {  }
