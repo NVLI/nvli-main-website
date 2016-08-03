@@ -52,6 +52,12 @@ body:not(.is-path-frontpage) .layout-3col {
   padding: 0 112px;
 }
 
+@media (max-width: 1024px) {
+  body:not(.is-path-frontpage) .layout-3col {
+    padding: 0;
+  }
+}
+
 /* 
  * THIS FILE CONTAINS ALL STYLE FOR CATEGORY LISTING PAGES
  * @author Shruti 
@@ -614,12 +620,23 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   height: auto;
 }
 
-.vjs-default-skin.vjs-big-play-button {
+.vjs-default-skin .vjs-big-play-button {
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+}
+
+.mirador-osd,
+.image-view,
+.bottomPanel,
+.window {
+  background: transparent;
+}
+
+.mirador-viewer #workspace .layout-slot {
+  width: 100% !important;
 }
 
 /* 
