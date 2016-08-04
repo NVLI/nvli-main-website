@@ -140,11 +140,11 @@
     
       <div class="share-links-wrapper">
         {# Short link #}
-        <div class="short-url share-link">
-        {% if content.field_text_plain_single_1 %}
-          {{ content.field_text_plain_single_1 }}
+        {% if short_link %}
+          <div class="short-url share-link">
+            {{ content.field_text_plain_single_1 }}
+          </div>
         {% endif %}
-        </div>
         {# Star points #}
         <div class="anotate-link share-link">
         {% if thumbnail_image_link %}
