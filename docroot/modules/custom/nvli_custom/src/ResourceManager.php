@@ -61,11 +61,6 @@ class ResourceManager {
     
     $resource_type = $resource_type_data[0]['value'];
     
-    // Return if resource type field is not exist in node.
-    if (empty($resource_type)) {
-      return '';
-    }
-    
     $nid = $node->id();
    
     // Fetch image data from default thubnail image field.
@@ -167,6 +162,9 @@ class ResourceManager {
           $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
+      default :
+        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-book.png';
+        
     }
 
     $data['image_path'] = $thumbnail_image;
