@@ -92,7 +92,17 @@ function nvli_custom_preprocess_node(&$variables) {
         $variables['thumbnail_image_link'] = $image_details['image_link'];
       }
 
-      $variables['solr_author'] = is_array($solr_document->author) ? implode(', ', $solr_document->author) : $solr_document->author;
+      // Iterate author list and assign facet_auhtor link to each author.
+      foreach($solr_document->author as $author) {
+        
+        // Generate facet link.
+        $url = Url::fromRoute('nvli_custom_search.nvli_search_result', array('keyword' => $author), array('query'=> array('_facet_author' => $author)));
+        //$author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
+        $author_list[$author]['link'] = $url->toString();
+        $author_list[$author]['label'] = $author;
+      }
+      //kint($author1_list);
+      $variables['solr_author'] = $author_list;
       $variables['solr_description'] = $solr_document->description;
       $variables['solr_public_url'] = is_array($solr_document->url) ? implode(', ', $solr_document->url) : $solr_document->url;
       $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate;

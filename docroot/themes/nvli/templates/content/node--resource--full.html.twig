@@ -91,64 +91,67 @@
     </footer>
   {% endif %}
   <div{{ content_attributes }}>
-      <div class="lhs-wrapper">
-          {# Thubnail Image #}
-          <img src="http://guides.global/images/guides/global/dummy_web_page.jpg" />
-          
-           {# Star points #}
-    {{ content.field_rating }}
-          
-            {# Solr Author. #}
-            {% if solr_author %}
-            <div class="author resource-details">
-              <span class="label">Author :</span>
-              {{ solr_author }}
-            </div>
-            {% endif %}
-
-            {# Solr Published Date. #}
-            {% if solr_published_date %}
-            <div class="published_date resource-details">
-              <span class="label">Published Date : </span>
-              {{ solr_published_date }}
-            </div>
-            {% endif %}
-
-            {# Solr Publisher. #}
-            {% if solr_publisher %}
-            <div class="publisher resource-details">
-              <span class="label">Publisher : </span>
-              {{ solr_publisher }}
-            </div>
-            {% endif %}
-      </div>
-      <div class="rhs-wrapper">
-          {# Tags #}
-    {% if content.field_term_ref_tags %}
-      {{ content.field_term_ref_tags }}
-    {% endif %}
-     {# Solr descrtion. #}
-    {% if solr_description %}
-      {{ solr_description }}
-    {% endif %}
-    
-    <div class="share-links-wrapper">
-      {# Short link #}
-      <div class="short-url share-link">
-      {% if content.field_text_plain_single_1 %}
-      {{ content.field_text_plain_single_1 }}
+    <div class="lhs-wrapper">
+        
+      {# Thubnail Image #}
+      {% if thumbnail_image_path %}
+        <img src="{{ thumbnail_image_path }}" />
       {% endif %}
+      
+      {# Star points #}
+      {{ content.field_rating }}
+        
+      {# Solr Author. #}
+      <div clas="asor_author">{{ dump(solr_author) }}</div>
+      {% if solr_author %}
+        {% for solr_author in author %}
+          <li>{{ author }}</li>
+        {% endfor %}
+      {% endif %}
+
+      {# Solr Published Date. #}
+      {% if solr_published_date %}
+      <div class="published_date resource-details">
+        <span class="label">Published Date : </span>
+        {{ solr_published_date }}
       </div>
-    {# Star points #}
-    <div class="anotate-link share-link">
-    {% if thumbnail_image_link %}
-      <a href="{{ thumbnail_image_link }}">Add Annotation</a>
-    {% endif %}
+      {% endif %}
+
+      {# Solr Publisher. #}
+      {% if solr_publisher %}
+        <div class="publisher resource-details">
+          <span class="label">Publisher : </span>
+          {{ solr_publisher }}
+        </div>
+      {% endif %}
     </div>
+    <div class="rhs-wrapper">
+      {# Tags #}
+      {% if content.field_term_ref_tags %}
+        {{ content.field_term_ref_tags }}
+      {% endif %}
+      
+      {# Solr descrtion. #}
+      {% if solr_description %}
+        {{ solr_description }}
+      {% endif %}
     
-    </div>
-      {# Comment form and list #}
-    {{ content.field_resource_comment }}
+      <div class="share-links-wrapper">
+        {# Short link #}
+        <div class="short-url share-link">
+        {% if content.field_text_plain_single_1 %}
+          {{ content.field_text_plain_single_1 }}
+        {% endif %}
+        </div>
+        {# Star points #}
+        <div class="anotate-link share-link">
+        {% if thumbnail_image_link %}
+          <a href="{{ thumbnail_image_link }}">Add Annotation</a>
+        {% endif %}
+        </div>
       </div>
+      {# Comment form and list #}
+      {{ content.field_resource_comment }}
+    </div>
   </div>
 </article>
