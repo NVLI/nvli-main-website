@@ -1,0 +1,3 @@
+services:
+  nvli_shorten.manager:
+    class: Drupal\nvli_shorten\NvliShortenManager

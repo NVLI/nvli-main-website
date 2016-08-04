@@ -1,11 +1,11 @@
 .messages,
 .messages--status {
-  margin: 1.5rem 0;
+  margin: 24px 0;
   position: relative;
   padding: 10px 10px 10px 44px;
-  border: 1px solid #0072b9;
-  background-color: #f6fcff;
-  color: #0072b9;
+  border: 1px solid #4383cc;
+  background-color: white;
+  color: #4383cc;
 }
 
 [dir="rtl"] .messages,
@@ -29,7 +29,7 @@
 }
 
 .messages__icon path {
-  fill: #0072b9;
+  fill: #4383cc;
 }
 
 .messages__highlight {

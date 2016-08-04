@@ -1,0 +1,127 @@
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR CATEGORY DETAIL PAGE
+ * @author Shruti 
+ */
+
+/* GENERIC STYLES FOR FORM ELEMENTS STARTS HERE */
+
+.form-item,
+.form-type-textarea {
+  label {
+    color: color(grey-light);      
+  }
+
+  input,
+  textarea {
+    @include border-radius(4px);
+    border: 1px solid color(grey-light);    
+  }
+}
+
+#edit-submit {
+  @include button-style;
+}
+
+/* GENERIC STYLES FOR FORM ELEMENTS ENDS HERE */
+
+/* GENERIC STYLES CATEGORY DETAIL PAGE STARTS HERE */
+
+.is-page-node-type-resource {
+  .field--name-field-resource-comment {
+    h2 {
+      margin: 20px 0 0;
+      color: color(content-color);
+      font-size: font-size(m) + 2;
+    }
+
+    h3,
+    p {
+      margin: 0;
+    }
+
+    article {
+      margin: 0 0 20px;
+      color: color(content-color);
+      font-size: font-size(m);
+
+      article {
+        margin: 0;
+        display: block;
+      }
+    }
+  }
+  .lhs-wrapper {
+    float: left;
+    width: 25%;
+    max-width: 200px;
+    margin: 0 80px 0 0;
+    
+    .field--name-field-rating {
+      margin: 50px 0 40px;
+    }
+  }
+
+  .rhs-wrapper {
+    float: left;
+    width: 68%;
+  }
+  
+  .resource-details {
+    margin: 0 0 20px;
+
+    .label {
+      color: color(label-color);
+      display: block;
+    }
+  }
+  .field--name-field-term-ref-tags {
+      .field__label {
+        display: none;
+      }
+
+    .field__item {
+       @include border-radius(4px);
+       background: color(blue);
+       color: color(white);
+       float: left;
+       margin: 0 20px 0 0;
+       padding: 0 10px;
+   }
+  }
+
+  .share-links-wrapper {
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .share-link {
+    @include button-style;
+    float: left;
+    margin: 0 15px 0 0;
+    
+    &:before {
+      content: "";
+      background: url('../../../images/share-links-sprite.png') no-repeat;
+      display: block;
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin: 0 10px 0 0;
+    }
+    
+    .field {
+      display: inline-block;
+    }
+    
+    .field__label {
+      display: none;
+    }
+    
+    &.short-url:before {
+      background-position: -30px 0;
+    }
+  }
+}
+
+/* GENERIC STYLES CATEGORY DETAIL PAGE ENDS HERE */

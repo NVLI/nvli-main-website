@@ -27,6 +27,8 @@ html [type='button'],
 [type='submit'] {
   -moz-appearance: button;
   -webkit-appearance: button; // 2
+  color: color(blue);
+  border-color: color(blue);
 }
 
 .button,

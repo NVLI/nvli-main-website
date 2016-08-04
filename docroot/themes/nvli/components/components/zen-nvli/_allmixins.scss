@@ -1,0 +1,195 @@
+/* 
+ * THIS FILE CONTAINS ALL THE MIXINS USED FOR THIS THEME
+ * @author Shruti 
+ */
+
+/* ROTATE MIXIN FOR TRANSFORM */
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// translate
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+/* ROTATE MIXIN FOR TRANSFORM */
+
+/* MIXIN FOR TRIANGLE */
+
+@function opposite-position($directions) {
+  $opposite-directions: ();
+  $direction-map: (
+    'top':    'bottom',
+    'right':  'left',
+    'bottom': 'top',
+    'left':   'right',
+    'center': 'center',
+    'ltr':    'rtl',
+    'rtl':    'ltr'
+  );
+
+  @each $direction in $directions {
+    $direction: to-lower-case($direction);
+
+    @if map-has-key($direction-map, $direction) {
+      $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+    }
+    @else {
+      // @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
+    }
+  }
+
+  @return $opposite-directions;
+}
+
+/* MIXIN FOR TRIANGLE */
+@mixin triangle($pointing, $base-length, $altitude, $color) {
+  // Map $pointing {up: top, down: bottom}
+  @if $pointing == up {
+    $pointing: top;
+  }
+  @else if $pointing == down {
+    $pointing: bottom;
+  }
+  // For an equilateral triangle, calculate the altitude (woohoo, geometry!)
+  @if $altitude == true {
+    $altitude: sqrt(3) / 2 * $base-length;
+  }
+  // The base is made up of 2 opposite borders, so halve it
+  $base-length: $base-length / 2;
+  $base: opposite-position($pointing);
+  // Create the triangle
+  border: $base-length solid transparent;
+  border-#{$base}: $altitude solid $color;
+  border-#{$pointing}: 0;
+  height: 0;
+  width: 0;
+}
+
+/* MIXIN FOR TRIANGLE */
+
+/* MIXIN FOR BOX SHADOW */
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  }
+
+  @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+/* MIXIN FOR BOX SHADOW */
+
+/* BORDER RADIUS MIXIN */
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/* BORDER RADIUS MIXIN */
+
+/* MIXIN FOR MULTILINE ELLIPSIS */
+
+@mixin ellipsis ($max-height, $lines: 2) {
+  // Fallback for non-webkit browsers.
+  // Fallback does not render ellipsis.
+  overflow: hidden;
+  max-height: $max-height;
+
+  // Webkit solution for multiline ellipsis
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+
+  // Solution for Opera
+  text-overflow: -o-ellipsis-lastline;
+}
+
+/* MIXIN FOR MULTILINE ELLIPSIS */
+
+/* MIXIN FOR PLACEHOLDER */
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
+/* MIXIN FOR PLACEHOLDER */
+
+/* MIXIN FOR SEARCH BLOCK */
+
+@mixin search-block {
+  label {
+    display: none;
+  }
+
+  .form-item {
+    @include placeholder {
+      color: color('grey');
+    }
+  }
+
+  input {
+    @include border-radius(4px);
+    padding: 0 20px;
+    border: 1px solid color(grey-light);
+    line-height: 40px;
+    float: left;
+
+    &.form-text {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  input[type='submit'] {
+    color: color(white);
+    background: color(blue);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+  }
+
+  .form-item {
+    float: left;
+    max-width: 250px;
+    margin: 0;
+  }
+}
+
+/* MIXIN SEARCH BLOCK */
+
+/* MIXIN FOR BUTTON STYLES */
+
+@mixin button-style {
+  @include border-radius(4px);
+  padding: 9px 7px;
+  background: color(white);
+  border: 2px solid #4383cc;
+  color: #4383cc;
+  line-height: 22px;
+  min-width: 150px;
+}
+
+/* MIXIN FOR BUTTON STYLES */

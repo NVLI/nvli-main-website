@@ -1,0 +1,116 @@
+/* 
+ * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
+ * @author Shruti 
+ */
+
+div#block-userlanguageblock,
+div#block-languagedropdownswitcher {
+  float: right;
+  margin: 20px 10px;
+  @media only screen and (max-width: 767px) {
+    margin: 10px;
+  }
+  
+  p {
+    margin: 0 5px;
+  }
+
+  span {
+    margin: 0 5px;
+    color: color(grey-dark);
+
+    img {
+      width: 1vw;
+      margin: 0 3px;
+      @media only screen and (max-width: 1024px) {
+        width: 20px;
+      }
+    }
+
+    &.user-dropdown img:first-child {
+      width: 2vw;
+      @media only screen and (max-width: 1024px) {
+        width: 30px;
+      }
+    }
+  }
+}
+
+div#block-languagedropdownswitcher {
+  @media only screen and (max-width: 767px) {
+    width: 27%;
+    margin: 13px 10px;
+  }
+}
+
+header {
+  background: color(white);
+  border-bottom: 1px solid color(grey-light);
+  float: left;
+  width: 100%;
+
+  &.sticky-header {
+    @include box-shadow(0, 5px, 5px, rgba(0, 0, 0, .28));
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    visibility: visible;
+    height: 64px;
+    left: 0;
+    @media only screen and (max-width: 767px) {
+      height: 50px;
+    }
+    
+    #block-userlanguageblock {
+      margin: 14px 10px;
+      @media only screen and (max-width: 767px) {
+        margin: 7px 10px;
+      }
+    }
+  }
+}
+
+div#block-nvli-branding {
+  float: left;
+  padding: 14px 24px;
+  @media only screen and (max-width: 767px) {
+    padding: 10px;
+  }
+
+  &.sticky-branding {
+    width: 50%;
+    max-width: 500px;
+    padding: 7px 24px;
+    @media only screen and (max-width: 1024px) {
+      max-width: 128px;
+    }
+    @media only screen and (max-width: 767px) {
+      width: 32%;
+    }
+  }
+}
+
+.site-logo {
+  img {
+    float: left;
+    margin: 0 20px 0 0;
+    @media only screen and (max-width: 767px) {
+      width: 51px;
+    }
+  }
+}
+
+.site-name {
+  float: left;
+  margin: 12px 0 0;
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
+  
+  a {
+    color: color('grey');
+    font-size: font-size(xl);
+    font-weight: weight(light);
+  }
+}
