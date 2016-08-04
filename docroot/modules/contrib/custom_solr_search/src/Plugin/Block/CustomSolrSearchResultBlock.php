@@ -2,6 +2,7 @@
 
 namespace Drupal\custom_solr_search\Plugin\Block;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -151,6 +152,8 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $facet_options = custom_solr_search_get_facet_filter_query_string($url_components['facet_query']);
     // Check the block configuration and search the results.
     // If selected the core.
+    $keyword = urldecode($keyword);
+
     if ($filterQuerySettings['server'] == 'all') {
       $solr_options = $filterQuerySettings['filter'];
       if (!empty($facet_options)) {
