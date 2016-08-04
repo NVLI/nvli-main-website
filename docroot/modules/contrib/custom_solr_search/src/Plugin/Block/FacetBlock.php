@@ -75,7 +75,7 @@ class FacetBlock extends BlockBase implements ContainerFactoryPluginInterface {
       '#type' => 'select',
       '#title' => $this->t('Select Server'),
       '#options' => $servers,
-      '#default_value' => isset($config['servers']) ? $config['servers'] : '',
+      '#default_value' => isset($config['servers']) ? $config['servers'] : 'all',
     ];
     return $form;
   }
