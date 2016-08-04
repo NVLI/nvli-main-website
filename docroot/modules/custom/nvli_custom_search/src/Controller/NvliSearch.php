@@ -39,6 +39,7 @@ class NvliSearch extends ControllerBase {
    *   Return Search Form with result.
    */
   public function search_page($resource_type = NULL, $keyword = NULL) {
+    $keyword = urldecode($keyword);
     // Fetch the filter query from config entity.
     $filterId = $resource_type;
     $filterQuerySettings = \Drupal::service('custom_solr_search.filter_query_settings')->getFilterQueryString($filterId);

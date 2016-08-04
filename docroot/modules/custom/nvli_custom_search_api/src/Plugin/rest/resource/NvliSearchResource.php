@@ -144,6 +144,7 @@ class NvliSearchResource extends ResourceBase {
 
     // If all the parameter are present return the result.
     if ($keyword != '' && $offset != '' && $limit != '') {
+      $keyword = urldecode($keyword); 
       // Call the service to fetch the result from the solr.
       if ($type == '') {
         $solr_result = $this->searchall->seachAll($keyword, $offset, $limit);
