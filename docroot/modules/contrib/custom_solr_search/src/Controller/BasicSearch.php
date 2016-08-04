@@ -54,11 +54,13 @@ class BasicSearch extends ControllerBase {
         }
         $render['result'][] = array(
           '#theme' => 'custom_solr_search_result',
+          '#url' => isset($result->url[0]) ? $result->url[0] : '',
           '#title' => isset($title) ? $title : '',
           '#author' => isset($result->author) ? implode(', ', $result->author) : '',
           '#publishDate' => isset($result->publishDate) ? implode(', ', $result->publishDate) : '',
           '#publisher' => isset($result->publisher) ? implode(', ', $result->publisher) : '',
           '#topic' => isset($result->topic) ? implode(', ', $result->topic) : '',
+          '#docid' => isset($result->id) ? $result->id : '',
         );
       }
     }
