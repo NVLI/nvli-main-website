@@ -128,7 +128,6 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $this->setConfigurationValue('custom_solr_search_limit', $form_state->getValue('custom_solr_search_limit'));
     $this->setConfigurationValue('custom_solr_search_offset', $form_state->getValue('custom_solr_search_offset'));
     $this->setConfigurationValue('custom_solr_search_result_view_more', $form_state->getValue('custom_solr_search_result_view_more'));
-
   }
 
   /**
@@ -147,47 +146,61 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     $limit = $config['custom_solr_search_limit'];
     $offset = $config['custom_solr_search_offset'];
     $view_more = $config['custom_solr_search_result_view_more'];
+    // Facet search integration.
+    $url_components = custom_solr_search_get_url_components();
+    $facet_options = custom_solr_search_get_facet_filter_query_string($url_components['facet_query']);
     // Check the block configuration and search the results.
     // If selected the core.
-
-    if ($filterQuerySettings['server'] == 'all'){
-      $options = $filterQuerySettings['filter'];
+    if ($filterQuerySettings['server'] == 'all') {
+      $solr_options = $filterQuerySettings['filter'];
+      if (!empty($facet_options)) {
+        $options = $solr_options . 'AND ( ' . $facet_options . ')';
+      }
+      else {
+        $options = $solr_options;
+      }
       $results = $this->searchall->seachAll($keyword, $offset, $limit, $options);
     }
     else {
       $server = $filterQuerySettings['server'];
-      $results = $this->search->basicSearch($keyword, $offset, $limit, $server);
+      $solr_options = $filterQuerySettings['filter'];
+      if (!empty($facet_options)) {
+        $options = $solr_options . 'AND ( ' . $facet_options . ')';
+      }
+      else {
+        $options = $solr_options;
+      }
+      $results = $this->search->basicSearch($keyword, $offset, $limit, $server, $options);
     }
 
     // Format result to display as unformatted list.
     if (!empty($results)) {
       foreach ($results['docs'] as $result) {
-          if (isset($result->title)) {
-            $title = $result->title;
-          }
-          else {
-            $title = $result->label;
-          }
+        if (isset($result->title)) {
+          $title = $result->title;
+        }
+        else {
+          $title = $result->label;
+        }
         $render['result'][] = array(
           '#theme' => 'custom_solr_search_result',
-          '#url' => isset($result->url[0])?$result->url[0]: '',
-          '#title' => isset($title)?$title: '',
-          '#author' => isset($result->author)?implode(', ', $result->author): '',
-          '#publishDate' => isset($result->publishDate)?implode(', ', $result->publishDate): '',
-          '#publisher' => isset($result->publisher)?implode(', ', $result->publisher): '',
-          '#topic' => isset($result->topic)?implode(', ', $result->topic): '',
-          '#docid' => isset($result->id)?$result->id: '',
-          );
-        }
+          '#url' => isset($result->url[0]) ? $result->url[0] : '',
+          '#title' => isset($title) ? $title : '',
+          '#author' => isset($result->author) ? implode(', ', $result->author) : '',
+          '#publishDate' => isset($result->publishDate) ? implode(', ', $result->publishDate) : '',
+          '#publisher' => isset($result->publisher) ? implode(', ', $result->publisher) : '',
+          '#topic' => isset($result->topic) ? implode(', ', $result->topic) : '',
+          '#docid' => isset($result->id) ? $result->id : '',
+        );
       }
+    }
     $query_parameter = \Drupal::request()->getQueryString();
     $facet_params = !empty($query_parameter) ? $query_parameter : '';
-    
+
     if (!empty($view_more) && !empty($results['docs'])) {
       if (!empty($keyword)) {
         $facet = isset($facet_params) ? "?$facet_params" : '';
-        $url = Url::fromUri($view_more.$keyword);//'?'.$facet_params);
-       // print '<pre>';print_r($url);print '</pre>';exit;
+        $url = Url::fromUri($view_more . $keyword . $facet);
       }
       else {
         $url = Url::fromUri($view_more);

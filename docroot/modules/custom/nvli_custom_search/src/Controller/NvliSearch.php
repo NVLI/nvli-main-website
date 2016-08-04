@@ -43,48 +43,46 @@ class NvliSearch extends ControllerBase {
     $filterId = $resource_type;
     $filterQuerySettings = \Drupal::service('custom_solr_search.filter_query_settings')->getFilterQueryString($filterId);
     $url_components = custom_solr_search_get_url_components();
-    $facet_options = custom_solr_search_get_facet_filter_query_string($url_components['facet_query']);    
+    $facet_options = custom_solr_search_get_facet_filter_query_string($url_components['facet_query']);
     $solr_options = $filterQuerySettings['filter'];
-      if (!empty($facet_options)) {
-        $options = $solr_options .'AND ( '. $facet_options.')';  
-      }
-      else {
-        $options =  $solr_options; 
-      }
+    if (!empty($facet_options)) {
+      $options = $solr_options . 'AND ( ' . $facet_options . ')';
+    }
+    else {
+      $options = $solr_options;
+    }
 
     // Get the number of document.
-    if ($filterQuerySettings['server'] == 'all'){
+    if ($filterQuerySettings['server'] == 'all') {
       $doccount = \Drupal::service('custom_solr_search.search_all')->seachAll($keyword, $offset, $limit, $options);
     }
     else {
       $server = $filterQuerySettings['server'];
-      $doccount = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server,$options);
+      $doccount = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server, $options);
     }
-
-
     $total_docs = $doccount['total_docs'];
     $limit = 10;
     // Initialize the pager.
     $page = pager_default_initialize($total_docs, $limit);
     $offset = $limit * $page;
-    if ($filterQuerySettings['server'] == 'all'){
-     
+    if ($filterQuerySettings['server'] == 'all') {
+
       $results = \Drupal::service('custom_solr_search.search_all')->seachAll($keyword, $offset, $limit, $options);
     }
     else {
       $server = $filterQuerySettings['server'];
-      $results = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server,$options);
+      $results = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server, $options);
     }
 
     // Format result to display as unformatted list.
     if (!empty($results)) {
       foreach ($results['docs'] as $result) {
-          if (isset($result->title)) {
-            $title = $result->title;
-          }
-          else {
-            $title = $result->label;
-          }
+        if (isset($result->title)) {
+          $title = $result->title;
+        }
+        else {
+          $title = $result->label;
+        }
 
         $render['result'][] = array(
           '#theme' => 'custom_solr_search_result',
@@ -95,20 +93,15 @@ class NvliSearch extends ControllerBase {
           '#publisher' => isset($result->publisher) ? implode(', ', $result->publisher) : '',
           '#topic' => isset($result->topic) ? implode(', ', $result->topic) : '',
           '#docid' => isset($result->id) ? $result->id : '',
-          '#server' => $server,
-          '#keyword' => $keyword,
-          '#base_url' => $base_url,
-          '#annotation' => isset($result->annotation) ? implode(', ', $result->annotation) : '',
         );
-
-        }
       }
-      
+    }
+
     if (empty($keyword)) {
-       $title =  'Popular '. $filterQuerySettings['label'];
-    }  
+      $title = 'Popular ' . $filterQuerySettings['label'];
+    }
     else {
-      $title = 'Results from '. $filterQuerySettings['label'];
+      $title = 'Results from ' . $filterQuerySettings['label'];
     }
 
     $markup['search_results'] = array(

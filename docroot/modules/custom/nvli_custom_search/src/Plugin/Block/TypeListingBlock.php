@@ -17,7 +17,6 @@ use Drupal\Core\Url;
 use Drupal\nvli_custom;
 use Drupal\Core\Entity;
 
-
 /**
  * Provides a 'Resource Type Listing' block.
  *
@@ -43,9 +42,10 @@ class TypeListingBlock extends BlockBase {
     $keyword = \Drupal::request()->get('keyword');
     // Fetch the query filter.
     $filterQuerySettings = \Drupal::service('custom_solr_search.filter_query_settings')->getFilterQuerySetings();
+    // Fetch the facet parameter.
     $query_parameter = \Drupal::request()->getQueryString();
     $facet_params = !empty($query_parameter) ? $query_parameter : '';
-   // 
+
     // If resource type are present.
     if (!empty($filterQuerySettings)) {
       foreach ($filterQuerySettings as $key) {
@@ -65,10 +65,8 @@ class TypeListingBlock extends BlockBase {
           );
         }
         else {
-         // $url = Url::fromUri('/list/'.$filterID.'/search/'.$keyword.'?'.$facet_params);
-          //$url_param = $keyword.'?'.$facet_params;
-         // print '<pre>';print_r($url);print '</pre>';exit;
-          $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_keyword_page', array('resource_type' => $filterID, 'keyword' => $keyword));
+          $facet = isset($facet_params) ? "?$facet_params" : '';
+          $url = Url::fromUri('internal:/list/' . $filterID . '/search/' . $keyword . $facet);
           $render[] = array(
             '#theme' => 'custom_resource_type_listing',
             '#title' => $title,
