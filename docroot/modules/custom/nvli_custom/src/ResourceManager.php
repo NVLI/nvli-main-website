@@ -145,7 +145,7 @@ class ResourceManager {
         // Thumbnail Image.
         $image_file_path = $node->get('field_image_file_path')->getValue();
         
-        $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . 'full/500,/0/default.jpg';
+        $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . '/full/500,/0/default.jpg';
         
         // Fetch details image for Museum.
         if (empty($thumbnail_image)) {
