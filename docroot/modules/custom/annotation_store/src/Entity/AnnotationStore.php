@@ -55,11 +55,8 @@ class AnnotationStore extends ContentEntityBase implements AnnotationStoreInterf
     );
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function postCreate(EntityStorageInterface $storage) {
-    parent::postCreate($storage);
+  public function postSave(EntityStorageInterface $storage, $update = TRUE) {
+    parent::postSave($storage, $update);
     $solrServers = \Drupal::service('custom_solr_search.solr_servers')->getServers();
     foreach ($solrServers as $key => $solrServer) {
       // Dispatching annotation store save event.
