@@ -118,8 +118,15 @@
       display: none;
     }
     
-    &.short-url:before {
-      background-position: -30px 0;
+    &.short-url {
+      &:before {
+        background-position: -30px 0;
+      }
+
+      .field--name-field-text-plain-single-1 {
+        color: color(grey-light);
+        font-weight: weight(bold);
+      }
     }
   }
 }

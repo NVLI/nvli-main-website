@@ -316,6 +316,11 @@ body:not(.is-path-frontpage) .layout-3col {
   background-position: -30px 0;
 }
 
+.is-page-node-type-resource .share-link.short-url .field--name-field-text-plain-single-1 {
+  color: #cccccc;
+  font-weight: bold;
+}
+
 /* GENERIC STYLES CATEGORY DETAIL PAGE ENDS HERE */
 /* 
  * THIS FILE CONTAINS ALL THE STYLES FOR HEADER
@@ -797,6 +802,27 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 }
 
 /* STYLES FOR FACETS BLOCK ENDS HERE */
+/* STYLES FOR RELATED BLOCK - DETAIL PAGE STARTS HERE */
+.view-resource-content-manager .views-row {
+  display: inline-block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.view-resource-content-manager .views-row .views-field-nid {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+.view-resource-content-manager .views-row .views-field-nid img {
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  width: 48px;
+  max-height: 48px;
+  overflow: hidden;
+}
+
+/* STYLES FOR RELATED BLOCK - DETAIL PAGE ENDS HERE */
 /*** STYLES FOR RIGHT HAND SIDEBAR BLOCKS STARTS HERE ***/
 /* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK STARTS HERE */
 #block-customsearchblock-2 {

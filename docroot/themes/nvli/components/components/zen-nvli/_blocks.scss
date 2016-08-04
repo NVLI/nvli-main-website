@@ -99,6 +99,31 @@
 
 /* STYLES FOR FACETS BLOCK ENDS HERE */
 
+/* STYLES FOR RELATED BLOCK - DETAIL PAGE STARTS HERE */
+
+.view-resource-content-manager {
+  .views-row {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0;
+    
+    .views-field-nid {
+      float: left;
+      margin: 0 15px 0 0;
+      
+      img {
+        @include border-radius(3px);
+        border: 1px solid color(grey-light);
+        width: 48px;
+        max-height: 48px;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+/* STYLES FOR RELATED BLOCK - DETAIL PAGE ENDS HERE */
+
 /*** STYLES FOR RIGHT HAND SIDEBAR BLOCKS STARTS HERE ***/
 
 /* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK STARTS HERE */
