@@ -2,6 +2,7 @@
 
 namespace Drupal\custom_solr_search\Plugin\Block;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -150,6 +151,8 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     // Check the block configuration and search the results.
     // If selected the core.
 
+    $keyword = urldecode($keyword);
+
     if ($filterQuerySettings['server'] == 'all'){
       $options = $filterQuerySettings['filter'];
       $results = $this->searchall->seachAll($keyword, $offset, $limit, $options);
@@ -162,12 +165,12 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
     // Format result to display as unformatted list.
     if (!empty($results)) {
       foreach ($results['docs'] as $result) {
-          if (isset($result->title)) {
-            $title = $result->title;
-          }
-          else {
-            $title = $result->label;
-          }
+        if (isset($result->title)) {
+          $title = $result->title;
+        }
+        else {
+          $title = $result->label;
+        }
         $render['result'][] = array(
           '#theme' => 'custom_solr_search_result',
           '#url' => isset($result->url[0])?$result->url[0]: '',
@@ -177,9 +180,9 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
           '#publisher' => isset($result->publisher)?implode(', ', $result->publisher): '',
           '#topic' => isset($result->topic)?implode(', ', $result->topic): '',
           '#docid' => isset($result->id)?$result->id: '',
-          );
-        }
+        );
       }
+    }
     if (!empty($view_more) && !empty($results['docs'])) {
       if (!empty($keyword)) {
         $url = Url::fromUri($view_more.$keyword);
