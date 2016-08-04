@@ -312,7 +312,7 @@ body:not(.is-path-frontpage) .layout-3col {
   display: none;
 }
 
-.is-page-node-type-resource .share-link.anotate-link:before {
+.is-page-node-type-resource .share-link.short-url:before {
   background-position: -30px 0;
 }
 
@@ -721,7 +721,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   line-height: 20px;
 }
 
-/*c GENERIC RIGHT SIDEBAR STYLES ENDS HERE */
+/* GENERIC RIGHT SIDEBAR STYLES ENDS HERE */
 /*** STYLES FOR CATEGORY LANDING PAGE - RHS RESOURCES BLOCK STARTS HERE ***/
 .resources-block {
   position: relative;
@@ -787,6 +787,16 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 }
 
 /* STYLES FOR CATEGORY LANDING PAGE - RHS RESOURCES BLOCK ENDS HERE */
+/* STYLES FOR FACETS BLOCK STARTS HERE */
+#block-facetsearch-2 ul {
+  padding: 0;
+}
+
+#block-facetsearch-2 h4 {
+  margin: 20px 0 0;
+}
+
+/* STYLES FOR FACETS BLOCK ENDS HERE */
 /*** STYLES FOR RIGHT HAND SIDEBAR BLOCKS STARTS HERE ***/
 /* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK STARTS HERE */
 #block-customsearchblock-2 {
