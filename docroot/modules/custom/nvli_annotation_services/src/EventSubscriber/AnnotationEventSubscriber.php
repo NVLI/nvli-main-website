@@ -30,10 +30,11 @@ class AnnotationEventSubscriber implements EventSubscriberInterface {
   public function reactOnAnnotationSave(AnnotationStoreEvent $event) {
 
     $id = $event->getReferenceSolrDocId();
+    $solrDocID = \Drupal::entityTypeManager()->getStorage('node')->load($id)->get('field_solr_docid')->value;;
     $fields = $this->getAnnotationFields($id);
-    $server = 'nvli';
+    $server = $event->getSolrServer();
     $results = \Drupal::service('nvli_annotation_services.add_annotation')
-      ->addAnnotation($server, $id, $fields);
+      ->addAnnotation($server, $solrDocID, $fields);
 
     if($results->getResponse()->getStatusMessage() == 'OK'){
       drupal_set_message("Saved annotation for solr doc:" . $event->getReferenceSolrDocId());
@@ -42,13 +43,14 @@ class AnnotationEventSubscriber implements EventSubscriberInterface {
     }
 
   }
-  protected function getAnnotationFields($id){
+  protected function getAnnotationFields($id) {
     $connection = Database::getConnection();
     $query = $connection->select('annotation_store', 'ae')
       ->fields('ae', array('id'));
     $query->condition('resource_entity_id', $id);
     $data = $query->execute()->fetchAll();
     $value = array();
+
     foreach ($data as $val){
       $value[] = $val->id;
     }
@@ -59,9 +61,10 @@ class AnnotationEventSubscriber implements EventSubscriberInterface {
     $fields = array();
     foreach ($entities as $entity){
       $fields['annotation_key_txt_mv'][] = $entity->id();
-      $fields['annotation_txt_mv'][] = $entity->title->value;
+      $fields['annotation_txt_mv'][] = $entity->text->value;
       $fields['annotation_type_txt_mv'][] = $entity->type->value;
     }
+
     return $fields;
   }
 }

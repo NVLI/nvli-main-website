@@ -13,6 +13,11 @@
   transform: $transforms;
 }
 
+// translate
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+
 @mixin rotate ($deg) {
   @include transform(rotate(#{$deg}deg));
 }
