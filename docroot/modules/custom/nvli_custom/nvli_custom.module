@@ -97,11 +97,9 @@ function nvli_custom_preprocess_node(&$variables) {
         
         // Generate facet link.
         $url = Url::fromRoute('nvli_custom_search.nvli_search_result', array('keyword' => $author), array('query'=> array('_facet_author' => $author)));
-        //$author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
-        $author_list[$author]['link'] = $url->toString();
-        $author_list[$author]['label'] = $author;
+        $author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
       }
-      //kint($author1_list);
+      
       $variables['solr_author'] = $author_list;
       $variables['solr_description'] = $solr_document->description;
       $variables['solr_public_url'] = is_array($solr_document->url) ? implode(', ', $solr_document->url) : $solr_document->url;

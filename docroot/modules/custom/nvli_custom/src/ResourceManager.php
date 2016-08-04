@@ -57,7 +57,7 @@ class ResourceManager {
   public function resourceEntityThumbnailImage($node) {
     
     // Fetch resource type of current node.
-    $resource_type_data = $node->get('field_resource_type')->getValue();
+    $resource_type_data = $node->get('field_harvest_type')->getValue();
     
     $resource_type = $resource_type_data[0]['value'];
     

@@ -102,10 +102,12 @@
       {{ content.field_rating }}
         
       {# Solr Author. #}
-      <div clas="asor_author">{{ dump(solr_author) }}</div>
       {% if solr_author %}
-        {% for solr_author in author %}
-          <li>{{ author }}</li>
+        <span class="label">Author :</span>
+        {% for author in solr_author %}
+          <div class="author">
+            {{ author }},
+          </div>
         {% endfor %}
       {% endif %}
 
