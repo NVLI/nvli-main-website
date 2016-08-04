@@ -35,10 +35,10 @@ class ResourceManager {
       ->condition('status', NODE_PUBLISHED)
       ->condition('type', 'resource');
     
-    // If resource type exist then filter data with resource type condition.
+    // If resource type exist then filter data with harvest type condition.
     if (!empty($resource_type)) {
       
-      $query->condition('field_resource_type.value', $resource_type, '=');
+      $query->condition('field_harvest_type.value', $resource_type, '=');
     }
     
     // Return resource entity count.
