@@ -35,6 +35,9 @@ ova_audio_annotation:
       css/share-annotator.min.css: { minified: true }
       css/richText-annotator.min.css: { minified: true }
       css/ova.min.css: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
 
 ova_video_annotation:
   version: VERSION
@@ -60,3 +63,6 @@ ova_video_annotation:
       css/share-annotator.min.css: { minified: true }
       css/richText-annotator.min.css: { minified: true }
       css/ova.min.css: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
