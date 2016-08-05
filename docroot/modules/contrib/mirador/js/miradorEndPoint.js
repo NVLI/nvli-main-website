@@ -111,9 +111,6 @@
       annotationSettings = jQuery.parseJSON(_this.annotationSettings);
       var xcrfToken = _this.xcrfToken;
       drupal_annotation_id = annotationID;
-      if (typeof _this.annotation_id !== "undefined") {
-        var drupal_annotation_id = _this.annotation_id;
-      }
       var annotationDeleteUri = annotationSettings.annotation_delete_uri;
       annotationDeleteUri = annotationDeleteUri.replace("{annotation_id}", drupal_annotation_id);
       jQuery.ajax({
@@ -252,12 +249,11 @@
           annotation['id'] = annotation_id;
           annotation['@id'] = annotation_id;
           annotation['fullId'] = annotation_id;
-          data = JSON.stringify(annotation);
+          data = annotation;
           data.fullId = annotation_id;
-          data["@id"] = $.genUUID();
+          data.id = annotation_id;
           data.endpoint = _this;
           _this.annotation_id = annotation_id;
-          _this.idMapper[data["@id"]] = annotation_id;
           returnSuccess(data);
         },
         error: function() {
