@@ -1,5 +1,5 @@
 //Options to load in Open Video Annotation, for all the plugins
-(function($, Drupal, undefined){
+(function($, Drupal, drupalSettings){
 var resource_entity_id = drupalSettings.ova_annotation.annotation_settings;
 //alert(annotationSettings);
 var options = {
@@ -48,12 +48,11 @@ var options = {
 }
 
 
-    //Load the plugin Open Video Annotation
+//Load the plugin Open Video Annotation
 var ova = new OpenVideoAnnotation.Annotator($('#airlock'), options);
 //change the user (Experimental)
 ova.setCurrentUser($('#username').val());
 $('#username').change(function() {
     ova.setCurrentUser($(this).val());
 });
-
-})(jQuery, Drupal);
+})(jQuery, Drupal, drupalSettings);
