@@ -656,6 +656,12 @@ div#block-homepagebanner-2 {
   overflow: hidden;
 }
 
+@media only screen and (max-width: 767px) {
+  div#block-homepagebanner-2 {
+    height: auto;
+  }
+}
+
 div#block-homepagebanner-2 video {
   width: 100%;
 }
@@ -672,6 +678,12 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text {
   font-size: 24px;
   margin: 20px 0 0;
   font-weight: 300;
+}
+
+@media only screen and (max-width: 767px) {
+  div#block-homepagebanner-2 .field--type-text-with-summary .banner-text {
+    top: 40%;
+  }
 }
 
 div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p {
@@ -894,7 +906,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   margin: 0;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1024px) {
   #block-customsearchblock-2 #new-custom-search-form {
     margin: 0;
   }
@@ -914,11 +926,70 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   line-height: 30px;
 }
 
+#block-customsearchblock-5 {
+  display: none;
+}
+
+#block-customsearchblock-5 label {
+  display: none;
+}
+
+#block-customsearchblock-5 .form-item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-5 .form-item :-moz-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-5 .form-item ::-moz-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-5 .form-item :-ms-input-placeholder {
+  color: #999999;
+}
+
+#block-customsearchblock-5 input {
+  border-radius: 4px;
+  padding: 0 20px;
+  border: 1px solid #cccccc;
+  line-height: 40px;
+  float: left;
+}
+
+#block-customsearchblock-5 input.form-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#block-customsearchblock-5 input[type='submit'] {
+  color: #fff;
+  background: #4383cc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+#block-customsearchblock-5 .form-item {
+  float: left;
+  max-width: 250px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  #block-customsearchblock-5 {
+    display: inline-block;
+    margin: 20px 0;
+    width: 100%;
+  }
+}
+
 /* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK ENDS HERE */
 /* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK STARTS HERE */
 .block-custom-header-search-block {
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 12px 20px 0 0;
 }
 
 .block-custom-header-search-block label {

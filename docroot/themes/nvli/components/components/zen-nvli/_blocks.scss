@@ -145,11 +145,11 @@
     @include search-block;
     display: inline-block;
     margin: 0 36.1%;
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1024px) {
       margin: 0;
     }
   }
-
+  
   &.sticky-search-header {
     position: relative;
     top: 0;
@@ -165,6 +165,15 @@
   }
 }
 
+#block-customsearchblock-5 {
+  @include search-block;
+    display: none;
+  @media only screen and (max-width: 767px) {
+    display: inline-block;
+    margin: 20px 0;
+    width: 100%;
+  }
+}
 /* STYLES FOR OTHER PAGES HOMEPAGE SEARCH BLOCK ENDS HERE */
 
 /* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK STARTS HERE */
@@ -172,7 +181,7 @@
 .block-custom-header-search-block {
   @include search-block;
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 12px 20px 0 0;
 }
 /* STYLES FOR OTHER PAGES HEADER SEARCH BLOCK ENDS HERE */
 
