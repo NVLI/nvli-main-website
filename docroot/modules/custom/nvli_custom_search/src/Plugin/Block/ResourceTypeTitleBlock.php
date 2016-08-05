@@ -47,9 +47,6 @@ class ResourceTypeTitleBlock extends BlockBase {
       '#title' => $title,
       '#resource_id' => $filterID,
       '#resource_link' => NULL,
-      '#cache' => array(
-        'max-age' => 0,
-      ),
     );
     return $render;
   }

@@ -35,10 +35,10 @@ class ResourceManager {
       ->condition('status', NODE_PUBLISHED)
       ->condition('type', 'resource');
     
-    // If resource type exist then filter data with resource type condition.
+    // If resource type exist then filter data with harvest type condition.
     if (!empty($resource_type)) {
       
-      $query->condition('field_resource_type.value', $resource_type, '=');
+      $query->condition('field_harvest_type.value', $resource_type, '=');
     }
     
     // Return resource entity count.
@@ -57,14 +57,9 @@ class ResourceManager {
   public function resourceEntityThumbnailImage($node) {
     
     // Fetch resource type of current node.
-    $resource_type_data = $node->get('field_resource_type')->getValue();
+    $resource_type_data = $node->get('field_harvest_type')->getValue();
     
     $resource_type = $resource_type_data[0]['value'];
-    
-    // Return if resource type field is not exist in node.
-    if (empty($resource_type)) {
-      return '';
-    }
     
     $nid = $node->id();
    
@@ -145,7 +140,7 @@ class ResourceManager {
         // Thumbnail Image.
         $image_file_path = $node->get('field_image_file_path')->getValue();
         
-        $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . 'full/500,/0/default.jpg';
+        $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . '/full/500,/0/default.jpg';
         
         // Fetch details image for Museum.
         if (empty($thumbnail_image)) {
@@ -160,13 +155,16 @@ class ResourceManager {
         // Thumbnail Image.
         $image_file_path = $node->get('field_image_file_path')->getValue();
         
-        $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . 'full/500,/0/default.jpg';
+        $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . '/full/500,/0/default.jpg';
         
         // Fetch details image for Newspaper Acchives.
         if (empty($thumbnail_image)) {
           $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
+      default :
+        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-book.png';
+        
     }
 
     $data['image_path'] = $thumbnail_image;
