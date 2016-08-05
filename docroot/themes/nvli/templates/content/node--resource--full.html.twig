@@ -137,7 +137,17 @@
       {% if solr_description %}
         {{ solr_description }}
       {% endif %}
-    
+      
+      {# Source URL. #}
+      {% if solr_public_url %}
+        <span class="label">Source URL :</span>
+          <ul class="author">
+          {% for url in solr_public_url %}
+            <li><a href="{{ url }}">{{ url }}</a></li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+      
       <div class="share-links-wrapper">
         {# Short link #}
         {% if short_link %}

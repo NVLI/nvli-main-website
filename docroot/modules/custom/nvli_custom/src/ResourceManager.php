@@ -57,7 +57,7 @@ class ResourceManager {
   public function resourceEntityThumbnailImage($node) {
     
     // Fetch resource type of current node.
-    $resource_type_data = $node->get('field_harvest_type')->getValue();
+    $resource_type_data = $node->get('field_resource_type')->getValue();
     
     $resource_type = $resource_type_data[0]['value'];
     
@@ -89,6 +89,9 @@ class ResourceManager {
     
     switch ($resource_type) {
       case 'audio_video' :
+        
+        // Add annonation link for AV.
+        $image_link =  Url::fromUri('internal:/node/' . $nid . '/ova')->toString();
        
         // If thumbnail image dosn't exist in default thubnail image field then
         // fetch static default image for Audio Video.
@@ -111,7 +114,7 @@ class ResourceManager {
           $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
-      case 'journal_and_thesis' :
+      case 'Article' :
         
         // Fetch details image for Journal and thesis.
         if (empty($thumbnail_image)) {
@@ -134,12 +137,12 @@ class ResourceManager {
       break;
       case 'museum' :
         
+        // Add annotation link for museum.
         $image_link =  Url::fromUri('internal:/node/' . $nid . '/mirador')->toString();
         
         // Fetch image data from default thubnail image field.
         // Thumbnail Image.
         $image_file_path = $node->get('field_image_file_path')->getValue();
-        
         $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . '/full/500,/0/default.jpg';
         
         // Fetch details image for Museum.
@@ -147,14 +150,14 @@ class ResourceManager {
           $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceTypeDefaultImage($resource_type);
         }
       break;
-      case 'newspaper_archives' :
+      case 'newspaper' :
         
+        // Add annotation link for newpaper.
         $image_link = Url::fromUri('internal:/node/' . $nid . '/mirador')->toString();
         
         // Fetch image data from default thubnail image field.
         // Thumbnail Image.
         $image_file_path = $node->get('field_image_file_path')->getValue();
-        
         $thumbnail_image = $base_url . '/iiif/' . $image_file_path[0]['value'] . '/full/500,/0/default.jpg';
         
         // Fetch details image for Newspaper Acchives.
@@ -163,8 +166,8 @@ class ResourceManager {
         }
       break;
       default :
-        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-book.png';
-        
+        // Default thubnail image content type dosen't match with existing types.
+        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-book.png';        
     }
 
     $data['image_path'] = $thumbnail_image;
@@ -202,7 +205,7 @@ class ResourceManager {
         // Fetch default image for Govt Archives.
         $default_image = $base_url . '/themes/nvli/images/default/default-govt_archives.png';
       break;
-      case 'journal_and_thesis' :
+      case 'Article' :
         
         // Fetch default image for Journal and thesis.
         $default_image = $base_url . '/themes/nvli/images/default/default-journal_and_thesis.png';
@@ -222,7 +225,7 @@ class ResourceManager {
         // Fetch default image for Museum.
         $default_image = $base_url . '/themes/nvli/images/default/default-museum.png';
       break;
-      case 'newspaper_archives' :
+      case 'newspaper' :
         
         // Fetch default image for Newspaper Acchives.
         $default_image = $base_url . '/themes/nvli/images/default/default-newspaper_archives.png';

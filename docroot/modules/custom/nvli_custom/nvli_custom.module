@@ -108,33 +108,10 @@ function nvli_custom_preprocess_node(&$variables) {
       
       $variables['solr_author'] = $author_list;
       $variables['solr_description'] = $solr_document->description;
-      $variables['solr_public_url'] = is_array($solr_document->url) ? implode(', ', $solr_document->url) : $solr_document->url;
+      $variables['solr_public_url'] = $solr_document->url;
+
       $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate;
       $variables['solr_publisher'] = is_array($solr_document->publisher) ? implode(', ', $solr_document->publisher) : $solr_document->publisher;
     }
-  }
-}
-
-/**
- * Implements template_preprocess_views_view_field().
- */
-function nvli_custom_preprocess_views_view_field(&$variables) {
-  
-  // Fetch respective image of resource content based on the type.
-  // Override output of nid field to display default image.
-  if ($variables['view']->current_display == 'related_resource_content_block' && $variables['field']->field == 'nid') {
-    
-    // Get current node object.
-    $nid = $variables['row']->nid;
-    $node = \Drupal::entityManager()
-        ->getStorage('node')
-        ->load($nid);
-    
-    // Service to fetch default image from node object.
-    $thumbnail_image = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
-    
-    // Variable to store the image path. It will be rendered in 
-    // views-view-field--resource-content-manager--related-resource-content-block--nid.html.twig.
-    $variables['default_thumb_image'] = $thumbnail_image['image_path'];
   }
 }
