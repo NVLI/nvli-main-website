@@ -139,19 +139,25 @@ class NvliSearchResource extends ResourceBase {
     $limit = \Drupal::request()->get('limit');
     $keyword = \Drupal::request()->get('keyword');
     $type = \Drupal::request()->get('type');
-    $filterQuerySettings = $this->filtertQueryIds->getFilterQueryString($type);
-    $options = $filterQuerySettings['filter'];
+    if (!empty($type)) {
+      $filterQuerySettings = $this->filtertQueryIds->getFilterQueryString($type);
+      $options = $filterQuerySettings['filter'];
+    }
+    else {
+      $filterQuerySettings = $this->filtertQueryIds->getFilterQuerySetings();
+      foreach ($filterQuerySettings as $key) {
+        if (!empty($key['filter'])) {
+          $filter[] = $key['filter'];
+        }
+      }
+      $options = implode('OR', $filter);
+    }
 
     // If all the parameter are present return the result.
     if ($keyword != '' && $offset != '' && $limit != '') {
       $keyword = urldecode($keyword); 
-      // Call the service to fetch the result from the solr.
-      if ($type == '') {
-        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit);
-      }
-      else {
-        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
-      }
+      $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, urldecode($options));
+    
       // If result is not empty then find it's entity id.
       if ($solr_result != '') {
         // Fetch the entity_id for each doc.
