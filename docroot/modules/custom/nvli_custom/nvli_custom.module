@@ -93,11 +93,15 @@ function nvli_custom_preprocess_node(&$variables) {
       }
 
       // Iterate author list and assign facet_auhtor link to each author.
-      foreach($solr_document->author as $author) {
-        
-        // Generate facet link.
-        $url = Url::fromRoute('nvli_custom_search.nvli_search_result', array('keyword' => $author), array('query'=> array('_facet_author' => $author)));
-        $author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
+      if (!empty($solr_document->author)) {
+        foreach($solr_document->author as $author) {
+
+          // Generate facet link.
+          $url = Url::fromRoute('nvli_custom_search.nvli_search_result', array('keyword' => $author), array('query'=> array('_facet_author' => $author)));
+          $author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
+        }
+       
+        $variables['solr_author'] = $author_list;
       }
       
       // Hide short link div if empty.
@@ -105,12 +109,17 @@ function nvli_custom_preprocess_node(&$variables) {
       if (!empty($node->get('field_text_plain_single_1')->getValue())){
         $variables['short_link'] = TRUE;
       }
+      $variables['solr_description'] = !empty($solr_document->description) ? $solr_document->description : '';
+      $variables['solr_public_url'] = !empty($solr_document->url) ? $solr_document->url : '';
       
-      $variables['solr_author'] = $author_list;
-      $variables['solr_description'] = $solr_document->description;
-      $variables['solr_public_url'] = $solr_document->url;
-
-      $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate;
+      // Add date_format for newspaper content.
+      if ($solr_document->recordtype == 'newspaper') {
+        
+       $variables['solr_published_date'] = \Drupal::service('date.formatter')->format($solr_document->publishDate[0], 'custom', 'd-m-Y');
+      }
+      else {
+       $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate; 
+      }
       $variables['solr_publisher'] = is_array($solr_document->publisher) ? implode(', ', $solr_document->publisher) : $solr_document->publisher;
     }
   }
