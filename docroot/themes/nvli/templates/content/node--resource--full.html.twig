@@ -137,7 +137,6 @@
       {% if solr_description %}
         {{ solr_description }}
       {% endif %}
-      
       {# Source URL. #}
       {% if solr_public_url %}
         <span class="label">Source URL :</span>
@@ -147,7 +146,8 @@
           {% endfor %}
           </ul>
       {% endif %}
-      
+
+
       <div class="share-links-wrapper">
         {# Short link #}
         {% if short_link %}
@@ -162,6 +162,14 @@
           </div>
         {% endif %}
       </div>
+
+      {# Share this widget #}
+      {% if content.sharethis %}
+        <div class="sharethis">
+          {{ content.sharethis }}
+        </div>
+      {% endif %}
+
       {# Comment form and list #}
       {{ content.field_resource_comment }}
     </div>
