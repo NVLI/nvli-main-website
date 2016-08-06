@@ -82,34 +82,30 @@ function nvli_custom_preprocess_node(&$variables) {
 
     // Solr document object.
     $solr_document = $response['docs'][0];
-    $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
 
     if ($view_mode == 'full') {
 
+      $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
+      
       if (!empty($image_details)) {
 
         $variables['thumbnail_image_path'] = $image_details['image_path'];
         $variables['thumbnail_image_link'] = $image_details['image_link'];
       }
 
-      // Iterate author list and assign facet_auhtor link to each author.
-      if (!empty($solr_document->author)) {
-        foreach($solr_document->author as $author) {
-
-          // Generate facet link.
-          $url = Url::fromRoute('nvli_custom_search.nvli_search_result', array('keyword' => $author), array('query'=> array('_facet_author' => $author)));
-          $author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
-        }
-       
-        $variables['solr_author'] = $author_list;
-      }
+      // Fetch authors list from solr doc
+      $author_list = \Drupal::service('nvli_custom.resource_manager')->getAuthorListFromSolrDoc($solr_document);
+      $variables['solr_author'] = $author_list;
       
       // Hide short link div if empty.
       $variables['short_link'] = FALSE;
       if (!empty($node->get('field_text_plain_single_1')->getValue())){
         $variables['short_link'] = TRUE;
       }
-      $variables['solr_description'] = !empty($solr_document->description) ? $solr_document->description : '';
+      
+      // Fetch description from solr doc.
+      $variables['solr_description'] = \Drupal::service('nvli_custom.resource_manager')->getDescriptionFromSolrDoc($solr_document);
+      
       $variables['solr_public_url'] = !empty($solr_document->url) ? $solr_document->url : '';
       
       // Add date_format for newspaper content.
@@ -122,5 +118,26 @@ function nvli_custom_preprocess_node(&$variables) {
       }
       $variables['solr_publisher'] = is_array($solr_document->publisher) ? implode(', ', $solr_document->publisher) : $solr_document->publisher;
     }
+    
+    // Resource entity data for full_content view mode.
+    if ($view_mode == 'featured_content') {
+      
+      // Fetch Default thumbnail Image.
+      $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
+      
+      if (!empty($image_details)) { 
+        $variables['thumbnail_image_path'] = $image_details['image_path'];
+        $variables['thumbnail_image_link'] = $image_details['image_link'];
+      }
+      
+      // Fetch description from solr doc.
+      $variables['solr_description'] = \Drupal::service('nvli_custom.resource_manager')->getDescriptionFromSolrDoc($solr_document);
+      
+      // Fetch authors list from solr doc
+      $author_list = \Drupal::service('nvli_custom.resource_manager')->getAuthorListFromSolrDoc($solr_document);
+      $variables['solr_author'] = $author_list;
+       
+    }
+    
   }
 }
