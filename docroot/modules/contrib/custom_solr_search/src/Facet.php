@@ -3,6 +3,7 @@
 namespace Drupal\custom_solr_search;
 
 use Solarium\QueryType\Select\Query\Query as SelectQuery;
+use Drupal\custom_solr_search\FilterQuerySettings;
 
 /**
  * Class Facet.
@@ -23,16 +24,28 @@ class Facet {
     // Get solarium client.
     $solr_client = \Drupal::service('custom_solr_search.server')->getSolrClient($solr_core);
     $url_components = custom_solr_search_get_url_components();
+    
+    // Get the resource type from URl.
+    $filterID = \Drupal::request()->get('resource_type');
+    if (!empty($filterID)) {
+      $filterQuerySettings = \Drupal::service('custom_solr_search.filter_query_settings')->getFilterQueryString($filterID);
+      $options[] = $filterQuerySettings['filter'];
+      $new_query_options = array_merge($options,$url_components['facet_query']);
+    }
+    else {
+      $new_query_options = $url_components['facet_query'];
+    }
+ 
     $keyword = urldecode(end(explode('/', $url_components['path'])));
     // Initiate Solarium basic select query.
     $query = new SelectQuery();
     // Set search keyword.
     $query->setQuery($keyword);
     // Set facet filter queries.
-    custom_solr_search_set_facet_filter($query, $url_components['facet_query']);
+    custom_solr_search_set_facet_filter($query, $new_query_options);
+    
     // Set limit.
     $query->setRows(0);
-
     // get the facetset component
     $facetSet = $query->getFacetSet();
 
