@@ -50,6 +50,7 @@
       }
     }
   }
+  
   .lhs-wrapper {
     float: left;
     width: 25%;
@@ -85,6 +86,13 @@
       display: block;
     }
   }
+  
+  .tags-wrapper {
+    width: 100%;
+    display: inline-block;
+    margin: 0 0 20px;
+  }
+
   .field--name-field-term-ref-tags {
       .field__label {
         display: none;
