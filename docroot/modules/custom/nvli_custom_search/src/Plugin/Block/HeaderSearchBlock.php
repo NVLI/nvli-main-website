@@ -33,6 +33,7 @@ class HeaderSearchBlock extends BlockBase {
    */
   public function build() {
     $build = [];
+    $build['#cache']['max-age'] = 0;
     $build['form'] = \Drupal::formBuilder()->getForm('Drupal\nvli_custom_search\Form\HeaderSearchForm');
     return $build;
   }

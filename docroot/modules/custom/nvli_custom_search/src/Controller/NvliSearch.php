@@ -84,13 +84,20 @@ class NvliSearch extends ControllerBase {
         else {
           $title = $result->label;
         }
+        
+        if ($result->recordtype == 'newspaper') {
+          $publishdate = \Drupal::service('date.formatter')->format($result->publishDate[0], 'custom', 'd-m-Y');
+        }
+        else {
+          $publishdate = isset($result->publishDate) ? implode(', ', $result->publishDate) : '';
+        }
 
         $render['result'][] = array(
           '#theme' => 'custom_solr_search_result',
           '#url' => isset($result->url[0]) ? $result->url[0] : '',
           '#title' => isset($title) ? $title : '',
           '#author' => isset($result->author) ? implode(', ', $result->author) : '',
-          '#publishDate' => isset($result->publishDate) ? implode(', ', $result->publishDate) : '',
+          '#publishDate' => isset($publishdate) ? $publishdate : '',
           '#publisher' => isset($result->publisher) ? implode(', ', $result->publisher) : '',
           '#topic' => isset($result->topic) ? implode(', ', $result->topic) : '',
           '#docid' => isset($result->id) ? $result->id : '',

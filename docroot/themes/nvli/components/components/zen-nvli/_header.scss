@@ -37,6 +37,8 @@ div#block-languagedropdownswitcher {
 }
 
 div#block-languagedropdownswitcher {
+  position: relative;
+  z-index: 2;
   @media only screen and (max-width: 767px) {
     width: 27%;
     margin: 13px 10px;

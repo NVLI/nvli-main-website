@@ -71,7 +71,7 @@ function nvli_custom_preprocess_node(&$variables) {
   $bundle = $node->bundle();
 
   // Check for resource entity.
-  if ($bundle != 'resource') {
+  if ($bundle == 'resource') {
 
     // Fetch solr docid from node.
     $field_solr_docid = $node->get('field_solr_docid')->getValue();
@@ -144,7 +144,7 @@ function nvli_custom_preprocess_node(&$variables) {
 }
 
 /**
- * Impkements hook_user_login().
+ * Implements hook_user_login($account);
  */
 function nvli_custom_user_login($account){
   // Check whether destination parameter is set. If yes redirect to the

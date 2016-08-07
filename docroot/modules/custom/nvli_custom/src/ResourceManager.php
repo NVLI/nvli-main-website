@@ -4,6 +4,7 @@ namespace Drupal\nvli_custom;
 
 use Drupal\file\Entity\File;
 use Drupal\Core\Url;
+use Drupal\Core\Link;
 
 /**
  * Class ResourceManager.
@@ -167,7 +168,7 @@ class ResourceManager {
       break;
       default :
         // Default thubnail image content type dosen't match with existing types.
-        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-book.png';        
+        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-image-icon.png';        
     }
 
     $data['image_path'] = $thumbnail_image;
@@ -193,7 +194,7 @@ class ResourceManager {
       case 'audio_video' :
        
         // Fetch default image for Audio Video.
-        $default_image = $base_url . '/themes/nvli/images/default/default-av.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-av.jpg';
       break;
       case 'books' :
         
@@ -234,5 +235,29 @@ class ResourceManager {
     
     return $default_image;
   }
+  
+  public function getAuthorListFromSolrDoc($solr_document){
+    
+    // Initalize variables.
+    $author_list = array();
+
+    // Iterate author list and assign facet_auhtor link to each author.
+    if (!empty($solr_document->author)) {
+      foreach($solr_document->author as $author) {
+
+        // Generate facet link.
+        $url = Url::fromRoute('nvli_custom_search.nvli_search_result', array('keyword' => $author), array('query'=> array('_facet_author' => $author)));
+        $author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
+      }
+    }
+      
+    return $author_list;
+  }
+  
+  public function getDescriptionFromSolrDoc($solr_document){
+    return !empty($solr_document->description) ? $solr_document->description : '';
+  }
+  
+  
 
 }
