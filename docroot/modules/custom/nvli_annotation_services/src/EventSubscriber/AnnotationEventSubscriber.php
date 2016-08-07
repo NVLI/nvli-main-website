@@ -37,9 +37,9 @@ class AnnotationEventSubscriber implements EventSubscriberInterface {
       ->addAnnotation($server, $solrDocID, $fields);
 
     if($results->getResponse()->getStatusMessage() == 'OK'){
-      drupal_set_message("Saved annotation for solr doc:" . $event->getReferenceSolrDocId());
+      \Drupal::logger('nvli_annotation_services')->notice("Saved annotation for solr doc:" . $event->getReferenceSolrDocId());
     }else{
-      drupal_set_message($results->getResponse()->getStatusMessage());
+      \Drupal::logger('nvli_annotation_services')->error($results->getResponse()->getStatusMessage());
     }
 
   }
