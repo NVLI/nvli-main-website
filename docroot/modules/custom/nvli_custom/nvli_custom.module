@@ -8,6 +8,7 @@
 Use Drupal\Core\Entity;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements hook_theme().
@@ -70,7 +71,7 @@ function nvli_custom_preprocess_node(&$variables) {
   $bundle = $node->bundle();
 
   // Check for resource entity.
-  if ($bundle == 'resource') {
+  if ($bundle != 'resource') {
 
     // Fetch solr docid from node.
     $field_solr_docid = $node->get('field_solr_docid')->getValue();
