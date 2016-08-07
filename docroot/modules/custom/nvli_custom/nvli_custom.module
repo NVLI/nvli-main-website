@@ -5,13 +5,35 @@
  * Contains nvli_custom.module.
  */
 
+Use Drupal\Core\Entity;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_theme().
+ */
+function nvli_custom_theme($existing, $type, $theme, $path) {
+  return array (
+    'resource_listing_block' => array(
+      'variables' => array(
+        'title' => NULL,
+        'count' => NULL,
+        'resource_id' => NULL,
+        'resource_link' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'resource-listing-block',
+    ),
+  );
+}
+
 /**
  * Implements hook_mirador_metadata_alter.
  */
 function nvli_custom_mirador_metadata_alter(&$entity) {
-  // field_solr_doc_id contains the solr doc id, corresponding
+  // field_solr_docid contains the solr doc id, corresponding
   // to this entity.
-  $solr_doc_id = $entity->field_solr_doc_id->value;
+  $solr_doc_id = $entity->field_solr_docid->value;
   // Proceed only if solr doc id is not empty.
   if (!empty($solr_doc_id)) {
     $metadata = \Drupal::service('custom_solr_search.search_all')->seachAll('id:' . $solr_doc_id);
@@ -33,5 +55,89 @@ function nvli_custom_mirador_metadata_alter(&$entity) {
         'value' => $metadata['author']['0'],
       );
     }
+  }
+}
+
+/**
+ * Impkements hook_preprocess_node().
+ */
+function nvli_custom_preprocess_node(&$variables) {
+
+  /** @var Drupal\node\Entity\Node $node */
+  $node = $variables['node'];
+  $view_mode = $variables['view_mode'];
+  $nid = $node->id();
+  $bundle = $node->bundle();
+
+  // Check for resource entity.
+  if ($bundle == 'resource') {
+
+    // Fetch solr docid from node.
+    $field_solr_docid = $node->get('field_solr_docid')->getValue();
+    $solr_docid = $field_solr_docid[0]['value'];
+    $query_options =  '(id:"' . $solr_docid . '")';
+
+    // Fetch content form solr.
+    $response = \Drupal::service('custom_solr_search.search_all')->seachAll('', NULL, NULL, $query_options);
+
+    // Solr document object.
+    $solr_document = $response['docs'][0];
+
+    if ($view_mode == 'full') {
+
+      $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
+      
+      if (!empty($image_details)) {
+
+        $variables['thumbnail_image_path'] = $image_details['image_path'];
+        $variables['thumbnail_image_link'] = $image_details['image_link'];
+      }
+
+      // Fetch authors list from solr doc
+      $author_list = \Drupal::service('nvli_custom.resource_manager')->getAuthorListFromSolrDoc($solr_document);
+      $variables['solr_author'] = $author_list;
+      
+      // Hide short link div if empty.
+      $variables['short_link'] = FALSE;
+      if (!empty($node->get('field_text_plain_single_1')->getValue())){
+        $variables['short_link'] = TRUE;
+      }
+      
+      // Fetch description from solr doc.
+      $variables['solr_description'] = \Drupal::service('nvli_custom.resource_manager')->getDescriptionFromSolrDoc($solr_document);
+      
+      $variables['solr_public_url'] = !empty($solr_document->url) ? $solr_document->url : '';
+      
+      // Add date_format for newspaper content.
+      if ($solr_document->recordtype == 'newspaper') {
+        
+       $variables['solr_published_date'] = \Drupal::service('date.formatter')->format($solr_document->publishDate[0], 'custom', 'd-m-Y');
+      }
+      else {
+       $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate; 
+      }
+      $variables['solr_publisher'] = is_array($solr_document->publisher) ? implode(', ', $solr_document->publisher) : $solr_document->publisher;
+    }
+    
+    // Resource entity data for full_content view mode.
+    if ($view_mode == 'featured_content') {
+      
+      // Fetch Default thumbnail Image.
+      $image_details = \Drupal::service('nvli_custom.resource_manager')->resourceEntityThumbnailImage($node);
+      
+      if (!empty($image_details)) { 
+        $variables['thumbnail_image_path'] = $image_details['image_path'];
+        $variables['thumbnail_image_link'] = $image_details['image_link'];
+      }
+      
+      // Fetch description from solr doc.
+      $variables['solr_description'] = \Drupal::service('nvli_custom.resource_manager')->getDescriptionFromSolrDoc($solr_document);
+      
+      // Fetch authors list from solr doc
+      $author_list = \Drupal::service('nvli_custom.resource_manager')->getAuthorListFromSolrDoc($solr_document);
+      $variables['solr_author'] = $author_list;
+       
+    }
+    
   }
 }

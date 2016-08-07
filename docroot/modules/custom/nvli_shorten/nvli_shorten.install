@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * @file
+ *
+ * This file contains pre-requisites for the module.
+ */
+
+function nvli_shorten_install() {
+  \Drupal::service('nvli_shorten.manager')->setShortUrls();
+}

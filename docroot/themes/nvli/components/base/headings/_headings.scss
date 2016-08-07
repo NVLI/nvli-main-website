@@ -14,7 +14,8 @@ h1,
 %h1 {
   // Set the font-size and line-height while keeping a proper vertical rhythm.
   @include type-layout(xxl, 2);
-
+  color: color(blue);
+  font-weight: weight(light);
   // Set 1 unit of vertical rhythm on the top and bottom margins.
   @include margin-top(1, xxl);
   @include margin-bottom(1, xxl);
@@ -32,6 +33,7 @@ h3,
   @include type-layout(l, 1.5);
   @include margin-top(1, l);
   @include margin-bottom(1, l);
+  color: color(grey-medium);
 }
 
 h4,

@@ -1,5 +1,5 @@
 .form-item {
-  margin: 1.5rem 0;
+  margin: 24px 0;
 }
 
 .form-item__required,
@@ -9,7 +9,7 @@
 
 .form-item__description,
 .form-item .description {
-  font-size: 0.875rem;
+  font-size: 14px;
 }
 
 .form-item--inline div,

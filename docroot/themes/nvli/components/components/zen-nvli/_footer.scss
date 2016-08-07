@@ -1,0 +1,67 @@
+/* 
+ * THIS FILE CONTAINS ALL THE FOOTER STYLES
+ * @author Shruti 
+ */
+
+
+footer.footer {
+  @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, .28), $inset: true);
+  background: color(footer-bg);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 63px 16%;
+  display: inline-block;
+  z-index: -1;
+
+  @media (max-width: 767px) {
+    position: relative;
+    padding: 63px 8%;
+  }
+
+  #block-logoimage-2,
+  nav {
+    display: inline-block;
+    vertical-align: top;
+    width: 23%;
+    @media (max-width: 450px) {
+      width: 100%;
+      text-align: center;
+
+      li {
+        text-align: center;
+      }
+    }
+  }
+
+  nav {
+    h2,
+    ul {
+      margin: 0;
+    }
+
+    h2,
+    ul li a {
+      font-size: font-size(m) + 2;
+      color: color(black);
+      line-height: $base-line-height + 4;
+    }
+
+    ul li a {
+      font-weight: weight(light);
+    }
+  }
+
+  #block-nvli-2 {
+    margin: 0 15%;
+    @media (max-width: 450px) {
+      margin: 20px 0;
+    }
+  }
+
+  #block-followus-2 {
+    float: right;
+  }
+}
+
