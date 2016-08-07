@@ -274,6 +274,12 @@ body:not(.is-path-frontpage) .layout-3col {
   display: block;
 }
 
+.is-page-node-type-resource .tags-wrapper {
+  width: 100%;
+  display: inline-block;
+  margin: 0 0 20px;
+}
+
 .is-page-node-type-resource .field--name-field-term-ref-tags .field__label {
   display: none;
 }
@@ -1110,6 +1116,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
   float: left;
   width: 56%;
+  line-height: 30px;
 }
 
 @media only screen and (max-width: 450px) {
