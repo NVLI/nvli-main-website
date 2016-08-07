@@ -186,7 +186,7 @@ class CustomSolrSearchResultBlock extends BlockBase implements ContainerFactoryP
           $title = $result->label;
         }
         if ($result->recordtype == 'newspaper') {
-          $publishdate = \Drupal::service('date.formatter')->format($result->publishDate, 'custom', 'd-m-Y');
+          $publishdate = \Drupal::service('date.formatter')->format($result->publishDate[0], 'custom', 'd-m-Y');
         }
         else {
           $publishdate = isset($result->publishDate) ? implode(', ', $result->publishDate) : '';
