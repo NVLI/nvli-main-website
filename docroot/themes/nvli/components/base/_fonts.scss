@@ -31,3 +31,11 @@
 //   font-weight: normal;
 //   font-style: normal;
 // }
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../fonts/HelveticaNeueLTStd-Lt.otf') format('otf'),
+       url('../fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+       url('../fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
+       url('../fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype')
+}

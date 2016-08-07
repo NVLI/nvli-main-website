@@ -1,0 +1,9 @@
+<?php
+
+
+/**
+ * Implements hook_cron().
+ */
+function nvli_shorten_cron() {
+  \Drupal::service('nvli_shorten.manager')->setShortUrls();
+}

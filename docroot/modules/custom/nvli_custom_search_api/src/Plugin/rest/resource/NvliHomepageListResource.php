@@ -19,6 +19,9 @@ use Drupal\custom_solr_search\SearchSolrAll;
 use Drupal\custom_solr_search\Search;
 use Symfony\Component\HttpFoundation;
 use Drupal\nvli_custom_search_api\EntityDetail;
+use Drupal\custom_solr_search\FilterQuerySettings;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 /**
  * Provides a resource to get view modes by entity and bundle.
@@ -63,6 +66,13 @@ class NvliHomepageListResource extends ResourceBase {
   protected $currentUser;
 
   /**
+   * A current user instance.
+   *
+   * @var \Drupal\custom_solr_search\FilterQuerySettings
+   */
+  protected $filtertQueryIds;
+
+  /**
    * Constructs a Drupal\rest\Plugin\ResourceBase object.
    *
    * @param array $configuration
@@ -71,6 +81,8 @@ class NvliHomepageListResource extends ResourceBase {
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
+   * @param mixed $filtertQueryIds
+   *   Custom Solr search service.
    * @param array $serializer_formats
    *   The available serialization formats.
    * @param \Psr\Log\LoggerInterface $logger
@@ -85,12 +97,13 @@ class NvliHomepageListResource extends ResourceBase {
    *   Custom Solr search service for all core.
    */
   public function __construct(
-  array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, AccountProxyInterface $current_user, Search $search, SearchSolrAll $searchall, EntityDetail $entitydetail) {
+  array $configuration, $plugin_id, $plugin_definition, FilterQuerySettings $filtertQueryIds, array $serializer_formats, LoggerInterface $logger, AccountProxyInterface $current_user, Search $search, SearchSolrAll $searchall, EntityDetail $entitydetail) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
     $this->currentUser = $current_user;
     $this->search = $search;
     $this->searchall = $searchall;
     $this->entitydetail = $entitydetail;
+    $this->filtertQueryIds = $filtertQueryIds;
   }
 
   /**
@@ -101,6 +114,7 @@ class NvliHomepageListResource extends ResourceBase {
         $configuration,
         $plugin_id,
         $plugin_definition,
+        $container->get('custom_solr_search.filter_query_settings'),
         $container->getParameter('serializer.formats'),
         $container->get('logger.factory')->get('rest'),
         $container->get('current_user'),
@@ -124,26 +138,27 @@ class NvliHomepageListResource extends ResourceBase {
     $offset = \Drupal::request()->get('offset');
     $limit = \Drupal::request()->get('limit');
     $result = array();
-    $type = array('Article', 'Book');
+    // Fetch the config entity for resource type.
+    $filterQuerySettings = $this->filtertQueryIds->getFilterQuerySetings();
+    $type = $filterQuerySettings;
 
     // Check if limit and offset parameter are set ot not.
     if ($offset != '' && $limit != '') {
       // For each type fetch the results from solr.
       foreach ($type as $key => $value) {
         $data = array();
-        // @ TODO Once config entity available fetch the filter query.
-        // Hardcoding the format for type.
-        $options = '(format:"' . $value . '")';
+        $options = $value['filter'];
+        $label = $value['label'];
         // Use Solr search service to fetch the results.
-        $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
+        $solr_result = $this->searchall->seachAll('', $offset, $limit, $options);
         // If result is not empty then find it's entity id.
         if ($solr_result != '') {
           // Fetch the entity_id for each doc.
-          foreach ($solr_result as $row) {
+          foreach ($solr_result['docs'] as $row) {
             $doc_id = $row->id;
             $results['resource'] = $this->entitydetail->get_nid($doc_id);
             $results['metadata'] = json_decode(json_encode($row), True);
-            $result[$value][] = $results;
+            $result[$key][] = $results;
           }
         }
       }
@@ -159,9 +174,12 @@ class NvliHomepageListResource extends ResourceBase {
     else {
       $result = array("success" => FALSE, "message" => 'Parameter can not be empty.');
     }
-    $response = new ResourceResponse($result);
-    $response->addCacheableDependency($result);
-    return $response;
+    
+    return new JsonResponse($result);
+
+    //$response = new ResourceResponse($result);
+    //$response->addCacheableDependency($result);
+    //return $response;
   }
 
 }

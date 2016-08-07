@@ -15,7 +15,7 @@
 .progress .filled {
   height: 1.5em;
   width: 5px;
-  background: #0072b9 url(../..//forms/progress-bar/progress-bar.gif) repeat 0 0;
+  background: #4383cc url(../..//forms/progress-bar/progress-bar.gif) repeat 0 0;
 }
 
 .progress-bar__percentage,

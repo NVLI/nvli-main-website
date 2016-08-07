@@ -7,13 +7,13 @@
 
 namespace Drupal\custom_solr_search;
 
+
 /**
  * Class SearchSolrAll.
  *
  * @package Drupal\custom_solr_search
  */
 class SearchSolrAll {
-
   /**
    * Constructor.
    */
@@ -31,7 +31,7 @@ class SearchSolrAll {
    * @return array $results
    *   Array of search results.
    */
-  public function seachAll($keyword, $offset = NULL, $limit = NULL, $options = NULL) {
+  public function seachAll($keyword, $offset = NULL, $limit = NULL, $options = NULL){
     $servers = \Drupal::service('custom_solr_search.solr_servers')->getServers();
     $results = array();
     foreach ($servers as $server_machine => $server_display) {
@@ -40,5 +40,4 @@ class SearchSolrAll {
     }
     return $results;
   }
-
 }

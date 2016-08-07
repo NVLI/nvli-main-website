@@ -20,6 +20,8 @@ use Drupal\custom_solr_search\Search;
 use Symfony\Component\HttpFoundation;
 use Drupal\nvli_custom_search_api\EntityDetail;
 use Drupal\node\Entity\Node;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 /**
  * Provides a resource to get view modes by entity and bundle.
@@ -132,7 +134,7 @@ class NvliNodeDetail extends ResourceBase {
         $options = '(id:"' . $doc_id . '")';
         // Call the service to fetch the result from the solr.
         $solr_result = $this->searchall->seachAll($keyword, $offset, $limit, $options);
-        foreach ($solr_result as $row) {
+        foreach ($solr_result['docs'] as $row) {
           $results['resource'] = $this->entitydetail->get_nid($doc_id);
           $results['metadata'] = json_decode(json_encode($row), True);
           $result[] = $results;
@@ -150,9 +152,11 @@ class NvliNodeDetail extends ResourceBase {
     else {
       $result = array("success" => FALSE, "message" => 'Node data not found.');
     }
-    $response = new ResourceResponse($result);
-    $response->addCacheableDependency($result);
-    return $response;
+    return new JsonResponse($result);
+
+   // $response = new ResourceResponse($result);
+   // $response->addCacheableDependency($result);
+   // return $response;
   }
 
 }

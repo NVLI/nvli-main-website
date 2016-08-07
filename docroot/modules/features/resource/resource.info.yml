@@ -3,15 +3,23 @@ description: 'Provides Resource content type and related configuration. Base bun
 type: module
 core: 8.x
 dependencies:
+  - block
+  - block_content
+  - comment
   - field
   - file
   - fivestar
   - image
+  - link
   - menu_ui
   - mirador
   - node
+  - ova
   - path
   - pathauto
+  - rest
+  - system
   - taxonomy
   - user
+  - views
   - votingapi
