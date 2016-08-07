@@ -195,7 +195,7 @@
 
 #block-indiasancientpast-2,
 #block-indiasancientpast-3 {
-  max-width: 68%;
+  width: 68%;
   margin: 30px 16%;
   display: inline-block;
   @media (max-width: 979px) {
@@ -206,6 +206,7 @@
   .field:not(.field--name-field-featured-cont) {
     float: left;
     width: 56%;
+    line-height: 30px;
     @media only screen and (max-width: 450px) {
       width: 100%;
     }
@@ -276,20 +277,10 @@
 
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
 
-#block-indiasancientpast-3 {
-  max-width: 100%;
-  margin: 30px 0 0;
-
-  .field--name-field-featured-tag {
-    @include border-radius(4px);
-    position: absolute;
-    background: color(featured-bg);
-    color: color(white);
-    text-transform: uppercase;
-    padding: 0 5px;
-    max-width: 100px;
-    text-align: center;
-    font-size: 13px;
+body:not(.is-path-frontpage) {
+  #block-indiasancientpast-2 {
+    width: 100%;
+    margin: 30px 0 0;
   }
 }
 

@@ -50,14 +50,12 @@
       }
     }
   }
+  
   .lhs-wrapper {
     float: left;
     width: 25%;
     max-width: 200px;
-    margin: 0 20px 0 0;
-    @media (max-width: 1300px) {
-      margin: 0 20px 0 0;
-    }
+    margin: 30px 20px 0 0;
     
     .field--name-field-rating {
       margin: 50px 0 40px;
@@ -67,6 +65,7 @@
   .rhs-wrapper {
     float: left;
     width: 68%;
+    margin: 30px 0 0;
     
     .label {
       clear: left;
@@ -87,6 +86,13 @@
       display: block;
     }
   }
+  
+  .tags-wrapper {
+    width: 100%;
+    display: inline-block;
+    margin: 0 0 20px;
+  }
+
   .field--name-field-term-ref-tags {
       .field__label {
         display: none;

@@ -130,7 +130,9 @@
     <div class="rhs-wrapper">
       {# Tags #}
       {% if content.field_term_ref_tags %}
+        <div class="tags-wrapper">
         {{ content.field_term_ref_tags }}
+        </div>
       {% endif %}
       
       {# Solr descrtion. #}
