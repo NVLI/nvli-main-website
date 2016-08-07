@@ -14,12 +14,12 @@
       var userID = settings.init.entity.user_id;
       var annotationPermission = settings.init.perform_annotation;
       var annotationSettings = settings.init.annotation_settings;
+      var anonymousUserHelpText = settings.init.login_url;
       var tokenUrl = settings.init.token_url;
       var endpoint = settings.init.endpoint;
       $(document).on("click", ".mirador-osd-annotations-layer", function() {
         if (annotationPermission == false) {
-          var anonymousUserHelpText = Drupal.t("Please login to annotate");
-          $('.mirador-osd-context-controls .mirador-osd-edit-mode').text(anonymousUserHelpText);
+          $('.mirador-osd-context-controls .mirador-osd-edit-mode').html(anonymousUserHelpText);
           $('.mirador-viewer').addClass('annotate-no-permission');
         }
       });

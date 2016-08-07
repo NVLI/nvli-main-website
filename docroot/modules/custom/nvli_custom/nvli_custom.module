@@ -8,6 +8,7 @@
 Use Drupal\Core\Entity;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements hook_theme().
@@ -94,18 +95,18 @@ function nvli_custom_preprocess_node(&$variables) {
 
       // Iterate author list and assign facet_auhtor link to each author.
       foreach($solr_document->author as $author) {
-        
+
         // Generate facet link.
         $url = Url::fromRoute('nvli_custom_search.nvli_search_result', array('keyword' => $author), array('query'=> array('_facet_author' => $author)));
         $author_list[] = Link::fromTextAndUrl(t($author), $url)->toString();
       }
-      
+
       // Hide short link div if empty.
       $variables['short_link'] = FALSE;
       if (!empty($node->get('field_text_plain_single_1')->getValue())){
         $variables['short_link'] = TRUE;
       }
-      
+
       $variables['solr_author'] = $author_list;
       $variables['solr_description'] = $solr_document->description;
       $variables['solr_public_url'] = $solr_document->url;
@@ -113,5 +114,18 @@ function nvli_custom_preprocess_node(&$variables) {
       $variables['solr_published_date'] = is_array($solr_document->publishDate) ? implode(', ', $solr_document->publishDate) : $solr_document->publishDate;
       $variables['solr_publisher'] = is_array($solr_document->publisher) ? implode(', ', $solr_document->publisher) : $solr_document->publisher;
     }
+  }
+}
+
+/**
+ * Implements hook_user_login($account);
+ */
+function nvli_custom_user_login($account){
+  // Check whether destination parameter is set. If yes redirect to the
+  // destination on user login.
+  if (isset($_GET['destination'])) {
+    $destination_url = $_GET['destination'];
+    $response = new RedirectResponse($destination_url);
+    $response->send();
   }
 }
