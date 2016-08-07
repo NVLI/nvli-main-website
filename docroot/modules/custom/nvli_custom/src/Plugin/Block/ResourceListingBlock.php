@@ -41,8 +41,8 @@ class ResourceListingBlock extends BlockBase {
       foreach ($filterQuerySettings as $resource_type => $config_entity) {
         $count = '';
         $options = $config_entity['filter'];
-        $count = \Drupal::cache()->get('nvli_count_' . $resource_type);
-        if (!$count) {
+//        $count = \Drupal::cache()->get('nvli_count_' . $resource_type);
+//        if (!$count) {
           if (!empty($options)) {
             if ($config_entity['server'] == 'all') {
               $results = \Drupal::service('custom_solr_search.search_all')->seachAll($keyword, $offset, $limit, $options);
@@ -52,9 +52,9 @@ class ResourceListingBlock extends BlockBase {
               $results = \Drupal::service('custom_solr_search.search')->basicSearch($keyword, $offset, $limit, $server, $options);
             }
             $count = $results['total_docs'];
-            \Drupal::cache()->set('nvli_count_' . $resource_type, $count);
+//            \Drupal::cache()->set('nvli_count_' . $resource_type, $count);
           }
-        }
+//        }
 
         // Generate resource type search page url based on the 
         $url = Url::fromRoute('nvli_custom_search.nvli_search_resource_page', array('resource_type' => $config_entity['id']));

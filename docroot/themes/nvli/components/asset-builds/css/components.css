@@ -52,7 +52,7 @@ body:not(.is-path-frontpage) .layout-3col {
   padding: 0 112px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1300px) {
   body:not(.is-path-frontpage) .layout-3col {
     padding: 0;
   }
@@ -242,7 +242,13 @@ body:not(.is-path-frontpage) .layout-3col {
   float: left;
   width: 25%;
   max-width: 200px;
-  margin: 0 80px 0 0;
+  margin: 0 20px 0 0;
+}
+
+@media (max-width: 1300px) {
+  .is-page-node-type-resource .lhs-wrapper {
+    margin: 0 20px 0 0;
+  }
 }
 
 .is-page-node-type-resource .lhs-wrapper .field--name-field-rating {
@@ -252,6 +258,16 @@ body:not(.is-path-frontpage) .layout-3col {
 .is-page-node-type-resource .rhs-wrapper {
   float: left;
   width: 68%;
+}
+
+.is-page-node-type-resource .rhs-wrapper .label {
+  clear: left;
+  display: block;
+  margin: 30px 0 0;
+}
+
+.is-page-node-type-resource .rhs-wrapper ul.author {
+  margin: 0 0 20px;
 }
 
 .is-page-node-type-resource .resource-details {
