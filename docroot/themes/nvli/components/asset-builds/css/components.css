@@ -1119,6 +1119,11 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   line-height: 30px;
 }
 
+#block-indiasancientpast-2 .field:not(.field--name-field-featured-cont) span,
+#block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) span {
+  width: 100%;
+}
+
 @media only screen and (max-width: 450px) {
   #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont),
   #block-indiasancientpast-3 .field:not(.field--name-field-featured-cont) {
@@ -1148,6 +1153,15 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 #block-indiasancientpast-2 .field--name-field-featured-cont img,
 #block-indiasancientpast-3 .field--name-field-featured-cont img {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+#block-indiasancientpast-2 .featured-tag,
+#block-indiasancientpast-3 .featured-tag {
+  border-radius: 4px;
+  position: absolute;
+  background: #f5a623;
+  color: #fff;
+  padding: 3px 7px;
 }
 
 #block-indiasancientpast-2 .field--name-field-content-title,
@@ -1216,6 +1230,10 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 body:not(.is-path-frontpage) #block-indiasancientpast-2 {
   width: 100%;
   margin: 30px 0 0;
+}
+
+body:not(.is-path-frontpage) #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont).field--name-field-content-title {
+  width: 100%;
 }
 
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */

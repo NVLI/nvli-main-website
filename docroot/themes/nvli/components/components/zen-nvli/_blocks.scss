@@ -207,6 +207,11 @@
     float: left;
     width: 56%;
     line-height: 30px;
+
+    span {
+      width: 100%;
+    }
+
     @media only screen and (max-width: 450px) {
       width: 100%;
     }
@@ -224,6 +229,14 @@
     img {
       @include box-shadow(0, 16px, 40px, rgba(0, 0, 0, .28));
     }
+  }
+
+  .featured-tag {
+    @include border-radius(4px);
+    position: absolute;
+    background: color(featured-bg);
+    color: color(white);
+    padding: 3px 7px;
   }
 
   .field--name-field-content-title,
@@ -281,6 +294,12 @@ body:not(.is-path-frontpage) {
   #block-indiasancientpast-2 {
     width: 100%;
     margin: 30px 0 0;
+    
+    .field:not(.field--name-field-featured-cont) {
+      &.field--name-field-content-title {
+        width: 100%;
+      }
+    }
   }
 }
 
