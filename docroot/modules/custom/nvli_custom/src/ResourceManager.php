@@ -168,7 +168,7 @@ class ResourceManager {
       break;
       default :
         // Default thubnail image content type dosen't match with existing types.
-        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-book.png';        
+        $thumbnail_image = $base_url . '/themes/nvli/images/default/default-image-icon.png';        
     }
 
     $data['image_path'] = $thumbnail_image;
@@ -194,7 +194,7 @@ class ResourceManager {
       case 'audio_video' :
        
         // Fetch default image for Audio Video.
-        $default_image = $base_url . '/themes/nvli/images/default/default-av.png';
+        $default_image = $base_url . '/themes/nvli/images/default/default-av.jpg';
       break;
       case 'books' :
         
