@@ -20,6 +20,8 @@ use Drupal\custom_solr_search\Search;
 use Symfony\Component\HttpFoundation;
 use Drupal\nvli_custom_search_api\EntityDetail;
 use Drupal\custom_solr_search\FilterQuerySettings;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 /**
  * Provides a resource to get view modes by entity and bundle.
@@ -172,9 +174,12 @@ class NvliHomepageListResource extends ResourceBase {
     else {
       $result = array("success" => FALSE, "message" => 'Parameter can not be empty.');
     }
-    $response = new ResourceResponse($result);
-    $response->addCacheableDependency($result);
-    return $response;
+    
+    return new JsonResponse($result);
+
+    //$response = new ResourceResponse($result);
+    //$response->addCacheableDependency($result);
+    //return $response;
   }
 
 }
