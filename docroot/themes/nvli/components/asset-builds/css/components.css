@@ -245,12 +245,6 @@ body:not(.is-path-frontpage) .layout-3col {
   margin: 0 20px 0 0;
 }
 
-@media (max-width: 1300px) {
-  .is-page-node-type-resource .lhs-wrapper {
-    margin: 0 20px 0 0;
-  }
-}
-
 .is-page-node-type-resource .lhs-wrapper .field--name-field-rating {
   margin: 50px 0 40px;
 }
