@@ -385,6 +385,11 @@ div#block-languagedropdownswitcher span.user-dropdown img:first-child {
   }
 }
 
+div#block-languagedropdownswitcher {
+  position: relative;
+  z-index: 2;
+}
+
 @media only screen and (max-width: 767px) {
   div#block-languagedropdownswitcher {
     width: 27%;
