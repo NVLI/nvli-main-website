@@ -46,7 +46,7 @@ class ResourceTypeTitleBlock extends BlockBase {
       '#theme' => 'custom_resource_type_listing',
       '#title' => $title,
       '#resource_id' => $filterID,
-      '#resource_link' => NULL,
+      '#resource_link' => '/list/'.$filterID,
       '#cache' => array(
         'max-age' => 0,
       ),
