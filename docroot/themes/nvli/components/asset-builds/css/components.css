@@ -242,7 +242,7 @@ body:not(.is-path-frontpage) .layout-3col {
   float: left;
   width: 25%;
   max-width: 200px;
-  margin: 0 20px 0 0;
+  margin: 30px 20px 0 0;
 }
 
 .is-page-node-type-resource .lhs-wrapper .field--name-field-rating {
@@ -252,6 +252,7 @@ body:not(.is-path-frontpage) .layout-3col {
 .is-page-node-type-resource .rhs-wrapper {
   float: left;
   width: 68%;
+  margin: 30px 0 0;
 }
 
 .is-page-node-type-resource .rhs-wrapper .label {
@@ -1092,7 +1093,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 
 #block-indiasancientpast-2,
 #block-indiasancientpast-3 {
-  max-width: 68%;
+  width: 68%;
   margin: 30px 16%;
   display: inline-block;
 }
@@ -1205,21 +1206,9 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 
 /* STYLES FOR HOMEPAGE & CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK STARTS HERE */
-#block-indiasancientpast-3 {
-  max-width: 100%;
+body:not(.is-path-frontpage) #block-indiasancientpast-2 {
+  width: 100%;
   margin: 30px 0 0;
-}
-
-#block-indiasancientpast-3 .field--name-field-featured-tag {
-  border-radius: 4px;
-  position: absolute;
-  background: #f5a623;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 0 5px;
-  max-width: 100px;
-  text-align: center;
-  font-size: 13px;
 }
 
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
