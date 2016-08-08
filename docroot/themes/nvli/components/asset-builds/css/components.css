@@ -346,7 +346,7 @@ body:not(.is-path-frontpage) .layout-3col {
 div#block-userlanguageblock,
 div#block-languagedropdownswitcher {
   float: right;
-  margin: 20px 10px;
+  margin: 10px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -376,7 +376,7 @@ div#block-languagedropdownswitcher span img {
 @media only screen and (max-width: 1024px) {
   div#block-userlanguageblock span img,
   div#block-languagedropdownswitcher span img {
-    width: 20px;
+    width: 15px;
   }
 }
 
@@ -388,8 +388,14 @@ div#block-languagedropdownswitcher span.user-dropdown img:first-child {
 @media only screen and (max-width: 1024px) {
   div#block-userlanguageblock span.user-dropdown img:first-child,
   div#block-languagedropdownswitcher span.user-dropdown img:first-child {
-    width: 30px;
+    width: 23px;
   }
+}
+
+#block-userlanguageblock .login_link {
+  font-size: 14px;
+  line-height: 16px;
+  margin: -5px 0 0 10px;
 }
 
 div#block-languagedropdownswitcher {
@@ -434,7 +440,7 @@ header.sticky-header #block-userlanguageblock {
 
 @media only screen and (max-width: 767px) {
   header.sticky-header #block-userlanguageblock {
-    margin: 7px 10px;
+    margin: 4px 10px;
   }
 }
 
