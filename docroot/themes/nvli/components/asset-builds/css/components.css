@@ -1232,10 +1232,6 @@ body:not(.is-path-frontpage) #block-indiasancientpast-2 {
   margin: 30px 0 0;
 }
 
-body:not(.is-path-frontpage) #block-indiasancientpast-2 .field:not(.field--name-field-featured-cont).field--name-field-content-title {
-  width: 100%;
-}
-
 /* STYLES FOR CATEGORY LANDING PAGE - FEATURED BLOCK ENDS HERE */
 .homepage-resources-wrapper .resources-block .resource_image,
 .block-resource-type-title-block .resources-block .resource_image {
