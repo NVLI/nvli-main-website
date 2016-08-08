@@ -142,25 +142,3 @@ function nvli_custom_preprocess_node(&$variables) {
 
   }
 }
-
-/**
- * Implements hook_form_alter().
- */
-function nvli_custom_form_user_login_form_alter(&$form, &$form_state, $form_id) {
-  // Adds a submit handler for user login form.
-  $form['#submit'][] = '_nvli_custom_user_login_form_submit';
-}
-
-/**
- * Custom submit handler for login form.
- */
-function _nvli_custom_user_login_form_submit($form, FormStateInterface $form_state) {
-  // If destination is set, redirect the user to that destination.
-  if (isset($_GET['destination'])) {
-    $destination_url = $_GET['destination'];
-    $url_object = \Drupal::service('path.validator')->getUrlIfValid($form_state->getValue($destination_url));
-    $route_name = $url_object->getRouteName();
-    // Set redirect to destination.
-    $form_state->setRedirect($route_name);
-  }
-}
