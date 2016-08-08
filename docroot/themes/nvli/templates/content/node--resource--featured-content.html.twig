@@ -75,7 +75,9 @@
 <article{{ attributes }}>
   <div{{ content_attributes }}>
    <div id="block-indiasancientpast-2" class="contextual-region block block-block-content block-block-content9cf6841c-89c5-450b-af98-112d14e0ac7e">
-        <div class="field field--name-field-featured-cont field--type-image field--label-hidden field__item"> 
+       
+       <div class="img-wrapper"> 
+       <div class="field field--name-field-featured-cont field--type-image field--label-hidden field__item"> 
           {# Thubnail Image #}
           {% if thumbnail_image_path %}
             <img src="{{ thumbnail_image_path }}" width="240" height="360"/>
@@ -84,6 +86,9 @@
         <div class="featured-tag">
           <span>featured</span>  
         </div>
+        </div>
+        
+        <div class="featured-content-wrapper">
         <div class="field field--name-field-content-title field--type-string field--label-hidden">{{ label }}</div>
 
         <div class="field field--name-field-content-author field--type-string field--label-hidden">
@@ -94,7 +99,8 @@
             {% endfor %}
           {% endif %}
         </div>
-
+        </div>
+        
         <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden">
           {# Solr descrtion. #}
           {% if solr_description %}

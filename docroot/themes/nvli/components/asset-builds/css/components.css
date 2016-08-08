@@ -755,7 +755,7 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
 }
 
 .field--name-field-video-file-path .video-js {
-  width: 100% !important;
+  width: 50% !important;
   background: transparent;
   height: auto !important;
 }
@@ -1138,20 +1138,22 @@ div#block-homepagebanner-2 .field--type-text-with-summary .banner-text p:nth-chi
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-featured-cont,
-#block-indiasancientpast-3 .field--name-field-featured-cont {
+#block-indiasancientpast-2 .img-wrapper,
+#block-indiasancientpast-3 .img-wrapper {
   float: left;
+  border: 1px solid #cfcfcf;
+  min-height: 300px;
 }
 
 @media only screen and (min-width: 450px) {
-  #block-indiasancientpast-2 .field--name-field-featured-cont,
-  #block-indiasancientpast-3 .field--name-field-featured-cont {
+  #block-indiasancientpast-2 .img-wrapper,
+  #block-indiasancientpast-3 .img-wrapper {
     margin: 0 35px 0 0;
   }
 }
 
-#block-indiasancientpast-2 .field--name-field-featured-cont img,
-#block-indiasancientpast-3 .field--name-field-featured-cont img {
+#block-indiasancientpast-2 .img-wrapper img,
+#block-indiasancientpast-3 .img-wrapper img {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 }
 
