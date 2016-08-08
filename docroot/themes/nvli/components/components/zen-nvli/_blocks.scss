@@ -220,8 +220,10 @@
     }
   }
 
-  .field--name-field-featured-cont {
+  .img-wrapper {
     float: left;
+    border: 1px solid color(border-color);
+    min-height: 300px;
     @media only screen and (min-width: 450px) {
       margin: 0 35px 0 0;
     }

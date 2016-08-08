@@ -8,10 +8,10 @@
     display: none;    
   }
   .video-js {
-    width: 100% !important;   // use of !important to override inline css by js
+    width: 50% !important;   // use of !important to override inline css by js
     background: transparent;
     height: auto !important;  // use of !important to override inline css by js
-      
+
     .vjs-tech {
       position: relative;
       height: auto;
