@@ -19,4 +19,3 @@ services:
   custom_solr_search.facet_config:
     class: Drupal\custom_solr_search\FacetQueryConfig
     arguments: []
-

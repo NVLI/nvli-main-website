@@ -43,6 +43,7 @@ class SearchForm extends FormBase {
       '#description' => $this->t('Please type the keyword to search.'),
       '#maxlength' => 64,
       '#size' => 64,
+      '#autocomplete_route_name' => 'custom_solr_search.auto_complete_suggester_AutoCompleteTitle',
     );
     $form['search'] = array(
       '#type' => 'submit',

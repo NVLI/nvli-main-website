@@ -22,3 +22,19 @@ custom_solr_search.basic_search_result:
     _title: 'Search'
   requirements:
     _permission: 'access content'
+# In order to to create pages it is necessary to define routes for them.
+# A route maps a URL path to a controller. It defines with what function
+# or method will be called when a URL is accessed.
+# If the user accesses http://drupal8.dev/custom_solr_search/autocomplete/{name}, the routing
+# system will look for a route with that path. In this case it will find a
+# match, and execute the _controller callback. In this case the callback is
+# defined as a classname
+# ("\Drupal\custom_solr_search\Controller\AutoCompleteSuggester")
+# and a method ("AutoCompleteTitle").
+custom_solr_search.auto_complete_suggester_AutoCompleteTitle:
+  path: 'custom_solr_search/autocomplete'
+  defaults:
+    _controller: '\Drupal\custom_solr_search\Controller\AutoCompleteSuggester::AutoCompleteTitle'
+    _title: 'Auto Complete'
+  requirements:
+    _permission: 'access content'
