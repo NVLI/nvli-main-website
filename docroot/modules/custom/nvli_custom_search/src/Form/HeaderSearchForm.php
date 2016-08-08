@@ -9,6 +9,7 @@ namespace Drupal\nvli_custom_search\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\custom_solr_search;
 
 /**
  * Class HeaderSearchForm.
@@ -35,6 +36,7 @@ class HeaderSearchForm extends FormBase {
       '#maxlength' => 64,
       '#size' => 64,
       '#attributes' => array('placeholder' => $this->t('Find Content')),
+       '#autocomplete_route_name' => 'custom_solr_search.auto_complete_suggester_AutoCompleteTitle',
     );
     $form['search'] = array(
       '#type' => 'submit',
