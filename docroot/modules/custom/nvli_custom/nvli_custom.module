@@ -25,6 +25,14 @@ function nvli_custom_theme($existing, $type, $theme, $path) {
       'path' => $path . '/templates',
       'template' => 'resource-listing-block',
     ),
+    'user_login_link_block' => array(
+      'variables' => array(
+        'login_link' => NULL,
+        'user_name' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'user-login-link-block',
+    ),
   );
 }
 
