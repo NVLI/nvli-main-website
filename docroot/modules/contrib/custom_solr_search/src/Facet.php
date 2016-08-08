@@ -48,13 +48,12 @@ class Facet {
     $query->setRows(0);
     // get the facetset component
     $facetSet = $query->getFacetSet();
-
+ 
     // create a facet field instance and set options
     foreach ($facet_fields as $label => $field) {
       $facetSet->createFacetField($label)->setField($field);
     }
-
-    // Create a request for query.
+   // Create a request for query.
     $request = $solr_client->createRequest($query);
     // Execute request.
     $response = $solr_client->executeRequest($request);
@@ -73,16 +72,25 @@ class Facet {
       $raw_body = $response->getBody();
       // Decode json string to array or object.
       $result = json_decode($raw_body);
+      
       // Get facet fields result.
       $facet_fields = $result->facet_counts->facet_fields;
+      
       $facets = [];
       $url = custom_solr_search_remove_url_pager($_SERVER['REQUEST_URI']);
       $append_query_string = (parse_url($url, PHP_URL_QUERY) != NULL) ? '&' : '?';
       foreach ($facet_fields as $field => $facet) {
         for ($i=0; $i< count($facet); $i+=2) {
           if ($facet[$i + 1]) {
+            // Convert timestamp to date.
+            $time = $facet[$i];
+            if ($field  == 'Year-of-Publication') {
+              if (strlen($facet[$i]) >= 10) {
+                $time = \Drupal::service('date.formatter')->format($facet[$i], 'custom', 'd-m-Y');
+               }
+            }
             $facets[$field][] = array(
-              'value' => $facet[$i],
+              'value' => isset($time) ? $time : $facet[$i],
               'count' => $facet[$i + 1],
               'url' => $url . $append_query_string . '_facet_' . str_replace('_facet', '', $facet_field_settings[$field]) . '=' . $facet[$i],
             );
