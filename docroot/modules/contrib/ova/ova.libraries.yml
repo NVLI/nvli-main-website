@@ -36,6 +36,7 @@ ova_audio_annotation:
       css/richText-annotator.min.css: { minified: true }
       css/ova.min.css: { minified: true }
   dependencies:
+    - core/jquery
     - core/drupal
     - core/drupalSettings
 
@@ -64,5 +65,6 @@ ova_video_annotation:
       css/richText-annotator.min.css: { minified: true }
       css/ova.min.css: { minified: true }
   dependencies:
+    - core/jquery
     - core/drupal
     - core/drupalSettings
