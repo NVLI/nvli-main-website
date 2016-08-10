@@ -1,7 +1,6 @@
-//Options to load in Open Video Annotation, for all the plugins
+//Options to load in Open Video Annotation, for all the plugins        
 (function($, Drupal, drupalSettings){
 var resource_entity_id = drupalSettings.ova_annotation.annotation_settings;
-//alert(annotationSettings);
 var options = {
         optionsAnnotator: {
             permissions: {},
@@ -46,8 +45,6 @@ var options = {
             posBigNew: 'none' /*,NumAnnotations:20*/
         }
 }
-
-
 //Load the plugin Open Video Annotation
 var ova = new OpenVideoAnnotation.Annotator($('#airlock'), options);
 //change the user (Experimental)

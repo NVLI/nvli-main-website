@@ -36,6 +36,7 @@ ova_audio_annotation:
       css/richText-annotator.min.css: { minified: true }
       css/ova.min.css: { minified: true }
   dependencies:
+    - core/jquery
     - core/drupal
     - core/drupalSettings
 
@@ -46,13 +47,11 @@ ova_video_annotation:
     url: https://github.com/videojs/video.js/blob/master/LICENSE
     gpl-compatible: true
   js:
-    js/jquery.min.js: { minified: true }
-    js/annotator-full.js: {}
-    js/video.min.js: { minified: true }
-    js/vjs.youtube.js: {}
-    js/rangeslider.min.js: { minified: true }
-    js/share-annotator.min.js: { minified: true }
-    js/ova.min.js: { minified: true }
+    ovajs/jquery-1.10.2.js: {}
+    ovajs/annotator-full.js: {}
+    ovajs/video.dev.js: {}
+    ovajs/rangeslider.js: {}
+    ovajs/ova.js: {}
     js/addannotatebutton.js: {}
     js/jquery-noconflict.js: {}
   css:
@@ -64,5 +63,5 @@ ova_video_annotation:
       css/richText-annotator.min.css: { minified: true }
       css/ova.min.css: { minified: true }
   dependencies:
+    - core/jquery
     - core/drupal
-    - core/drupalSettings
