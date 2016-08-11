@@ -16,7 +16,7 @@
 #}
 <div id="username"></div>
 <div id="airlock">
-<video data-setup="{}" id="vjs_ova_{{ get_nid }}" class="video-js vjs-default-skin" preload="{{ player_attributes.preload }}" {{ player_attributes.controls ? 'controls' : '' }} width="640" height="264" {{ player_attributes.autoplay ? 'autoplay' : '' }} {{ player_attributes.loop ? 'loop' : '' }} {{ player_attributes.muted ? 'muted' : '' }}>
+<video data-setup="{}" id="vjs_ova_{{ get_nid }}" class="video-js vjs-default-skin" poster = "http://vjs.zencdn.net/v/oceans.png" preload="{{ player_attributes.preload }}" {{ player_attributes.controls ? 'controls' : '' }} width="640" height="264" {{ player_attributes.autoplay ? 'autoplay' : '' }} {{ player_attributes.loop ? 'loop' : '' }} {{ player_attributes.muted ? 'muted' : '' }}>
   {% for user in items %}
     <source src="{{ user }}" type="video/{{ player_extension }}"/>
   {% endfor %}

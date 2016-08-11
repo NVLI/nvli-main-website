@@ -18,13 +18,11 @@ ova_audio_annotation:
     url: https://github.com/videojs/video.js/blob/master/LICENSE
     gpl-compatible: true
   js:
-    js/jquery.min.js: { minified: true }
+    js/jquery-1.10.2.js: {}
     js/annotator-full.js: {}
-    js/audio/video.min.js: {minified: true}
-    js/vjs.youtube.js: {}
-    js/rangeslider.min.js: { minified: true }
-    js/share-annotator.min.js: { minified: true }
-    js/ova.min.js: { minified: true }
+    js/audio/video.dev.js: {}
+    js/rangeslider.js: {}
+    js/ova.js: {}
     js/addannotatebutton.js: {}
     js/jquery-noconflict.js: {}
   css:
@@ -38,7 +36,6 @@ ova_audio_annotation:
   dependencies:
     - core/jquery
     - core/drupal
-    - core/drupalSettings
 
 ova_video_annotation:
   version: VERSION
@@ -47,11 +44,11 @@ ova_video_annotation:
     url: https://github.com/videojs/video.js/blob/master/LICENSE
     gpl-compatible: true
   js:
-    ovajs/jquery-1.10.2.js: {}
-    ovajs/annotator-full.js: {}
-    ovajs/video.dev.js: {}
-    ovajs/rangeslider.js: {}
-    ovajs/ova.js: {}
+    js/jquery-1.10.2.js: {}
+    js/annotator-full.js: {}
+    js/video.dev.js: {}
+    js/rangeslider.js: {}
+    js/ova.js: {}
     js/addannotatebutton.js: {}
     js/jquery-noconflict.js: {}
   css:
