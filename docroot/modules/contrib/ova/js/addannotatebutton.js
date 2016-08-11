@@ -1,6 +1,23 @@
 //Options to load in Open Video Annotation, for all the plugins        
 (function($, Drupal, drupalSettings){
 var resource_entity_id = drupalSettings.ova_annotation.annotation_settings;
+var annotationPermission = drupalSettings.ova_annotation.perform_annotation;
+var currentPath = drupalSettings.ova_annotation.login_url;
+$(document).on("mouseover", ".vjs-new-annotation", function() {
+  if (annotationPermission == false) {
+    if ($(this).attr("title")=="New Annotation") {
+      $(this).attr("title","Please Login to Annotate "); 
+    }
+  }
+}); 
+$(document).on("click", ".vjs-new-annotation", function(e) {
+  if (annotationPermission == false) {
+    $('.annotator-widget').hide();
+    $('.vjs-timebar-RS').hide();
+    $('.vjs-controltimepanel-RS').hide();
+    window.location.href = '/user/login?destination='+currentPath;
+  }
+});
 var options = {
         optionsAnnotator: {
             permissions: {},
