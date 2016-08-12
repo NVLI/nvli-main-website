@@ -1,4 +1,4 @@
 perform ova annotations:
   title: 'Perform ova annotations'
-  description: 'Perform create operation on annotations.'
+  description: 'Perform create and view operation on annotations.'
   restrict access: false

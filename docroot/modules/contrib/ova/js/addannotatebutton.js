@@ -3,18 +3,34 @@
 var resource_entity_id = drupalSettings.ova_annotation.annotation_settings;
 var annotationPermission = drupalSettings.ova_annotation.perform_annotation;
 var currentPath = drupalSettings.ova_annotation.login_url;
+// Show text message when mouseover New Annotation.
 $(document).on("mouseover", ".vjs-new-annotation", function() {
   if (annotationPermission == false) {
     if ($(this).attr("title")=="New Annotation") {
       $(this).attr("title","Login to Annotate "); 
     }
   }
-}); 
+});
+// User Redirect to login page when clicking New Annotation Button.
 $(document).on("click", ".vjs-new-annotation", function(e) {
   if (annotationPermission == false) {
     $('.annotator-widget').hide();
     $('.vjs-timebar-RS').hide();
     $('.vjs-controltimepanel-RS').hide();
+    window.location.href = '/user/login?destination='+currentPath;
+  }
+});
+// Show text message when mouseover on Show Annotations Button.
+$(document).on("mouseover", ".vjs-showannotations-annotation", function() {
+  if (annotationPermission == false) {
+    if ($(this).attr("title")=="Show Annotations") {
+      $(this).attr("title","Login to View Annotation "); 
+    }
+  }
+});
+// User Redirect to login page when clicking Show Annotations Button.
+$(document).on("click", ".vjs-showannotations-annotation", function() {
+  if (annotationPermission == false) {
     window.location.href = '/user/login?destination='+currentPath;
   }
 });
