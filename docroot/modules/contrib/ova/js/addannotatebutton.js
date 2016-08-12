@@ -6,7 +6,7 @@ var currentPath = drupalSettings.ova_annotation.login_url;
 $(document).on("mouseover", ".vjs-new-annotation", function() {
   if (annotationPermission == false) {
     if ($(this).attr("title")=="New Annotation") {
-      $(this).attr("title","Please Login to Annotate "); 
+      $(this).attr("title","Login to Annotate "); 
     }
   }
 }); 
