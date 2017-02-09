@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Plugin for Embedding Open Video Annotation.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function open_video_annotation_page_attachments(array &$page) {
+  // Adds the OpenVideoAnnotation library to the HTML5 player page.
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node->getType() == 'article') {
+      $page['#attached']['library'][] = 'open_video_annotation/open_video_annotation.load_player';
+    }
+  }
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function open_video_annotation_js_alter(&$javascript) {
+  // Open video annotation plugin will take care of video.min.js now.
+  // unset video.min.js file from videojs module .
+  unset($javascript['//vjs.zencdn.net/5.0/video.min.js']);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function open_video_annotation_theme() {
+  return array(
+    'text_link_formatter' => array(
+      'variables' => array('url' => NULL),
+      'template' => 'text-link-formatter',
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function open_video_annotation_preprocess_text_link_formatter(&$variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $get_current_node = node_load($node->id());
+    $items = $get_current_node->field_video_text_link->getValue();
+    foreach ($items as $key => $value) {
+      if (stripos($value['value'], "youtube") !== FALSE) {
+        $variables['get_file_extension'] = "video/youtube";
+      }
+      elseif (stripos($value['value'], "mp4") !== FALSE) {
+        $variables['get_file_extension'] = "video/mp4";
+      }
+      elseif (stripos($value['value'], "webm") !== FALSE) {
+        $variables['get_file_extension'] = "video/webm";
+      }
+    }
+    $variables['get_nid'] = $node->id();
+  }
+}

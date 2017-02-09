@@ -1,0 +1,10 @@
+name: Open Video Annotation
+description: This module allows to embed video annotation tool in videojs html5 player
+package: Open Video Annotation
+
+type: module
+core: 8.x
+
+dependencies:
+  - videojs:videojs
+  - field
